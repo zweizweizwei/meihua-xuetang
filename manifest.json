@@ -2,7 +2,7 @@
   "name": "梅花易数学堂",
   "short_name": "易学堂",
   "description": "像多邻国一样学梅花易数——八卦、五行、体用生克，从零入门",
-  "start_url": "/",
+  "start_url": "/meihua-xuetang/",
   "display": "standalone",
   "background_color": "#F7F7F7",
   "theme_color": "#58CC02",

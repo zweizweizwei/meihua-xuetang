@@ -1,8 +1,8 @@
-const CACHE = 'meihua-v2';
+const CACHE = 'meihua-v3';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json'
+  '/meihua-xuetang/',
+  '/meihua-xuetang/index.html',
+  '/meihua-xuetang/manifest.json'
 ];
 
 // Install: pre-cache

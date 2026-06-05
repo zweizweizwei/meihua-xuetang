@@ -380,7 +380,7 @@ function showComplete(){
 
 // PWA
 if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('sw.js');
+  navigator.serviceWorker.register('sw.js', {scope: '/meihua-xuetang/'});
 }
 
 render();
