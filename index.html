@@ -275,14 +275,14 @@ LEVELS.push({
 
 // ==== LEVEL 3: 八卦人物类象 ====
 LEVELS.push({
-  id:3, icon:'👨‍👩‍👧‍👦', title:'八卦人物', desc:'每个卦对应一个家庭成员角色',
+  id:3, icon:'👨‍👩‍👧‍👦', title:'八卦取象：人物', desc:'每个卦对应一个家庭成员角色',
   source:'《周易·说卦传》第十章',
   pitfalls:'兑=少女（非中女），离=中女（非少女）——网络常见谬误',
   reviewCount:2,
   teaching:function(main){
     var fam = [['乾','父','☰'],['坤','母','☷'],['震','长男','☳'],['坎','中男','☵'],['艮','少男','☶'],['巽','长女','☴'],['离','中女','☲'],['兑','少女','☱']];
     main.appendChild(h('div',{className:'intro-card'},
-      h('h2',{},'👨‍👩‍👧‍👦 第3关：八卦人物'),
+      h('h2',{},'👨‍👩‍👧‍👦 第3关：八卦取象·人物'),
       h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
         '《说卦传》第十章说：乾为天，故称乎父；坤为地，故称乎母。八卦各代表一个家庭角色——这就是「乾坤生六子」的由来。'),
       h('div',{style:{background:'#F3E5F5',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
@@ -324,14 +324,14 @@ LEVELS.push({
 
 // ==== LEVEL 4: 八卦动物类象 ====
 LEVELS.push({
-  id:4, icon:'🐴', title:'八卦动物', desc:'乾马坤牛震龙巽鸡——八卦对应的八种动物',
+  id:4, icon:'🐴', title:'八卦取象：动物', desc:'乾马坤牛震龙巽鸡——八卦对应的八种动物',
   source:'《周易·说卦传》第八章',
   pitfalls:'坎=豕（猪），非其他动物；离=雉（野鸡）',
   reviewCount:2,
   teaching:function(main){
     var ani = [['乾','马','☰','🐴'],['坤','牛','☷','🐂'],['震','龙','☳','🐉'],['巽','鸡','☴','🐔'],['坎','豕(猪)','☵','🐷'],['离','雉','☲','🐦'],['艮','狗','☶','🐕'],['兑','羊','☱','🐑']];
     main.appendChild(h('div',{className:'intro-card'},
-      h('h2',{},'🐴 第4关：八卦动物'),
+      h('h2',{},'🐴 第4关：八卦取象·动物'),
       h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
         '《说卦传》第八章说：乾为马，坤为牛，震为龙，巽为鸡，坎为豕，离为雉，艮为狗，兑为羊。每个卦都有它对应的动物。'),
       h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'8px'}},
@@ -369,14 +369,14 @@ LEVELS.push({
 
 // ==== LEVEL 5: 八卦身体类象 ====
 LEVELS.push({
-  id:5, icon:'🧠', title:'八卦身体', desc:'乾首坤腹震足——八卦对应身体部位',
+  id:5, icon:'🧠', title:'八卦取象：身体', desc:'乾首坤腹震足——八卦对应身体部位',
   source:'《周易·说卦传》第九章',
   pitfalls:'巽=股（大腿），非其他部位',
   reviewCount:3,
   teaching:function(main){
     var bod = [['乾','首','☰','头'],['坤','腹','☷','肚子'],['震','足','☳','脚'],['巽','股','☴','大腿'],['坎','耳','☵','耳朵'],['离','目','☲','眼睛'],['艮','手','☶','手'],['兑','口','☱','嘴巴']];
     main.appendChild(h('div',{className:'intro-card'},
-      h('h2',{},'🧠 第5关：八卦身体'),
+      h('h2',{},'🧠 第5关：八卦取象·身体'),
       h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
         '《说卦传》第九章说：乾为首，坤为腹，震为足，巽为股，坎为耳，离为目，艮为手，兑为口。八卦各对应一个身体部位。'),
       h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'8px'}},
