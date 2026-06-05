@@ -231,19 +231,18 @@ LEVELS.push({
       h('h2',{},'🔥 第2关：五行生克'),
       h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'14px',lineHeight:'1.6'}},
         '五行（木火土金水）不是孤立的，它们之间有「生」和「克」两种基本关系——这是理解万物相互作用的基础。'),
-      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
-        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#2E7D32'}},'🌱 五行相生'),
-        h('div',{className:'wx-cycle'},
-          WX_ORDER.map(function(w,i){return [h('span',{className:'wx-chip '+w},WUXING[w].name),i<4?h('span',{className:'wx-arrow'},'→'):null];}).flat().filter(Boolean)
-        ),
-        h('p',{style:{fontSize:'12px',color:'var(--text-light)',marginTop:'8px'}},'木生火 → 火生土 → 土生金 → 金生水 → 水生木（循环）')
+      h('div',{style:{textAlign:'center',margin:'12px 0'}},
+        h('img',{src:'wuxing-diagram.jpg',alt:'五行生克图',style:{width:'100%',maxWidth:'360px',borderRadius:'12px',border:'2px solid var(--border)'}})
       ),
-      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
-        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#E65100'}},'⚡ 五行相克'),
-        h('div',{className:'wx-cycle'},
-          [['mu','土'],['huo','金'],['tu','水'],['jin','木'],['shui','火']].map(function(p,i){return [h('span',{className:'wx-chip '+p[0]},WUXING[p[0]].name),i<4?h('span',{className:'wx-arrow',style:{color:'var(--red)'}},'→'):null];}).flat().filter(Boolean)
+      h('div',{style:{display:'flex',gap:'10px',marginTop:'8px'}},
+        h('div',{style:{flex:1,background:'#E8F5E9',borderRadius:'8px',padding:'10px',textAlign:'center'}},
+          h('div',{style:{fontWeight:700,fontSize:'13px',color:'#2E7D32',marginBottom:'4px'}},'🌱 相生'),
+          h('div',{style:{fontSize:'12px',color:'var(--text-light)',lineHeight:'1.6'}},'木→火→土→金→水→木')
         ),
-        h('p',{style:{fontSize:'12px',color:'var(--text-light)',marginTop:'8px'}},'木克土 → 土克水 → 水克火 → 火克金 → 金克木（循环）')
+        h('div',{style:{flex:1,background:'#FFF3E0',borderRadius:'8px',padding:'10px',textAlign:'center'}},
+          h('div',{style:{fontWeight:700,fontSize:'13px',color:'#E65100',marginBottom:'4px'}},'⚡ 相克'),
+          h('div',{style:{fontSize:'12px',color:'var(--text-light)',lineHeight:'1.6'}},'木→土→水→火→金→木')
+        )
       ),
       h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
         '💡 记忆口诀：\n「生」— 钻木取火、火烬成土、土中藏金、金融成水、水润生木\n「克」— 木破土、土挡水、水灭火、火熔金、金砍木'),
