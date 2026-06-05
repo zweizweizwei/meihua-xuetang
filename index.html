@@ -157,11 +157,11 @@ var TRIGRAMS = {
 };
 
 var WUXING = {
-  mu:{name:'木',sheng:'huo',ke:'tu'},
-  huo:{name:'火',sheng:'tu',ke:'jin'},
-  tu:{name:'土',sheng:'jin',ke:'shui'},
-  jin:{name:'金',sheng:'shui',ke:'mu'},
-  shui:{name:'水',sheng:'mu',ke:'huo'}
+  mu:{name:'木',sheng:'huo',ke:'tu',dir:'东',season:'春',color:'青',organ:'肝',taste:'酸',emotion:'怒'},
+  huo:{name:'火',sheng:'tu',ke:'jin',dir:'南',season:'夏',color:'赤',organ:'心',taste:'苦',emotion:'喜'},
+  tu:{name:'土',sheng:'jin',ke:'shui',dir:'中',season:'长夏',color:'黄',organ:'脾',taste:'甘',emotion:'思'},
+  jin:{name:'金',sheng:'shui',ke:'mu',dir:'西',season:'秋',color:'白',organ:'肺',taste:'辛',emotion:'悲'},
+  shui:{name:'水',sheng:'mu',ke:'huo',dir:'北',season:'冬',color:'黑',organ:'肾',taste:'咸',emotion:'恐'}
 };
 var WX_ORDER = ['mu','huo','tu','jin','shui'];
 
@@ -661,6 +661,169 @@ LEVELS.push({
     {prompt:'䷜坎为水 是上坎下坎，这种叫？',type:'gua-special',choices:['纯卦/八经卦','杂卦','互卦','变卦'],answer:0},
     {prompt:'八经卦两两相重，最多组成多少重卦？',type:'gua-count',choices:['16','32','48','64'],answer:3},
     {prompt:'重卦名称先说上卦还是下卦？',type:'gua-order',choices:['先说上卦','先说下卦','都可以','看情况'],answer:0}
+  ]
+});
+
+// ==== LEVEL 11: 五行方位+季节+颜色 ====
+LEVELS.push({
+  id:11, icon:'🌈', title:'五行方位·季节·颜色', desc:'木东春青、火南夏赤——五行的时空色彩',
+  source:'《黄帝内经·素问》+《尚书·洪范》',
+  pitfalls:'五行方位≠八卦方位！五行方位是平面五方，八卦方位是九宫八方。',
+  reviewCount:3,
+  teaching:function(main){
+    var wxKeys=['mu','huo','tu','jin','shui'];
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🌈 第11关：五行方位·季节·颜色'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '五行不只是相生相克，还对应着空间方位、时间季节和颜色。这是古人「天人合一」思想的体现。'),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#B8860B'}},'📊 五行时空色一览'),
+        h('div',{style:{overflowX:'auto'}},
+          h('table',{style:{width:'100%',fontSize:'12px',borderCollapse:'collapse'}},
+            h('tr',{style:{borderBottom:'2px solid var(--border)'}},
+              ['五行','方位','季节','颜色'].map(function(hdr){return h('th',{style:{padding:'6px 4px',textAlign:'center',fontWeight:700}},hdr);})),
+            wxKeys.map(function(w){var wx=WUXING[w];
+              return h('tr',{style:{borderBottom:'1px solid var(--border)'}},
+                [h('span',{className:'wx-chip '+w,style:{fontSize:'12px',padding:'4px 10px'}},wx.name),
+                 wx.dir,wx.season,wx.color].map(function(v,i){
+                  return h('td',{style:{padding:'6px 4px',textAlign:'center'}},v);
+                }));
+            })
+          )
+        )
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
+        '💡 记忆法：春木青（草木萌发）、夏火赤（烈日炎炎）\n长夏土黄（暑湿闷热）、秋金白（金属肃杀）、冬水黑（寒水深沉）'),
+      h('div',{className:'source-tag'},'来源：《黄帝内经·素问》+《尚书·洪范》')
+    ));
+  },
+  questions:[
+    {prompt:'木对应哪个方位？',type:'wx-dir',wx:'mu',choices:['东','南','西','北'],answer:0},
+    {prompt:'火对应哪个方位？',type:'wx-dir',wx:'huo',choices:['东','南','西','北'],answer:1},
+    {prompt:'金对应哪个方位？',type:'wx-dir',wx:'jin',choices:['东','南','西','北'],answer:2},
+    {prompt:'水对应哪个方位？',type:'wx-dir',wx:'shui',choices:['东','南','西','北'],answer:3},
+    {prompt:'土对应哪个方位？',type:'wx-dir',wx:'tu',choices:['东','南','中','北'],answer:2},
+    {prompt:'木对应哪个季节？',type:'wx-season',wx:'mu',choices:['春','夏','秋','冬'],answer:0},
+    {prompt:'火对应哪个季节？',type:'wx-season',wx:'huo',choices:['春','夏','秋','冬'],answer:1},
+    {prompt:'金对应哪个季节？',type:'wx-season',wx:'jin',choices:['春','夏','秋','冬'],answer:2},
+    {prompt:'水对应哪个季节？',type:'wx-season',wx:'shui',choices:['春','夏','秋','冬'],answer:3},
+    {prompt:'木对应什么颜色？',type:'wx-color',wx:'mu',choices:['赤','黄','青','白'],answer:2},
+    {prompt:'火对应什么颜色？',type:'wx-color',wx:'huo',choices:['青','赤','黑','白'],answer:1},
+    {prompt:'金对应什么颜色？',type:'wx-color',wx:'jin',choices:['青','赤','白','黑'],answer:2},
+    {prompt:'水对应什么颜色？',type:'wx-color',wx:'shui',choices:['白','黄','赤','黑'],answer:3},
+    {prompt:'土对应什么颜色？',type:'wx-color',wx:'tu',choices:['青','赤','黄','黑'],answer:2},
+    {prompt:'东方对应哪个五行？',type:'dir-wx',dir:'东',choices:['木','火','金','水'],answer:0},
+    {prompt:'夏天对应哪个五行？',type:'season-wx',season:'夏',choices:['木','火','土','金'],answer:1},
+    {prompt:'白色对应哪个五行？',type:'color-wx',color:'白',choices:['木','火','金','水'],answer:2},
+    {prompt:'冬天对应哪个五行？',type:'season-wx',season:'冬',choices:['木','火','金','水'],answer:3},
+    {prompt:'青色+东方+春天 → 这个组合是？',type:'wx-triple',wx:'mu',choices:['木','火','金','水'],answer:0},
+    {prompt:'黄+中央+长夏 → 这个组合是？',type:'wx-triple',wx:'tu',choices:['木','土','金','水'],answer:1}
+  ]
+});
+
+// ==== LEVEL 12: 五行五脏+五味+五志 ====
+LEVELS.push({
+  id:12, icon:'🫀', title:'五行五脏·五味·五志', desc:'木肝酸怒、火心苦喜——五行与人体',
+  source:'《黄帝内经·素问·阴阳应象大论》',
+  pitfalls:'五味顺序各家略有出入，以《素问》为准。',
+  reviewCount:3,
+  teaching:function(main){
+    var wxKeys=['mu','huo','tu','jin','shui'];
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🫀 第12关：五行五脏·五味·五志'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '《素问·阴阳应象大论》将五行与人体五脏、五味、情绪（五志）对应起来，是中医学的理论基石。'),
+      h('div',{style:{background:'#FCE4EC',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#C62828'}},'🏥 五行人体对应表'),
+        h('div',{style:{overflowX:'auto'}},
+          h('table',{style:{width:'100%',fontSize:'11px',borderCollapse:'collapse'}},
+            h('tr',{style:{borderBottom:'2px solid var(--border)'}},
+              ['五行','五脏','五味','五志（情绪）'].map(function(hdr){return h('th',{style:{padding:'6px 4px',textAlign:'center',fontWeight:700}},hdr);})),
+            wxKeys.map(function(w){var wx=WUXING[w];
+              return h('tr',{style:{borderBottom:'1px solid var(--border)'}},
+                [h('span',{className:'wx-chip '+w,style:{fontSize:'12px',padding:'4px 10px'}},wx.name),
+                 wx.organ,wx.taste,wx.emotion].map(function(v,i){
+                  return h('td',{style:{padding:'6px 4px',textAlign:'center'}},v);
+                }));
+            })
+          )
+        )
+      ),
+      h('p',{style:{fontSize:'12px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
+        '💡 记忆法：\n木=肝=酸（青梅酸入肝）·怒（怒伤肝）\n火=心=苦（苦瓜清心）·喜（喜伤心）\n土=脾=甘（甘味健脾）·思（思伤脾）\n金=肺=辛（辛辣入肺）·悲（悲伤肺）\n水=肾=咸（咸味入肾）·恐（恐伤肾）'),
+      h('div',{className:'source-tag'},'来源：《素问·阴阳应象大论》')
+    ));
+  },
+  questions:[
+    {prompt:'木对应哪个脏腑？',type:'wx-organ',wx:'mu',choices:['心','肝','脾','肺'],answer:1},
+    {prompt:'火对应哪个脏腑？',type:'wx-organ',wx:'huo',choices:['肝','心','肺','肾'],answer:1},
+    {prompt:'土对应哪个脏腑？',type:'wx-organ',wx:'tu',choices:['心','肝','脾','肾'],answer:2},
+    {prompt:'金对应哪个脏腑？',type:'wx-organ',wx:'jin',choices:['肝','脾','肺','心'],answer:2},
+    {prompt:'水对应哪个脏腑？',type:'wx-organ',wx:'shui',choices:['心','肺','脾','肾'],answer:3},
+    {prompt:'酸味对应哪个五行？',type:'taste-wx',taste:'酸',choices:['木','火','土','金'],answer:0},
+    {prompt:'苦味对应哪个五行？',type:'taste-wx',taste:'苦',choices:['木','火','土','金'],answer:1},
+    {prompt:'甘味对应哪个五行？',type:'taste-wx',taste:'甘',choices:['木','火','土','水'],answer:2},
+    {prompt:'辛味对应哪个五行？',type:'taste-wx',taste:'辛',choices:['木','金','土','水'],answer:1},
+    {prompt:'咸味对应哪个五行？',type:'taste-wx',taste:'咸',choices:['火','金','水','木'],answer:2},
+    {prompt:'怒对应哪个五行？',type:'emotion-wx',emotion:'怒',choices:['木','火','金','水'],answer:0},
+    {prompt:'喜对应哪个五行？',type:'emotion-wx',emotion:'喜',choices:['木','火','土','金'],answer:1},
+    {prompt:'思对应哪个五行？',type:'emotion-wx',emotion:'思',choices:['木','火','土','水'],answer:2},
+    {prompt:'悲对应哪个五行？',type:'emotion-wx',emotion:'悲',choices:['木','火','金','水'],answer:2},
+    {prompt:'恐对应哪个五行？',type:'emotion-wx',emotion:'恐',choices:['木','火','金','水'],answer:3},
+    {prompt:'「怒伤肝」说明怒和肝都属于？',type:'wx-organ2',wx:'mu',choices:['木','火','金','水'],answer:0},
+    {prompt:'「喜伤心」——喜和心都属于？',type:'wx-organ2',wx:'huo',choices:['木','火','金','水'],answer:1},
+    {prompt:'肾+咸+恐 → 这个组合的五行是？',type:'wx-triple2',wx:'shui',choices:['木','火','金','水'],answer:3},
+    {prompt:'「酸入肝」——酸和肝对应？',type:'wx-organ3',wx:'mu',choices:['木','火','土','水'],answer:0},
+    {prompt:'「辛入肺」——辛和肺对应？',type:'wx-organ3',wx:'jin',choices:['木','火','金','水'],answer:2}
+  ]
+});
+
+// ==== LEVEL 13: 五行综合大挑战 ====
+LEVELS.push({
+  id:13, icon:'🎲', title:'五行综合大挑战', desc:'跨维度混合——方位/季节/颜色/五脏/五味/五志+生克',
+  source:'综合《素问》+《洪范》',
+  pitfalls:null,
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🎲 第13关：五行综合大挑战'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '五行全维度大混战！方位+季节+颜色+五脏+五味+五志+生克——看看你是不是真正掌握了五行的全部奥义。'),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2E7D32'}},'🗂️ 五行全维度速查'),
+        h('div',{style:{fontSize:'12px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '木：东·春·青·肝·酸·怒　|　火：南·夏·赤·心·苦·喜\n土：中·长夏·黄·脾·甘·思　|　金：西·秋·白·肺·辛·悲\n水：北·冬·黑·肾·咸·恐')
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px'}},'🎲 25题跨维度——准备好了吗？'),
+      h('div',{className:'source-tag'},'来源：综合《素问》+《洪范》')
+    ));
+  },
+  questions:[
+    {prompt:'木生什么？',type:'sheng',from:'mu',choices:['火','金','水','土'],answer:0},
+    {prompt:'金克什么？',type:'ke',from:'jin',choices:['水','木','火','土'],answer:1},
+    {prompt:'东方对应哪个五行？',type:'dir-wx',dir:'东',choices:['木','火','金','水'],answer:0},
+    {prompt:'南方对应哪个五行？',type:'dir-wx',dir:'南',choices:['木','火','金','水'],answer:1},
+    {prompt:'冬天对应哪个五行？',type:'season-wx',season:'冬',choices:['木','金','水','火'],answer:2},
+    {prompt:'青色对应哪个五行？',type:'color-wx',color:'青',choices:['木','火','金','水'],answer:0},
+    {prompt:'白色对应哪个五行？',type:'color-wx',color:'白',choices:['木','火','金','水'],answer:2},
+    {prompt:'心对应哪个五行？',type:'wx-organ',wx:'huo',choices:['肝','心','脾','肺'],answer:1},
+    {prompt:'肾对应哪个五行？',type:'wx-organ',wx:'shui',choices:['心','肺','肝','肾'],answer:3},
+    {prompt:'苦味对应哪个五行？',type:'taste-wx',taste:'苦',choices:['木','火','土','金'],answer:1},
+    {prompt:'辛味对应哪个五行？',type:'taste-wx',taste:'辛',choices:['木','火','金','水'],answer:2},
+    {prompt:'思对应哪个五行？',type:'emotion-wx',emotion:'思',choices:['木','火','土','金'],answer:2},
+    {prompt:'恐对应哪个五行？',type:'emotion-wx',emotion:'恐',choices:['木','火','金','水'],answer:3},
+    {prompt:'木和火的关系是？',type:'rel',a:'mu',b:'huo',choices:['木生火','火生木','木克火','火克木'],answer:0},
+    {prompt:'金和木的关系是？',type:'rel',a:'jin',b:'mu',choices:['金生木','木生金','金克木','木克金'],answer:2},
+    {prompt:'什么生金？',type:'who-sheng',to:'jin',choices:['木','火','土','水'],answer:2},
+    {prompt:'什么克水？',type:'who-ke',to:'shui',choices:['木','火','土','金'],answer:2},
+    {prompt:'春天+青色+肝 → 这个组合是？',type:'wx-triple',wx:'mu',choices:['木','火','金','水'],answer:0},
+    {prompt:'秋天+白+辛 → 这个组合是？',type:'wx-triple3',wx:'jin',choices:['木','火','金','水'],answer:2},
+    {prompt:'火生什么？生出的对应什么季节？',type:'sheng-season',from:'huo',choices:['金·秋','土·长夏','水·冬','木·春'],answer:1},
+    {prompt:'什么是生水的？它的颜色是？',type:'who-sheng-color',to:'shui',choices:['土·黄','金·白','木·青','火·赤'],answer:1},
+    {prompt:'「喜伤心」→ 喜/心/火，那「悲伤肺」→ 悲/肺/？',type:'emotion-organ-wx',emotion:'悲',organ:'肺',choices:['木','火','金','水'],answer:2},
+    {prompt:'水克火，夏天属火——冬天属水会？',type:'ke-season',ke:'shui',beike:'huo',choices:['水克火→冬制约夏','火克水→夏制约冬','水生火','无关系'],answer:0},
+    {prompt:'五行中「土」的方位和五脏？',type:'wx-dir-organ',wx:'tu',choices:['东·肝','中·脾','西·肺','北·肾'],answer:1},
+    {prompt:'「赤色+苦味+喜」属于哪个五行？',type:'color-taste-emotion',color:'赤',taste:'苦',emotion:'喜',choices:['木','火','土','水'],answer:1}
   ]
 });
 
