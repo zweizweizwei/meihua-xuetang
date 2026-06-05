@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#58CC02">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>梅花易数学堂</title>
+<title>多灵国-八卦版</title>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>🌸</text></svg>">
 <style>
@@ -17,7 +17,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 
 /* Header */
 .header{padding:16px 20px 12px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:20px;font-weight:700;display:flex;align-items:center;gap:8px;cursor:pointer}
+.logo{font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px;cursor:pointer}
 .logo .icon{font-size:28px}
 .streak{display:flex;align-items:center;gap:4px;font-weight:600;font-size:15px;color:var(--gold)}
 
@@ -60,6 +60,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .continue-btn{width:100%;padding:16px;border:none;border-radius:14px;background:var(--green);color:#fff;font-size:17px;font-weight:700;cursor:pointer;transition:all .15s;display:none}
 .continue-btn.show{display:block}
 .continue-btn:active{transform:scale(.98);background:var(--green-dark)}
+.continue-btn.white{background:#fff;color:var(--green);border:2px solid var(--green)}
 
 /* Level complete */
 .complete-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:10;padding:20px}
@@ -116,6 +117,21 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 /* Back button */
 .back-btn{background:none;border:none;font-size:22px;cursor:pointer;padding:4px 8px;color:var(--text-light)}
 
+/* Review section */
+.review-section{background:#FFF9E6;border-radius:12px;padding:14px;border:2px dashed #E6D88A;margin-bottom:4px}
+.review-section .rs-title{font-size:13px;font-weight:700;color:#B8860B;margin-bottom:8px;text-align:center}
+.review-q{margin-bottom:8px;font-size:14px}
+.review-q .rq-prompt{color:var(--text-light);margin-bottom:4px}
+.review-q .rq-choices{display:flex;gap:6px;flex-wrap:wrap}
+
+/* Source tag */
+.source-tag{font-size:11px;color:var(--text-light);text-align:center;margin-top:8px;font-style:italic;opacity:.7}
+
+/* Tab bar for review */
+.review-bar{display:flex;gap:8px;margin-bottom:8px}
+.review-bar button{flex:1;padding:10px;border-radius:10px;border:2px solid var(--border);background:var(--card);font-size:14px;font-weight:600;cursor:pointer}
+.review-bar button.active{border-color:var(--green);background:#D7FFB8;color:#3C7A00}
+
 @media(max-width:380px){
   .trigram-card .sym{font-size:28px;min-width:36px}
   .choices{grid-template-columns:1fr}
@@ -128,113 +144,331 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 <body>
 <div class="app" id="app"></div>
 <script>
-// ===== DATA =====
-const TRIGRAMS = {
-  qian:{sym:'☰',name:'乾',wuxing:'金',nature:'天',props:'健、阳、刚、创始',family:'父',mnemonic:'乾三连'},
-  dui:{sym:'☱',name:'兑',wuxing:'金',nature:'泽',props:'悦、说、少女、口舌',family:'少女',mnemonic:'兑上缺'},
-  li:{sym:'☲',name:'离',wuxing:'火',nature:'火',props:'丽、明、文、附丽',family:'中女',mnemonic:'离中虚'},
-  zhen:{sym:'☳',name:'震',wuxing:'木',nature:'雷',props:'动、起、决躁、惊',family:'长男',mnemonic:'震仰盂'},
-  xun:{sym:'☴',name:'巽',wuxing:'木',nature:'风',props:'入、顺、长女、不果',family:'长女',mnemonic:'巽下断'},
-  kan:{sym:'☵',name:'坎',wuxing:'水',nature:'水',props:'陷、险、润下、隐伏',family:'中男',mnemonic:'坎中满'},
-  gen:{sym:'☶',name:'艮',wuxing:'土',nature:'山',props:'止、静、少男、阻',family:'少男',mnemonic:'艮覆碗'},
-  kun:{sym:'☷',name:'坤',wuxing:'土',nature:'地',props:'顺、柔、母、载物',family:'母',mnemonic:'坤六断'}
+// ====== DATA ======
+var TRIGRAMS = {
+  qian:{sym:'☰',name:'乾',wuxing:'金',nature:'天',mnemonic:'乾三连',family:'父',animal:'马',body:'首'},
+  dui:{sym:'☱',name:'兑',wuxing:'金',nature:'泽',mnemonic:'兑上缺',family:'少女',animal:'羊',body:'口'},
+  li:{sym:'☲',name:'离',wuxing:'火',nature:'火',mnemonic:'离中虚',family:'中女',animal:'雉',body:'目'},
+  zhen:{sym:'☳',name:'震',wuxing:'木',nature:'雷',mnemonic:'震仰盂',family:'长男',animal:'龙',body:'足'},
+  xun:{sym:'☴',name:'巽',wuxing:'木',nature:'风',mnemonic:'巽下断',family:'长女',animal:'鸡',body:'股'},
+  kan:{sym:'☵',name:'坎',wuxing:'水',nature:'水',mnemonic:'坎中满',family:'中男',animal:'豕',body:'耳'},
+  gen:{sym:'☶',name:'艮',wuxing:'土',nature:'山',mnemonic:'艮覆碗',family:'少男',animal:'狗',body:'手'},
+  kun:{sym:'☷',name:'坤',wuxing:'土',nature:'地',mnemonic:'坤六断',family:'母',animal:'牛',body:'腹'}
 };
 
-const WUXING = {
-  mu:{name:'木',sheng:'huo',ke:'tu',shengStr:'木生火',keStr:'木克土'},
-  huo:{name:'火',sheng:'tu',ke:'jin',shengStr:'火生土',keStr:'火克金'},
-  tu:{name:'土',sheng:'jin',ke:'shui',shengStr:'土生金',keStr:'土克水'},
-  jin:{name:'金',sheng:'shui',ke:'mu',shengStr:'金生水',keStr:'金克木'},
-  shui:{name:'水',sheng:'mu',ke:'huo',shengStr:'水生木',keStr:'水克火'}
+var WUXING = {
+  mu:{name:'木',sheng:'huo',ke:'tu'},
+  huo:{name:'火',sheng:'tu',ke:'jin'},
+  tu:{name:'土',sheng:'jin',ke:'shui'},
+  jin:{name:'金',sheng:'shui',ke:'mu'},
+  shui:{name:'水',sheng:'mu',ke:'huo'}
 };
-const WX_ORDER = ['mu','huo','tu','jin','shui'];
+var WX_ORDER = ['mu','huo','tu','jin','shui'];
 
-const LEVELS = [
-  {
-    id:1, icon:'☰', title:'八卦入门', desc:'认识八个卦象的符号、名称、五行',
-    questions:[
-      {type:'sym-to-name',sym:'qian',choices:['乾','坤','震','巽'],answer:0,prompt:'这个卦象叫什么名字？'},
-      {type:'sym-to-name',sym:'kun',choices:['艮','兑','坤','离'],answer:2,prompt:'选出正确的卦名'},
-      {type:'sym-to-name',sym:'li',choices:['离','坎','震','兑'],answer:0,prompt:'这个符号是哪个卦？'},
-      {type:'sym-to-name',sym:'kan',choices:['巽','坎','离','艮'],answer:1,prompt:'识别这个卦象'},
-      {type:'sym-to-name',sym:'zhen',choices:['兑','艮','震','巽'],answer:2,prompt:'这是什么卦？'},
-      {type:'sym-to-name',sym:'dui',choices:['艮','兑','乾','坤'],answer:1,prompt:'选出这个卦的正确名称'},
-      {type:'sym-to-name',sym:'xun',choices:['震','离','巽','坎'],answer:2,prompt:'识别卦象'},
-      {type:'sym-to-name',sym:'gen',choices:['艮','兑','震','离'],answer:0,prompt:'这个符号叫什么？'},
-      {type:'sym-to-wuxing',sym:'qian',choices:['木','火','金','水'],answer:2,prompt:'乾卦的五行是什么？'},
-      {type:'sym-to-wuxing',sym:'li',choices:['金','木','水','火'],answer:3,prompt:'离卦对应哪个五行？'},
-      {type:'sym-to-wuxing',sym:'kan',choices:['火','土','金','水'],answer:3,prompt:'坎卦的五行属性？'},
-      {type:'sym-to-wuxing',sym:'zhen',choices:['木','火','土','金'],answer:0,prompt:'震卦属什么五行？'},
-      {type:'nature-to-sym',nature:'天',choices:['乾☰','坤☷','震☳','离☲'],answer:0,prompt:'「天」对应哪个卦？'},
-      {type:'nature-to-sym',nature:'地',choices:['艮☶','兑☱','坤☷','坎☵'],answer:2,prompt:'「地」的自然之卦是？'},
-      {type:'nature-to-sym',nature:'雷',choices:['离☲','震☳','巽☴','乾☰'],answer:1,prompt:'「雷」对应八卦中的？'},
-      {type:'wuxing-to-name',wuxing:'水',choices:['离','坎','兑','坤'],answer:1,prompt:'五行属水的是哪一个？'},
-      {type:'wuxing-to-name',wuxing:'火',choices:['震','艮','离','坎'],answer:2,prompt:'五行属火的是？'},
-      {type:'name-to-sym',name:'兑',choices:['☴','☱','☲','☶'],answer:1,prompt:'兑卦的符号是？'},
-      {type:'name-to-sym',name:'离',choices:['☰','☵','☲','☳'],answer:2,prompt:'离卦的符号？'},
-      {type:'mnemonic-to-name',mnemonic:'坎中满',choices:['离','坎','兑','巽'],answer:1,prompt:'「坎中满」说的是哪个卦？'}
-    ]
+var LEVELS = [];
+
+// ==== LEVEL 1: 八卦入门 ====
+LEVELS.push({
+  id:1, icon:'☰', title:'八卦入门', desc:'认识八个卦象的符号、名称和五行',
+  source:'《周易·说卦传》',
+  reviewCount:0,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'☰ 第1关：八卦入门'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '八卦由阳爻（⚊）和阴爻（⚋）三层叠加而成，共八种组合，分别对应自然界的八种基本现象。'),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'12px 14px',marginBottom:'12px',textAlign:'center'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#B8860B'}},'📝 八卦取象口诀'),
+        h('div',{style:{fontSize:'15px',lineHeight:'2',fontWeight:500}},
+          '乾三连　坤六断\n震仰盂　艮覆碗\n离中虚　坎中满\n兑上缺　巽下断')
+      ),
+      h('div',{className:'trigram-grid'},
+        Object.keys(TRIGRAMS).map(function(k){var t=TRIGRAMS[k];
+          return h('div',{className:'trigram-card wx-'+(t.wuxing==='金'?'jin':t.wuxing==='木'?'mu':t.wuxing==='水'?'shui':t.wuxing==='火'?'huo':'tu')},
+            h('div',{className:'sym'},t.sym),
+            h('div',{className:'info'},
+              h('div',{className:'name'},t.name+' · '+t.wuxing),
+              h('div',{className:'mnemonic'},t.mnemonic)
+            )
+          );
+        })
+      ),
+      h('p',{style:{marginTop:'14px',fontSize:'13px',color:'var(--text-light)'}},'记住符号、名字、五行和口诀，准备好了就开始答题 👇'),
+      h('div',{className:'source-tag'},'来源：《周易·说卦传》')
+    ));
   },
-  {
-    id:2, icon:'🔥', title:'体用生克', desc:'五行生克关系，体卦用卦的判断',
-    questions:[
-      {type:'sheng',from:'mu',choices:['火','金','水','土'],answer:0,prompt:'木生什么？'},
-      {type:'sheng',from:'huo',choices:['木','土','金','水'],answer:1,prompt:'火生什么？'},
-      {type:'sheng',from:'tu',choices:['水','木','金','火'],answer:2,prompt:'土生什么？'},
-      {type:'sheng',from:'jin',choices:['土','火','水','木'],answer:2,prompt:'金生什么？'},
-      {type:'sheng',from:'shui',choices:['金','土','木','火'],answer:2,prompt:'水生什么？'},
-      {type:'ke',from:'jin',choices:['水','木','火','土'],answer:1,prompt:'金克什么？'},
-      {type:'ke',from:'mu',choices:['水','火','土','金'],answer:2,prompt:'木克什么？'},
-      {type:'ke',from:'shui',choices:['木','土','火','金'],answer:2,prompt:'水克什么？'},
-      {type:'ke',from:'huo',choices:['土','水','金','木'],answer:2,prompt:'火克什么？'},
-      {type:'ke',from:'tu',choices:['火','金','水','木'],answer:2,prompt:'土克什么？'},
-      {type:'who-sheng',to:'mu',choices:['火','水','金','土'],answer:1,prompt:'什么是生木的？'},
-      {type:'who-sheng',to:'huo',choices:['水','木','土','金'],answer:1,prompt:'什么是生火的？'},
-      {type:'who-ke',to:'jin',choices:['水','火','土','木'],answer:1,prompt:'什么克金？'},
-      {type:'who-ke',to:'mu',choices:['土','金','水','火'],answer:1,prompt:'什么克木？'},
-      {type:'sheng-ke-relation',a:'mu',b:'huo',choices:['木生火','火生木','木克火','火克木'],answer:0,prompt:'木和火的关系是？'},
-      {type:'sheng-ke-relation',a:'shui',b:'huo',choices:['水生火','火生水','水克火','火克水'],answer:2,prompt:'水和火的关系是？'},
-      {type:'sheng-ke-relation',a:'jin',b:'mu',choices:['金生木','木生金','金克木','木克金'],answer:2,prompt:'金和木的关系是？'},
-      {type:'sheng-ke-relation',a:'tu',b:'jin',choices:['土生金','金生土','土克金','金克土'],answer:0,prompt:'土和金的关系是？'},
-      {type:'sheng-ke-relation',a:'huo',b:'jin',choices:['火生金','金生火','火克金','金克火'],answer:2,prompt:'火和金的关系是？'},
-      {type:'sheng-ke-relation',a:'tu',b:'shui',choices:['土生水','水生土','土克水','水克土'],answer:2,prompt:'土和水的关系是？'}
-    ]
-  }
-];
+  questions:[
+    {prompt:'这个卦象叫什么名字？',type:'sym-name',sym:'qian',choices:['乾','坤','震','巽'],answer:0},
+    {prompt:'选出正确的卦名',type:'sym-name',sym:'kun',choices:['艮','兑','坤','离'],answer:2},
+    {prompt:'这个符号是哪个卦？',type:'sym-name',sym:'li',choices:['离','坎','震','兑'],answer:0},
+    {prompt:'识别这个卦象',type:'sym-name',sym:'kan',choices:['巽','坎','离','艮'],answer:1},
+    {prompt:'这是什么卦？',type:'sym-name',sym:'zhen',choices:['兑','艮','震','巽'],answer:2},
+    {prompt:'选出这个卦的正确名称',type:'sym-name',sym:'dui',choices:['艮','兑','乾','坤'],answer:1},
+    {prompt:'识别卦象',type:'sym-name',sym:'xun',choices:['震','离','巽','坎'],answer:2},
+    {prompt:'这个符号叫什么？',type:'sym-name',sym:'gen',choices:['艮','兑','震','离'],answer:0},
+    {prompt:'乾卦的五行是什么？',type:'sym-wx',sym:'qian',choices:['木','火','金','水'],answer:2},
+    {prompt:'离卦对应哪个五行？',type:'sym-wx',sym:'li',choices:['金','木','水','火'],answer:3},
+    {prompt:'坎卦的五行属性？',type:'sym-wx',sym:'kan',choices:['火','土','金','水'],answer:3},
+    {prompt:'震卦的五行？',type:'sym-wx',sym:'zhen',choices:['木','火','土','金'],answer:0},
+    {prompt:'兑卦的五行？',type:'sym-wx',sym:'dui',choices:['木','火','金','水'],answer:2},
+    {prompt:'艮卦的五行？',type:'sym-wx',sym:'gen',choices:['木','火','水','土'],answer:3},
+    {prompt:'「天」对应哪个卦？',type:'nat-sym',nature:'天',choices:['乾☰','坤☷','震☳','离☲'],answer:0},
+    {prompt:'「地」的自然之卦是？',type:'nat-sym',nature:'地',choices:['艮☶','兑☱','坤☷','坎☵'],answer:2},
+    {prompt:'五行属水的是哪个卦？',type:'wx-name',wuxing:'水',choices:['离','坎','兑','坤'],answer:1},
+    {prompt:'五行属火的是？',type:'wx-name',wuxing:'火',choices:['震','艮','离','坎'],answer:2},
+    {prompt:'「坎中满」说的是哪个卦？',type:'mne-name',mnemonic:'坎中满',choices:['离','坎','兑','巽'],answer:1},
+    {prompt:'「离中虚」说的是哪个卦？',type:'mne-name',mnemonic:'离中虚',choices:['离','坎','震','兑'],answer:0}
+  ]
+});
 
-// ===== STATE =====
-const SK = 'meihua_progress';
+// ==== LEVEL 2: 五行生克 ====
+LEVELS.push({
+  id:2, icon:'🔥', title:'五行生克', desc:'五行相生与相克的基本规律',
+  source:'《尚书·洪范》',
+  reviewCount:2,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🔥 第2关：五行生克'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'14px',lineHeight:'1.6'}},
+        '五行（木火土金水）不是孤立的，它们之间有「生」和「克」两种基本关系——这是理解万物相互作用的基础。'),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#2E7D32'}},'🌱 五行相生'),
+        h('div',{className:'wx-cycle'},
+          WX_ORDER.map(function(w,i){return [h('span',{className:'wx-chip '+w},WUXING[w].name),i<4?h('span',{className:'wx-arrow'},'→'):null];}).flat().filter(Boolean)
+        ),
+        h('p',{style:{fontSize:'12px',color:'var(--text-light)',marginTop:'8px'}},'木生火 → 火生土 → 土生金 → 金生水 → 水生木（循环）')
+      ),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#E65100'}},'⚡ 五行相克'),
+        h('div',{className:'wx-cycle'},
+          [['mu','土'],['huo','金'],['tu','水'],['jin','木'],['shui','火']].map(function(p,i){return [h('span',{className:'wx-chip '+p[0]},WUXING[p[0]].name),i<4?h('span',{className:'wx-arrow',style:{color:'var(--red)'}},'→'):null];}).flat().filter(Boolean)
+        ),
+        h('p',{style:{fontSize:'12px',color:'var(--text-light)',marginTop:'8px'}},'木克土 → 土克水 → 水克火 → 火克金 → 金克木（循环）')
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
+        '💡 记忆口诀：\n「生」— 钻木取火、火烬成土、土中藏金、金融成水、水润生木\n「克」— 木破土、土挡水、水灭火、火熔金、金砍木'),
+      h('div',{className:'source-tag'},'来源：《尚书·洪范》五行')
+    ));
+  },
+  questions:[
+    {prompt:'木生什么？',type:'sheng',from:'mu',choices:['火','金','水','土'],answer:0},
+    {prompt:'火生什么？',type:'sheng',from:'huo',choices:['木','土','金','水'],answer:1},
+    {prompt:'土生什么？',type:'sheng',from:'tu',choices:['水','木','金','火'],answer:2},
+    {prompt:'金生什么？',type:'sheng',from:'jin',choices:['土','火','水','木'],answer:2},
+    {prompt:'水生什么？',type:'sheng',from:'shui',choices:['金','土','木','火'],answer:2},
+    {prompt:'金克什么？',type:'ke',from:'jin',choices:['水','木','火','土'],answer:1},
+    {prompt:'木克什么？',type:'ke',from:'mu',choices:['水','火','土','金'],answer:2},
+    {prompt:'水克什么？',type:'ke',from:'shui',choices:['木','土','火','金'],answer:2},
+    {prompt:'火克什么？',type:'ke',from:'huo',choices:['土','水','金','木'],answer:2},
+    {prompt:'土克什么？',type:'ke',from:'tu',choices:['火','金','水','木'],answer:2},
+    {prompt:'什么是生木的？',type:'who-sheng',to:'mu',choices:['火','水','金','土'],answer:1},
+    {prompt:'什么是生火的？',type:'who-sheng',to:'huo',choices:['水','木','土','金'],answer:1},
+    {prompt:'什么是生土的？',type:'who-sheng',to:'tu',choices:['木','金','火','水'],answer:2},
+    {prompt:'什么克金？',type:'who-ke',to:'jin',choices:['水','火','土','木'],answer:1},
+    {prompt:'什么克木？',type:'who-ke',to:'mu',choices:['土','金','水','火'],answer:1},
+    {prompt:'木和火的关系是？',type:'rel',a:'mu',b:'huo',choices:['木生火','火生木','木克火','火克木'],answer:0},
+    {prompt:'水和火的关系是？',type:'rel',a:'shui',b:'huo',choices:['水生火','火生水','水克火','火克水'],answer:2},
+    {prompt:'金和木的关系是？',type:'rel',a:'jin',b:'mu',choices:['金生木','木生金','金克木','木克金'],answer:2},
+    {prompt:'土和金的关系是？',type:'rel',a:'tu',b:'jin',choices:['土生金','金生土','土克金','金克土'],answer:0},
+    {prompt:'火和金的关系是？',type:'rel',a:'huo',b:'jin',choices:['火生金','金生火','火克金','金克火'],answer:2}
+  ]
+});
+
+// ==== LEVEL 3: 八卦人物类象 ====
+LEVELS.push({
+  id:3, icon:'👨‍👩‍👧‍👦', title:'八卦人物', desc:'每个卦对应一个家庭成员角色',
+  source:'《周易·说卦传》第十章',
+  pitfalls:'兑=少女（非中女），离=中女（非少女）——网络常见谬误',
+  reviewCount:2,
+  teaching:function(main){
+    var fam = [['乾','父','☰'],['坤','母','☷'],['震','长男','☳'],['坎','中男','☵'],['艮','少男','☶'],['巽','长女','☴'],['离','中女','☲'],['兑','少女','☱']];
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'👨‍👩‍👧‍👦 第3关：八卦人物'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '《说卦传》第十章说：乾为天，故称乎父；坤为地，故称乎母。八卦各代表一个家庭角色——这就是「乾坤生六子」的由来。'),
+      h('div',{style:{background:'#F3E5F5',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#7B1FA2'}},'📖 一家八口'),
+        h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'8px'}},
+          fam.map(function(f){return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'8px 12px',display:'flex',alignItems:'center',gap:'8px'}},
+            h('span',{style:{fontSize:'24px'}},f[2]),h('span',{style:{fontWeight:700}},f[0]),h('span',{style:{color:'var(--text-light)',fontSize:'13px'}},f[1]));})
+        )
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
+        '💡 「索」就是第几爻是阳爻/阴爻——\n震☳第一爻是阳爻→长男；坎☵第二爻是阳爻→中男；艮☶第三爻是阳爻→少男\n巽☴第一爻是阴爻→长女；离☲第二爻是阴爻→中女；兑☱第三爻是阴爻→少女'),
+      h('div',{className:'source-tag'},'来源：《周易·说卦传》第十章'),
+      h('div',{className:'source-tag',style:{color:'var(--red)',opacity:'1',marginTop:'4px'}},'⚠️ 避坑：兑=少女≠中女，离=中女≠少女')
+    ));
+  },
+  questions:[
+    {prompt:'乾卦对应哪个家庭成员？',type:'sym-fam',sym:'qian',choices:['父','母','长子','长女'],answer:0},
+    {prompt:'坤卦对应哪个家庭成员？',type:'sym-fam',sym:'kun',choices:['父','母','少女','中男'],answer:1},
+    {prompt:'震卦代表哪个角色？',type:'sym-fam',sym:'zhen',choices:['中男','少男','长男','长女'],answer:2},
+    {prompt:'巽卦代表？',type:'sym-fam',sym:'xun',choices:['中女','少女','长男','长女'],answer:3},
+    {prompt:'坎卦对应？',type:'sym-fam',sym:'kan',choices:['长男','中男','少男','中女'],answer:1},
+    {prompt:'离卦对应？',type:'sym-fam',sym:'li',choices:['少女','长女','中男','中女'],answer:3},
+    {prompt:'艮卦代表？',type:'sym-fam',sym:'gen',choices:['少男','中男','长男','少女'],answer:0},
+    {prompt:'兑卦对应？',type:'sym-fam',sym:'dui',choices:['中女','长女','少女','母'],answer:2},
+    {prompt:'「父」对应哪个卦？',type:'fam-sym',family:'父',choices:['乾☰','坤☷','震☳','艮☶'],answer:0},
+    {prompt:'「母」对应？',type:'fam-sym',family:'母',choices:['兑☱','离☲','坤☷','巽☴'],answer:2},
+    {prompt:'「长男」是哪一卦？',type:'fam-sym',family:'长男',choices:['坎☵','震☳','艮☶','乾☰'],answer:1},
+    {prompt:'「中男」是哪一卦？',type:'fam-sym',family:'中男',choices:['震☳','坎☵','艮☶','乾☰'],answer:1},
+    {prompt:'「少男」是？',type:'fam-sym',family:'少男',choices:['震☳','坎☵','艮☶','兑☱'],answer:2},
+    {prompt:'「长女」是？',type:'fam-sym',family:'长女',choices:['巽☴','离☲','兑☱','坤☷'],answer:0},
+    {prompt:'「中女」是？',type:'fam-sym',family:'中女',choices:['巽☴','兑☱','离☲','坤☷'],answer:2},
+    {prompt:'「少女」是？⚠️',type:'fam-sym',family:'少女',choices:['离☲','兑☱','巽☴','坤☷'],answer:1},
+    {prompt:'谁对应「中男」？',type:'sym-fam',sym:'kan',choices:['坎','离','震','艮'],answer:0},
+    {prompt:'谁对应「少女」？',type:'sym-fam',sym:'dui',choices:['离','兑','巽','坤'],answer:1},
+    {prompt:'谁是「长男」？',type:'sym-fam',sym:'zhen',choices:['乾','震','坎','艮'],answer:1},
+    {prompt:'谁是「中女」？',type:'sym-fam',sym:'li',choices:['兑','巽','离','坤'],answer:2}
+  ]
+});
+
+// ==== LEVEL 4: 八卦动物类象 ====
+LEVELS.push({
+  id:4, icon:'🐴', title:'八卦动物', desc:'乾马坤牛震龙巽鸡——八卦对应的八种动物',
+  source:'《周易·说卦传》第八章',
+  pitfalls:'坎=豕（猪），非其他动物；离=雉（野鸡）',
+  reviewCount:2,
+  teaching:function(main){
+    var ani = [['乾','马','☰','🐴'],['坤','牛','☷','🐂'],['震','龙','☳','🐉'],['巽','鸡','☴','🐔'],['坎','豕(猪)','☵','🐷'],['离','雉','☲','🐦'],['艮','狗','☶','🐕'],['兑','羊','☱','🐑']];
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🐴 第4关：八卦动物'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '《说卦传》第八章说：乾为马，坤为牛，震为龙，巽为鸡，坎为豕，离为雉，艮为狗，兑为羊。每个卦都有它对应的动物。'),
+      h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'8px'}},
+        ani.map(function(a){return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'8px 12px',display:'flex',alignItems:'center',gap:'8px',border:'1px solid var(--border)'}},
+          h('span',{style:{fontSize:'24px'}},a[2]),h('span',{style:{fontWeight:700,fontSize:'15px'}},a[0]),h('span',{style:{fontSize:'20px'}},a[3]),h('span',{style:{color:'var(--text-light)',fontSize:'13px'}},a[1]));})
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
+        '💡 乾=马（健行）·坤=牛（负重）·震=龙（腾跃）·巽=鸡（司晨）\n坎=豕/猪（水畜）·离=雉（羽毛华丽似火）·艮=狗（守门）·兑=羊（悦鸣）'),
+      h('div',{className:'source-tag'},'来源：《周易·说卦传》第八章「乾为马，坤为牛…」')
+    ));
+  },
+  questions:[
+    {prompt:'乾卦对应什么动物？',type:'sym-ani',sym:'qian',choices:['牛','马','龙','狗'],answer:1},
+    {prompt:'坤卦对应？',type:'sym-ani',sym:'kun',choices:['马','牛','羊','鸡'],answer:1},
+    {prompt:'震卦对应？',type:'sym-ani',sym:'zhen',choices:['马','龙','鸡','猪'],answer:1},
+    {prompt:'巽卦对应？',type:'sym-ani',sym:'xun',choices:['鸡','羊','牛','狗'],answer:0},
+    {prompt:'坎卦对应？',type:'sym-ani',sym:'kan',choices:['狗','羊','猪','鸡'],answer:2},
+    {prompt:'离卦对应？',type:'sym-ani',sym:'li',choices:['鸡','雉(野鸡)','羊','龙'],answer:1},
+    {prompt:'艮卦对应？',type:'sym-ani',sym:'gen',choices:['猪','鸡','狗','牛'],answer:2},
+    {prompt:'兑卦对应？',type:'sym-ani',sym:'dui',choices:['羊','牛','龙','鸡'],answer:0},
+    {prompt:'马对应哪个卦？',type:'ani-sym',animal:'马',choices:['乾☰','坤☷','震☳','离☲'],answer:0},
+    {prompt:'牛对应？',type:'ani-sym',animal:'牛',choices:['乾☰','坤☷','离☲','兑☱'],answer:1},
+    {prompt:'龙对应？',type:'ani-sym',animal:'龙',choices:['乾☰','震☳','坎☵','艮☶'],answer:1},
+    {prompt:'鸡对应？',type:'ani-sym',animal:'鸡',choices:['兑☱','离☲','巽☴','震☳'],answer:2},
+    {prompt:'猪(豕)对应？',type:'ani-sym',animal:'猪',choices:['坤☷','坎☵','艮☶','巽☴'],answer:1},
+    {prompt:'雉（野鸡）对应？',type:'ani-sym',animal:'雉(野鸡)',choices:['兑☱','巽☴','离☲','震☳'],answer:2},
+    {prompt:'狗对应？',type:'ani-sym',animal:'狗',choices:['艮☶','坎☵','乾☰','坤☷'],answer:0},
+    {prompt:'羊对应？',type:'ani-sym',animal:'羊',choices:['巽☴','离☲','兑☱','艮☶'],answer:2},
+    {prompt:'「健行」之畜对应哪个卦？',type:'ani-sym',animal:'马',choices:['坤☷','乾☰','震☳','坎☵'],answer:1},
+    {prompt:'「负重」之畜对应？',type:'ani-sym',animal:'牛',choices:['坤☷','艮☶','兑☱','离☲'],answer:0},
+    {prompt:'「司晨」之禽对应？',type:'ani-sym',animal:'鸡',choices:['离☲','兑☱','巽☴','震☳'],answer:2},
+    {prompt:'离☲对应的动物是？',type:'sym-ani',sym:'li',choices:['鸡','雉(野鸡)','羊','猪'],answer:1}
+  ]
+});
+
+// ==== LEVEL 5: 八卦身体类象 ====
+LEVELS.push({
+  id:5, icon:'🧠', title:'八卦身体', desc:'乾首坤腹震足——八卦对应身体部位',
+  source:'《周易·说卦传》第九章',
+  pitfalls:'巽=股（大腿），非其他部位',
+  reviewCount:3,
+  teaching:function(main){
+    var bod = [['乾','首','☰','头'],['坤','腹','☷','肚子'],['震','足','☳','脚'],['巽','股','☴','大腿'],['坎','耳','☵','耳朵'],['离','目','☲','眼睛'],['艮','手','☶','手'],['兑','口','☱','嘴巴']];
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🧠 第5关：八卦身体'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '《说卦传》第九章说：乾为首，坤为腹，震为足，巽为股，坎为耳，离为目，艮为手，兑为口。八卦各对应一个身体部位。'),
+      h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'8px'}},
+        bod.map(function(b){return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'10px 12px',display:'flex',alignItems:'center',gap:'8px',border:'1px solid var(--border)'}},
+          h('span',{style:{fontSize:'24px'}},b[2]),h('span',{style:{fontWeight:700}},b[0]),h('span',{style:{color:'var(--text-light)',fontSize:'13px'}},b[1]+'（'+b[3]+'）'));})
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
+        '💡 从上到下看更直观：乾首🧠（最上）→ 离目👁 → 兑口👄 → 坎耳👂\n坤腹 → 巽股🦵 → 震足🦶 → 艮手✋（四肢）'),
+      h('div',{className:'source-tag'},'来源：《周易·说卦传》第九章「乾为首，坤为腹…」')
+    ));
+  },
+  questions:[
+    {prompt:'乾卦对应哪个身体部位？',type:'sym-bod',sym:'qian',choices:['腹','首','足','手'],answer:1},
+    {prompt:'坤卦对应？',type:'sym-bod',sym:'kun',choices:['首','腹','股','耳'],answer:1},
+    {prompt:'震卦对应？',type:'sym-bod',sym:'zhen',choices:['手','股','足','目'],answer:2},
+    {prompt:'巽卦对应？',type:'sym-bod',sym:'xun',choices:['股','足','手','口'],answer:0},
+    {prompt:'坎卦对应？',type:'sym-bod',sym:'kan',choices:['目','口','手','耳'],answer:3},
+    {prompt:'离卦对应？',type:'sym-bod',sym:'li',choices:['耳','口','目','手'],answer:2},
+    {prompt:'艮卦对应？',type:'sym-bod',sym:'gen',choices:['足','股','手','腹'],answer:2},
+    {prompt:'兑卦对应？',type:'sym-bod',sym:'dui',choices:['口','目','耳','手'],answer:0},
+    {prompt:'「首」（头）对应？',type:'bod-sym',body:'首',choices:['乾☰','坤☷','震☳','离☲'],answer:0},
+    {prompt:'「腹」对应？',type:'bod-sym',body:'腹',choices:['乾☰','坤☷','艮☶','兑☱'],answer:1},
+    {prompt:'「足」（脚）对应？',type:'bod-sym',body:'足',choices:['巽☴','坎☵','震☳','艮☶'],answer:2},
+    {prompt:'「股」（大腿）对应？',type:'bod-sym',body:'股',choices:['震☳','巽☴','离☲','坎☵'],answer:1},
+    {prompt:'「耳」对应？',type:'bod-sym',body:'耳',choices:['离☲','兑☱','坎☵','坤☷'],answer:2},
+    {prompt:'「目」（眼）对应？',type:'bod-sym',body:'目',choices:['坎☵','离☲','震☳','乾☰'],answer:1},
+    {prompt:'「手」对应？',type:'bod-sym',body:'手',choices:['震☳','艮☶','兑☱','巽☴'],answer:1},
+    {prompt:'「口」对应？',type:'bod-sym',body:'口',choices:['离☲','坎☵','兑☱','坤☷'],answer:2},
+    {prompt:'人体最上方的部位对应哪个卦？',type:'bod-sym',body:'首',choices:['乾☰','震☳','离☲','艮☶'],answer:0},
+    {prompt:'耳朵👂对应哪个卦？',type:'bod-sym',body:'耳',choices:['离☲','兑☱','坎☵','巽☴'],answer:2},
+    {prompt:'离☲对应的身体部位是？',type:'sym-bod',sym:'li',choices:['耳','口','目','腹'],answer:2},
+    {prompt:'兑☱对应的身体部位是？',type:'sym-bod',sym:'dui',choices:['目','口','耳','手'],answer:1}
+  ]
+});
+
+// ====== STATE ======
+var SK = 'meihua_progress_v2';
 function loadP(){try{return JSON.parse(localStorage.getItem(SK))||{}}catch(e){return{}}}
 function saveP(p){localStorage.setItem(SK,JSON.stringify(p))}
 
-let state = {
-  view: 'menu',       // menu | intro | quiz | complete
-  levelIdx: 0,
-  qIndex: 0,
-  score: 0,
-  correct: 0,
-  streak: 0,
-  bestStreak: 0,
-  answered: false,
-  _lastCorrect: false,
-  _lastChoice: -1
+var saved = loadP();
+var state = {
+  view:'menu',
+  levelIdx:0,
+  qIndex:0,
+  score:0,
+  correct:0,
+  streak:0,
+  bestStreak:saved.bestStreak||0,
+  answered:false,
+  _lastCorrect:false,
+  _lastChoice:-1,
+  inReview:false,
+  reviewQIndex:0,
+  reviewQs:[]
 };
+if(!saved.completed)saved.completed={};
 
-const saved = loadP();
-state.bestStreak = Math.max(0, saved.bestStreak||0, saved.levelBest?.streak||0);
+function curLevel(){return LEVELS[state.levelIdx];}
+function curQ(){return curLevel().questions[state.qIndex];}
+function totalQ(){return curLevel().questions.length;}
+function levelDone(id){return saved.completed&&saved.completed[id];}
+function canEnter(id){if(id===1)return true;return !!levelDone(id-1);}
 
-function levelDone(id){ return saved.levels && saved.levels[id]; }
-function canEnter(id){
-  if(id===1)return true;
-  return !!levelDone(id-1);
+// ====== MEMORY CURVE REVIEW ======
+function getReviewQuestions(levelId){
+  var all=[];
+  var now=Date.now();
+  var completed=saved.completed||{};
+  Object.keys(completed).forEach(function(k){
+    var lvId=parseInt(k);
+    if(lvId>=levelId)return;
+    var qs=LEVELS[lvId-1].questions;
+    // Weight by recency - newer completions = more likely to pick
+    var days=(now-completed[lvId].ts)/(86400000);
+    var pick=days<1?3:days<3?2:days<7?1:0;
+    while(pick>0){
+      var rq=qs[Math.floor(Math.random()*qs.length)];
+      rq._fromLevel=lvId;
+      rq._fromTitle=LEVELS[lvId-1].title;
+      all.push(rq);
+      pick--;
+    }
+  });
+  // Shuffle
+  for(var i=all.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=all[i];all[i]=all[j];all[j]=t;}
+  return all.slice(0,curLevel().reviewCount||0);
 }
-function getTotal(id){
-  const l = LEVELS.find(function(x){return x.id===id});
-  return l?l.questions.length:20;
-}
 
-// ===== HELPERS =====
-function h(tag, attrs){
+// ====== HELPERS ======
+function h(tag,attrs){
   var el=document.createElement(tag);
   for(var k in attrs){
     if(attrs.hasOwnProperty(k)){
@@ -245,43 +479,38 @@ function h(tag, attrs){
       else el.setAttribute(k,v);
     }
   }
-  for(var i=2;i<arguments.length;i++){
-    add(arguments[i]);
-  }
+  for(var i=2;i<arguments.length;i++)add(arguments[i]);
   function add(c){
     if(Array.isArray(c)){c.forEach(add);}
     else if(typeof c==='string'){el.appendChild(document.createTextNode(c));}
-    else if(c){el.appendChild(c);}
+    else if(c)el.appendChild(c);
   }
   return el;
 }
-var trigram=function(id){return TRIGRAMS[id]};
-var wxPinyin=function(w){return ({jin:'jin',mu:'mu',shui:'shui',huo:'huo',tu:'tu'})[w]||''};
-var curLevel=function(){return LEVELS[state.levelIdx]};
-var curQ=function(){return curLevel().questions[state.qIndex]};
-var totalQ=function(){return curLevel().questions.length};
+function wxCls(w){return w==='金'?'jin':w==='木'?'mu':w==='水'?'shui':w==='火'?'huo':'tu';}
+function tarTrigram(k){return TRIGRAMS[k];}
 
-// ===== RENDER =====
+// ====== RENDER ======
 function render(){
   var app=document.getElementById('app');
   app.innerHTML='';
   var lv=curLevel();
 
-  // Header (always)
   app.appendChild(h('div',{className:'header'},
     h('div',{className:'logo',onClick:goMenu},
-      h('span',{className:'icon'},'🌸'),'梅花易数学堂'),
+      h('span',{className:'icon'},'🌸'),'多灵国-八卦版'),
     h('div',{className:'streak'},h('span',{style:{fontSize:'20px'}},'🔥'),''+state.bestStreak)
   ));
 
-  if(state.view==='menu') renderMenu(app);
-  else if(state.view==='intro') renderIntro(app);
-  else if(state.view==='quiz') renderQuiz(app);
-  else if(state.view==='complete') renderComplete(app);
+  if(state.view==='menu')renderMenu(app);
+  else if(state.view==='intro')renderIntro(app);
+  else if(state.view==='review')renderReview(app);
+  else if(state.view==='quiz')renderQuiz(app);
+  else if(state.view==='complete')renderComplete(app);
 }
 
 function goMenu(){
-  state.view='menu'; state.qIndex=0; state.answered=false; state.score=0; state.correct=0; state.streak=0;
+  state.view='menu';state.qIndex=0;state.answered=false;state.score=0;state.correct=0;state.streak=0;state.inReview=false;
   render();
 }
 
@@ -290,16 +519,23 @@ function renderMenu(app){
     h('h2',{style:{textAlign:'center',marginBottom:'4px',fontSize:'22px'}},'📚 选择关卡'),
     h('div',{className:'menu-grid'},
       LEVELS.map(function(lv,i){
-        var done = levelDone(lv.id);
-        var open = canEnter(lv.id);
-        var cls = 'level-card' + (open?'':' locked');
-        var badge = done?h('span',{className:'lc-badge done'},'✅ 已通关')
-                  : open?h('span',{className:'lc-badge open'},'⏳ 待挑战')
-                  :h('span',{className:'lc-badge',style:{background:'#E5E5E5',color:'#999'}},'🔒 未解锁');
-        return h('div',{className:cls, onClick:function(){
+        var done=levelDone(lv.id);
+        var open=canEnter(lv.id);
+        var cls='level-card'+(open?'':' locked');
+        var badge=done?h('span',{className:'lc-badge done'},'✅ 已通关（'+saved.completed[lv.id].best+'%）')
+          :open?h('span',{className:'lc-badge open'},'⏳ 待挑战')
+          :h('span',{className:'lc-badge',style:{background:'#E5E5E5',color:'#999'}},'🔒 未解锁');
+        return h('div',{className:cls,onClick:function(){
           if(!open)return;
-          state.levelIdx=i; state.view='intro'; state.qIndex=0; state.answered=false;
-          state.score=0; state.correct=0; state.streak=0;
+          state.levelIdx=i;state.qIndex=0;state.answered=false;state.score=0;state.correct=0;state.streak=0;
+          state.inReview=false;state.reviewQs=[];state.reviewQIndex=0;
+          // Generate review questions
+          if(lv.reviewCount>0){
+            state.reviewQs=getReviewQuestions(lv.id);
+            state.view=state.reviewQs.length>0?'review':'intro';
+          }else{
+            state.view='intro';
+          }
           render();
         }},
           h('div',{className:'lc-icon'},lv.icon),
@@ -319,98 +555,110 @@ function renderMenu(app){
 
 function renderIntro(app){
   var lv=curLevel();
-  var main=document.createElement('div');main.className='main';
+  var main=h('div',{className:'main'});
+  main.appendChild(h('button',{className:'back-btn',onClick:goMenu,style:{alignSelf:'flex-start'}},'← 返回目录'));
+  lv.teaching(main);
+  main.appendChild(h('div',{className:'bottom'},
+    h('button',{className:'continue-btn show',onClick:function(){state.view='quiz';render();}},'开始答题（共'+totalQ()+'题）')
+  ));
+  app.appendChild(main);
+}
 
-  if(lv.id===1){
-    // Level 1 intro
-    main.appendChild(h('div',{className:'intro-card'},
-      h('h2',{},'☰ 第一关：八卦入门'),
-      h('p',{style:{marginBottom:'12px',textAlign:'left',lineHeight:'1.7',fontSize:'14px',color:'var(--text-light)'}},
-        '八卦由阳爻（⚊）和阴爻（⚋）三层叠加而成，共八种组合，对应自然界的八种基本现象。每个卦有符号、名称、五行属性。'
-      ),
-      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'12px 14px',marginBottom:'12px',textAlign:'center'}},
-        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#B8860B'}},'📝 八卦取象口诀'),
-        h('div',{style:{fontSize:'15px',lineHeight:'2',fontWeight:500}},
-          '乾三连　坤六断\n震仰盂　艮覆碗\n离中虚　坎中满\n兑上缺　巽下断'
-        )
-      ),
-      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginBottom:'8px',textAlign:'left'}},
-        '💡 口诀就是每个卦的图形特征——「离中虚」是说离卦 ☲ 中间空的，「坎中满」是说坎卦 ☵ 中间满的。'
-      ),
-      h('div',{className:'trigram-grid'},
-        Object.entries(TRIGRAMS).map(function(e){
-          var t=e[1]; var id=e[0];
-          return h('div',{className:'trigram-card wx-'+wxPinyin(t.wuxing)},
-            h('div',{className:'sym'},t.sym),
-            h('div',{className:'info'},
-              h('div',{className:'name'},t.name+' · '+t.wuxing),
-              h('div',{className:'wuxing'},t.nature+' · '+t.props.split('、').slice(0,2).join(' ')),
-              h('div',{className:'mnemonic'},t.mnemonic)
-            )
-          );
-        })
-      ),
-      h('p',{style:{marginTop:'14px',fontSize:'13px',color:'var(--text-light)'}},'记住符号、名字和口诀，准备好了就开始答题 👇')
+// Review screen — shows memory curve review questions before the lesson
+function renderReview(app){
+  var lv=curLevel();
+  var main=h('div',{className:'main'});
+  main.appendChild(h('button',{className:'back-btn',onClick:goMenu,style:{alignSelf:'flex-start'}},'← 返回目录'));
+
+  // Review header
+  main.appendChild(h('div',{className:'review-section'},
+    h('div',{className:'rs-title'},'🔄 温故知新（记忆曲线复习）'),
+    h('p',{style:{fontSize:'12px',color:'var(--text-light)',textAlign:'center',marginBottom:'8px'}},
+      '复习 '+state.reviewQs.length+' 道来自前面关卡的内容')
+  ));
+
+  // If all review questions done, show lesson
+  if(state.reviewQIndex>=state.reviewQs.length){
+    main.appendChild(h('div',{style:{textAlign:'center',padding:'20px'}},
+      h('div',{style:{fontSize:'40px',marginBottom:'8px'}},'✅'),
+      h('p',{style:{fontWeight:700,fontSize:'16px',marginBottom:'16px'}},'复习完成！准备进入新课'),
+      h('button',{className:'continue-btn show',onClick:function(){state.view='intro';render();}},'进入教学')
     ));
-  } else {
-    // Level 2 intro: 体用生克
-    main.appendChild(h('div',{className:'intro-card'},
-      h('h2',{},'🔥 第二关：体用生克'),
-      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'14px',lineHeight:'1.6'}},
-        '五行不是孤立的，它们之间有「生」和「克」两种关系。掌握生克是断卦的基础。'
-      ),
+    app.appendChild(main);
+    return;
+  }
 
-      // 相生
-      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
-        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#2E7D32'}},'🌱 五行相生'),
-        h('div',{className:'wx-cycle'},
-          WX_ORDER.map(function(w,i){
-            return [
-              h('span',{className:'wx-chip '+w},WUXING[w].name),
-              i<4 ? h('span',{className:'wx-arrow'},'→') : null
-            ];
-          }).flat().filter(Boolean)
-        ),
-        h('p',{style:{fontSize:'12px',color:'var(--text-light)',marginTop:'8px'}},'木生火 → 火生土 → 土生金 → 金生水 → 水生木（循环）')
-      ),
+  var rq=state.reviewQs[state.reviewQIndex];
+  var qCard=h('div',{className:'q-card'+(state.answered?(state._lastCorrect?' correct':' wrong'):'')});
+  qCard.appendChild(h('div',{className:'q-prompt'},
+    h('span',{style:{fontSize:'11px',color:'#B8860B',display:'block',marginBottom:'4px'}},'来自：第'+rq._fromLevel+'关「'+rq._fromTitle+'」'),
+    rq.prompt
+  ));
+  renderQuestionTarget(qCard,rq);
+  renderChoices(qCard,rq);
+  main.appendChild(qCard);
 
-      // 相克
-      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'14px'}},
-        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#E65100'}},'⚡ 五行相克'),
-        h('div',{className:'wx-cycle'},
-          [['mu','土'],['huo','金'],['tu','水'],['jin','木'],['shui','火']].map(function(p,i){
-            return [
-              h('span',{className:'wx-chip '+p[0]},WUXING[p[0]].name),
-              i<4?h('span',{className:'wx-arrow',style:{color:'var(--red)'}},'→'):null
-            ];
-          }).flat().filter(Boolean)
-        ),
-        h('p',{style:{fontSize:'12px',color:'var(--text-light)',marginTop:'8px'}},'木克土 → 土克水 → 水克火 → 火克金 → 金克木（循环）')
-      ),
-
-      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginBottom:'8px',textAlign:'left',lineHeight:'1.6'}},
-        '💡 记忆口诀：\n「生」—— 钻木取火、火烬成土、土中藏金、金融成水、水润生木\n「克」—— 木破土而出、土筑堤挡水、水灭火、火熔金、金斧砍木'
-      ),
-
-      h('div',{style:{background:'#F3E5F5',borderRadius:'10px',padding:'14px',marginTop:'10px'}},
-        h('div',{style:{fontWeight:700,fontSize:'14px',color:'#7B1FA2',marginBottom:'6px'}},'📖 体卦 & 用卦'),
-        h('p',{style:{fontSize:'13px',color:'var(--text-light)',lineHeight:'1.6',textAlign:'left'}},
-          '起卦后，不动之卦为「体」，动爻所在之卦为「用」。\n\n体代表自己、当前状态；用代表对方、外部环境。\n'+
-          '体生用 → 耗泄（小凶）\n用生体 → 受益（大吉）\n体用比和 → 和谐（吉）\n体克用 → 可成（小吉）\n用克体 → 受制（凶）'
-        )
-      )
-    ));
+  if(state.answered){
+    var fb=h('div',{className:'feedback show '+(state._lastCorrect?'correct':'wrong')});
+    fb.appendChild(h('span',{className:'emoji'},state._lastCorrect?'🎉':'😅'));
+    fb.appendChild(document.createTextNode(state._lastCorrect?'正确！':'再想想'));
+    if(!state._lastCorrect){
+      fb.appendChild(h('div',{className:'hint'},'正确答案：'+rq.choices[rq.answer]));
+    }
+    main.appendChild(fb);
   }
 
   main.appendChild(h('div',{className:'bottom'},
-    h('button',{className:'continue-btn show',onClick:function(){state.view='quiz';render()}},'开始答题')
+    h('button',{className:'continue-btn'+(state.answered?' show':''),onClick:function(){
+      state.reviewQIndex++;state.answered=false;state._lastCorrect=false;state._lastChoice=-1;
+      render();
+    }},state.reviewQIndex+1>=state.reviewQs.length?'进入教学':'下一题')
   ));
 
-  if(state.view!=='menu'){
-    main.insertBefore(h('button',{className:'back-btn',onClick:goMenu,style:{alignSelf:'flex-start',marginBottom:'-8px'}},'← 返回目录'), main.firstChild);
-  }
-
   app.appendChild(main);
+}
+
+function renderQuestionTarget(qCard,q){
+  if(q.type==='sym-name'||q.type==='sym-wx'||q.type==='sym-fam'||q.type==='sym-ani'||q.type==='sym-bod'){
+    var t=tarTrigram(q.sym);if(t)qCard.appendChild(h('div',{className:'q-target'},t.sym));
+  }
+  if(q.type==='nat-sym')qCard.appendChild(h('div',{className:'q-target-text'},'「'+q.nature+'」'));
+  if(q.type==='wx-name')qCard.appendChild(h('div',{className:'q-target-text',style:{fontSize:'28px'}},q.wuxing));
+  if(q.type==='mne-name')qCard.appendChild(h('div',{className:'q-target-text',style:{fontSize:'22px',color:'var(--green)',background:'#FFF9E6',padding:'8px 16px',borderRadius:'8px',display:'inline-block'}},'「'+q.mnemonic+'」'));
+  if(q.type==='fam-sym'||q.type==='ani-sym'||q.type==='bod-sym'){
+    var label=q.family||q.animal||q.body||'';
+    qCard.appendChild(h('div',{className:'q-target-text'},'「'+label+'」→ 哪个卦？'));
+  }
+  if(q.type==='sheng'||q.type==='ke'){
+    qCard.appendChild(h('div',{style:{textAlign:'center',margin:'12px 0'}},
+      h('span',{className:'wx-chip '+q.from,style:{fontSize:'24px',padding:'12px 24px'}},WUXING[q.from].name)
+    ));
+  }
+  if(q.type==='who-sheng'||q.type==='who-ke'){
+    qCard.appendChild(h('div',{className:'q-target-text'},'？ → '+WUXING[q.to].name));
+  }
+  if(q.type==='rel'){
+    qCard.appendChild(h('div',{style:{textAlign:'center',margin:'12px 0',display:'flex',alignItems:'center',justifyContent:'center',gap:'8px'}},
+      h('span',{className:'wx-chip '+q.a,style:{fontSize:'20px'}},WUXING[q.a].name),
+      h('span',{style:{fontSize:'20px'}},'❓'),
+      h('span',{className:'wx-chip '+q.b,style:{fontSize:'20px'}},WUXING[q.b].name)
+    ));
+  }
+}
+
+function renderChoices(qCard,q){
+  var choices=h('div',{className:'choices'});
+  q.choices.forEach(function(c,i){
+    var btn=h('button',{className:'choice-btn',onClick:function(){answer(i)}},c);
+    if(state.answered){
+      btn.disabled=true;
+      if(i===q.answer)btn.classList.add('correct');
+      else if(i===state._lastChoice&&!state._lastCorrect)btn.classList.add('wrong');
+      else btn.classList.add('dim');
+    }
+    choices.appendChild(btn);
+  });
+  qCard.appendChild(choices);
 }
 
 function renderQuiz(app){
@@ -424,85 +672,39 @@ function renderQuiz(app){
   ));
 
   var main=h('div',{className:'main'});
-
-  // Back button
   main.appendChild(h('button',{className:'back-btn',onClick:goMenu,style:{alignSelf:'flex-start'}},'← 返回目录'));
 
-  // Question card
   var qCard=h('div',{className:'q-card'+(state.answered?(state._lastCorrect?' correct':' wrong'):'')});
-  qCard.appendChild(h('div',{className:'q-prompt'},q.prompt));
-
-  // Target
-  if(q.type==='sym-to-name'||q.type==='sym-to-wuxing'||q.type==='name-to-sym'){
-    var t=trigram(q.sym);
-    if(t)qCard.appendChild(h('div',{className:'q-target'},t.sym));
-    if(q.type==='name-to-sym')qCard.appendChild(h('div',{className:'q-target-text'},q.name+'卦'));
-    if(q.type==='sym-to-wuxing'&&t)qCard.appendChild(h('div',{className:'q-target-text'},t.name));
-  }
-  if(q.type==='nature-to-sym')qCard.appendChild(h('div',{className:'q-target-text'},'「'+q.nature+'」'));
-  if(q.type==='wuxing-to-name')qCard.appendChild(h('div',{className:'q-target-text',style:{fontSize:'28px'}},q.wuxing));
-  if(q.type==='mnemonic-to-name'){
-    qCard.appendChild(h('div',{className:'q-target-text',style:{fontSize:'22px',color:'var(--green)',background:'#FFF9E6',padding:'8px 16px',borderRadius:'8px',display:'inline-block'}},'「'+q.mnemonic+'」'));
-  }
-  if(q.type==='sheng'||q.type==='ke'){
-    var wx=q.from||q.a;
-    qCard.appendChild(h('div',{style:{textAlign:'center',margin:'12px 0'}},
-      h('span',{className:'wx-chip '+wx,style:{fontSize:'24px',padding:'12px 24px'}},WUXING[wx].name)
-    ));
-  }
-  if(q.type==='who-sheng'||q.type==='who-ke'){
-    qCard.appendChild(h('div',{className:'q-target-text'}));
-    qCard.lastChild.textContent = '？ → ' + WUXING[q.to].name;
-  }
-  if(q.type==='sheng-ke-relation'){
-    qCard.appendChild(h('div',{style:{textAlign:'center',margin:'12px 0',display:'flex',alignItems:'center',justifyContent:'center',gap:'8px'}},
-      h('span',{className:'wx-chip '+q.a,style:{fontSize:'20px'}},WUXING[q.a].name),
-      h('span',{style:{fontSize:'20px'}},'❓'),
-      h('span',{className:'wx-chip '+q.b,style:{fontSize:'20px'}},WUXING[q.b].name)
-    ));
-  }
-
-  // Choices
-  var choices=h('div',{className:'choices'});
-  q.choices.forEach(function(c,i){
-    var btn=h('button',{className:'choice-btn',onClick:function(){answer(i)}},c);
-    if(state.answered){
-      btn.disabled=true;
-      if(i===q.answer)btn.classList.add('correct');
-      else if(i===state._lastChoice&&!state._lastCorrect)btn.classList.add('wrong');
-      else btn.classList.add('dim');
-    }
-    choices.appendChild(btn);
-  });
-  qCard.appendChild(choices);
+  qCard.appendChild(h('div',{className:'q-prompt'},
+    h('span',{style:{fontSize:'11px',color:'var(--text-light)',display:'block',marginBottom:'4px'}},
+      '第'+lv.id+'关 · '+lv.title),
+    q.prompt
+  ));
+  renderQuestionTarget(qCard,q);
+  renderChoices(qCard,q);
   main.appendChild(qCard);
 
-  // Feedback
   if(state.answered){
     var fb=h('div',{className:'feedback show '+(state._lastCorrect?'correct':'wrong')});
     fb.appendChild(h('span',{className:'emoji'},state._lastCorrect?'🎉':'😅'));
     fb.appendChild(document.createTextNode(state._lastCorrect?'正确！':'不对哦'));
+    if(!state._lastCorrect){
+      fb.appendChild(h('div',{className:'hint'},'正确答案：'+q.choices[q.answer]));
+    }
     if(state._lastCorrect&&q.type==='sheng'){
       fb.appendChild(h('div',{className:'hint'},WUXING[q.from].name+'生'+WUXING[WUXING[q.from].sheng].name));
     }
     if(state._lastCorrect&&q.type==='ke'){
       fb.appendChild(h('div',{className:'hint'},WUXING[q.from].name+'克'+WUXING[WUXING[q.from].ke].name));
     }
-    if(!state._lastCorrect){
-      var right=q.choices[q.answer];
-      fb.appendChild(h('div',{className:'hint'},'正确答案：'+right));
-    }
     main.appendChild(fb);
   }
 
   main.appendChild(h('div',{className:'bottom'},
-    h('button',{
-      className:'continue-btn'+(state.answered?' show':''),
-      onClick:function(){
-        if(state.qIndex+1>=totalQ()){state.view='complete';render()}
-        else{state.qIndex++;state.answered=false;state._lastCorrect=false;state._lastChoice=-1;render()}
-      }
-    },state.qIndex+1>=totalQ()?'查看结果':'继续')
+    h('button',{className:'continue-btn'+(state.answered?' show':''),onClick:function(){
+      if(state.qIndex+1>=totalQ()){state.view='complete';render();}
+      else{state.qIndex++;state.answered=false;state._lastCorrect=false;state._lastChoice=-1;render();}
+    }},state.qIndex+1>=totalQ()?'查看结果':'继续')
   ));
 
   app.appendChild(main);
@@ -512,20 +714,14 @@ function answer(idx){
   if(state.answered)return;
   state.answered=true;
   state._lastChoice=idx;
-  var q=curQ();
+  var q=state.inReview?state.reviewQs[state.reviewQIndex]:curQ();
   state._lastCorrect=idx===q.answer;
-
   if(state._lastCorrect){
-    state.correct++;
+    if(!state.inReview){state.correct++;state.score+=Math.min(10+state.streak*2,25);}
     state.streak++;
-    state.score+=Math.min(10+state.streak*2,25);
-  }else{
-    state.streak=0;
-  }
+  }else{state.streak=0;}
   state.bestStreak=Math.max(state.bestStreak,state.streak);
-  var p=loadP();
-  p.bestStreak=state.bestStreak;
-  saveP(p);
+  var p=loadP();p.bestStreak=state.bestStreak;saveP(p);
   render();
 }
 
@@ -534,14 +730,16 @@ function renderComplete(app){
   var total=totalQ();
   var acc=Math.round((state.correct/total)*100);
 
-  // Save progress
+  // Save
   var p=loadP();
-  if(!p.levels)p.levels={};
-  if(!p.levels[lv.id]||state.correct>=(p.levels[lv.id]&&p.levels[lv.id].score||0)){
-    p.levels[lv.id]={score:state.correct,best:acc,date:new Date().toISOString()};
+  if(!p.completed)p.completed={};
+  var prev=p.completed[lv.id];
+  if(!prev||acc>=prev.best){
+    p.completed[lv.id]={ts:Date.now(),score:state.correct,total:total,best:acc};
   }
   p.bestStreak=state.bestStreak;
   saveP(p);
+  saved=p;
 
   app.appendChild(h('div',{className:'complete-overlay show'},
     h('div',{className:'complete-card'},
@@ -562,15 +760,14 @@ function renderComplete(app){
         )
       ),
       h('button',{className:'complete-btn',onClick:function(){
-        state.view='intro';state.qIndex=0;state.answered=false;state.score=0;state.correct=0;state.streak=0;
-        render();
+        state.view='intro';state.qIndex=0;state.answered=false;state.score=0;state.correct=0;state.streak=0;render();
       }},'再来一次'),
-      h('button',{className:'complete-btn',onClick:goMenu,style:{background:'#fff',color:'var(--green)',border:'2px solid var(--green)',marginTop:'6px'}},'返回目录')
+      h('button',{className:'complete-btn white',onClick:goMenu},'返回目录')
     )
   ));
 }
 
-// PWA
+// ====== PWA ======
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('sw.js',{scope:'/meihua-xuetang/'});
 }
