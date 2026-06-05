@@ -1284,9 +1284,10 @@ function renderMenu(app){
           // Generate review questions
           if(lv.reviewCount>0){
             state.reviewQs=getReviewQuestions(lv.id);
-            state.view=state.reviewQs.length>0?'review':'intro';
+            if(state.reviewQs.length>0){state.inReview=true;state.view='review';}
+            else{state.inReview=false;state.view='intro';}
           }else{
-            state.view='intro';
+            state.inReview=false;state.view='intro';
           }
           render();
         }},
@@ -1334,7 +1335,7 @@ function renderReview(app){
     main.appendChild(h('div',{style:{textAlign:'center',padding:'20px'}},
       h('div',{style:{fontSize:'40px',marginBottom:'8px'}},'✅'),
       h('p',{style:{fontWeight:700,fontSize:'16px',marginBottom:'16px'}},'复习完成！准备进入新课'),
-      h('button',{className:'continue-btn show',onClick:function(){state.view='intro';render();}},'进入教学')
+      h('button',{className:'continue-btn show',onClick:function(){state.inReview=false;state.view='intro';render();}},'进入教学')
     ));
     app.appendChild(main);
     return;
