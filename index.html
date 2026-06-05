@@ -146,14 +146,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 <script>
 // ====== DATA ======
 var TRIGRAMS = {
-  qian:{sym:'☰',name:'乾',wuxing:'金',nature:'天',mnemonic:'乾三连',family:'父',animal:'马',body:'首'},
-  dui:{sym:'☱',name:'兑',wuxing:'金',nature:'泽',mnemonic:'兑上缺',family:'少女',animal:'羊',body:'口'},
-  li:{sym:'☲',name:'离',wuxing:'火',nature:'火',mnemonic:'离中虚',family:'中女',animal:'雉',body:'目'},
-  zhen:{sym:'☳',name:'震',wuxing:'木',nature:'雷',mnemonic:'震仰盂',family:'长男',animal:'龙',body:'足'},
-  xun:{sym:'☴',name:'巽',wuxing:'木',nature:'风',mnemonic:'巽下断',family:'长女',animal:'鸡',body:'股'},
-  kan:{sym:'☵',name:'坎',wuxing:'水',nature:'水',mnemonic:'坎中满',family:'中男',animal:'豕',body:'耳'},
-  gen:{sym:'☶',name:'艮',wuxing:'土',nature:'山',mnemonic:'艮覆碗',family:'少男',animal:'狗',body:'手'},
-  kun:{sym:'☷',name:'坤',wuxing:'土',nature:'地',mnemonic:'坤六断',family:'母',animal:'牛',body:'腹'}
+  qian:{sym:'☰',name:'乾',wuxing:'金',nature:'天',mnemonic:'乾三连',family:'父',animal:'马',body:'首',dir:'西北'},
+  dui:{sym:'☱',name:'兑',wuxing:'金',nature:'泽',mnemonic:'兑上缺',family:'少女',animal:'羊',body:'口',dir:'西'},
+  li:{sym:'☲',name:'离',wuxing:'火',nature:'火',mnemonic:'离中虚',family:'中女',animal:'雉',body:'目',dir:'南'},
+  zhen:{sym:'☳',name:'震',wuxing:'木',nature:'雷',mnemonic:'震仰盂',family:'长男',animal:'龙',body:'足',dir:'东'},
+  xun:{sym:'☴',name:'巽',wuxing:'木',nature:'风',mnemonic:'巽下断',family:'长女',animal:'鸡',body:'股',dir:'东南'},
+  kan:{sym:'☵',name:'坎',wuxing:'水',nature:'水',mnemonic:'坎中满',family:'中男',animal:'豕',body:'耳',dir:'北'},
+  gen:{sym:'☶',name:'艮',wuxing:'土',nature:'山',mnemonic:'艮覆碗',family:'少男',animal:'狗',body:'手',dir:'东北'},
+  kun:{sym:'☷',name:'坤',wuxing:'土',nature:'地',mnemonic:'坤六断',family:'母',animal:'牛',body:'腹',dir:'西南'}
 };
 
 var WUXING = {
@@ -412,6 +412,258 @@ LEVELS.push({
   ]
 });
 
+// ==== LEVEL 6: 八卦取象·方位 ====
+LEVELS.push({
+  id:6, icon:'🧭', title:'八卦取象·方位', desc:'后天八卦方位——震东兑西离南坎北',
+  source:'《周易·说卦传》第五章',
+  pitfalls:'此为后天八卦（文王八卦）方位，非先天八卦（伏羲八卦）方位',
+  reviewCount:3,
+  teaching:function(main){
+    var dirs=[['东南','巽','☴'],['南','离','☲'],['西南','坤','☷'],['东','震','☳'],['中','—',''],['西','兑','☱'],['东北','艮','☶'],['北','坎','☵'],['西北','乾','☰']];
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🧭 第6关：八卦取象·方位'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '《说卦传》第五章记载了后天八卦（文王八卦）的方位：「帝出乎震，齐乎巽，相见乎离，致役乎坤，说言乎兑，战乎乾，劳乎坎，成言乎艮。」'),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px',marginBottom:'12px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#B8860B'}},'📐 后天八卦九宫方位图'),
+        h('div',{style:{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'6px',maxWidth:'280px',margin:'0 auto'}},
+          dirs.map(function(d){
+            if(d[0]==='中') return h('div',{style:{padding:'12px 4px',textAlign:'center',fontSize:'18px',color:'var(--text-light)'}},'中宫');
+            return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'8px 4px',textAlign:'center',border:'1px solid var(--border)'}},
+              h('div',{style:{fontSize:'28px'}},d[2]),
+              h('div',{style:{fontWeight:700,fontSize:'13px'}},d[1]),
+              h('div',{style:{fontSize:'11px',color:'var(--text-light)'}},d[0]));
+          })
+        )
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
+        '💡 记忆口诀：\n上南下北左东右西（古地图方位）\n四正：震东·离南·兑西·坎北\n四隅：巽东南·坤西南·乾西北·艮东北'),
+      h('div',{className:'source-tag'},'来源：《周易·说卦传》第五章「帝出乎震…成言乎艮」'),
+      h('div',{className:'source-tag',style:{color:'var(--red)',opacity:'1',marginTop:'4px'}},'⚠️ 避坑：此为后天八卦方位，梅花易数以先天数后天位并用')
+    ));
+  },
+  questions:[
+    {prompt:'震卦位于哪个方位？',type:'sym-dir',sym:'zhen',choices:['东','西','南','北'],answer:0},
+    {prompt:'离卦位于哪个方位？',type:'sym-dir',sym:'li',choices:['东','南','西','北'],answer:1},
+    {prompt:'兑卦位于哪个方位？',type:'sym-dir',sym:'dui',choices:['东','南','西','北'],answer:2},
+    {prompt:'坎卦位于哪个方位？',type:'sym-dir',sym:'kan',choices:['东','南','西','北'],answer:3},
+    {prompt:'乾卦位于哪个方位？',type:'sym-dir',sym:'qian',choices:['东北','西北','西南','东南'],answer:1},
+    {prompt:'坤卦位于哪个方位？',type:'sym-dir',sym:'kun',choices:['东北','西北','西南','东南'],answer:2},
+    {prompt:'艮卦位于哪个方位？',type:'sym-dir',sym:'gen',choices:['东北','东南','西南','西北'],answer:0},
+    {prompt:'巽卦位于哪个方位？',type:'sym-dir',sym:'xun',choices:['东北','西北','西南','东南'],answer:3},
+    {prompt:'正东方位对应哪个卦？',type:'dir-sym',dir:'东',choices:['震☳','离☲','兑☱','坎☵'],answer:0},
+    {prompt:'正南方位对应哪个卦？',type:'dir-sym',dir:'南',choices:['震☳','离☲','兑☱','坎☵'],answer:1},
+    {prompt:'正西方位对应哪个卦？',type:'dir-sym',dir:'西',choices:['震☳','离☲','兑☱','坎☵'],answer:2},
+    {prompt:'正北方位对应哪个卦？',type:'dir-sym',dir:'北',choices:['震☳','离☲','兑☱','坎☵'],answer:3},
+    {prompt:'西北方位对应哪个卦？',type:'dir-sym',dir:'西北',choices:['乾☰','坤☷','艮☶','巽☴'],answer:0},
+    {prompt:'西南方位对应哪个卦？',type:'dir-sym',dir:'西南',choices:['乾☰','坤☷','艮☶','巽☴'],answer:1},
+    {prompt:'东北方位对应哪个卦？',type:'dir-sym',dir:'东北',choices:['乾☰','坤☷','艮☶','巽☴'],answer:2},
+    {prompt:'东南方位对应哪个卦？',type:'dir-sym',dir:'东南',choices:['乾☰','坤☷','艮☶','巽☴'],answer:3},
+    {prompt:'从震开始顺时针，下一个正位是？',type:'dir-order',from:'震',to:'离',choices:['离','兑','坎','坤'],answer:0},
+    {prompt:'从离开始顺时针，下一个正位是？',type:'dir-order',from:'离',to:'兑',choices:['震','兑','坎','乾'],answer:1},
+    {prompt:'从兑开始顺时针，下一个正位是？',type:'dir-order',from:'兑',to:'坎',choices:['离','乾','坎','震'],answer:2},
+    {prompt:'从坎开始顺时针，下一个正位是？',type:'dir-order',from:'坎',to:'震',choices:['兑','离','震','巽'],answer:2}
+  ]
+});
+
+// ==== LEVEL 7: 八卦取象·自然 ====
+LEVELS.push({
+  id:7, icon:'🌩️', title:'八卦取象·自然', desc:'乾天坤地震雷巽风——八卦与自然现象',
+  source:'《周易·说卦传》第三、五章',
+  pitfalls:'坎既为水也为月（水月同类），离既为火也为日',
+  reviewCount:3,
+  teaching:function(main){
+    var nats=[['乾','天','☰','🌤️'],['坤','地','☷','🌍'],['震','雷','☳','⛈️'],['巽','风','☴','🌬️'],['坎','水/月','☵','🌊'],['离','火/日','☲','🔥'],['艮','山','☶','⛰️'],['兑','泽','☱','💧']];
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🌩️ 第7关：八卦取象·自然'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '《说卦传》第三章言：「天地定位，山泽通气，雷风相薄，水火不相射。」八卦最基本取象就是八种自然现象。'),
+      h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'8px'}},
+        nats.map(function(n){return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'10px 12px',display:'flex',alignItems:'center',gap:'8px',border:'1px solid var(--border)'}},
+          h('span',{style:{fontSize:'24px'}},n[2]),h('span',{style:{fontWeight:700}},n[0]),h('span',{style:{fontSize:'18px'}},n[3]),h('span',{style:{color:'var(--text-light)',fontSize:'12px'}},n[1]));})
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
+        '💡 坎=水也是月（水中之精），离=火也是日（火之精）\n八卦自然取象是理解万物类象的第一把钥匙 🔑'),
+      h('div',{className:'source-tag'},'来源：《周易·说卦传》第三、五章')
+    ));
+  },
+  questions:[
+    {prompt:'乾卦对应的自然现象是？',type:'sym-nat',sym:'qian',choices:['地','天','雷','风'],answer:1},
+    {prompt:'坤卦对应什么自然现象？',type:'sym-nat',sym:'kun',choices:['天','山','地','泽'],answer:2},
+    {prompt:'震卦对应的自然是？',type:'sym-nat',sym:'zhen',choices:['风','雷','火','水'],answer:1},
+    {prompt:'巽卦对应？',type:'sym-nat',sym:'xun',choices:['雷','火','风','山'],answer:2},
+    {prompt:'坎卦对应？',type:'sym-nat',sym:'kan',choices:['火','山','泽','水'],answer:3},
+    {prompt:'离卦对应？',type:'sym-nat',sym:'li',choices:['水','火','风','雷'],answer:1},
+    {prompt:'艮卦对应？',type:'sym-nat',sym:'gen',choices:['泽','山','天','地'],answer:1},
+    {prompt:'兑卦对应？',type:'sym-nat',sym:'dui',choices:['山','水','泽','火'],answer:2},
+    {prompt:'「天」对应哪个卦？',type:'nat-sym',nature:'天',choices:['乾☰','坤☷','震☳','巽☴'],answer:0},
+    {prompt:'「地」对应？',type:'nat-sym',nature:'地',choices:['乾☰','坤☷','艮☶','兑☱'],answer:1},
+    {prompt:'「雷」对应？',type:'nat-sym',nature:'雷',choices:['巽☴','离☲','震☳','坎☵'],answer:2},
+    {prompt:'「风」对应？',type:'nat-sym',nature:'风',choices:['震☳','巽☴','乾☰','坤☷'],answer:1},
+    {prompt:'「水」对应？',type:'nat-sym',nature:'水',choices:['坎☵','离☲','兑☱','震☳'],answer:0},
+    {prompt:'「火」对应？',type:'nat-sym',nature:'火',choices:['坎☵','离☲','艮☶','巽☴'],answer:1},
+    {prompt:'「山」对应？',type:'nat-sym',nature:'山',choices:['坤☷','乾☰','艮☶','兑☱'],answer:2},
+    {prompt:'「泽」对应？',type:'nat-sym',nature:'泽',choices:['艮☶','坎☵','离☲','兑☱'],answer:3},
+    {prompt:'坎☵除了水还对应什么？',type:'sym-nat2',sym:'kan',choices:['日','月','星','云'],answer:1},
+    {prompt:'离☲除了火还对应什么？',type:'sym-nat2',sym:'li',choices:['月','星','日','雷'],answer:2},
+    {prompt:'「天地定位」说的是哪两个卦？',type:'pair-nat',a:'乾',b:'坤',choices:['乾坤','震巽','坎离','艮兑'],answer:0},
+    {prompt:'「山泽通气」说的是哪两个卦？',type:'pair-nat',a:'艮',b:'兑',choices:['乾坤','震巽','坎离','艮兑'],answer:3}
+  ]
+});
+
+// ==== LEVEL 8: 八卦取象·综合 ====
+LEVELS.push({
+  id:8, icon:'🎯', title:'八卦取象·综合', desc:'跨维度混合——符号/五行/人物/动物/身体/方位/自然',
+  source:'综合《说卦传》全篇',
+  pitfalls:null,
+  reviewCount:3,
+  teaching:function(main){
+    var keys=Object.keys(TRIGRAMS);
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🎯 第8关：八卦取象·综合'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '恭喜你已经掌握了八卦的七大类象！本关把所有维度混在一起——是你真正的取象功底测试。'),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#2E7D32'}},'📊 八卦七象一览表'),
+        h('div',{style:{overflowX:'auto'}},
+          h('table',{style:{width:'100%',fontSize:'11px',borderCollapse:'collapse'}},
+            h('tr',{style:{borderBottom:'2px solid var(--border)'}},
+              ['卦','符号','五行','人物','动物','身体','方位','自然'].map(function(hdr){return h('th',{style:{padding:'6px 4px',textAlign:'center',fontWeight:700}},hdr);})),
+            keys.map(function(k){var t=TRIGRAMS[k];
+              return h('tr',{style:{borderBottom:'1px solid var(--border)'}},
+                [t.name,t.sym,t.wuxing,t.family,t.animal,t.body,t.dir,t.nature].map(function(v){return h('td',{style:{padding:'6px 4px',textAlign:'center'}},v);}));
+            })
+          )
+        )
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px'},},'🎲 本关25题随机跨维度——准备好了吗？'),
+      h('div',{className:'source-tag'},'来源：综合《说卦传》全篇')
+    ));
+  },
+  questions:[
+    {prompt:'☰ 对应哪个卦？',type:'sym-name',sym:'qian',choices:['乾','坤','震','巽'],answer:0},
+    {prompt:'☵ 对应哪个卦？',type:'sym-name',sym:'kan',choices:['离','坎','兑','艮'],answer:1},
+    {prompt:'离卦五行是什么？',type:'sym-wx',sym:'li',choices:['木','火','金','水'],answer:1},
+    {prompt:'兑卦五行是什么？',type:'sym-wx',sym:'dui',choices:['木','金','水','土'],answer:1},
+    {prompt:'☳ 代表哪个家庭成员？',type:'sym-fam',sym:'zhen',choices:['父','长男','中男','少男'],answer:1},
+    {prompt:'☵ 代表哪个家庭成员？',type:'sym-fam',sym:'kan',choices:['长男','中男','少男','父'],answer:1},
+    {prompt:'☶ 对应什么动物？',type:'sym-ani',sym:'gen',choices:['马','牛','狗','猪'],answer:2},
+    {prompt:'☴ 对应什么动物？',type:'sym-ani',sym:'xun',choices:['鸡','羊','龙','牛'],answer:0},
+    {prompt:'☰ 对应哪个身体部位？',type:'sym-bod',sym:'qian',choices:['手','足','首','目'],answer:2},
+    {prompt:'☷ 对应哪个身体部位？',type:'sym-bod',sym:'kun',choices:['首','腹','股','口'],answer:1},
+    {prompt:'☲ 位于什么方位？',type:'sym-dir',sym:'li',choices:['东','南','西','北'],answer:1},
+    {prompt:'☵ 位于什么方位？',type:'sym-dir',sym:'kan',choices:['东','南','西','北'],answer:3},
+    {prompt:'☳ 对应的自然现象是？',type:'sym-nat',sym:'zhen',choices:['风','雷','火','水'],answer:1},
+    {prompt:'☱ 对应的自然现象是？',type:'sym-nat',sym:'dui',choices:['山','水','泽','天'],answer:2},
+    {prompt:'「母」对应哪个卦？',type:'fam-sym',family:'母',choices:['乾☰','坤☷','震☳','兑☱'],answer:1},
+    {prompt:'「羊」对应哪个卦？',type:'ani-sym',animal:'羊',choices:['兑☱','离☲','巽☴','坤☷'],answer:0},
+    {prompt:'「目」（眼）对应哪个卦？',type:'bod-sym',body:'目',choices:['坎☵','离☲','震☳','乾☰'],answer:1},
+    {prompt:'「西北」对应哪个卦？',type:'dir-sym',dir:'西北',choices:['坤☷','艮☶','乾☰','坎☵'],answer:2},
+    {prompt:'「水」对应哪个卦？',type:'nat-sym',nature:'水',choices:['坎☵','兑☱','离☲','震☳'],answer:0},
+    {prompt:'五行属金的是哪两个卦？',type:'wx2-name',wx:'金',choices:['乾坤','兑乾','震巽','离坎'],answer:1},
+    {prompt:'五行属土的是哪两个卦？',type:'wx2-name',wx:'土',choices:['乾坤','艮坤','震巽','坎离'],answer:1},
+    {prompt:'五行属木的是哪两个卦？',type:'wx2-name',wx:'木',choices:['乾坤','震巽','艮坤','兑乾'],answer:1},
+    {prompt:'☱ + 坎☵，哪个五行？',type:'wx-multi',a:'dui',b:'kan',choices:['金水','木火','土金','水火'],answer:0},
+    {prompt:'☳ + 离☲，哪个五行？',type:'wx-multi',a:'zhen',b:'li',choices:['木火','火土','木金','水土'],answer:0},
+    {prompt:'「长女」和「鸡」都对应同一个卦？',type:'cross-fam-ani',sym:'xun',choices:['☴巽','☲离','☱兑','☷坤'],answer:0}
+  ]
+});
+
+// ==== LEVEL 9: 爻的认识 ====
+LEVELS.push({
+  id:9, icon:'⚊', title:'爻的认识', desc:'阳爻⚊阴爻⚋——六爻位与当位判断',
+  source:'《周易·系辞传》',
+  pitfalls:'爻位从下往上数！初=最下、上=最上。这一点极容易搞反。',
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'⚊ 第9关：爻的认识'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '「爻」是八卦和六十四卦的最基本单位。一长横为阳爻（⚊），两短横为阴爻（⚋）。三爻叠成八卦，六爻叠成六十四卦。'),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#B8860B'}},'📏 六爻位的命名（从下往上）'),
+        h('div',{style:{textAlign:'center',fontSize:'15px',lineHeight:'2.2'}},
+          '上爻　← 第6位（最上）\n五爻　← 第5位（中位之一）\n四爻　← 第4位\n三爻　← 第3位\n二爻　← 第2位（中位之一）\n初爻　← 第1位（最下）')
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#2E7D32'}},'✅ 当位（得位）'),
+        h('p',{style:{fontSize:'13px',lineHeight:'1.6',color:'var(--text-light)'}},
+          '奇数位（初/三/五）阳爻=当位 ✅\n偶数位（二/四/上）阴爻=当位 ✅\n反之=不当位 ❌'),
+        h('p',{style:{fontSize:'12px',color:'var(--text-light)',marginTop:'6px'}},'💡 初=1(奇)→阳爻当位；二=2(偶)→阴爻当位；以此类推')
+      ),
+      h('div',{className:'source-tag'},'来源：《周易·系辞传》「二与四同功而异位…」')
+    ));
+  },
+  questions:[
+    {prompt:'阳爻的符号是？',type:'yao-sym',yao:'yang',choices:['⚊ 一长横','⚋ 两短横','⚌ 三横','☰ 乾卦'],answer:0},
+    {prompt:'阴爻的符号是？',type:'yao-sym',yao:'yin',choices:['⚊ 一长横','⚋ 两短横','☷ 坤卦','— — 虚线'],answer:1},
+    {prompt:'三爻叠加最多能组成多少种卦？',type:'yao-fact',choices:['6种','8种','16种','64种'],answer:1},
+    {prompt:'六爻从下往上数，第1位叫什么？',type:'yao-pos',pos:1,choices:['一爻','初爻','下爻','首爻'],answer:1},
+    {prompt:'六爻从下往上数，第2位叫什么？',type:'yao-pos',pos:2,choices:['二爻','初爻','次爻','阴爻'],answer:0},
+    {prompt:'六爻从下往上数，第5位叫什么？',type:'yao-pos',pos:5,choices:['四爻','五爻','上爻','中爻'],answer:1},
+    {prompt:'六爻最上面一位叫什么？',type:'yao-pos',pos:6,choices:['六爻','终爻','上爻','顶爻'],answer:2},
+    {prompt:'初爻在六爻中的位置是？',type:'yao-locate',pos:'初',choices:['最上面','中间','最下面','第二'],answer:2},
+    {prompt:'二爻和五爻被称为什么？',type:'yao-fact',choices:['当位','中位','得位','正位'],answer:1},
+    {prompt:'初爻（奇数位）上如果是阳爻⚊，称为？',type:'dangwei',pos:1,yao:'yang',choices:['当位','不当位','中位','得中'],answer:0},
+    {prompt:'二爻（偶数位）上如果是阴爻⚋，称为？',type:'dangwei',pos:2,yao:'yin',choices:['当位','不当位','失位','偏位'],answer:0},
+    {prompt:'三爻（奇数位）上如果是阴爻⚋，称为？',type:'dangwei',pos:3,yao:'yin',choices:['当位','得位','中位','不当位'],answer:3},
+    {prompt:'四爻（偶数位）上如果是阳爻⚊，称为？',type:'dangwei',pos:4,yao:'yang',choices:['当位','得位','不当位','中正'],answer:2},
+    {prompt:'五爻（奇数位）上阳爻⚊ = 当位，这叫？',type:'dangwei',pos:5,yao:'yang',choices:['不当位','中正','失位','过位'],answer:1},
+    {prompt:'上爻（偶数位）上阴爻⚋ 是？',type:'dangwei',pos:6,yao:'yin',choices:['当位','不当位','失中','叛位'],answer:0},
+    {prompt:'阳爻的特征是？',type:'yao-nature',choices:['刚健、主动','柔顺、被动','中和、静止','虚无、空'],answer:0},
+    {prompt:'阴爻的特征是？',type:'yao-nature2',choices:['刚健','柔顺','冲动','扩张'],answer:1},
+    {prompt:'六爻中被称为「中位」的是？',type:'yao-fact2',choices:['初爻和上爻','二爻和五爻','三爻和四爻','一爻和三爻'],answer:1},
+    {prompt:'一个卦有几个爻？',type:'yao-fact3',choices:['3个','4个','6个','8个'],answer:2},
+    {prompt:'「当位」又叫什么？',type:'yao-synonym',choices:['得位/正位','中位/中正','正应/相应','承/乘'],answer:0}
+  ]
+});
+
+// ==== LEVEL 10: 上卦下卦 ====
+LEVELS.push({
+  id:10, icon:'📦', title:'上卦下卦', desc:'六爻重卦=上卦（外卦）+下卦（内卦）',
+  source:'《周易》卦体结构',
+  pitfalls:'上卦=外卦=4/5/6爻；下卦=内卦=1/2/3爻。上下顺序极易搞混！',
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'📦 第10关：上卦下卦'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '六十四卦的每一卦（重卦）由两个三爻八卦上下叠加而成。上面的叫「上卦」或「外卦」，下面的叫「下卦」或「内卦」。'),
+      h('div',{style:{background:'#F3E5F5',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#7B1FA2'}},'📐 结构分解'),
+        h('div',{style:{textAlign:'center',fontSize:'15px',lineHeight:'2'}},
+          '┌─────────┐\n│ 上爻 ⎤   │\n│ 五爻 ⎥上卦│ ← 外卦（第4-6爻）\n│ 四爻 ⎦   │\n├─────────┤\n│ 三爻 ⎤   │\n│ 二爻 ⎥下卦│ ← 内卦（第1-3爻）\n│ 初爻 ⎦   │\n└─────────┘'),
+        h('p',{style:{fontSize:'12px',color:'var(--text-light)',marginTop:'8px',textAlign:'center'}},'上卦在上，下卦在下——这个「上」「下」说的就是位置！')
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
+        '💡 例：䷊地天泰 = 上卦坤☷（地）+ 下卦乾☰（天）\n命名规则：先说上卦后说下卦 → 「地天泰」'),
+      h('div',{className:'source-tag'},'来源：《周易》卦体结构')
+    ));
+  },
+  questions:[
+    {prompt:'重卦有几个爻？',type:'yao-fact3',choices:['3个','4个','6个','8个'],answer:2},
+    {prompt:'上卦由哪几爻组成？',type:'gua-struct',part:'上',choices:['初/二/三爻','二/三/四爻','三/四/五爻','四/五/上爻'],answer:3},
+    {prompt:'下卦由哪几爻组成？',type:'gua-struct',part:'下',choices:['初/二/三爻','二/三/四爻','四/五/上爻','一/二/上爻'],answer:0},
+    {prompt:'上卦又叫什么？',type:'gua-alias',choices:['内卦','外卦','中卦','变卦'],answer:1},
+    {prompt:'下卦又叫什么？',type:'gua-alias2',choices:['内卦','外卦','上卦','互卦'],answer:0},
+    {prompt:'䷀乾为天：上卦是？下卦是？',type:'gua-split',up:'qian',down:'qian',choices:['上乾下乾','上坤下乾','上乾下坤','上震下乾'],answer:0},
+    {prompt:'䷁坤为地：上卦是？',type:'gua-split2',up:'kun',down:'kun',choices:['乾☰','坤☷','震☳','离☲'],answer:1},
+    {prompt:'䷊地天泰：上卦☷下卦☰ = ？',type:'gua-name',up:'坤',down:'乾',choices:['天地否','地天泰','天雷无妄','地山谦'],answer:1},
+    {prompt:'䷋天地否：上☰下☷ = ？',type:'gua-name',up:'乾',down:'坤',choices:['地天泰','天地否','天火同人','地水师'],answer:1},
+    {prompt:'上卦震☳ + 下卦离☲ = ？',type:'gua-name2',up:'震',down:'离',choices:['雷火丰','火雷噬嗑','震为雷','离为火'],answer:0},
+    {prompt:'上卦坎☵ + 下卦艮☶ = ？',type:'gua-name2',up:'坎',down:'艮',choices:['山水蒙','水山蹇','坎为水','艮为山'],answer:1},
+    {prompt:'䷐泽雷随：上卦是？',type:'gua-parse',full:'䷐泽雷随',up:'兑',choices:['兑☱','震☳','离☲','坎☵'],answer:0},
+    {prompt:'䷐泽雷随：下卦是？',type:'gua-parse-down',full:'䷐泽雷随',down:'震',choices:['兑☱','震☳','离☲','坎☵'],answer:1},
+    {prompt:'「上卦」=「外卦」，那「下卦」=？',type:'gua-alias3',choices:['中卦','内卦','变卦','互卦'],answer:1},
+    {prompt:'䷔火雷噬嗑：上卦☲ 下卦☳，读作？',type:'gua-name',up:'离',down:'震',choices:['雷火丰','火雷噬嗑','火地晋','雷天大壮'],answer:1},
+    {prompt:'䷃山水蒙：上☶下☵ → 分别是？',type:'gua-split',up:'gen',down:'kan',choices:['上坎下艮','上艮下坎','上震下坎','上艮下离'],answer:1},
+    {prompt:'上下卦各是几爻的卦？',type:'yao-fact',choices:['2爻','3爻','4爻','6爻'],answer:1},
+    {prompt:'䷜坎为水 是上坎下坎，这种叫？',type:'gua-special',choices:['纯卦/八经卦','杂卦','互卦','变卦'],answer:0},
+    {prompt:'八经卦两两相重，最多组成多少重卦？',type:'gua-count',choices:['16','32','48','64'],answer:3},
+    {prompt:'重卦名称先说上卦还是下卦？',type:'gua-order',choices:['先说上卦','先说下卦','都可以','看情况'],answer:0}
+  ]
+});
+
 // ====== STATE ======
 var SK = 'meihua_progress_v2';
 function loadP(){try{return JSON.parse(localStorage.getItem(SK))||{}}catch(e){return{}}}
@@ -618,15 +870,18 @@ function renderReview(app){
 }
 
 function renderQuestionTarget(qCard,q){
-  if(q.type==='sym-name'||q.type==='sym-wx'||q.type==='sym-fam'||q.type==='sym-ani'||q.type==='sym-bod'){
+  if(q.type==='sym-name'||q.type==='sym-wx'||q.type==='sym-fam'||q.type==='sym-ani'||q.type==='sym-bod'||q.type==='sym-dir'||q.type==='sym-nat'||q.type==='sym-nat2'){
     var t=tarTrigram(q.sym);if(t)qCard.appendChild(h('div',{className:'q-target'},t.sym));
   }
   if(q.type==='nat-sym')qCard.appendChild(h('div',{className:'q-target-text'},'「'+q.nature+'」'));
   if(q.type==='wx-name')qCard.appendChild(h('div',{className:'q-target-text',style:{fontSize:'28px'}},q.wuxing));
   if(q.type==='mne-name')qCard.appendChild(h('div',{className:'q-target-text',style:{fontSize:'22px',color:'var(--green)',background:'#FFF9E6',padding:'8px 16px',borderRadius:'8px',display:'inline-block'}},'「'+q.mnemonic+'」'));
-  if(q.type==='fam-sym'||q.type==='ani-sym'||q.type==='bod-sym'){
-    var label=q.family||q.animal||q.body||'';
+  if(q.type==='fam-sym'||q.type==='ani-sym'||q.type==='bod-sym'||q.type==='dir-sym'){
+    var label=q.family||q.animal||q.body||q.dir||'';
     qCard.appendChild(h('div',{className:'q-target-text'},'「'+label+'」→ 哪个卦？'));
+  }
+  if(q.type==='dir-order'){
+    qCard.appendChild(h('div',{className:'q-target-text',style:{fontSize:'20px'}},q.from+' → ？'));
   }
   if(q.type==='sheng'||q.type==='ke'){
     qCard.appendChild(h('div',{style:{textAlign:'center',margin:'12px 0'}},
