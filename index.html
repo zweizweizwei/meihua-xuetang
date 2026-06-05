@@ -17,10 +17,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 
 /* Header */
 .header{padding:16px 20px 12px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:20px;font-weight:700;display:flex;align-items:center;gap:8px}
+.logo{font-size:20px;font-weight:700;display:flex;align-items:center;gap:8px;cursor:pointer}
 .logo .icon{font-size:28px}
 .streak{display:flex;align-items:center;gap:4px;font-weight:600;font-size:15px;color:var(--gold)}
-.streak-emoji{font-size:20px}
 
 /* Progress */
 .progress-wrap{padding:0 20px 16px}
@@ -28,7 +27,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .progress-fill{height:100%;background:var(--green);border-radius:6px;transition:width .4s ease}
 .progress-text{font-size:12px;color:var(--text-light);margin-top:4px;text-align:right}
 
-/* Main content */
+/* Main */
 .main{flex:1;padding:0 20px 20px;display:flex;flex-direction:column;gap:16px}
 
 /* Question card */
@@ -37,13 +36,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .q-card.wrong{border-color:var(--red);background:#FFF0F0}
 .q-prompt{font-size:16px;color:var(--text-light);margin-bottom:16px;line-height:1.5}
 .q-target{font-size:42px;text-align:center;margin:12px 0;line-height:1.2}
-.q-target-text{font-size:28px;font-weight:700;text-align:center;margin:12px 0}
+.q-target-text{font-size:24px;font-weight:700;text-align:center;margin:12px 0}
 
 /* Choices */
 .choices{display:grid;gap:10px;grid-template-columns:1fr 1fr}
 .choice-btn{background:var(--card);border:2px solid var(--border);border-radius:12px;padding:14px 12px;font-size:15px;cursor:pointer;transition:all .15s;text-align:center;font-weight:500;color:var(--text);min-height:52px;display:flex;align-items:center;justify-content:center;gap:6px}
 .choice-btn:active{transform:scale(.97)}
-.choice-btn:hover:not(:disabled){border-color:#B8B8B8}
 .choice-btn:disabled{cursor:default}
 .choice-btn.correct{border-color:var(--green);background:#D7FFB8;color:#3C7A00}
 .choice-btn.wrong{border-color:var(--red);background:#FFD4D4;color:#B80000}
@@ -57,7 +55,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .feedback .emoji{font-size:28px;display:block;margin-bottom:4px}
 .feedback .hint{font-size:13px;font-weight:400;margin-top:4px;opacity:.8}
 
-/* Bottom bar */
+/* Bottom */
 .bottom{padding:12px 20px 20px}
 .continue-btn{width:100%;padding:16px;border:none;border-radius:14px;background:var(--green);color:#fff;font-size:17px;font-weight:700;cursor:pointer;transition:all .15s;display:none}
 .continue-btn.show{display:block}
@@ -75,7 +73,23 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .complete-stat-label{font-size:12px;color:var(--text-light)}
 .complete-btn{width:100%;padding:16px;border:none;border-radius:14px;background:var(--green);color:#fff;font-size:17px;font-weight:700;cursor:pointer;margin-top:8px}
 
-/* Trigrams display */
+/* Intro card */
+.intro-card{background:var(--card);border-radius:16px;padding:24px;text-align:center;border:2px solid var(--border)}
+
+/* Menu - level cards */
+.menu-grid{display:flex;flex-direction:column;gap:12px;padding:16px 0}
+.level-card{background:var(--card);border-radius:16px;padding:20px;border:2px solid var(--border);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:16px}
+.level-card:active{transform:scale(.98);border-color:var(--green)}
+.level-card.locked{opacity:.5;cursor:not-allowed}
+.level-card .lc-icon{font-size:40px;min-width:50px;text-align:center}
+.level-card .lc-info{flex:1}
+.level-card .lc-title{font-weight:700;font-size:17px;margin-bottom:4px}
+.level-card .lc-desc{font-size:13px;color:var(--text-light)}
+.level-card .lc-badge{font-size:12px;font-weight:600;padding:4px 10px;border-radius:20px}
+.level-card .lc-badge.done{background:#D7FFB8;color:#3C7A00}
+.level-card .lc-badge.open{background:#FFF3CD;color:#856404}
+
+/* Trigram grid */
 .trigram-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
 .trigram-card{background:var(--bg);border-radius:12px;padding:14px 10px;text-align:center;border-left:4px solid var(--border);display:flex;align-items:center;gap:10px}
 .trigram-card .sym{font-size:36px;min-width:44px}
@@ -89,22 +103,30 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .trigram-card.wx-huo{border-left-color:var(--fire)}
 .trigram-card.wx-tu{border-left-color:var(--earth)}
 
-/* Lesson intro */
-.intro-card{background:var(--card);border-radius:16px;padding:24px;text-align:center;border:2px solid var(--border)}
-.intro-card h2{font-size:22px;margin-bottom:8px}
-.intro-card p{color:var(--text-light);line-height:1.6;font-size:14px}
+/* Wuxing cycle */
+.wx-cycle{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;margin:12px 0}
+.wx-chip{padding:8px 16px;border-radius:12px;font-weight:700;font-size:16px;color:#fff}
+.wx-chip.jin{background:#FFD700;color:#5D4E37}
+.wx-chip.mu{background:#4CAF50}
+.wx-chip.shui{background:#2196F3}
+.wx-chip.huo{background:#FF5722}
+.wx-chip.tu{background:#8D6E63}
+.wx-arrow{font-size:20px;color:var(--text-light)}
 
-/* Responsive */
+/* Back button */
+.back-btn{background:none;border:none;font-size:22px;cursor:pointer;padding:4px 8px;color:var(--text-light)}
+
 @media(max-width:380px){
   .trigram-card .sym{font-size:28px;min-width:36px}
   .choices{grid-template-columns:1fr}
   .q-target{font-size:32px}
+  .q-target-text{font-size:20px}
+  .level-card .lc-icon{font-size:30px;min-width:40px}
 }
 </style>
 </head>
 <body>
 <div class="app" id="app"></div>
-
 <script>
 // ===== DATA =====
 const TRIGRAMS = {
@@ -118,105 +140,194 @@ const TRIGRAMS = {
   kun:{sym:'☷',name:'坤',wuxing:'土',nature:'地',props:'顺、柔、母、载物',family:'母',mnemonic:'坤六断'}
 };
 
-const LEVELS = [{
-  id:1, title:'八卦入门', desc:'认识八个卦象的符号和名称',
-  questions:[
-    {type:'sym-to-name',sym:'qian',choices:['乾','坤','震','巽'],answer:0,prompt:'这个卦象叫什么名字？'},
-    {type:'sym-to-name',sym:'kun',choices:['艮','兑','坤','离'],answer:2,prompt:'选出正确的卦名'},
-    {type:'sym-to-name',sym:'li',choices:['离','坎','震','兑'],answer:0,prompt:'这个符号是哪个卦？'},
-    {type:'sym-to-name',sym:'kan',choices:['巽','坎','离','艮'],answer:1,prompt:'识别这个卦象'},
-    {type:'sym-to-name',sym:'zhen',choices:['兑','艮','震','巽'],answer:2,prompt:'这是什么卦？'},
-    {type:'sym-to-name',sym:'dui',choices:['艮','兑','乾','坤'],answer:1,prompt:'选出这个卦的正确名称'},
-    {type:'sym-to-name',sym:'xun',choices:['震','离','巽','坎'],answer:2,prompt:'识别卦象'},
-    {type:'sym-to-name',sym:'gen',choices:['艮','兑','震','离'],answer:0,prompt:'这个符号叫什么？'},
-    {type:'sym-to-wuxing',sym:'qian',choices:['木','火','金','水'],answer:2,prompt:'乾卦的五行是什么？'},
-    {type:'sym-to-wuxing',sym:'li',choices:['金','木','水','火'],answer:3,prompt:'离卦对应哪个五行？'},
-    {type:'sym-to-wuxing',sym:'kan',choices:['火','土','金','水'],answer:3,prompt:'坎卦的五行属性？'},
-    {type:'sym-to-wuxing',sym:'zhen',choices:['木','火','土','金'],answer:0,prompt:'震卦属什么五行？'},
-    {type:'nature-to-sym',nature:'天',choices:['乾☰','坤☷','震☳','离☲'],answer:0,prompt:'「天」对应哪个卦？'},
-    {type:'nature-to-sym',nature:'地',choices:['艮☶','兑☱','坤☷','坎☵'],answer:2,prompt:'「地」的自然之卦是？'},
-    {type:'nature-to-sym',nature:'雷',choices:['离☲','震☳','巽☴','乾☰'],answer:1,prompt:'「雷」对应八卦中的？'},
-    {type:'wuxing-to-name',wuxing:'水',choices:['离','坎','兑','坤'],answer:1,prompt:'五行属水的是哪一个？'},
-    {type:'wuxing-to-name',wuxing:'火',choices:['震','艮','离','坎'],answer:2,prompt:'五行属火的是？'},
-    {type:'name-to-sym',name:'兑',choices:['☴','☱','☲','☶'],answer:1,prompt:'兑卦的符号是？'},
-    {type:'name-to-sym',name:'离',choices:['☰','☵','☲','☳'],answer:2,prompt:'离卦的符号？'},
-    {type:'mnemonic-to-name',mnemonic:'坎中满',choices:['离','坎','兑','巽'],answer:1,prompt:'「坎中满」说的是哪个卦？'},
-  ]
-}];
+const WUXING = {
+  mu:{name:'木',sheng:'huo',ke:'tu',shengStr:'木生火',keStr:'木克土'},
+  huo:{name:'火',sheng:'tu',ke:'jin',shengStr:'火生土',keStr:'火克金'},
+  tu:{name:'土',sheng:'jin',ke:'shui',shengStr:'土生金',keStr:'土克水'},
+  jin:{name:'金',sheng:'shui',ke:'mu',shengStr:'金生水',keStr:'金克木'},
+  shui:{name:'水',sheng:'mu',ke:'huo',shengStr:'水生木',keStr:'水克火'}
+};
+const WX_ORDER = ['mu','huo','tu','jin','shui'];
+
+const LEVELS = [
+  {
+    id:1, icon:'☰', title:'八卦入门', desc:'认识八个卦象的符号、名称、五行',
+    questions:[
+      {type:'sym-to-name',sym:'qian',choices:['乾','坤','震','巽'],answer:0,prompt:'这个卦象叫什么名字？'},
+      {type:'sym-to-name',sym:'kun',choices:['艮','兑','坤','离'],answer:2,prompt:'选出正确的卦名'},
+      {type:'sym-to-name',sym:'li',choices:['离','坎','震','兑'],answer:0,prompt:'这个符号是哪个卦？'},
+      {type:'sym-to-name',sym:'kan',choices:['巽','坎','离','艮'],answer:1,prompt:'识别这个卦象'},
+      {type:'sym-to-name',sym:'zhen',choices:['兑','艮','震','巽'],answer:2,prompt:'这是什么卦？'},
+      {type:'sym-to-name',sym:'dui',choices:['艮','兑','乾','坤'],answer:1,prompt:'选出这个卦的正确名称'},
+      {type:'sym-to-name',sym:'xun',choices:['震','离','巽','坎'],answer:2,prompt:'识别卦象'},
+      {type:'sym-to-name',sym:'gen',choices:['艮','兑','震','离'],answer:0,prompt:'这个符号叫什么？'},
+      {type:'sym-to-wuxing',sym:'qian',choices:['木','火','金','水'],answer:2,prompt:'乾卦的五行是什么？'},
+      {type:'sym-to-wuxing',sym:'li',choices:['金','木','水','火'],answer:3,prompt:'离卦对应哪个五行？'},
+      {type:'sym-to-wuxing',sym:'kan',choices:['火','土','金','水'],answer:3,prompt:'坎卦的五行属性？'},
+      {type:'sym-to-wuxing',sym:'zhen',choices:['木','火','土','金'],answer:0,prompt:'震卦属什么五行？'},
+      {type:'nature-to-sym',nature:'天',choices:['乾☰','坤☷','震☳','离☲'],answer:0,prompt:'「天」对应哪个卦？'},
+      {type:'nature-to-sym',nature:'地',choices:['艮☶','兑☱','坤☷','坎☵'],answer:2,prompt:'「地」的自然之卦是？'},
+      {type:'nature-to-sym',nature:'雷',choices:['离☲','震☳','巽☴','乾☰'],answer:1,prompt:'「雷」对应八卦中的？'},
+      {type:'wuxing-to-name',wuxing:'水',choices:['离','坎','兑','坤'],answer:1,prompt:'五行属水的是哪一个？'},
+      {type:'wuxing-to-name',wuxing:'火',choices:['震','艮','离','坎'],answer:2,prompt:'五行属火的是？'},
+      {type:'name-to-sym',name:'兑',choices:['☴','☱','☲','☶'],answer:1,prompt:'兑卦的符号是？'},
+      {type:'name-to-sym',name:'离',choices:['☰','☵','☲','☳'],answer:2,prompt:'离卦的符号？'},
+      {type:'mnemonic-to-name',mnemonic:'坎中满',choices:['离','坎','兑','巽'],answer:1,prompt:'「坎中满」说的是哪个卦？'}
+    ]
+  },
+  {
+    id:2, icon:'🔥', title:'体用生克', desc:'五行生克关系，体卦用卦的判断',
+    questions:[
+      {type:'sheng',from:'mu',choices:['火','金','水','土'],answer:0,prompt:'木生什么？'},
+      {type:'sheng',from:'huo',choices:['木','土','金','水'],answer:1,prompt:'火生什么？'},
+      {type:'sheng',from:'tu',choices:['水','木','金','火'],answer:2,prompt:'土生什么？'},
+      {type:'sheng',from:'jin',choices:['土','火','水','木'],answer:2,prompt:'金生什么？'},
+      {type:'sheng',from:'shui',choices:['金','土','木','火'],answer:2,prompt:'水生什么？'},
+      {type:'ke',from:'jin',choices:['水','木','火','土'],answer:1,prompt:'金克什么？'},
+      {type:'ke',from:'mu',choices:['水','火','土','金'],answer:2,prompt:'木克什么？'},
+      {type:'ke',from:'shui',choices:['木','土','火','金'],answer:2,prompt:'水克什么？'},
+      {type:'ke',from:'huo',choices:['土','水','金','木'],answer:2,prompt:'火克什么？'},
+      {type:'ke',from:'tu',choices:['火','金','水','木'],answer:2,prompt:'土克什么？'},
+      {type:'who-sheng',to:'mu',choices:['火','水','金','土'],answer:1,prompt:'什么是生木的？'},
+      {type:'who-sheng',to:'huo',choices:['水','木','土','金'],answer:1,prompt:'什么是生火的？'},
+      {type:'who-ke',to:'jin',choices:['水','火','土','木'],answer:1,prompt:'什么克金？'},
+      {type:'who-ke',to:'mu',choices:['土','金','水','火'],answer:1,prompt:'什么克木？'},
+      {type:'sheng-ke-relation',a:'mu',b:'huo',choices:['木生火','火生木','木克火','火克木'],answer:0,prompt:'木和火的关系是？'},
+      {type:'sheng-ke-relation',a:'shui',b:'huo',choices:['水生火','火生水','水克火','火克水'],answer:2,prompt:'水和火的关系是？'},
+      {type:'sheng-ke-relation',a:'jin',b:'mu',choices:['金生木','木生金','金克木','木克金'],answer:2,prompt:'金和木的关系是？'},
+      {type:'sheng-ke-relation',a:'tu',b:'jin',choices:['土生金','金生土','土克金','金克土'],answer:0,prompt:'土和金的关系是？'},
+      {type:'sheng-ke-relation',a:'huo',b:'jin',choices:['火生金','金生火','火克金','金克火'],answer:2,prompt:'火和金的关系是？'},
+      {type:'sheng-ke-relation',a:'tu',b:'shui',choices:['土生水','水生土','土克水','水克土'],answer:2,prompt:'土和水的关系是？'}
+    ]
+  }
+];
 
 // ===== STATE =====
-const storageKey = 'meihua_progress';
-function loadProgress(){
-  try{return JSON.parse(localStorage.getItem(storageKey))||{}}catch(e){return{}}
-}
-function saveProgress(p){
-  localStorage.setItem(storageKey,JSON.stringify(p));
-}
+const SK = 'meihua_progress';
+function loadP(){try{return JSON.parse(localStorage.getItem(SK))||{}}catch(e){return{}}}
+function saveP(p){localStorage.setItem(SK,JSON.stringify(p))}
+
 let state = {
-  level:1,
-  qIndex:0,
-  score:0,
-  correct:0,
-  streak:0,
-  bestStreak:0,
-  answered:false,
-  totalQuestions:LEVELS[0].questions.length,
-  showIntro:true
+  view: 'menu',       // menu | intro | quiz | complete
+  levelIdx: 0,
+  qIndex: 0,
+  score: 0,
+  correct: 0,
+  streak: 0,
+  bestStreak: 0,
+  answered: false,
+  _lastCorrect: false,
+  _lastChoice: -1
 };
-const p = loadProgress();
-if(p.bestStreak) state.bestStreak = p.bestStreak;
-state.bestStreak = Math.max(state.bestStreak, p.bestStreak||0);
+
+const saved = loadP();
+state.bestStreak = Math.max(0, saved.bestStreak||0, saved.levelBest?.streak||0);
+
+function levelDone(id){ return saved.levels && saved.levels[id]; }
+function canEnter(id){
+  if(id===1)return true;
+  return !!levelDone(id-1);
+}
+function getTotal(id){
+  const l = LEVELS.find(function(x){return x.id===id});
+  return l?l.questions.length:20;
+}
 
 // ===== HELPERS =====
-function h(tag,attrs={},...children){
-  const el=document.createElement(tag);
-  Object.entries(attrs).forEach(([k,v])=>{
-    if(k.startsWith('on'))el.addEventListener(k.slice(2).toLowerCase(),v);
-    else if(k==='className')el.className=v;
-    else if(k==='style')Object.assign(el.style,v);
-    else el.setAttribute(k,v);
-  });
-  children.forEach(c=>{
-    if(typeof c==='string')el.appendChild(document.createTextNode(c));
-    else if(c)el.appendChild(c);
-  });
+function h(tag, attrs){
+  var el=document.createElement(tag);
+  for(var k in attrs){
+    if(attrs.hasOwnProperty(k)){
+      var v=attrs[k];
+      if(k.slice(0,2)==='on')el.addEventListener(k.slice(2).toLowerCase(),v);
+      else if(k==='className')el.className=v;
+      else if(k==='style'){for(var sk in v)el.style[sk]=v[sk];}
+      else el.setAttribute(k,v);
+    }
+  }
+  for(var i=2;i<arguments.length;i++){
+    add(arguments[i]);
+  }
+  function add(c){
+    if(Array.isArray(c)){c.forEach(add);}
+    else if(typeof c==='string'){el.appendChild(document.createTextNode(c));}
+    else if(c){el.appendChild(c);}
+  }
   return el;
 }
-const trigram=id=>TRIGRAMS[id];
-const wxPinyin=w=>({金:'jin',木:'mu',水:'shui',火:'huo',土:'tu'})[w]||'';
+var trigram=function(id){return TRIGRAMS[id]};
+var wxPinyin=function(w){return ({jin:'jin',mu:'mu',shui:'shui',huo:'huo',tu:'tu'})[w]||''};
+var curLevel=function(){return LEVELS[state.levelIdx]};
+var curQ=function(){return curLevel().questions[state.qIndex]};
+var totalQ=function(){return curLevel().questions.length};
 
 // ===== RENDER =====
 function render(){
-  const app=document.getElementById('app');
+  var app=document.getElementById('app');
   app.innerHTML='';
-  const level=LEVELS[0];
-  const q=level.questions[state.qIndex];
-  const progress=(state.qIndex/state.totalQuestions)*100;
+  var lv=curLevel();
 
-  // Header
+  // Header (always)
   app.appendChild(h('div',{className:'header'},
-    h('div',{className:'logo'},h('span',{className:'icon'},'🌸'),'梅花易数学堂'),
-    h('div',{className:'streak'},h('span',{className:'streak-emoji'},'🔥'),`${state.bestStreak}`)
+    h('div',{className:'logo',onClick:goMenu},
+      h('span',{className:'icon'},'🌸'),'梅花易数学堂'),
+    h('div',{className:'streak'},h('span',{style:{fontSize:'20px'}},'🔥'),''+state.bestStreak)
   ));
 
-  // Progress (only show during quiz)
-  if(!state.showIntro){
-    app.appendChild(h('div',{className:'progress-wrap'},
-      h('div',{className:'progress-bar'},h('div',{className:'progress-fill',style:{width:progress+'%'}})),
-      h('div',{className:'progress-text'},`第 ${state.qIndex+1}/${state.totalQuestions} 题`)
-    ));
-  }
+  if(state.view==='menu') renderMenu(app);
+  else if(state.view==='intro') renderIntro(app);
+  else if(state.view==='quiz') renderQuiz(app);
+  else if(state.view==='complete') renderComplete(app);
+}
 
-  const main=h('div',{className:'main'});
+function goMenu(){
+  state.view='menu'; state.qIndex=0; state.answered=false; state.score=0; state.correct=0; state.streak=0;
+  render();
+}
 
-  if(state.showIntro){
-    // Intro card with teaching content
+function renderMenu(app){
+  app.appendChild(h('div',{className:'main'},
+    h('h2',{style:{textAlign:'center',marginBottom:'4px',fontSize:'22px'}},'📚 选择关卡'),
+    h('div',{className:'menu-grid'},
+      LEVELS.map(function(lv,i){
+        var done = levelDone(lv.id);
+        var open = canEnter(lv.id);
+        var cls = 'level-card' + (open?'':' locked');
+        var badge = done?h('span',{className:'lc-badge done'},'✅ 已通关')
+                  : open?h('span',{className:'lc-badge open'},'⏳ 待挑战')
+                  :h('span',{className:'lc-badge',style:{background:'#E5E5E5',color:'#999'}},'🔒 未解锁');
+        return h('div',{className:cls, onClick:function(){
+          if(!open)return;
+          state.levelIdx=i; state.view='intro'; state.qIndex=0; state.answered=false;
+          state.score=0; state.correct=0; state.streak=0;
+          render();
+        }},
+          h('div',{className:'lc-icon'},lv.icon),
+          h('div',{className:'lc-info'},
+            h('div',{className:'lc-title'},'第'+lv.id+'关：'+lv.title),
+            h('div',{className:'lc-desc'},lv.desc)
+          ),
+          badge
+        );
+      })
+    ),
+    h('div',{style:{textAlign:'center',marginTop:'16px',fontSize:'13px',color:'var(--text-light)'}},
+      '通关前一关才能解锁下一关 🔓'
+    )
+  ));
+}
+
+function renderIntro(app){
+  var lv=curLevel();
+  var main=document.createElement('div');main.className='main';
+
+  if(lv.id===1){
+    // Level 1 intro
     main.appendChild(h('div',{className:'intro-card'},
       h('h2',{},'☰ 第一关：八卦入门'),
-      h('p',{style:{marginBottom:'12px',textAlign:'left',lineHeight:'1.7'}},
+      h('p',{style:{marginBottom:'12px',textAlign:'left',lineHeight:'1.7',fontSize:'14px',color:'var(--text-light)'}},
         '八卦由阳爻（⚊）和阴爻（⚋）三层叠加而成，共八种组合，对应自然界的八种基本现象。每个卦有符号、名称、五行属性。'
       ),
-      // Mnemonic rhyme
       h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'12px 14px',marginBottom:'12px',textAlign:'center'}},
         h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#B8860B'}},'📝 八卦取象口诀'),
         h('div',{style:{fontSize:'15px',lineHeight:'2',fontWeight:500}},
@@ -224,145 +335,225 @@ function render(){
         )
       ),
       h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginBottom:'8px',textAlign:'left'}},
-        '💡 口诀就是每个卦的图形特征——比如「离中虚」是说离卦 ☲ 中间是空的，「坎中满」是说坎卦 ☵ 中间是满的。看一眼符号就记住了！'
+        '💡 口诀就是每个卦的图形特征——「离中虚」是说离卦 ☲ 中间空的，「坎中满」是说坎卦 ☵ 中间满的。'
       ),
-      // Trigram cards grid
       h('div',{className:'trigram-grid'},
-        ...Object.entries(TRIGRAMS).map(([id,t])=>
-          h('div',{className:'trigram-card wx-'+wxPinyin(t.wuxing)},
+        Object.entries(TRIGRAMS).map(function(e){
+          var t=e[1]; var id=e[0];
+          return h('div',{className:'trigram-card wx-'+wxPinyin(t.wuxing)},
             h('div',{className:'sym'},t.sym),
             h('div',{className:'info'},
               h('div',{className:'name'},t.name+' · '+t.wuxing),
               h('div',{className:'wuxing'},t.nature+' · '+t.props.split('、').slice(0,2).join(' ')),
               h('div',{className:'mnemonic'},t.mnemonic)
             )
-          )
-        )
+          );
+        })
       ),
-      h('p',{style:{marginTop:'14px',fontSize:'13px',color:'var(--text-light)'}},'记住它们的符号、名字和口诀，准备好了就开始答题 👇')
+      h('p',{style:{marginTop:'14px',fontSize:'13px',color:'var(--text-light)'}},'记住符号、名字和口诀，准备好了就开始答题 👇')
     ));
-    main.appendChild(h('div',{className:'bottom'},
-      h('button',{className:'continue-btn show',onClick:()=>{state.showIntro=false;render()}},'开始答题')
+  } else {
+    // Level 2 intro: 体用生克
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🔥 第二关：体用生克'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'14px',lineHeight:'1.6'}},
+        '五行不是孤立的，它们之间有「生」和「克」两种关系。掌握生克是断卦的基础。'
+      ),
+
+      // 相生
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#2E7D32'}},'🌱 五行相生'),
+        h('div',{className:'wx-cycle'},
+          WX_ORDER.map(function(w,i){
+            return [
+              h('span',{className:'wx-chip '+w},WUXING[w].name),
+              i<4 ? h('span',{className:'wx-arrow'},'→') : null
+            ];
+          }).flat().filter(Boolean)
+        ),
+        h('p',{style:{fontSize:'12px',color:'var(--text-light)',marginTop:'8px'}},'木生火 → 火生土 → 土生金 → 金生水 → 水生木（循环）')
+      ),
+
+      // 相克
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'14px'}},
+        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#E65100'}},'⚡ 五行相克'),
+        h('div',{className:'wx-cycle'},
+          [['mu','土'],['huo','金'],['tu','水'],['jin','木'],['shui','火']].map(function(p,i){
+            return [
+              h('span',{className:'wx-chip '+p[0]},WUXING[p[0]].name),
+              i<4?h('span',{className:'wx-arrow',style:{color:'var(--red)'}},'→'):null
+            ];
+          }).flat().filter(Boolean)
+        ),
+        h('p',{style:{fontSize:'12px',color:'var(--text-light)',marginTop:'8px'}},'木克土 → 土克水 → 水克火 → 火克金 → 金克木（循环）')
+      ),
+
+      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginBottom:'8px',textAlign:'left',lineHeight:'1.6'}},
+        '💡 记忆口诀：\n「生」—— 钻木取火、火烬成土、土中藏金、金融成水、水润生木\n「克」—— 木破土而出、土筑堤挡水、水灭火、火熔金、金斧砍木'
+      ),
+
+      h('div',{style:{background:'#F3E5F5',borderRadius:'10px',padding:'14px',marginTop:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',color:'#7B1FA2',marginBottom:'6px'}},'📖 体卦 & 用卦'),
+        h('p',{style:{fontSize:'13px',color:'var(--text-light)',lineHeight:'1.6',textAlign:'left'}},
+          '起卦后，不动之卦为「体」，动爻所在之卦为「用」。\n\n体代表自己、当前状态；用代表对方、外部环境。\n'+
+          '体生用 → 耗泄（小凶）\n用生体 → 受益（大吉）\n体用比和 → 和谐（吉）\n体克用 → 可成（小吉）\n用克体 → 受制（凶）'
+        )
+      )
     ));
-  } else if(state.qIndex < state.totalQuestions){
-    // Question
-    const qCard=h('div',{className:'q-card'+(state.answered?(state._lastCorrect?' correct':' wrong'):'')});
-    qCard.appendChild(h('div',{className:'q-prompt'},q.prompt));
-    
-    // Target display
-    if(q.type.startsWith('sym-to') || q.type==='name-to-sym'){
-      const tkey = q.sym || Object.entries(TRIGRAMS).find(function(e){return e[1].name===q.name})?.[0];
-      qCard.appendChild(h('div',{className:'q-target'},tkey && trigram(tkey) ? trigram(tkey).sym : ''));
-    }
-    if(q.type==='name-to-sym'){
-      qCard.appendChild(h('div',{className:'q-target-text'},`${q.name}卦`));
-    }
-    if(q.type==='sym-to-wuxing'){
-      const t=q.sym?trigram(q.sym):null;
-      qCard.appendChild(h('div',{className:'q-target'},t?.sym||''));
-      qCard.appendChild(h('div',{className:'q-target-text'},t?.name||''));
-    }
-    if(q.type==='nature-to-sym'){
-      qCard.appendChild(h('div',{className:'q-target-text'},`「${q.nature}」`));
-    }
-    if(q.type==='wuxing-to-name'){
-      qCard.appendChild(h('div',{className:'q-target-text'},`五行：${q.wuxing}`));
-    }
-    if(q.type==='mnemonic-to-name'){
-      qCard.appendChild(h('div',{className:'q-target-text',style:{fontSize:'22px',color:'var(--green)',background:'#FFF9E6',padding:'8px 16px',borderRadius:'8px',display:'inline-block'}},`「${q.mnemonic}」`));
-    }
+  }
 
-    const choices=h('div',{className:'choices'});
-    q.choices.forEach((c,i)=>{
-      const btn=h('button',{className:'choice-btn',onClick:()=>!state.answered && answer(i)});
-      if(q.type==='name-to-sym') btn.textContent = c;
-      else if(q.type==='nature-to-sym' || q.type.startsWith('sym-to')) btn.textContent = c;
-      else btn.textContent = c;
-      
-      if(state.answered){
-        btn.disabled=true;
-        if(i===q.answer) btn.classList.add('correct');
-        else if(i===state._lastChoice && !state._lastCorrect) btn.classList.add('wrong');
-        else btn.classList.add('dim');
-      }
-      choices.appendChild(btn);
-    });
-    qCard.appendChild(choices);
-    main.appendChild(qCard);
+  main.appendChild(h('div',{className:'bottom'},
+    h('button',{className:'continue-btn show',onClick:function(){state.view='quiz';render()}},'开始答题')
+  ));
 
-    // Feedback
-    if(state.answered){
-      const fb=h('div',{className:'feedback show '+(state._lastCorrect?'correct':'wrong')});
-      fb.appendChild(h('span',{className:'emoji'},state._lastCorrect?'🎉':'😅'));
-      fb.appendChild(document.createTextNode(state._lastCorrect?'正确！':'不对哦'));
-      if(!state._lastCorrect && q.hint){
-        fb.appendChild(h('div',{className:'hint'},q.hint));
-      }
-      if(state._lastCorrect){
-        const t=q.sym?trigram(q.sym):null;
-        if(t)fb.appendChild(h('div',{className:'hint'},`${t.sym} ${t.name} · ${t.wuxing} · ${t.nature} · ${t.props}`));
-      }
-      main.appendChild(fb);
-    }
-
-    main.appendChild(h('div',{className:'bottom'},
-      h('button',{
-        className:'continue-btn'+(state.answered?' show':''),
-        onClick:()=>{
-          if(state.qIndex+1 >= state.totalQuestions){showComplete()}else{nextQuestion()}
-        }
-      },state.qIndex+1 >= state.totalQuestions?'查看结果':'继续')
-    ));
+  if(state.view!=='menu'){
+    main.insertBefore(h('button',{className:'back-btn',onClick:goMenu,style:{alignSelf:'flex-start',marginBottom:'-8px'}},'← 返回目录'), main.firstChild);
   }
 
   app.appendChild(main);
 }
 
-function answer(choiceIdx){
-  if(state.answered) return;
-  state.answered = true;
-  state._lastChoice = choiceIdx;
-  const q=LEVELS[0].questions[state.qIndex];
-  state._lastCorrect = choiceIdx === q.answer;
-  
+function renderQuiz(app){
+  var lv=curLevel();
+  var q=curQ();
+  var prog=(state.qIndex/totalQ())*100;
+
+  app.appendChild(h('div',{className:'progress-wrap'},
+    h('div',{className:'progress-bar'},h('div',{className:'progress-fill',style:{width:prog+'%'}})),
+    h('div',{className:'progress-text'},'第'+(state.qIndex+1)+'/'+totalQ()+' 题')
+  ));
+
+  var main=h('div',{className:'main'});
+
+  // Back button
+  main.appendChild(h('button',{className:'back-btn',onClick:goMenu,style:{alignSelf:'flex-start'}},'← 返回目录'));
+
+  // Question card
+  var qCard=h('div',{className:'q-card'+(state.answered?(state._lastCorrect?' correct':' wrong'):'')});
+  qCard.appendChild(h('div',{className:'q-prompt'},q.prompt));
+
+  // Target
+  if(q.type==='sym-to-name'||q.type==='sym-to-wuxing'||q.type==='name-to-sym'){
+    var t=trigram(q.sym);
+    if(t)qCard.appendChild(h('div',{className:'q-target'},t.sym));
+    if(q.type==='name-to-sym')qCard.appendChild(h('div',{className:'q-target-text'},q.name+'卦'));
+    if(q.type==='sym-to-wuxing'&&t)qCard.appendChild(h('div',{className:'q-target-text'},t.name));
+  }
+  if(q.type==='nature-to-sym')qCard.appendChild(h('div',{className:'q-target-text'},'「'+q.nature+'」'));
+  if(q.type==='wuxing-to-name')qCard.appendChild(h('div',{className:'q-target-text',style:{fontSize:'28px'}},q.wuxing));
+  if(q.type==='mnemonic-to-name'){
+    qCard.appendChild(h('div',{className:'q-target-text',style:{fontSize:'22px',color:'var(--green)',background:'#FFF9E6',padding:'8px 16px',borderRadius:'8px',display:'inline-block'}},'「'+q.mnemonic+'」'));
+  }
+  if(q.type==='sheng'||q.type==='ke'){
+    var wx=q.from||q.a;
+    qCard.appendChild(h('div',{style:{textAlign:'center',margin:'12px 0'}},
+      h('span',{className:'wx-chip '+wx,style:{fontSize:'24px',padding:'12px 24px'}},WUXING[wx].name)
+    ));
+  }
+  if(q.type==='who-sheng'||q.type==='who-ke'){
+    qCard.appendChild(h('div',{className:'q-target-text'}));
+    qCard.lastChild.textContent = '？ → ' + WUXING[q.to].name;
+  }
+  if(q.type==='sheng-ke-relation'){
+    qCard.appendChild(h('div',{style:{textAlign:'center',margin:'12px 0',display:'flex',alignItems:'center',justifyContent:'center',gap:'8px'}},
+      h('span',{className:'wx-chip '+q.a,style:{fontSize:'20px'}},WUXING[q.a].name),
+      h('span',{style:{fontSize:'20px'}},'❓'),
+      h('span',{className:'wx-chip '+q.b,style:{fontSize:'20px'}},WUXING[q.b].name)
+    ));
+  }
+
+  // Choices
+  var choices=h('div',{className:'choices'});
+  q.choices.forEach(function(c,i){
+    var btn=h('button',{className:'choice-btn',onClick:function(){answer(i)}},c);
+    if(state.answered){
+      btn.disabled=true;
+      if(i===q.answer)btn.classList.add('correct');
+      else if(i===state._lastChoice&&!state._lastCorrect)btn.classList.add('wrong');
+      else btn.classList.add('dim');
+    }
+    choices.appendChild(btn);
+  });
+  qCard.appendChild(choices);
+  main.appendChild(qCard);
+
+  // Feedback
+  if(state.answered){
+    var fb=h('div',{className:'feedback show '+(state._lastCorrect?'correct':'wrong')});
+    fb.appendChild(h('span',{className:'emoji'},state._lastCorrect?'🎉':'😅'));
+    fb.appendChild(document.createTextNode(state._lastCorrect?'正确！':'不对哦'));
+    if(state._lastCorrect&&q.type==='sheng'){
+      fb.appendChild(h('div',{className:'hint'},WUXING[q.from].name+'生'+WUXING[WUXING[q.from].sheng].name));
+    }
+    if(state._lastCorrect&&q.type==='ke'){
+      fb.appendChild(h('div',{className:'hint'},WUXING[q.from].name+'克'+WUXING[WUXING[q.from].ke].name));
+    }
+    if(!state._lastCorrect){
+      var right=q.choices[q.answer];
+      fb.appendChild(h('div',{className:'hint'},'正确答案：'+right));
+    }
+    main.appendChild(fb);
+  }
+
+  main.appendChild(h('div',{className:'bottom'},
+    h('button',{
+      className:'continue-btn'+(state.answered?' show':''),
+      onClick:function(){
+        if(state.qIndex+1>=totalQ()){state.view='complete';render()}
+        else{state.qIndex++;state.answered=false;state._lastCorrect=false;state._lastChoice=-1;render()}
+      }
+    },state.qIndex+1>=totalQ()?'查看结果':'继续')
+  ));
+
+  app.appendChild(main);
+}
+
+function answer(idx){
+  if(state.answered)return;
+  state.answered=true;
+  state._lastChoice=idx;
+  var q=curQ();
+  state._lastCorrect=idx===q.answer;
+
   if(state._lastCorrect){
     state.correct++;
     state.streak++;
-    state.score += Math.min(10 + state.streak * 2, 25);
-  } else {
-    state.streak = 0;
+    state.score+=Math.min(10+state.streak*2,25);
+  }else{
+    state.streak=0;
   }
-  state.bestStreak = Math.max(state.bestStreak, state.streak);
-  const prog = loadProgress();
-  prog.bestStreak = state.bestStreak;
-  prog.lastPlayed = new Date().toISOString();
-  saveProgress(prog);
-  
+  state.bestStreak=Math.max(state.bestStreak,state.streak);
+  var p=loadP();
+  p.bestStreak=state.bestStreak;
+  saveP(p);
   render();
 }
 
-function nextQuestion(){
-  state.qIndex++;
-  state.answered=false;
-  state._lastCorrect=undefined;
-  state._lastChoice=undefined;
-  render();
-}
+function renderComplete(app){
+  var lv=curLevel();
+  var total=totalQ();
+  var acc=Math.round((state.correct/total)*100);
 
-function showComplete(){
-  const accuracy=Math.round((state.correct/state.totalQuestions)*100);
-  app.innerHTML='';
+  // Save progress
+  var p=loadP();
+  if(!p.levels)p.levels={};
+  if(!p.levels[lv.id]||state.correct>=(p.levels[lv.id]&&p.levels[lv.id].score||0)){
+    p.levels[lv.id]={score:state.correct,best:acc,date:new Date().toISOString()};
+  }
+  p.bestStreak=state.bestStreak;
+  saveP(p);
+
   app.appendChild(h('div',{className:'complete-overlay show'},
     h('div',{className:'complete-card'},
-      h('div',{className:'complete-emoji'},accuracy>=80?'🌸':accuracy>=60?'👍':'💪'),
-      h('div',{className:'complete-title'},'关卡完成！'),
+      h('div',{className:'complete-emoji'},acc>=80?'🌸':acc>=60?'👍':'💪'),
+      h('div',{className:'complete-title'},'第'+lv.id+'关 完成！'),
       h('div',{className:'complete-stats'},
         h('div',{className:'complete-stat'},
-          h('div',{className:'complete-stat-val'},`${state.correct}/${state.totalQuestions}`),
+          h('div',{className:'complete-stat-val'},state.correct+'/'+total),
           h('div',{className:'complete-stat-label'},'正确')
         ),
         h('div',{className:'complete-stat'},
-          h('div',{className:'complete-stat-val'},accuracy+'%'),
+          h('div',{className:'complete-stat-val'},acc+'%'),
           h('div',{className:'complete-stat-label'},'正确率')
         ),
         h('div',{className:'complete-stat'},
@@ -370,17 +561,18 @@ function showComplete(){
           h('div',{className:'complete-stat-label'},'最佳连对')
         )
       ),
-      h('button',{className:'complete-btn',onClick:()=>{
-        state={qIndex:0,score:0,correct:0,streak:0,bestStreak:state.bestStreak,answered:false,showIntro:true,totalQuestions:state.totalQuestions};
+      h('button',{className:'complete-btn',onClick:function(){
+        state.view='intro';state.qIndex=0;state.answered=false;state.score=0;state.correct=0;state.streak=0;
         render();
-      }},'再来一次')
+      }},'再来一次'),
+      h('button',{className:'complete-btn',onClick:goMenu,style:{background:'#fff',color:'var(--green)',border:'2px solid var(--green)',marginTop:'6px'}},'返回目录')
     )
   ));
 }
 
 // PWA
 if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('sw.js', {scope: '/meihua-xuetang/'});
+  navigator.serviceWorker.register('sw.js',{scope:'/meihua-xuetang/'});
 }
 
 render();
