@@ -827,6 +827,344 @@ LEVELS.push({
   ]
 });
 
+// ==== LEVEL 14: 体用概念入门 ====
+LEVELS.push({
+  id:14, icon:'🧩', title:'体用概念入门', desc:'体=不动之卦（主体）、用=动爻所在卦（客体）',
+  source:'邵雍《梅花易数》卷一「体用总诀」',
+  pitfalls:'体卦永远不变，用卦随动爻走。体≠上卦、用≠下卦！这跟大小卦无关。',
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🧩 第14关：体用概念入门'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '「体用」是梅花易数的灵魂。任一重卦起出后，不动的那一卦叫「体卦」（代表自己/主体），有动爻的那一卦叫「用卦」（代表对方/客体）。'),
+      h('div',{style:{background:'#E3F2FD',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#1565C0'}},'🔑 核心规则'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '1️⃣ 起卦得重卦（上卦+下卦）\n2️⃣ 确定动爻位置（第几爻动）\n3️⃣ 动爻在上卦 → 用卦=上卦，体卦=下卦\n4️⃣ 动爻在下卦 → 用卦=下卦，体卦=上卦\n5️⃣ 体卦永远代表「自己」，用卦代表「对方/所问之事」')
+      ),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#B8860B'}},'📝 例子'),
+        h('p',{style:{fontSize:'13px',color:'var(--text-light)',lineHeight:'1.6'}},
+          '䷊地天泰（上坤下乾），动爻在三爻（下卦）→ 体=上坤、用=下乾\n䷊地天泰，动爻在五爻（上卦）→ 体=下乾、用=上坤')
+      ),
+      h('div',{className:'source-tag'},'来源：邵雍《梅花易数》卷一「体用总诀」')
+    ));
+  },
+  questions:[
+    {prompt:'「体卦」代表什么？',type:'tiyong-concept',choices:['自己/主体','对方/客体','结果','中间过程'],answer:0},
+    {prompt:'「用卦」代表什么？',type:'tiyong-concept2',choices:['自己/主体','对方/客体','不动卦','无意义'],answer:1},
+    {prompt:'动爻在上卦，谁是体卦？',type:'tiyong-judge',dong:'上',choices:['上卦是体','下卦是体','上下都是体','没有体'],answer:1},
+    {prompt:'动爻在下卦，谁是体卦？',type:'tiyong-judge',dong:'下',choices:['上卦是体','下卦是体','体用互换','无体'],answer:0},
+    {prompt:'动爻在上卦，谁是体卦？',type:'tiyong-judge',dong:'上',choices:['上卦是体','下卦是体','上下都是体','没有体'],answer:1},
+    {prompt:'䷊地天泰，动爻在四爻(上卦) → 体卦是？',type:'tiyong-case',gua:'䷊',dong:'上',choices:['上坤☷','下乾☰','都是','都不是'],answer:1},
+    {prompt:'䷊地天泰，动爻在二爻(下卦) → 体卦是？',type:'tiyong-case',gua:'䷊',dong:'下',choices:['上坤☷','下乾☰','互卦','变卦'],answer:0},
+    {prompt:'䷋天地否(上乾下坤)，动爻在初爻(下) → 用卦是？',type:'tiyong-case2',gua:'䷋',dong:'下',choices:['上乾☰','下坤☷','都是','都不是'],answer:1},
+    {prompt:'体卦和用卦，哪个永远不变？',type:'tiyong-fact',choices:['体卦','用卦','都会变','视情况'],answer:0},
+    {prompt:'动爻所在的卦叫什么？',type:'tiyong-fact2',choices:['体卦','用卦','互卦','变卦'],answer:1},
+    {prompt:'判断体用的关键是？',type:'tiyong-key',choices:['动爻位置','上下卦大小','阴阳爻数','卦的五行'],answer:0},
+    {prompt:'上卦兑☱、下卦震☳，动爻在三爻(下) → 体=？',type:'tiyong-case3',up:'兑',down:'震',dong:'下',choices:['兑☱','震☳','都体','都用'],answer:0},
+    {prompt:'上卦离☲、下卦坎☵，动爻在五爻(上) → 体=？',type:'tiyong-case3',up:'离',down:'坎',dong:'上',choices:['离☲','坎☵','互卦','变卦'],answer:1},
+    {prompt:'动爻在三爻属于？',type:'yao-pos',pos:3,choices:['上卦','下卦','互卦','变卦'],answer:1},
+    {prompt:'动爻在四爻属于？',type:'yao-pos2',pos:4,choices:['上卦','下卦','中位','初位'],answer:0},
+    {prompt:'初爻属于上卦还是下卦？',type:'yao-pos2',pos:1,choices:['上卦','下卦','中卦','外卦'],answer:1},
+    {prompt:'上爻属于上卦还是下卦？',type:'yao-pos2',pos:6,choices:['上卦','下卦','中卦','内卦'],answer:0},
+    {prompt:'体用的「用」是哪个卦？',type:'tiyong-def',choices:['不动之卦','动爻所在之卦','互卦','变卦'],answer:1},
+    {prompt:'体卦和用卦的关系分析叫什么？',type:'tiyong-term',choices:['体用生克','八卦取象','爻位分析','旺衰判断'],answer:0},
+    {prompt:'六爻中哪些属于上卦？',type:'gua-struct',part:'上',choices:['初/二/三爻','二/三/四爻','三/四/五爻','四/五/上爻'],answer:3}
+  ]
+});
+
+// ==== LEVEL 15: 体用生克关系 ====
+LEVELS.push({
+  id:15, icon:'⚖️', title:'体用生克关系', desc:'体生用、用生体、体克用、用克体、体用比和',
+  source:'《梅花易数》「体用生克篇」',
+  pitfalls:'体生用≠用生体！方向反了吉凶相反。',
+  reviewCount:3,
+  teaching:function(main){
+    var relations=[
+      ['用生体','大吉','对方来生我，如得贵人相助','🌟'],
+      ['体用比和','吉','体用同五行，和和谐谐','🤝'],
+      ['体克用','小吉','我能克制对方，事可成但费力','💪'],
+      ['体生用','小凶','我去生对方，耗泄自身','😰'],
+      ['用克体','凶','对方克我，受制于人','⚠️']
+    ];
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'⚖️ 第15关：体用生克关系'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '定出体用之后，用体卦和用卦的五行生克关系来判断吉凶。这是梅花易数断卦的核心逻辑。'),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#B8860B'}},'📊 体用生克·吉凶等级'),
+        relations.map(function(r){return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'10px 12px',marginBottom:'6px',display:'flex',alignItems:'center',gap:'8px',border:'1px solid var(--border)'}},
+          h('span',{style:{fontSize:'24px'}},r[3]),
+          h('div',{style:{flex:1}},
+            h('div',{style:{fontWeight:700,fontSize:'14px'}},r[0]+' → '+r[1]),
+            h('div',{style:{fontSize:'12px',color:'var(--text-light)'}},r[2])
+          ));
+        })
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
+        '💡 记忆排序：用生体 > 比和 > 体克用 > 体生用 > 用克体'),
+      h('div',{className:'source-tag'},'来源：《梅花易数》「体用生克篇」')
+    ));
+  },
+  questions:[
+    {prompt:'体=木、用=火 → 体生用，吉凶？',type:'tiyong-shengke',ti:'mu',yong:'huo',choices:['大吉','吉','小凶','凶'],answer:2},
+    {prompt:'体=火、用=木 → 用生体，吉凶？',type:'tiyong-shengke',ti:'huo',yong:'mu',choices:['大吉','吉','小凶','凶'],answer:0},
+    {prompt:'体=金、用=木 → 体克用，吉凶？',type:'tiyong-shengke',ti:'jin',yong:'mu',choices:['大吉','小吉','小凶','凶'],answer:1},
+    {prompt:'体=木、用=金 → 用克体，吉凶？',type:'tiyong-shengke',ti:'mu',yong:'jin',choices:['大吉','吉','小凶','凶'],answer:3},
+    {prompt:'体=水、用=水 → 比和，吉凶？',type:'tiyong-shengke',ti:'shui',yong:'shui',choices:['大吉','吉','小凶','凶'],answer:1},
+    {prompt:'体=土、用=火 → 关系+吉凶？',type:'tiyong-shengke-full',ti:'tu',yong:'huo',choices:['用生体·大吉','体生用·小凶','体克用·小吉','用克体·凶'],answer:0},
+    {prompt:'体=水、用=木 → 关系+吉凶？',type:'tiyong-shengke-full',ti:'shui',yong:'mu',choices:['用生体·大吉','体生用·小凶','比和·吉','用克体·凶'],answer:1},
+    {prompt:'体=火、用=金 → 关系+吉凶？',type:'tiyong-shengke-full',ti:'huo',yong:'jin',choices:['体生用·小凶','用生体·大吉','体克用·小吉','用克体·凶'],answer:2},
+    {prompt:'体=金、用=火 → 关系+吉凶？',type:'tiyong-shengke-full',ti:'jin',yong:'huo',choices:['体生用·小凶','体克用·小吉','用克体·凶','用生体·大吉'],answer:2},
+    {prompt:'体震☳(木) + 用离☲(火) → ？',type:'tiyong-gua-shengke',tiSym:'zhen',yongSym:'li',choices:['体生用·小凶','用生体·大吉','比和·吉','体克用·小吉'],answer:0},
+    {prompt:'体坎☵(水) + 用兑☱(金) → ？',type:'tiyong-gua-shengke',tiSym:'kan',yongSym:'dui',choices:['体生用·小凶','用克体·凶','用生体·大吉','体克用·小吉'],answer:2},
+    {prompt:'体艮☶(土) + 用坎☵(水) → ？',type:'tiyong-gua-shengke',tiSym:'gen',yongSym:'kan',choices:['体生用·小凶','用生体·大吉','比和·吉','体克用·小吉'],answer:3},
+    {prompt:'体乾☰(金) + 用离☲(火) → ？',type:'tiyong-gua-shengke',tiSym:'qian',yongSym:'li',choices:['体生用·小凶','用生体·大吉','用克体·凶','体克用·小吉'],answer:2},
+    {prompt:'体坤☷(土) + 用艮☶(土) → ？',type:'tiyong-gua-shengke',tiSym:'kun',yongSym:'gen',choices:['体生用·小凶','用克体·凶','比和·吉','体克用·小吉'],answer:2},
+    {prompt:'什么情况下是「大吉」？',type:'tiyong-best',choices:['用生体','体生用','体克用','用克体'],answer:0},
+    {prompt:'什么情况下是「凶」？',type:'tiyong-worst',choices:['用生体','体生用','体克用','用克体'],answer:3},
+    {prompt:'「体生用」为什么会凶？',type:'tiyong-reason',choices:['我被克制','耗泄自身能量','对方太强','比和失衡'],answer:1},
+    {prompt:'体=火(huo)、用=土(tu) → 火生土 → ？',type:'tiyong-shengke',ti:'huo',yong:'tu',choices:['大吉','吉','小凶','凶'],answer:2},
+    {prompt:'体巽☴(木) + 用乾☰(金) → ？',type:'tiyong-gua-shengke',tiSym:'xun',yongSym:'qian',choices:['用克体·凶','体克用·小吉','用生体·大吉','体生用·小凶'],answer:0},
+    {prompt:'体用比和=吉，前提是？',type:'tiyong-bihe',choices:['体用同五行','体生用','用生体','体克用'],answer:0}
+  ]
+});
+
+// ==== LEVEL 16: 体用吉凶速断 ====
+LEVELS.push({
+  id:16, icon:'⚡', title:'体用吉凶速断', desc:'5秒内判断体用生克+吉凶等级',
+  source:'《梅花易数》',
+  pitfalls:'速断只看体用五行，旺衰暂不考虑（后面再叠加）。',
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'⚡ 第16关：体用吉凶速断'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '本关训练你在5秒内完成「看动爻→定体用→查五行→判生克→断吉凶」的完整链条。'),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2E7D32'}},'⚡ 速断口诀'),
+        h('div',{style:{fontSize:'15px',lineHeight:'2',textAlign:'center',fontWeight:600}},
+          '用生体 → 大吉 🌟\n比和 → 吉 🤝\n体克用 → 小吉 💪\n体生用 → 小凶 😰\n用克体 → 凶 ⚠️')
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px'}},
+        '🎯 本关给完整卦例（上卦+下卦+动爻位置）→ 你判断吉凶'),
+      h('div',{className:'source-tag'},'来源：《梅花易数》')
+    ));
+  },
+  questions:[
+    {prompt:'䷊地天泰 动爻在二 → 体坤☷(土)用乾☰(金) → ？',type:'tiyong-quick',tiSym:'kun',yongSym:'qian',dongXia:true,choices:['用生体·大吉','体生用·小凶','体克用·小吉','用克体·凶'],answer:1},
+    {prompt:'䷊地天泰 动爻在五 → 体乾☰(金)用坤☷(土) → ？',type:'tiyong-quick',tiSym:'qian',yongSym:'kun',dongXia:false,choices:['用生体·大吉','体生用·小凶','体克用·小吉','比和·吉'],answer:0},
+    {prompt:'上离☲下震☳ 动爻在初 → 体离☲(火)用震☳(木) → ？',type:'tiyong-quick',tiSym:'li',yongSym:'zhen',dongXia:true,choices:['体生用·小凶','用生体·大吉','用克体·凶','比和·吉'],answer:1},
+    {prompt:'上坎☵下艮☶ 动爻在三 → 体坎☵(水)用艮☶(土) → ？',type:'tiyong-quick',tiSym:'kan',yongSym:'gen',dongXia:true,choices:['用生体·大吉','体克用·小吉','用克体·凶','比和·吉'],answer:2},
+    {prompt:'上兑☱下巽☴ 动爻在四 → 体巽☴(木)用兑☱(金) → ？',type:'tiyong-quick',tiSym:'xun',yongSym:'dui',dongXia:false,choices:['体克用·小吉','用克体·凶','用生体·大吉','体生用·小凶'],answer:1},
+    {prompt:'上震☳下坤☷ 动爻在二 → 体震☳(木)用坤☷(土) → ？',type:'tiyong-quick',tiSym:'zhen',yongSym:'kun',dongXia:true,choices:['用生体·大吉','体生用·小凶','体克用·小吉','用克体·凶'],answer:2},
+    {prompt:'上乾☰下离☲ 动爻在上 → 体离☲(火)用乾☰(金) → ？',type:'tiyong-quick',tiSym:'li',yongSym:'qian',dongXia:false,choices:['体克用·小吉','用克体·凶','体生用·小凶','用生体·大吉'],answer:0},
+    {prompt:'上艮☶下水☵ 动爻在下 → 体艮☶(土)用坎☵(水) → ？',type:'tiyong-quick',tiSym:'gen',yongSym:'kan',dongXia:true,choices:['体克用·小吉','用克体·凶','用生体·大吉','体生用·小凶'],answer:0},
+    {prompt:'上巽☴下兑☱ 动爻在上 → 体兑☱(金)用巽☴(木) → ？',type:'tiyong-quick',tiSym:'dui',yongSym:'xun',dongXia:false,choices:['体克用·小吉','用克体·凶','体生用·小凶','比和·吉'],answer:0},
+    {prompt:'上坤☷下乾☰ 动爻在初 → 体坤☷(土)用乾☰(金) → ？',type:'tiyong-quick',tiSym:'kun',yongSym:'qian',dongXia:true,choices:['体生用·小凶','用生体·大吉','体克用·小吉','用克体·凶'],answer:0},
+    {prompt:'上离☲下坎☵ 动爻在五 → 体坎☵(水)用离☲(火) → ？',type:'tiyong-quick',tiSym:'kan',yongSym:'li',dongXia:false,choices:['体克用·小吉','用克体·凶','用生体·大吉','比和·吉'],answer:0},
+    {prompt:'上震☳下震☳ 动爻在二 → 体用同震木 → ？',type:'tiyong-quick',tiSym:'zhen',yongSym:'zhen',dongXia:true,choices:['用生体·大吉','比和·吉','体克用·小吉','体生用·小凶'],answer:1},
+    {prompt:'体坎☵(水)用兑☱(金) → 金生水 → ？',type:'tiyong-shengke',ti:'shui',yong:'jin',choices:['大吉','吉','小凶','凶'],answer:0},
+    {prompt:'体离☲(火)用坎☵(水) → 水克火 → ？',type:'tiyong-shengke',ti:'huo',yong:'shui',choices:['大吉','吉','小凶','凶'],answer:3},
+    {prompt:'体兑☱(金)用坤☷(土) → 土生金 → ？',type:'tiyong-shengke',ti:'jin',yong:'tu',choices:['大吉','吉','小凶','凶'],answer:0},
+    {prompt:'体艮☶(土)用离☲(火) → 火生土 → ？',type:'tiyong-shengke',ti:'tu',yong:'huo',choices:['大吉','吉','小凶','凶'],answer:0},
+    {prompt:'体巽☴(木)用震☳(木) → 木木比和 → ？',type:'tiyong-shengke',ti:'mu',yong:'mu',choices:['大吉','吉','小凶','凶'],answer:1},
+    {prompt:'体坎☵(水)用坤☷(土) → 土克水 → ？',type:'tiyong-shengke',ti:'shui',yong:'tu',choices:['大吉','吉','小凶','凶'],answer:3},
+    {prompt:'体乾☰(金)用兑☱(金) → 金金比和 → ？',type:'tiyong-shengke',ti:'jin',yong:'jin',choices:['大吉','吉','小凶','凶'],answer:1},
+    {prompt:'最坏的体用关系是？',type:'tiyong-worst',choices:['用生体','体生用','体克用','用克体'],answer:3}
+  ]
+});
+
+// ==== LEVEL 17: 体用实战综合 ====
+LEVELS.push({
+  id:17, icon:'🏆', title:'体用实战综合', desc:'完整流程：给重卦+动爻→定位体用→判断生克→断吉凶',
+  source:'综合',
+  pitfalls:'注意区分：动爻在上下卦的判断！',
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🏆 第17关：体用实战综合'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '把前几关串起来！给你完整卦例，你需要自己走完「定体用→查五行→判生克→断吉凶」全流程。'),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2E7D32'}},'🔗 完整链条'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',textAlign:'center',color:'var(--text-light)'}},
+          '重卦+动爻 → 定体用 → 查五行 → 判生克 → 断吉凶'))
+    ));
+  },
+  questions:[
+    {prompt:'䷊天地泰 动爻在三(下卦) → 体坤☷(土)用乾☰(金) → 判断？',type:'tiyong-full',tiSym:'kun',yongSym:'qian',choices:['体生用·小凶：耗泄','用生体·大吉：得助','体克用·小吉：可成','用克体·凶：受制'],answer:0},
+    {prompt:'䷋天地否 动爻在五(上卦) → 体坤☷(土)用乾☰(金) → ？',type:'tiyong-full',tiSym:'kun',yongSym:'qian',choices:['体生用·小凶','用生体·大吉','比和·吉','用克体·凶'],answer:0},
+    {prompt:'上离☲下震☳ 动爻在初(下) → 体离火用震木 → ？',type:'tiyong-full',tiSym:'li',yongSym:'zhen',choices:['用生体·大吉','体生用·小凶','体克用·小吉','用克体·凶'],answer:0},
+    {prompt:'上坎☵下兑☱ 动爻在四(上) → 体兑金用坎水 → ？',type:'tiyong-full',tiSym:'dui',yongSym:'kan',choices:['用生体·大吉','体生用·小凶','体克用·小吉','比和·吉'],answer:1},
+    {prompt:'上震☳下离☲ 动爻在二(下) → 体震木用离火 → ？',type:'tiyong-full',tiSym:'zhen',yongSym:'li',choices:['体生用·小凶','用生体·大吉','用克体·凶','体克用·小吉'],answer:0},
+    {prompt:'上艮☶下巽☴ 动爻在六(上) → 体巽木用艮土 → ？',type:'tiyong-full',tiSym:'xun',yongSym:'gen',choices:['体生用·小凶','用生体·大吉','体克用·小吉','用克体·凶'],answer:2},
+    {prompt:'问事业，体乾☰金用坤☷土 土生金 → ？',type:'tiyong-scenario',tiSym:'qian',yongSym:'kun',scenario:'事业',choices:['大吉：得贵人助','小凶：耗心力','小吉：可能成','凶：有阻力'],answer:0},
+    {prompt:'问感情，体兑☱金用离☲火 火克金 → ？',type:'tiyong-scenario',tiSym:'dui',yongSym:'li',scenario:'感情',choices:['大吉：顺利','小吉：可成但费力','凶：不顺利','比和：稳定'],answer:2},
+    {prompt:'问财运，体震☳木用艮☶土 木克土 → ？',type:'tiyong-scenario',tiSym:'zhen',yongSym:'gen',scenario:'财运',choices:['大吉：大发','小吉：有钱但费劲','小凶：破耗','凶：大亏'],answer:1},
+    {prompt:'上兑☱下坎☵ 动爻在上 → 体坎水用兑金 → 金生水 → ？',type:'tiyong-full',tiSym:'kan',yongSym:'dui',choices:['用生体·大吉','体生用·小凶','比和·吉','体克用·小吉'],answer:0},
+    {prompt:'上坤☷下离☲ 动爻在下 → 体坤土用离火 → 火生土 → ？',type:'tiyong-full',tiSym:'kun',yongSym:'li',choices:['用生体·大吉','体生用·小凶','体克用·小吉','用克体·凶'],answer:0},
+    {prompt:'上巽☴下乾☰ 动爻在上 → 体乾金用巽木 → 金克木 → ？',type:'tiyong-full',tiSym:'qian',yongSym:'xun',choices:['用生体·大吉','体克用·小吉','用克体·凶','体生用·小凶'],answer:1},
+    {prompt:'上坎☵下坎☵ 动爻在二 → 体用同坎水 → ？',type:'tiyong-full',tiSym:'kan',yongSym:'kan',choices:['大吉','吉·比和','小吉','凶'],answer:1},
+    {prompt:'体生用=小凶，因为？',type:'tiyong-reason',choices:['被克制','耗泄自身','对方强','不和谐'],answer:1},
+    {prompt:'用克体=凶，断语应说？',type:'tiyong-duanyu',choices:['事可成','事不顺利/受制','需等待','大吉大利'],answer:1},
+    {prompt:'体用比和断语应说？',type:'tiyong-duanyu2',choices:['凶多吉少','耗心费力','和谐顺利','贵人相助'],answer:2},
+    {prompt:'用生体断语应说？',type:'tiyong-duanyu3',choices:['事倍功半','得贵人助/顺利','困难重重','平平无奇'],answer:1},
+    {prompt:'体克用断语应说？',type:'tiyong-duanyu4',choices:['受制于人','大吉大利','可成但需努力','完全不成'],answer:2},
+    {prompt:'上离☲下坤☷ 动爻在初 → 体离火用坤土 → 火生土 → ？',type:'tiyong-full',tiSym:'li',yongSym:'kun',choices:['大吉','吉','小凶','凶'],answer:2},
+    {prompt:'上乾☰下震☳ 动爻在五 → 体震木用乾金 → 金克木 → ？',type:'tiyong-full',tiSym:'zhen',yongSym:'qian',choices:['用生体·大吉','体克用·小吉','用克体·凶','比和·吉'],answer:2}
+  ]
+});
+
+// ==== LEVEL 18: 八卦取象·总回顾 ====
+LEVELS.push({
+  id:18, icon:'🔁', title:'八卦取象·总回顾', desc:'全部八卦取象混合——人物/动物/身体/方位/自然',
+  source:'综合',
+  pitfalls:null,
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🔁 第18关：八卦取象·总回顾'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '温故知新，把前面学过的八卦取象全部过一遍。无新知识点，纯巩固！'),
+      h('p',{style:{fontSize:'13px',color:'var(--green)',fontWeight:700,textAlign:'center'}},'20题 · 跨6个维度'),
+      h('div',{className:'source-tag'},'来源：综合')
+    ));
+  },
+  questions:[
+    {prompt:'☰ 叫什么名字？',type:'sym-name',sym:'qian',choices:['乾','坤','震','离'],answer:0},
+    {prompt:'☷ 叫什么名字？',type:'sym-name',sym:'kun',choices:['艮','兑','坤','坎'],answer:2},
+    {prompt:'巽卦五行是什么？',type:'sym-wx',sym:'xun',choices:['金','木','水','火'],answer:1},
+    {prompt:'离☲代表什么动物？',type:'sym-ani',sym:'li',choices:['马','鸡','雉(野鸡)','羊'],answer:2},
+    {prompt:'☵ 代表哪个家庭成员？',type:'sym-fam',sym:'kan',choices:['父','长男','中男','少男'],answer:2},
+    {prompt:'☶ 对应什么身体部位？',type:'sym-bod',sym:'gen',choices:['首','手','足','腹'],answer:1},
+    {prompt:'兑☱位于什么方位？',type:'sym-dir',sym:'dui',choices:['东','南','西','北'],answer:2},
+    {prompt:'震☳ 对应的自然现象是？',type:'sym-nat',sym:'zhen',choices:['风','雷','火','山'],answer:1},
+    {prompt:'「母」对应哪个卦？',type:'fam-sym',family:'母',choices:['乾☰','坤☷','震☳','兑☱'],answer:1},
+    {prompt:'「狗」对应哪个卦？',type:'ani-sym',animal:'狗',choices:['艮☶','坎☵','乾☰','坤☷'],answer:0},
+    {prompt:'「口」对应哪个卦？',type:'bod-sym',body:'口',choices:['离☲','坎☵','兑☱','坤☷'],answer:2},
+    {prompt:'「北」对应哪个卦？',type:'dir-sym',dir:'北',choices:['震☳','离☲','兑☱','坎☵'],answer:3},
+    {prompt:'「泽」对应哪个卦？',type:'nat-sym',nature:'泽',choices:['艮☶','兑☱','坎☵','震☳'],answer:1},
+    {prompt:'乾卦的五行+方位？',type:'wx-dir-combo',wx:'金',dir:'西北',choices:['金·西北','金·西','土·中','火·南'],answer:0},
+    {prompt:'艮卦的五行+动物？',type:'wx-ani-combo',wx:'土',ani:'狗',choices:['土·狗','土·牛','金·狗','水·猪'],answer:0},
+    {prompt:'☳ 的五行+自然？',type:'sym-wx-nat',sym:'zhen',wx:'木',nat:'雷',choices:['木·雷','木·风','火·雷','金·雷'],answer:0},
+    {prompt:'少女+羊+口 都对应？',type:'multisym',name:'兑',choices:['兑☱','离☲','巽☴','坤☷'],answer:0},
+    {prompt:'坎☵(水)位于正北，其动物是？',type:'sym-ani',sym:'kan',choices:['马','牛','猪(豕)','狗'],answer:2},
+    {prompt:'巽☴ 五行木+方位东南，对应身体？',type:'sym-bod',sym:'xun',choices:['手','足','股','耳'],answer:2},
+    {prompt:'「长男+龙+足+东+雷」的卦是？',type:'multisym2',name:'震',choices:['震☳','离☲','乾☰','坎☵'],answer:0}
+  ]
+});
+
+// ==== LEVEL 19: 五行万物大回顾 ====
+LEVELS.push({
+  id:19, icon:'🌐', title:'五行万物大回顾', desc:'五行全维度——生克+方位+季节+颜色+五脏+五味+五志',
+  source:'综合',
+  pitfalls:null,
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🌐 第19关：五行万物大回顾'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '五行全维度总复习。从生克到方位到五脏——全都在这里。'),
+      h('p',{style:{fontSize:'13px',color:'var(--green)',fontWeight:700,textAlign:'center'}},'20题 · 跨7个维度'),
+      h('div',{className:'source-tag'},'来源：综合')
+    ));
+  },
+  questions:[
+    {prompt:'木生什么？',type:'sheng',from:'mu',choices:['火','金','水','土'],answer:0},
+    {prompt:'水克什么？',type:'ke',from:'shui',choices:['木','土','火','金'],answer:2},
+    {prompt:'火对应的方位？',type:'wx-dir',wx:'huo',choices:['东','南','西','北'],answer:1},
+    {prompt:'金对应的季节？',type:'wx-season',wx:'jin',choices:['春','夏','秋','冬'],answer:2},
+    {prompt:'木对应的颜色？',type:'wx-color',wx:'mu',choices:['赤','黄','青','白'],answer:2},
+    {prompt:'土对应的五脏？',type:'wx-organ',wx:'tu',choices:['心','肝','脾','肾'],answer:2},
+    {prompt:'火对应的五味？',type:'taste-wx',taste:'苦',choices:['木','火','土','金'],answer:1},
+    {prompt:'金对应的五志？',type:'emotion-wx',emotion:'悲',choices:['木','火','金','水'],answer:2},
+    {prompt:'冬天+黑色+肾 → 这个五行是？',type:'wx-triple',wx:'shui',choices:['木','火','金','水'],answer:3},
+    {prompt:'什么生木？',type:'who-sheng',to:'mu',choices:['火','土','金','水'],answer:3},
+    {prompt:'什么克金？',type:'who-ke',to:'jin',choices:['水','火','土','木'],answer:1},
+    {prompt:'土和火的关系？',type:'rel',a:'tu',b:'huo',choices:['土生火','火生土','土克火','火克土'],answer:1},
+    {prompt:'水和木的关系？',type:'rel',a:'shui',b:'mu',choices:['水生木','木生水','水克木','木克水'],answer:0},
+    {prompt:'「青·东·春·肝·酸·怒」——哪个五行？',type:'wx-triple',wx:'mu',choices:['木','火','金','水'],answer:0},
+    {prompt:'「赤·南·夏·心·苦·喜」——哪个五行？',type:'wx-triple',wx:'huo',choices:['木','火','土','水'],answer:1},
+    {prompt:'「白·西·秋·肺·辛·悲」——哪个五行？',type:'wx-triple',wx:'jin',choices:['木','火','金','水'],answer:2},
+    {prompt:'「黑·北·冬·肾·咸·恐」——哪个五行？',type:'wx-triple',wx:'shui',choices:['木','火','金','水'],answer:3},
+    {prompt:'火生土，土对应什么颜色？',type:'wx-color',wx:'tu',choices:['青','赤','黄','白'],answer:2},
+    {prompt:'金生水，水对应什么情绪？',type:'emotion-wx',emotion:'恐',choices:['木','火','金','水'],answer:3},
+    {prompt:'水生木 — 水对应北方冬天，木对应？',type:'wx-season',wx:'mu',choices:['春','夏','秋','冬'],answer:0}
+  ]
+});
+
+// ==== LEVEL 20: 第一单元大考 ====
+LEVELS.push({
+  id:20, icon:'🎓', title:'🎯 第一单元大考', desc:'40题，正确率≥80%解锁第二单元',
+  source:'综合',
+  pitfalls:null,
+  reviewCount:0,
+  passThreshold:80,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🎓 第20关：第一单元大考'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '这是第一单元的毕业考试！40道题覆盖全部所学内容。'),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#E65100'}},'📋 考试说明'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '📝 题数：40题\n⏱️ 不限时\n🎯 通过门槛：≥ 80%（32/40）\n📊 题型分布：八卦取象(10) + 五行万物(10) + 爻与上下卦(8) + 体用(12)')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'准备好了吗？祝你顺利通过！🌸'),
+      h('div',{className:'source-tag'},'来源：综合测试')
+    ));
+  },
+  questions:[
+    // 八卦取象 (10)
+    {prompt:'☲ 叫什么名字？',type:'sym-name',sym:'li',choices:['离','坎','兑','震'],answer:0},
+    {prompt:'艮卦五行是什么？',type:'sym-wx',sym:'gen',choices:['木','火','土','金'],answer:2},
+    {prompt:'☵ 代表哪个家庭成员？',type:'sym-fam',sym:'kan',choices:['长男','中男','少男','父'],answer:1},
+    {prompt:'☴ 对应什么动物？',type:'sym-ani',sym:'xun',choices:['鸡','羊','龙','牛'],answer:0},
+    {prompt:'☰ 对应哪个身体部位？',type:'sym-bod',sym:'qian',choices:['手','足','首','目'],answer:2},
+    {prompt:'震☳ 位于什么方位？',type:'sym-dir',sym:'zhen',choices:['东','南','西','北'],answer:0},
+    {prompt:'艮☶ 对应的自然现象？',type:'sym-nat',sym:'gen',choices:['天','地','山','泽'],answer:2},
+    {prompt:'「少女」对应哪个卦？⚠️',type:'fam-sym',family:'少女',choices:['离☲','兑☱','巽☴','坤☷'],answer:1},
+    {prompt:'「羊」对应哪个卦？',type:'ani-sym',animal:'羊',choices:['兑☱','离☲','巽☴','艮☶'],answer:0},
+    {prompt:'「西北」对应哪个卦？',type:'dir-sym',dir:'西北',choices:['坤☷','艮☶','乾☰','坎☵'],answer:2},
+    // 五行万物 (10)
+    {prompt:'火生什么？',type:'sheng',from:'huo',choices:['木','土','金','水'],answer:1},
+    {prompt:'金克什么？',type:'ke',from:'jin',choices:['水','木','火','土'],answer:1},
+    {prompt:'木对应的方位+季节？',type:'wx-dir-season',wx:'mu',choices:['东·春','南·夏','西·秋','北·冬'],answer:0},
+    {prompt:'火对应的颜色？',type:'wx-color',wx:'huo',choices:['青','赤','黄','白'],answer:1},
+    {prompt:'金对应的五脏？',type:'wx-organ',wx:'jin',choices:['肝','心','脾','肺'],answer:3},
+    {prompt:'咸味对应哪个五行？',type:'taste-wx',taste:'咸',choices:['木','火','金','水'],answer:3},
+    {prompt:'思对应哪个五行？',type:'emotion-wx',emotion:'思',choices:['木','火','土','金'],answer:2},
+    {prompt:'什么生水？',type:'who-sheng',to:'shui',choices:['木','火','土','金'],answer:3},
+    {prompt:'火和土的关系？',type:'rel',a:'huo',b:'tu',choices:['火生土','土生火','火克土','土克火'],answer:0},
+    {prompt:'「赤·南·夏·心·苦·喜」→ ？',type:'wx-triple',wx:'huo',choices:['木','火','土','水'],answer:1},
+    // 爻与上下卦 (8)
+    {prompt:'六爻从下往上第1位叫什么？',type:'yao-pos',pos:1,choices:['一爻','初爻','下爻','首爻'],answer:1},
+    {prompt:'六爻最上面叫什么？',type:'yao-pos',pos:6,choices:['六爻','终爻','上爻','顶爻'],answer:2},
+    {prompt:'二爻（偶数位）上阴爻⚋ = ？',type:'dangwei',pos:2,yao:'yin',choices:['当位','不当位','失位','偏位'],answer:0},
+    {prompt:'五爻（奇数位）上阳爻⚊ = 当位，这叫？',type:'dangwei',pos:5,yao:'yang',choices:['不当位','中正','失位','过位'],answer:1},
+    {prompt:'上卦由哪几爻组成？',type:'gua-struct',part:'上',choices:['初/二/三爻','二/三/四爻','三/四/五爻','四/五/上爻'],answer:3},
+    {prompt:'下卦又叫什么？',type:'gua-alias2',choices:['内卦','外卦','上卦','互卦'],answer:0},
+    {prompt:'䷊地天泰：上卦☷下卦☰，正确名称？',type:'gua-name',up:'坤',down:'乾',choices:['天地否','地天泰','天雷无妄','地山谦'],answer:1},
+    {prompt:'重卦命名先说上卦还是下卦？',type:'gua-order',choices:['先说上卦','先说下卦','都可以','看情况'],answer:0},
+    // 体用 (12)
+    {prompt:'「体卦」代表什么？',type:'tiyong-concept',choices:['自己/主体','对方/客体','结果','中间过程'],answer:0},
+    {prompt:'动爻在下卦，谁是体卦？',type:'tiyong-judge',dong:'下',choices:['上卦是体','下卦是体','都是','都不是'],answer:0},
+    {prompt:'体=离火 用=坎水 → 水克火 → ？',type:'tiyong-shengke',ti:'huo',yong:'shui',choices:['大吉','吉','小凶','凶'],answer:3},
+    {prompt:'体=坎水 用=兑金 → 金生水 → ？',type:'tiyong-shengke',ti:'shui',yong:'jin',choices:['大吉','吉','小凶','凶'],answer:0},
+    {prompt:'体=震木 用=震木 → 比和 → ？',type:'tiyong-shengke',ti:'mu',yong:'mu',choices:['大吉','吉','小凶','凶'],answer:1},
+    {prompt:'体=坤土 用=离火 → 火生土 → ？',type:'tiyong-shengke',ti:'tu',yong:'huo',choices:['大吉','吉','小凶','凶'],answer:0},
+    {prompt:'体=巽木 用=乾金 → 金克木 → ？',type:'tiyong-shengke',ti:'mu',yong:'jin',choices:['大吉','吉','小凶','凶'],answer:3},
+    {prompt:'上乾☰下坤☷ 动爻在初(下) → 体？',type:'tiyong-case',gua:'䷋',dong:'下',choices:['上乾☰','下坤☷','都是','都不是'],answer:0},
+    {prompt:'最好的体用关系是？',type:'tiyong-best',choices:['用生体','体生用','体克用','用克体'],answer:0},
+    {prompt:'最坏的体用关系是？',type:'tiyong-worst',choices:['用生体','体生用','体克用','用克体'],answer:3},
+    {prompt:'体生用=小凶，因为？',type:'tiyong-reason',choices:['被克制','耗泄自身','对方强','不和谐'],answer:1},
+    {prompt:'体兑☱金用艮☶土 → 土生金 → ？',type:'tiyong-shengke',ti:'jin',yong:'tu',choices:['大吉','吉','小凶','凶'],answer:0}
+  ]
+});
+
 // ====== STATE ======
 var SK = 'meihua_progress_v2';
 function loadP(){try{return JSON.parse(localStorage.getItem(SK))||{}}catch(e){return{}}}
@@ -1151,7 +1489,8 @@ function renderComplete(app){
   var p=loadP();
   if(!p.completed)p.completed={};
   var prev=p.completed[lv.id];
-  if(!prev||acc>=prev.best){
+  var passed = !lv.passThreshold || acc >= lv.passThreshold;
+  if(passed && (!prev||acc>=prev.best)){
     p.completed[lv.id]={ts:Date.now(),score:state.correct,total:total,best:acc};
   }
   p.bestStreak=state.bestStreak;
@@ -1176,6 +1515,10 @@ function renderComplete(app){
           h('div',{className:'complete-stat-label'},'最佳连对')
         )
       ),
+      lv.passThreshold&&!passed?h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'12px',marginTop:'8px'}},
+        h('div',{style:{fontWeight:700,color:'#E65100',marginBottom:'4px'}},'⚠️ 未通过'),
+        h('div',{style:{fontSize:'13px',color:'var(--text-light)'}},'需要 ≥'+lv.passThreshold+'% 正确率才能解锁下一关')
+      ):null,
       h('button',{className:'complete-btn',onClick:function(){
         state.view='intro';state.qIndex=0;state.answered=false;state.score=0;state.correct=0;state.streak=0;render();
       }},'再来一次'),
