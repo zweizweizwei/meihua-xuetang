@@ -1165,6 +1165,70 @@ LEVELS.push({
   ]
 });
 
+// ==== LEVEL 21: 动爻原理 ====
+LEVELS.push({
+  id:21, icon:'🔄', title:'动爻原理', desc:'老阳9老阴6——四象数变爻规则，九六变七八不变',
+  source:'《周易·系辞传》大衍筮法「四营而成易，十有八变而成卦」',
+  pitfalls:['数字6=老阴=太阴、9=老阳=太阳——不要记反','老阳变阴⚋、老阴变阳⚊——变的是阴阳本身'],
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🔄 第21关：动爻原理'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '在《周易》大衍筮法中，经过"四营十八变"得到六个爻，每个爻用数字6、7、8、9表示。这四个数就是"四象"。'),
+      h('div',{style:{background:'#E8F0FE',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#1a73e8'}},'📖 四象数对应'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '6 = 老阴（太阴）⚋ → ▸ 阴极生阳，变为阳爻 ⚊\n'+
+          '7 = 少阳 ⚊ → ▸ 不变（少阳稳定）\n'+
+          '8 = 少阴 ⚋ → ▸ 不变（少阴稳定）\n'+
+          '9 = 老阳（太阳）⚊ → ▸ 阳极生阴，变为阴爻 ⚋')
+      ),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#E65100'}},'🔑 核心口诀'),
+        h('div',{style:{fontSize:'14px',lineHeight:'1.8',color:'var(--text-light)',fontWeight:600}},
+          '九六变，七八不变。\\n老变少不变，极则必反。')
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2e7d32'}},'💡 为什么叫"老"？'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '老=到了极点。老阳9（阳的极点）→ 阳极生阴，变阴。\\n老阴6（阴的极点）→ 阴极生阳，变阳。\\n少阳7和少阴8还没到极点，所以不变。')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'记住口诀：九六变、七八不变！开始挑战 💪'),
+      h('div',{className:'source-tag'},'来源：《周易·系辞传》大衍筮法')
+    ));
+  },
+  questions:[
+    // 1-4: 识别四象数（判断哪个是老阳/老阴/少阳/少阴）
+    {prompt:'筮得数字"9"，这是？',type:'sixiang-name',num:9,choices:['老阳（太阳）','少阴','少阳','老阴（太阴）'],answer:0},
+    {prompt:'筮得数字"6"，这是？',type:'sixiang-name',num:6,choices:['老阳（太阳）','少阳','少阴','老阴（太阴）'],answer:3},
+    {prompt:'筮得数字"7"，这是？',type:'sixiang-name',num:7,choices:['老阳（太阳）','少阴','少阳','老阴（太阴）'],answer:2},
+    {prompt:'"老阴"对应的数字是？',type:'name-xiang',name:'老阴',choices:['6','7','8','9'],answer:0},
+
+    // 5-8: 判断哪些会变/不变
+    {prompt:'以下哪几个数字代表"动爻"（会变）？',type:'dongyao-pick',choices:['6和9','7和8','6和8','9和7'],answer:0},
+    {prompt:'"九六变"的意思是？',type:'slogan',choices:['老阳和老阴会变','少阳和少阴会变','九和六不会变','逢九六就变少阴'],answer:0},
+    {prompt:'筮得"8"，这个爻会变吗？',type:'will-change',num:8,choices:['不变，少阴稳定','会变，变成阳爻','会变，变成老阴','要看上下卦'],answer:0},
+    {prompt:'筮得"7"，这个爻会变吗？',type:'will-change',num:7,choices:['会变，变成阴爻','不变，少阳稳定','会变，变成老阳','要看动爻位置'],answer:1},
+
+    // 9-14: 给定筮数→变爻结果
+    {prompt:'筮得老阳(9)，原为阳爻⚊，变之后？',type:'change-result',from:9,choices:['变为阴爻⚋','变为少阳⚊','保持阳爻⚊','变为老阴⚋'],answer:0},
+    {prompt:'筮得老阴(6)，原为阴爻⚋，变之后？',type:'change-result',from:6,choices:['保持阴爻⚋','变为阳爻⚊','变为少阴⚋','变为老阳⚊'],answer:1},
+    {prompt:'筮得少阳(7)，原为阳爻⚊，变之后？',type:'change-result',from:7,choices:['变为阴爻⚋','变为老阳⚊','保持阳爻⚊','变为老阴⚋'],answer:2},
+    {prompt:'筮得少阴(8)，原为阴爻⚋，变之后？',type:'change-result',from:8,choices:['变为阳爻⚊','变为老阴⚋','变为少阳⚊','保持阴爻⚋'],answer:3},
+    {prompt:'老阳(9)为什么会变？',type:'why-change',which:'老阳',choices:['阳极生阴','被少阴影响','筮法规定','数值太大'],answer:0},
+    {prompt:'老阴(6)为什么会变？',type:'why-change',which:'老阴',choices:['被少阳影响','阴极生阳','筮法规定','数值太小'],answer:1},
+
+    // 15-20: 综合应用题
+    {prompt:'"老变少不变"中的"老"指？',type:'lao-meaning',choices:['6和9','7和8','6和7','8和9'],answer:0},
+    {prompt:'一个卦中第3爻筮得9，第5爻筮得6，其他都是7或8。这个卦有几个动爻？',type:'count-dongyao',choices:['0个','1个','2个','3个'],answer:2},
+    {prompt:'四象"太阳/少阴/少阳/太阴"对应数字顺序是？',type:'sixiang-order',choices:['9-8-7-6','6-7-8-9','9-7-8-6','8-7-6-9'],answer:0},
+    {prompt:'为什么说7和8"稳定不变"？',type:'stable-why',choices:['还没到极点，力量平衡','数值比6和9小','筮法随机决定的','它们代表天地'],answer:0},
+    {prompt:'"极则必反"在动爻中怎么体现？',type:'jizebifa',choices:['老阳(9)极则变阴，老阴(6)极则变阳','少阳(7)极则变老阳','所有数字都会变','只有9会变'],answer:0},
+    {prompt:'筮得一卦六爻数字为[6,7,9,8,7,7]，哪些爻是动爻？',type:'dongyao-list',list:'6,7,9,8,7,7',choices:['初爻和三爻','初爻和四爻','只有三爻','二爻和五爻'],answer:0}
+  ]
+});
+
 // ====== STATE ======
 var SK = 'meihua_progress_v2';
 function loadP(){try{return JSON.parse(localStorage.getItem(SK))||{}}catch(e){return{}}}
