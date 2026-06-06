@@ -1229,6 +1229,2108 @@ LEVELS.push({
   ]
 });
 
+// ====== BATCH 22-30: 变卦+互卦系列 ======
+// 生成日期: 2026-06-06
+// 对应关卡: 第22关-第30关（共9关）
+
+// ==== LEVEL 22: 变卦入门 ====
+// 第22关：变卦入门（20题）
+LEVELS.push({
+  id:22, icon:'🔀', title:'变卦入门', desc:'一爻动变卦=动爻位置阴阳互变——本卦到变卦的第一步',
+  source:'《梅花易数》',
+  pitfalls:['变卦只在动爻位置变一个爻，其他五爻不变！','不要混淆变卦和互卦——变卦来自动爻，互卦来自爻位重组'],
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🔀 第22关：变卦入门'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '起卦时若有一个爻是老阳(9)或老阴(6)，这个爻就"动"了——阳变阴、阴变阳。动爻位置变了之后，整个六爻卦就变成了另一个卦——这就是"变卦"（也叫"之卦"）。'),
+      h('div',{style:{background:'#E3F2FD',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#1565C0'}},'🔑 变卦计算规则'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '1️⃣ 一爻动：只变动爻那个爻位（阳变阴/阴变阳），其他五爻不变\n'+
+          '2️⃣ 动爻在哪个卦（上卦或下卦），哪个卦就是"用卦"\n'+
+          '3️⃣ 不动的那一卦是"体卦"\n'+
+          '4️⃣ 六爻位从下往上数：初(1)→二(2)→三(3)→四(4)→五(5)→上(6)')
+      ),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#B8860B'}},'📝 实例演示'),
+        h('p',{style:{fontSize:'13px',color:'var(--text-light)',lineHeight:'1.8'}},
+          '例：䷊地天泰（上坤☷下乾☰），六爻=⚊⚊⚊⚋⚋⚋（从下往上）\n'+
+          '▸ 动爻在三爻(⚊→⚋)：变为 ⚊⚊⚋⚋⚋⚋ → 上坤☷下兑☱ = ䷒地泽临\n'+
+          '▸ 动爻在四爻(⚋→⚊)：变为 ⚊⚊⚊⚊⚋⚋ → 上震☳下乾☰ = ䷡雷天大壮')
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2E7D32'}},'💡 记忆技巧'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '变卦 = 本卦在指定位置"翻一下"→ 阴阳互变\n'+
+          '看看哪个卦（上卦或下卦）有变动→那就是用卦')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'掌握变卦=掌握梅花易数的"结果"！开始挑战 💪'),
+      h('div',{className:'source-tag'},'来源：《梅花易数》')
+    ));
+  },
+  questions:[
+    // 1-4: 概念题（什么是变卦）
+    {prompt:'"变卦"（也叫"之卦"）是怎么产生的？',type:'biangua-concept',choices:['本卦中有动爻，阴阳互变后形成的新卦','本卦上下卦互换位置','本卦倒过来看','用互卦代替本卦'],answer:0},
+    {prompt:'一爻动时，变卦和本卦有几爻不同？',type:'biangua-diff',choices:['1爻不同','2爻不同','3爻不同','所有爻都变了'],answer:0},
+    {prompt:'变卦和本卦的关系，以下哪句正确？',type:'biangua-relation',choices:['变卦在本卦基础上只变动爻','变卦完全重新起卦','变卦=本卦倒过来','变卦=本卦的互卦'],answer:0},
+    {prompt:'动爻所在的卦叫做什么卦？',type:'biangua-donggua',choices:['体卦','用卦','变卦','互卦'],answer:1},
+
+    // 5-12: 给本卦+动爻→推出变卦
+    {prompt:'䷊地天泰（☷☰），动爻在初爻(1)→变卦是？',type:'biangua-calc',ben:'䷊',dong:1,choices:['䷗地雷复','䷒地泽临','䷡雷天大壮','䷋天地否'],answer:0},
+    {prompt:'䷊地天泰（☷☰），动爻在三爻→变卦是？',type:'biangua-calc',ben:'䷊',dong:3,choices:['䷒地泽临','䷗地雷复','䷊地天泰(不变)','䷋天地否'],answer:0},
+    {prompt:'䷊地天泰（☷☰），动爻在四爻→变卦是？',type:'biangua-calc',ben:'䷊',dong:4,choices:['䷡雷天大壮','䷗地雷复','䷒地泽临','䷋天地否'],answer:0},
+    {prompt:'䷋天地否（☰☷），动爻在初爻→变卦是？',type:'biangua-calc',ben:'䷋',dong:1,choices:['䷘天雷无妄','䷌天火同人','䷫天风姤','䷠天山遁'],answer:0},
+    {prompt:'䷋天地否（☰☷），动爻在六爻(上)→变卦是？',type:'biangua-calc',ben:'䷋',dong:6,choices:['䷬泽地萃','䷖山地剥','䷣地火明夷','䷒地泽临'],answer:0},
+    {prompt:'䷜坎为水（☵☵），动爻在二爻→变卦是？',type:'biangua-calc',ben:'䷜',dong:2,choices:['䷻水泽节','䷂水雷屯','䷾水火既济','䷿火水未济'],answer:0},
+    {prompt:'䷝离为火（☲☲），动爻在三爻→变卦是？',type:'biangua-calc',ben:'䷝',dong:3,choices:['䷔火雷噬嗑','䷕山火贲','䷥火泽睽','䷤风火家人'],answer:0},
+    {prompt:'䷾水火既济（☵☲），动爻在五爻→变卦是？',type:'biangua-calc',ben:'䷾',dong:5,choices:['䷣地火明夷','䷰泽火革','䷶雷火丰','䷝离为火'],answer:1},
+
+    // 13-16: 判别体用
+    {prompt:'䷊地天泰，动爻在三爻(下卦)→体卦是？',type:'biangua-tiyong',ben:'䷊',dong:3,choices:['上坤☷','下乾☰','变卦','互卦'],answer:0},
+    {prompt:'䷊地天泰，动爻在五爻(上卦)→体卦是？',type:'biangua-tiyong',ben:'䷊',dong:5,choices:['上坤☷','下乾☰','都是体','没有体'],answer:1},
+    {prompt:'䷋天地否，动爻在二爻(下卦)→用卦是？',type:'biangua-tiyong',ben:'䷋',dong:2,choices:['上乾☰','下坤☷','都是用','都不是'],answer:1},
+    {prompt:'变卦产生后，原来的本卦还有用吗？',type:'biangua-use',choices:['有用——本卦为"始"、变卦为"终"','没用了，只看变卦','本卦变成体卦','本卦=互卦'],answer:0},
+
+    // 17-20: 综合应用
+    {prompt:'䷑山风蛊（☶☴），动爻在初爻→变卦的上卦是？',type:'biangua-shang',ben:'䷑',dong:1,choices:['☶艮','☴巽','☳震','☷坤'],answer:0},
+    {prompt:'䷐泽雷随（☱☳），动爻在四爻→变卦的下卦是？',type:'biangua-xia',ben:'䷐',dong:4,choices:['☳震','☱兑','☲离','☵坎'],answer:0},
+    {prompt:'一卦六爻，初爻和上爻分别属于？',type:'yao-position',choices:['初爻=下卦、上爻=上卦','初爻=上卦、上爻=下卦','都属于上卦','都属于下卦'],answer:0},
+    {prompt:'动爻在四爻，变的是上卦还是下卦？',type:'yao-position2',choices:['上卦（4/5/6是上卦）','下卦（1/2/3是下卦）','既变上卦也变下卦','不变卦'],answer:0}
+  ]
+});
+
+// ==== LEVEL 23: 一爻动变卦演练 ====
+// 第23关：一爻动变卦演练（25题）
+LEVELS.push({
+  id:23, icon:'🔁', title:'一爻动变卦演练', desc:'逐个演练八经卦上下组合的一爻动场景，熟练到肌肉记忆',
+  source:'《梅花易数》',
+  pitfalls:['六爻从下往上数为初(1)/二(2)/三(3)/四(4)/五(5)/上(6)——方向不要反！','下卦变=体在上卦；上卦变=体在下卦'],
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🔁 第23关：一爻动变卦演练'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '上一关理解了变卦原理，本关大量练习！每个卦在不同爻位动，变出的卦都不同。熟练掌握才能为后面的体用生克判断打好基础。'),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#E65100'}},'🏋️ 强化训练要点'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '1️⃣ 快速定位动爻在哪一卦（上卦/下卦）\n'+
+          '2️⃣ 判断变卦的上卦和下卦各是什么\n'+
+          '3️⃣ 熟练到看本卦+动爻→立即反应变卦\n'+
+          '4️⃣ 同时判断体卦和用卦')
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2E7D32'}},'📐 爻位编号速查'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',textAlign:'center',color:'var(--text-light)'}},
+          '上卦(外卦)：四爻⚊ 五爻⚊ 上爻⚋\n'+
+          '下卦(内卦)：初爻⚊ 二爻⚊ 三爻⚋\n'+
+          '↑ 从下往上数，不是从上往下！')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'25题强化——练到条件反射！🏃'),
+      h('div',{className:'source-tag'},'来源：《梅花易数》')
+    ));
+  },
+  questions:[
+    // 1-5: ䷊地天泰 各爻动
+    {prompt:'䷊地天泰（☷☰），动爻在初→变卦？',type:'biangua-drill',ben:'䷊',dong:1,choices:['䷗地雷复','䷒地泽临','䷊不变','䷋天地否'],answer:0},
+    {prompt:'䷊地天泰，动爻在二→变卦？',type:'biangua-drill',ben:'䷊',dong:2,choices:['䷣地火明夷','䷗地雷复','䷒地泽临','䷊不变'],answer:0},
+    {prompt:'䷊地天泰，动爻在三→变卦？',type:'biangua-drill',ben:'䷊',dong:3,choices:['䷒地泽临','䷗地雷复','䷣地火明夷','䷡雷天大壮'],answer:0},
+    {prompt:'䷊地天泰，动爻在四→变卦？',type:'biangua-drill',ben:'䷊',dong:4,choices:['䷡雷天大壮','䷒地泽临','䷗地雷复','䷊不变'],answer:0},
+    {prompt:'䷊地天泰，动爻在五→变卦？',type:'biangua-drill',ben:'䷊',dong:5,choices:['䷄水天需','䷡雷天大壮','䷍火天大有','䷈风天小畜'],answer:0},
+
+    // 6-10: ䷋天地否 各爻动
+    {prompt:'䷋天地否（☰☷），动爻在初→变卦？',type:'biangua-drill',ben:'䷋',dong:1,choices:['䷘天雷无妄','䷫天风姤','䷌天火同人','䷠天山遁'],answer:0},
+    {prompt:'䷋天地否，动爻在三→变卦？',type:'biangua-drill',ben:'䷋',dong:3,choices:['䷠天山遁','䷘天雷无妄','䷫天风姤','䷌天火同人'],answer:0},
+    {prompt:'䷋天地否，动爻在四→变卦？',type:'biangua-drill',ben:'䷋',dong:4,choices:['䷓风地观','䷖山地剥','䷒地泽临','䷗地雷复'],answer:0},
+    {prompt:'䷋天地否，动爻在六(上)→变卦？',type:'biangua-drill',ben:'䷋',dong:6,choices:['䷬泽地萃','䷖山地剥','䷓风地观','䷣地火明夷'],answer:0},
+    {prompt:'䷋天地否，动爻在二→变卦？',type:'biangua-drill',ben:'䷋',dong:2,choices:['䷅天水讼','䷘天雷无妄','䷫天风姤','䷠天山遁'],answer:0},
+
+    // 11-15: ䷾水火既济 各爻动
+    {prompt:'䷾水火既济（☵☲），动爻在初→变卦？',type:'biangua-drill',ben:'䷾',dong:1,choices:['䷦水山蹇','䷻水泽节','䷂水雷屯','䷾不变'],answer:0},
+    {prompt:'䷾水火既济，动爻在三→变卦？',type:'biangua-drill',ben:'䷾',dong:3,choices:['䷂水雷屯','䷦水山蹇','䷻水泽节','䷿火水未济'],answer:0},
+    {prompt:'䷾水火既济，动爻在五→变卦？',type:'biangua-drill',ben:'䷾',dong:5,choices:['䷰泽火革','䷣地火明夷','䷶雷火丰','䷝离为火'],answer:0},
+    {prompt:'䷾水火既济，动爻在上→变卦？',type:'biangua-drill',ben:'䷾',dong:6,choices:['䷤风火家人','䷰泽火革','䷶雷火丰','䷥火泽睽'],answer:0},
+    {prompt:'䷿火水未济（☲☵），动爻在三→变卦？',type:'biangua-drill',ben:'䷿',dong:3,choices:['䷱火风鼎','䷔火雷噬嗑','䷕山火贲','䷥火泽睽'],answer:0},
+
+    // 16-20: 混合卦例
+    {prompt:'䷌天火同人（☰☲），动爻在二→变卦？',type:'biangua-drill',ben:'䷌',dong:2,choices:['䷀乾为天','䷫天风姤','䷠天山遁','䷋天地否'],answer:0},
+    {prompt:'䷍火天大有（☲☰），动爻在五→变卦？',type:'biangua-drill',ben:'䷍',dong:5,choices:['䷀乾为天','䷌天火同人','䷝离为火','䷾水火既济'],answer:0},
+    {prompt:'䷐泽雷随（☱☳），动爻在四→变卦？',type:'biangua-drill',ben:'䷐',dong:4,choices:['䷂水雷屯','䷾水火既济','䷻水泽节','䷜坎为水'],answer:0},
+    {prompt:'䷑山风蛊（☶☴），动爻在五→变卦？',type:'biangua-drill',ben:'䷑',dong:5,choices:['䷭地风升','䷸巽为风','䷓风地观','䷩风雷益'],answer:1},
+    {prompt:'䷒地泽临（☷☱），动爻在二→变卦？',type:'biangua-drill',ben:'䷒',dong:2,choices:['䷗地雷复','䷊地天泰','䷣地火明夷','䷒不变'],answer:0},
+
+    // 21-25: 体用变化判断
+    {prompt:'䷊地天泰动爻在三(下卦)→体卦五行是什么？',type:'biangua-ti-wx',ben:'䷊',dong:3,choices:['土（坤☷）','金（乾☰）','火','水'],answer:0},
+    {prompt:'䷋天地否动爻在五(上卦)→体卦是？',type:'biangua-ti',ben:'䷋',dong:5,choices:['下坤☷','上乾☰','变卦','互卦'],answer:0},
+    {prompt:'䷾既济动爻在初(下卦)→用卦五行是？',type:'biangua-yong-wx',ben:'䷾',dong:1,choices:['火（离☲）','水（坎☵）','金','土'],answer:0},
+    {prompt:'变卦的上下卦各是什么，取决于？',type:'biangua-rule',choices:['本卦+动爻位置','本卦五行','用卦的强弱','互卦的结构'],answer:0},
+    {prompt:'䷜坎为水(☵☵)，动爻在二→变卦的下卦变为？',type:'biangua-xia2',ben:'䷜',dong:2,choices:['☱兑','☵坎不变','☷坤','☰乾'],answer:0}
+  ]
+});
+
+// ==== LEVEL 24: 多爻动变卦 ====
+// 第24关：多爻动变卦（25题）
+LEVELS.push({
+  id:24, icon:'🔢', title:'多爻动变卦', desc:'二爻动以本卦为主、三爻动看两卦辞、四爻动以变卦为主',
+  source:'《梅花易数》+ 朱熹《易学启蒙》',
+  pitfalls:['二爻动≠只用一个爻，要看本卦卦辞为主！','三爻动要同时参考本卦和变卦的卦辞','多爻动的变卦计算：每个动爻都要变！'],
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🔢 第24关：多爻动变卦'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '实际起卦中，可能不止一个爻动（多个6或9）。不同数量的动爻有不同的解读规则。朱熹在《易学启蒙》中归纳了系统的处理原则。'),
+      h('div',{style:{background:'#E3F2FD',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#1565C0'}},'📊 多爻动处理规则'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '🔹 一爻动：看本卦动爻的爻辞，变卦辅助\n'+
+          '🔹 二爻动：以本卦二动爻中上爻为主，参考变卦\n'+
+          '🔹 三爻动：同时看本卦卦辞和变卦卦辞，以本卦为重\n'+
+          '🔹 四爻动：以变卦为主，看变卦中未动二爻\n'+
+          '🔹 五爻动：以变卦中唯一未动之爻为主\n'+
+          '🔹 六爻全动：乾→看用九，坤→看用六，其他→看变卦卦辞')
+      ),
+      h('div',{style:{background:'#FCE4EC',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#C62828'}},'⚠️ 变卦计算不变！'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '无论几个爻动，变卦的计算方法不变——每个动爻都阴阳互变。\n'+
+          '多爻动只是"解读规则"变了，变卦的计算方式始终如一。')
+      ),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#B8860B'}},'📝 示例'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '䷊地天泰，动爻在初和三（两个动爻）\n'+
+          '→ 变卦：初爻变+三爻变 = ䷗地雷复 的基初再变三...\n'+
+          '（先将两个动爻都阴阳互变，得到变卦䷨山泽损）\n'+
+          '→ 解读：二爻动，以本卦为主，取三爻（上爻）为主')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'25题：10道规则题+15道计算题！🎯'),
+      h('div',{className:'source-tag'},'来源：《梅花易数》+ 朱熹《易学启蒙》')
+    ));
+  },
+  questions:[
+    // 1-5: 多爻动规则（判断以什么为主）
+    {prompt:'二爻动时，以什么为主？',type:'duoyao-rule',count:2,choices:['以本卦为主','以变卦为主','以互卦为主','随便选一个'],answer:0},
+    {prompt:'三爻动时，看什么？',type:'duoyao-rule',count:3,choices:['看本卦和变卦的卦辞','只看本卦卦辞','只看变卦卦辞','看互卦'],answer:0},
+    {prompt:'四爻动时，以什么为主？',type:'duoyao-rule',count:4,choices:['以变卦为主','以本卦为主','以互卦为主','看动爻最多的那个'],answer:0},
+    {prompt:'五爻动时，看什么？',type:'duoyao-rule',count:5,choices:['变卦中唯一未动的爻','本卦动爻','互卦','重新起卦'],answer:0},
+    {prompt:'六爻全动（既非乾也非坤），看什么？',type:'duoyao-rule',count:6,choices:['看变卦卦辞','看本卦卦辞','看用九/用六','重新起卦'],answer:0},
+
+    // 6-10: 更多规则
+    {prompt:'六爻全动且本卦是乾䷀，看什么？',type:'duoyao-qiankun',ben:'乾',choices:['用九','用六','变卦卦辞','爻辞'],answer:0},
+    {prompt:'六爻全动且本卦是坤䷁，看什么？',type:'duoyao-qiankun',ben:'坤',choices:['用六','用九','变卦卦辞','爻辞'],answer:0},
+    {prompt:'二爻动时，两个动爻中优先取哪个？',type:'duoyao-priority',choices:['取位置在上面的那个动爻','取位置在下面的动爻','两个都取','取与体卦同卦的那个'],answer:0},
+    {prompt:'三爻动时，为什么会参考变卦？',type:'duoyao-reason',choices:['因为变动已经很大，结果也重要','三爻动等于全卦都变了','为了对比','古人的习惯'],answer:0},
+    {prompt:'一个卦有2个动爻，变卦怎么算？',type:'duoyao-calc-method',choices:['两个动爻都要变','只变下面那个','只变上面那个','不变，看互卦'],answer:0},
+
+    // 11-18: 多爻动变卦计算（2-3个动爻）
+    {prompt:'䷊地天泰，初爻和三爻都动→变卦是？',type:'duoyao-calc',ben:'䷊',dongs:'初,三',choices:['䷨山泽损','䷒地泽临','䷗地雷复','䷋天地否'],answer:0},
+    {prompt:'䷊地天泰，初爻和四爻都动→变卦是？',type:'duoyao-calc',ben:'䷊',dongs:'初,四',choices:['䷚山雷颐','䷡雷天大壮','䷗地雷复','䷒地泽临'],answer:0},
+    {prompt:'䷊地天泰，二爻和五爻都动→变卦是？',type:'duoyao-calc',ben:'䷊',dongs:'二,五',choices:['䷮泽水困','䷄水天需','䷣地火明夷','䷡雷天大壮'],answer:2},
+    {prompt:'䷋天地否，初爻和二爻都动→变卦是？',type:'duoyao-calc',ben:'䷋',dongs:'初,二',choices:['䷅天水讼','䷘天雷无妄','䷫天风姤','䷠天山遁'],answer:0},
+    {prompt:'䷋天地否，初/三/四爻动→变卦是？',type:'duoyao-calc',ben:'䷋',dongs:'初,三,四',choices:['䷩风雷益','䷖山地剥','䷓风地观','䷗地雷复'],answer:0},
+    {prompt:'䷾水火既济，初/三/五爻动→变卦是？',type:'duoyao-calc',ben:'䷾',dongs:'初,三,五',choices:['䷩风雷益','䷟雷风恒','䷮泽水困','䷯水风井'],answer:1},
+    {prompt:'䷜坎为水，初/二爻动→变卦是？',type:'duoyao-calc',ben:'䷜',dongs:'初,二',choices:['䷻水泽节','䷮泽水困','䷬泽地萃','䷐泽雷随'],answer:0},
+    {prompt:'䷝离为火，三/四爻动→变卦是？',type:'duoyao-calc',ben:'䷝',dongs:'三,四',choices:['䷔火雷噬嗑','䷶雷火丰','䷕山火贲','䷥火泽睽'],answer:0},
+
+    // 19-22: 4-5爻动
+    {prompt:'䷊地天泰，初/二/三/四爻动→以什么为主？',type:'duoyao-rule-main',count:4,choices:['以变卦为主','以本卦为主','看互卦','看初爻'],answer:0},
+    {prompt:'四爻动时，变卦中未动的两爻起什么作用？',type:'duoyao-4role',choices:['是判断的关键参考','没有用','与动爻同等','决定体用'],answer:0},
+    {prompt:'五爻动时，哪个爻最重要？',type:'duoyao-5role',choices:['唯一未动的那个爻','最后一个动的爻','第一个动的爻','中间那个爻'],answer:0},
+    {prompt:'六爻全动的乾䷀→用九 → 变卦是？',type:'duoyao-qiankun2',ben:'乾',choices:['䷁坤为地','䷀乾为天(不变)','䷾水火既济','䷊地天泰'],answer:0},
+
+    // 23-25: 综合
+    {prompt:'一个卦有3个动爻，变卦和本卦有几爻不同？',type:'duoyao-diff',count:3,choices:['3爻不同','6爻不同','1爻不同','0爻不同'],answer:0},
+    {prompt:'多爻动的"解读规则"和"变卦计算方法"是？',type:'duoyao-diff2',choices:['解读规则因爻数变化，计算方法不变','两者都不变','两者都变','计算方法也因爻数变化'],answer:0},
+    {prompt:'䷊地天泰，初/三/五爻动，这属于？',type:'duoyao-identify',ben:'䷊',dongs:'初,三,五',choices:['三爻动——看本卦和变卦卦辞','二爻动——以本卦为主','五爻动——以变卦为主','一爻动——看动爻爻辞'],answer:0}
+  ]
+});
+
+// ==== LEVEL 25: 变卦综合大挑战 ====
+// 第25关：变卦综合大挑战（25题）
+LEVELS.push({
+  id:25, icon:'🎯', title:'变卦综合大挑战', desc:'混合所有动爻场景——一爻到多爻动，全面检验',
+  source:'综合',
+  pitfalls:null,
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🎯 第25关：变卦综合大挑战'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '前几关系统学习了变卦的各种场景：一爻动、多爻动、体用定位。本关把所有场景混合起来，随机出题，检验你的综合掌握程度！'),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2E7D32'}},'🗂️ 变卦知识体系回顾'),
+        h('div',{style:{fontSize:'12px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '• 一爻动：看动爻爻辞，变卦辅助\n'+
+          '• 二爻动：以本卦为主，取上爻\n'+
+          '• 三爻动：看本卦+变卦卦辞\n'+
+          '• 四爻动：以变卦为主\n'+
+          '• 五爻动：看唯一未动之爻\n'+
+          '• 六爻全动：乾用九、坤用六、其他看变卦\n'+
+          '• 体卦=不动卦、用卦=动爻所在卦')
+      ),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#E65100'}},'🧮 计算口诀'),
+        h('div',{style:{fontSize:'14px',lineHeight:'2',textAlign:'center',fontWeight:600,color:'var(--text)'}},
+          '动爻阴阳变，其他全不变\n'+
+          '一爻到六爻，规则各不同\n'+
+          '变卦算出来，体用定吉凶')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'25题大乱斗——来吧！💪'),
+      h('div',{className:'source-tag'},'来源：综合')
+    ));
+  },
+  questions:[
+    // 混合场景，随机分布各种题型
+    // 1-5: 一爻动
+    {prompt:'䷊地天泰，动爻在初→变卦是？',type:'biangua-mix',ben:'䷊',dong:1,choices:['䷗地雷复','䷒地泽临','䷊不变','䷋天地否'],answer:0},
+    {prompt:'䷋天地否，动爻在四→变卦是？',type:'biangua-mix',ben:'䷋',dong:4,choices:['䷓风地观','䷖山地剥','䷗地雷复','䷣地火明夷'],answer:0},
+    {prompt:'䷾既济，动爻在三→用卦是？',type:'biangua-tiyong-mix',ben:'䷾',dong:3,choices:['下离☲','上坎☵','互卦','变卦'],answer:0},
+    {prompt:'䷍火天大有（☲☰），动爻在五→体卦是？',type:'biangua-tiyong-mix',ben:'䷍',dong:5,choices:['下乾☰','上离☲','变卦','互卦'],answer:0},
+    {prompt:'䷜坎为水，动爻在上→变卦的上卦是？',type:'biangua-shang-mix',ben:'䷜',dong:6,choices:['☴巽','☵坎','☲离','☰乾'],answer:0},
+
+    // 6-8: 二爻动
+    {prompt:'二爻动时，以什么为主？',type:'rule-mix',count:2,choices:['以本卦为主','以变卦为主','看互卦','随机'],answer:0},
+    {prompt:'䷊地天泰，初/三爻动→主看？',type:'duoyao-main-mix',ben:'䷊',dongs:2,choices:['本卦、取三爻(上)为主','变卦为主','互卦','只看初爻'],answer:0},
+    {prompt:'䷜坎为水，初/二爻动→变卦是？',type:'duoyao-calc-mix',ben:'䷜',dongs:'初,二',choices:['䷻水泽节','䷮泽水困','䷬泽地萃','䷐泽雷随'],answer:0},
+
+    // 9-11: 三爻动
+    {prompt:'三爻动时怎么看？',type:'rule-mix',count:3,choices:['看本卦和变卦的卦辞','只看本卦','只看变卦','看互卦'],answer:0},
+    {prompt:'䷊地天泰，初/三/四爻动→变卦是？',type:'duoyao-calc-mix',ben:'䷊',dongs:'初,三,四',choices:['䷚山雷颐','䷒地泽临','䷗地雷复','䷋天地否'],answer:0},
+    {prompt:'䷾既济，初/三/五爻动→变卦是？',type:'duoyao-calc-mix',ben:'䷾',dongs:'初,三,五',choices:['䷟雷风恒','䷩风雷益','䷮泽水困','䷯水风井'],answer:0},
+
+    // 12-13: 四爻动
+    {prompt:'四爻动以什么为主？',type:'rule-mix',count:4,choices:['以变卦为主','以本卦为主','看互卦','看动爻最多的卦'],answer:0},
+    {prompt:'四爻动时，变卦中未动的两爻？',type:'rule-mix-detail',choices:['是解读的关键参考','没有意义','等于本卦','重新起卦'],answer:0},
+
+    // 14-16: 五爻动/六爻动
+    {prompt:'五爻动看什么？',type:'rule-mix',count:5,choices:['变卦中唯一未动的爻','本卦所有动爻','互卦','重新起卦'],answer:0},
+    {prompt:'六爻全动、本卦是乾䷀→看什么？',type:'qiankun-mix',ben:'乾',choices:['用九','用六','变卦卦辞','每爻爻辞'],answer:0},
+    {prompt:'六爻全动、本卦是坤䷁→看什么？',type:'qiankun-mix',ben:'坤',choices:['用六','用九','变卦卦辞','爻辞'],answer:0},
+
+    // 17-22: 混合计算
+    {prompt:'䷋天地否，初/二/四/五爻动→以什么为主？',type:'duoyao-main-mix',ben:'䷋',dongs:4,choices:['以变卦为主','以本卦为主','看互卦','看用九'],answer:0},
+    {prompt:'动爻在四爻，它属于上卦还是下卦？',type:'yao-pos-mix',pos:4,choices:['上卦','下卦','互卦','都不是'],answer:0},
+    {prompt:'上卦有2个动爻、下卦有1个动爻，共有几个动爻？',type:'count-dongyao-mix',count:3,choices:['3个动爻','2个动爻','1个动爻','6个动爻'],answer:0},
+    {prompt:'䷐泽雷随（☱☳），动爻在初→变卦的下卦是？',type:'biangua-xia-mix',ben:'䷐',dong:1,choices:['☷坤','☳震','☱兑','☲离'],answer:0},
+    {prompt:'䷑山风蛊（☶☴），动爻在五→体卦是？',type:'biangua-ti-mix',ben:'䷑',dong:5,choices:['下巽☴','上艮☶','变卦','互卦'],answer:0},
+    {prompt:'䷒地泽临（☷☱），动爻在二→上卦变了吗？',type:'biangua-shang-change',ben:'䷒',dong:2,choices:['没变，动爻在下卦','变了，所有爻都变','变了，上卦跟着变','不确定'],answer:0},
+
+    // 23-25: 综合判断
+    {prompt:'变卦的核心意义是什么？',type:'biangua-meaning',choices:['代表事物的最终结果/发展趋势','等于本卦的上卦','可以替代互卦','用来重新起卦'],answer:0},
+    {prompt:'以下哪个说法错误？',type:'biangua-false',choices:['一爻动时变卦只有一个爻变化','二爻动以变卦为主','三爻动看本卦+变卦卦辞','乾六爻全动看用九'],answer:1},
+    {prompt:'本卦䷊→变卦䷗，体用生克属于哪个关卡的后续内容？',type:'biangua-next',choices:['体用生克（已在14-17关学过）','还没学到','本关已包含','不需要学'],answer:0}
+  ]
+});
+
+// ==== LEVEL 26: 互卦原理 ====
+// 第26关：互卦原理（20题）
+LEVELS.push({
+  id:26, icon:'🔗', title:'互卦原理', desc:'下互=本卦二/三/四爻，上互=三/四/五爻——揭示事物发展中间状态',
+  source:'《梅花易数》',
+  pitfalls:['互卦取爻是从本卦"中间四爻"重组，不是随便取！','下互卦用二/三/四爻，上互卦用三/四/五爻——中间的三四爻是两个互卦共用的！'],
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🔗 第26关：互卦原理'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '互卦（也叫"中爻卦"或"约象卦"）是梅花易数的重要概念。它从本卦的中间四爻重新组合成一个新的六爻卦，揭示事物发展过程中的"中间状态"。'),
+      h('div',{style:{background:'#E3F2FD',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#1565C0'}},'🔑 互卦取法'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '下互卦（内互）：取本卦的 二爻·三爻·四爻 组成\n'+
+          '上互卦（外互）：取本卦的 三爻·四爻·五爻 组成\n'+
+          '互卦 = 上互卦在上 + 下互卦在下\n'+
+          '▸ 注意：三爻和四爻是两个互卦共用的！')
+      ),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#B8860B'}},'📝 经典示例'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '例：䷊地天泰（上坤☷下乾☰）\n'+
+          '六爻从下往上：⚊ ⚊ ⚊ ⚋ ⚋ ⚋ （初/二/三/四/五/上）\n'+
+          '▸ 下互(二三四爻)：⚊ ⚊ ⚋ → ☱兑\n'+
+          '▸ 上互(三四五爻)：⚊ ⚋ ⚋ → ☳震\n'+
+          '▸ 互卦：上震☳、下兑☱ = ䷵雷泽归妹')
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2E7D32'}},'💡 互卦的意义'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '本卦 = 事物的开始（全局）\n'+
+          '互卦 = 事物的中间过程（中间状态）\n'+
+          '变卦 = 事物的结果（最终走向）\n'+
+          '三卦合参，才能完整判断事物的吉凶变化。')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'20题，学会从本卦中"拆"出互卦！🔧'),
+      h('div',{className:'source-tag'},'来源：《梅花易数》')
+    ));
+  },
+  questions:[
+    // 1-4: 概念
+    {prompt:'互卦的"下互卦"由本卦哪些爻组成？',type:'hugua-concept',choices:['二爻+三爻+四爻','初爻+二爻+三爻','四爻+五爻+上爻','一爻+三爻+五爻'],answer:0},
+    {prompt:'互卦的"上互卦"由本卦哪些爻组成？',type:'hugua-concept2',choices:['三爻+四爻+五爻','二爻+三爻+四爻','初爻+二爻+三爻','四爻+五爻+上爻'],answer:0},
+    {prompt:'互卦的两个三爻卦共用哪些爻？',type:'hugua-shared',choices:['三爻和四爻','初爻和二爻','五爻和上爻','不共用'],answer:0},
+    {prompt:'互卦在梅花易数中揭示什么？',type:'hugua-meaning',choices:['事物发展中间状态','事物的开始','事物的结果','事物的本质'],answer:0},
+
+    // 5-14: 给重卦→拆分下互和上互
+    {prompt:'䷊地天泰（☷☰）的下互卦是？',type:'hugua-xiahu',ben:'䷊',choices:['☱兑','☰乾','☷坤','☳震'],answer:0},
+    {prompt:'䷊地天泰（☷☰）的上互卦是？',type:'hugua-shanghu',ben:'䷊',choices:['☳震','☱兑','☷坤','☰乾'],answer:0},
+    {prompt:'䷊地天泰的互卦（上下互组合）是？',type:'hugua-full',ben:'䷊',choices:['䷵雷泽归妹','䷐泽雷随','䷟雷风恒','䷞泽山咸'],answer:0},
+    {prompt:'䷋天地否（☰☷）的下互卦是？',type:'hugua-xiahu',ben:'䷋',choices:['☶艮','☰乾','☷坤','☴巽'],answer:0},
+    {prompt:'䷋天地否（☰☷）的上互卦是？',type:'hugua-shanghu',ben:'䷋',choices:['☴巽','☶艮','☰乾','☷坤'],answer:0},
+    {prompt:'䷋天地否的互卦是？',type:'hugua-full',ben:'䷋',choices:['䷴风山渐','䷑山风蛊','䷩风雷益','䷨山泽损'],answer:0},
+
+    {prompt:'䷾水火既济（☵☲）的下互卦是？',type:'hugua-xiahu',ben:'䷾',choices:['☵坎','☲离','☳震','☱兑'],answer:0},
+    {prompt:'䷾水火既济的上互卦是？',type:'hugua-shanghu',ben:'䷾',choices:['☲离','☵坎','☳震','☶艮'],answer:0},
+    {prompt:'䷿火水未济（☲☵）的下互卦是？',type:'hugua-xiahu',ben:'䷿',choices:['☲离','☵坎','☳震','☱兑'],answer:0},
+    {prompt:'䷿火水未济的上互卦是？',type:'hugua-shanghu',ben:'䷿',choices:['☵坎','☲离','☶艮','☴巽'],answer:0},
+
+    // 15-18: 更多卦例
+    {prompt:'䷜坎为水（☵☵）的互卦是？',type:'hugua-full',ben:'䷜',choices:['䷚山雷颐','䷛泽风大过','䷦水山蹇','䷧雷水解'],answer:0},
+    {prompt:'䷝离为火（☲☲）的互卦是？',type:'hugua-full',ben:'䷝',choices:['䷛泽风大过','䷚山雷颐','䷶雷火丰','䷷火山旅'],answer:0},
+    {prompt:'䷖山地剥（☶☷）的下互卦是？',type:'hugua-xiahu',ben:'䷖',choices:['☷坤','☶艮','☳震','☰乾'],answer:0},
+    {prompt:'䷗地雷复（☷☳）的上互卦是？',type:'hugua-shanghu',ben:'䷗',choices:['☷坤','☳震','☶艮','☴巽'],answer:0},
+
+    // 19-20: 概念比较
+    {prompt:'互卦和变卦的区别是？',type:'hugua-vs-biangua',choices:['互卦来自爻位重组，变卦来自动爻变化','两者完全一样','互卦就是变卦','变卦就是互卦'],answer:0},
+    {prompt:'互卦为什么叫"中爻卦"？',type:'hugua-name',choices:['因为只取本卦中间四爻','因为卦在中间位置','因为代表中年','没有特别原因'],answer:0}
+  ]
+});
+
+// ==== LEVEL 27: 互卦取法入门 ====
+// 第27关：互卦取法入门（20题）
+LEVELS.push({
+  id:27, icon:'🔍', title:'互卦取法入门', desc:'常见重卦的互卦练习——如䷀乾为天→互卦乾',
+  source:'《梅花易数》',
+  pitfalls:['八纯卦（上下同卦）的互卦是什么？乾䷀→互䷀、坤䷁→互䷁——不要搞混！','上互和下互可能相同（八纯卦），也可能不同'],
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🔍 第27关：互卦取法入门'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '掌握了互卦取法原理后，我们来练习常见重卦的互卦。从最简单的八纯卦（上下卦相同）开始，逐步过渡到常见的两两组合卦。'),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#B8860B'}},'📝 八纯卦互卦速查'),
+        h('div',{style:{fontSize:'12px',lineHeight:'2',color:'var(--text-light)'}},
+          '䷀乾为天（☰☰）：二三四=☰、三四五=☰ → 互䷀乾\n'+
+          '䷁坤为地（☷☷）：二三四=☷、三四五=☷ → 互䷁坤\n'+
+          '䷜坎为水（☵☵）：二三四=☳、三四五=☶ → 互䷚山雷颐\n'+
+          '䷝离为火（☲☲）：二三四=☴、三四五=☱ → 互䷛泽风大过\n'+
+          '䷲震为雷（☳☳）：二三四=☶、三四五=☵ → 互䷦水山蹇\n'+
+          '䷳艮为山（☶☶）：二三四=☳、三四五=☶ → 互䷧雷水解\n'+
+          '䷸巽为风（☴☴）：二三四=☱、三四五=☲ → 互䷥火泽睽\n'+
+          '䷹兑为泽（☱☱）：二三四=☲、三四五=☴ → 互䷤风火家人'
+        )
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2E7D32'}},'💡 规律总结'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '• 八纯卦中只有乾䷀和坤䷁的互卦等于自身\n'+
+          '• 其他六纯卦的互卦都各不相同\n'+
+          '• 互卦的上互和下互永远是对称互补关系')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'20题常见卦互卦练习——夯实基础！📚'),
+      h('div',{className:'source-tag'},'来源：《梅花易数》')
+    ));
+  },
+  questions:[
+    // 1-8: 八纯卦互卦
+    {prompt:'䷀乾为天（☰☰）的互卦是？',type:'hugua-chuncui',ben:'䷀',choices:['䷀乾为天','䷾水火既济','䷊地天泰','䷋天地否'],answer:0},
+    {prompt:'䷁坤为地（☷☷）的互卦是？',type:'hugua-chuncui',ben:'䷁',choices:['䷁坤为地','䷊地天泰','䷖山地剥','䷗地雷复'],answer:0},
+    {prompt:'䷜坎为水（☵☵）的下互卦是？',type:'hugua-xiahu',ben:'䷜',choices:['☳震','☵坎','☶艮','☷坤'],answer:0},
+    {prompt:'䷜坎为水的互卦是？',type:'hugua-chuncui',ben:'䷜',choices:['䷚山雷颐','䷛泽风大过','䷜坎为水','䷦水山蹇'],answer:0},
+    {prompt:'䷝离为火（☲☲）的互卦是？',type:'hugua-chuncui',ben:'䷝',choices:['䷛泽风大过','䷚山雷颐','䷝离为火','䷶雷火丰'],answer:0},
+    {prompt:'䷲震为雷（☳☳）的互卦是？',type:'hugua-chuncui',ben:'䷲',choices:['䷦水山蹇','䷧雷水解','䷲震为雷','䷟雷风恒'],answer:0},
+    {prompt:'䷸巽为风（☴☴）的互卦是？',type:'hugua-chuncui',ben:'䷸',choices:['䷥火泽睽','䷤风火家人','䷸巽为风','䷩风雷益'],answer:0},
+    {prompt:'䷹兑为泽（☱☱）的互卦是？',type:'hugua-chuncui',ben:'䷹',choices:['䷤风火家人','䷥火泽睽','䷹兑为泽','䷵雷泽归妹'],answer:0},
+
+    // 9-16: 常见组合卦互卦
+    {prompt:'䷊地天泰（☷☰）的互卦是？',type:'hugua-full',ben:'䷊',choices:['䷵雷泽归妹','䷐泽雷随','䷒地泽临','䷗地雷复'],answer:0},
+    {prompt:'䷋天地否（☰☷）的互卦是？',type:'hugua-full',ben:'䷋',choices:['䷴风山渐','䷑山风蛊','䷓风地观','䷖山地剥'],answer:0},
+    {prompt:'䷾水火既济（☵☲）的下互卦是？',type:'hugua-xiahu',ben:'䷾',choices:['☵坎','☲离','☳震','☱兑'],answer:0},
+    {prompt:'䷿火水未济（☲☵）的下互卦是？',type:'hugua-xiahu',ben:'䷿',choices:['☲离','☵坎','☳震','☱兑'],answer:0},
+    {prompt:'䷖山地剥（☶☷）的互卦是？',type:'hugua-full',ben:'䷖',choices:['䷁坤为地','䷓风地观','䷗地雷复','䷊地天泰'],answer:0},
+    {prompt:'䷗地雷复（☷☳）的互卦是？',type:'hugua-full',ben:'䷗',choices:['䷁坤为地','䷒地泽临','䷊地天泰','䷖山地剥'],answer:0},
+    {prompt:'䷒地泽临（☷☱）的互卦是？',type:'hugua-full',ben:'䷒',choices:['䷗地雷复','䷊地天泰','䷖山地剥','䷁坤为地'],answer:0},
+    {prompt:'䷓风地观（☴☷）的互卦是？',type:'hugua-full',ben:'䷓',choices:['䷖山地剥','䷗地雷复','䷒地泽临','䷊地天泰'],answer:0},
+
+    // 17-20: 综合判断
+    {prompt:'八纯卦中，哪两个卦的互卦等于自身？',type:'hugua-zishen',choices:['䷀乾和䷁坤','䷜坎和䷝离','䷲震和䷳艮','䷸巽和䷹兑'],answer:0},
+    {prompt:'互卦的下互卦取本卦的哪几爻？',type:'hugua-xiarule',choices:['二、三、四爻','一、二、三爻','三、四、五爻','四、五、上爻'],answer:0},
+    {prompt:'䷀乾和䷁坤互卦等于自身，原因是？',type:'hugua-why',choices:['六爻全相同，中间四爻不变','它们是特殊的卦','不需要互卦','古法规定'],answer:0},
+    {prompt:'以下哪个卦的互卦不是八纯卦之一？',type:'hugua-not-chun',choices:['䷜坎→互䷚山雷颐','䷀乾→互䷀乾','䷁坤→互䷁坤','以上都是对的'],answer:0}
+  ]
+});
+
+// ==== LEVEL 28: 互卦取法进阶 ====
+// 第28关：互卦取法进阶（25题）
+LEVELS.push({
+  id:28, icon:'🧩', title:'互卦取法进阶', desc:'复杂重卦（三阴三阳交错）的互卦取法，练到秒拆',
+  source:'《梅花易数》',
+  pitfalls:['互卦的下卦和上卦可能会跟本卦上下卦相同——这不是抄本卦，而是从中间取出来的恰好一样！','取互卦只看爻的阴阳，不涉及五行——五行是后面用体用生克时才考虑的'],
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🧩 第28关：互卦取法进阶'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '有些重卦的互卦不那么直观——特别是三阴三阳交错的卦（如䷔火雷噬嗑、䷕山火贲、䷮泽水困等）。本关专项训练复杂卦的互卦取法。'),
+      h('div',{style:{background:'#E3F2FD',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#1565C0'}},'🧮 快速取互卦心法'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '三步走：\n'+
+          '1️⃣ 写出本卦六爻阴阳（从下往上）\n'+
+          '2️⃣ 圈出第2/3/4爻→这就是下互卦\n'+
+          '3️⃣ 圈出第3/4/5爻→这就是上互卦\n'+
+          '4️⃣ 把三爻组合对应回八卦\n'+
+          '▸ 注意：第3和第4爻被用了两次！')
+      ),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#B8860B'}},'📝 八卦阴阳速查'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '☰乾=⚊⚊⚊  ☱兑=⚊⚊⚋  ☲离=⚊⚋⚊  ☳震=⚊⚋⚋\n'+
+          '☴巽=⚋⚊⚊  ☵坎=⚋⚊⚋  ☶艮=⚋⚋⚊  ☷坤=⚋⚋⚋\n'+
+          '(爻序从下往上读)')
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2E7D32'}},'🔰 难点卦例示范'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '䷔火雷噬嗑（上离☲下震☳）：\n'+
+          '六爻=⚊⚋⚋⚊⚋⚊(初→上)→二三四=⚋⚋⚊→☶艮，三四五=⚋⚊⚋→☵坎→互䷦水山蹇\n'+
+          '䷕山火贲（上艮☶下离☲）：\n'+
+          '六爻=⚊⚋⚊⚋⚋⚊→二三四=⚋⚊⚋→☵坎，三四五=⚊⚋⚋→☳震→互䷧雷水解')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'25题复杂卦——练到秒拆！⚡'),
+      h('div',{className:'source-tag'},'来源：《梅花易数》')
+    ));
+  },
+  questions:[
+    // 1-5: ䷔䷕䷮等复杂卦的互卦
+    {prompt:'䷔火雷噬嗑（☲☳）的下互卦是？',type:'hugua-xiahu',ben:'䷔',choices:['☶艮','☳震','☵坎','☲离'],answer:0},
+    {prompt:'䷔火雷噬嗑（☲☳）的互卦是？',type:'hugua-full',ben:'䷔',choices:['䷦水山蹇','䷧雷水解','䷮泽水困','䷯水风井'],answer:0},
+    {prompt:'䷕山火贲（☶☲）的互卦是？',type:'hugua-full',ben:'䷕',choices:['䷧雷水解','䷦水山蹇','䷮泽水困','䷩风雷益'],answer:0},
+    {prompt:'䷮泽水困（☱☵）的下互卦是？',type:'hugua-xiahu',ben:'䷮',choices:['☲离','☵坎','☳震','☱兑'],answer:0},
+    {prompt:'䷮泽水困（☱☵）的上互卦是？',type:'hugua-shanghu',ben:'䷮',choices:['☴巽','☲离','☵坎','☳震'],answer:0},
+
+    // 6-12: 更多复杂卦
+    {prompt:'䷯水风井（☵☴）的互卦是？',type:'hugua-full',ben:'䷯',choices:['䷥火泽睽','䷤风火家人','䷮泽水困','䷛泽风大过'],answer:0},
+    {prompt:'䷰泽火革（☱☲）的互卦是？',type:'hugua-full',ben:'䷰',choices:['䷫天风姤','䷠天山遁','䷌天火同人','䷍火天大有'],answer:0},
+    {prompt:'䷱火风鼎（☲☴）的互卦是？',type:'hugua-full',ben:'䷱',choices:['䷪泽天夬','䷫天风姤','䷬泽地萃','䷭地风升'],answer:0},
+    {prompt:'䷫天风姤（☰☴）的互卦是？',type:'hugua-full',ben:'䷫',choices:['䷀乾为天','䷁坤为地','䷾水火既济','䷿火水未济'],answer:0},
+    {prompt:'䷠天山遁（☰☶）的下互卦是？',type:'hugua-xiahu',ben:'䷠',choices:['☴巽','☰乾','☶艮','☷坤'],answer:0},
+    {prompt:'䷡雷天大壮（☳☰）的互卦是？',type:'hugua-full',ben:'䷡',choices:['䷪泽天夬','䷫天风姤','䷌天火同人','䷍火天大有'],answer:0},
+    {prompt:'䷢火地晋（☲☷）的互卦是？',type:'hugua-full',ben:'䷢',choices:['䷦水山蹇','䷧雷水解','䷮泽水困','䷩风雷益'],answer:0},
+
+    // 13-18: ䷣䷤䷥䷦䷧䷨
+    {prompt:'䷣地火明夷（☷☲）的互卦是？',type:'hugua-full',ben:'䷣',choices:['䷧雷水解','䷦水山蹇','䷮泽水困','䷯水风井'],answer:0},
+    {prompt:'䷤风火家人（☴☲）的互卦是？',type:'hugua-full',ben:'䷤',choices:['䷥火泽睽','䷤风火家人','䷮泽水困','䷛泽风大过'],answer:0},
+    {prompt:'䷥火泽睽（☲☱）的互卦是？',type:'hugua-full',ben:'䷥',choices:['䷾水火既济','䷿火水未济','䷮泽水困','䷯水风井'],answer:0},
+    {prompt:'䷦水山蹇（☵☶）的互卦是？',type:'hugua-full',ben:'䷦',choices:['䷿火水未济','䷾水火既济','䷮泽水困','䷯水风井'],answer:0},
+    {prompt:'䷧雷水解（☳☵）的互卦是？',type:'hugua-full',ben:'䷧',choices:['䷾水火既济','䷿火水未济','䷦水山蹇','䷯水风井'],answer:0},
+    {prompt:'䷨山泽损（☶☱）的互卦是？',type:'hugua-full',ben:'䷨',choices:['䷗地雷复','䷒地泽临','䷊地天泰','䷖山地剥'],answer:0},
+
+    // 19-22: 取爻拆解
+    {prompt:'䷔噬嗑六爻=⚊⚋⚋⚊⚋⚊，三四五爻(⚋⚊⚋)是什么卦？',type:'hugua-decode',ben:'䷔',pos:'三四五',choices:['☵坎','☳震','☶艮','☲离'],answer:0},
+    {prompt:'䷕山火贲，二三四爻(⚋⚊⚋)→什么卦？',type:'hugua-decode',ben:'䷕',pos:'二三四',choices:['☵坎','☲离','☳震','☱兑'],answer:0},
+    {prompt:'䷮泽水困（☱☵）的互卦上下是什么组合？',type:'hugua-combo',ben:'䷮',choices:['上☴巽下☲离','上☲离下☴巽','上☵坎下☳震','上☳震下☵坎'],answer:0},
+    {prompt:'取互卦时，哪两爻被两个互卦共用？',type:'hugua-shared-mix',choices:['第三爻和第四爻','第二爻和第三爻','第四爻和第五爻','第一爻和第二爻'],answer:0},
+
+    // 23-25: 综合挑战
+    {prompt:'䷛泽风大过（☱☴）的互卦是？',type:'hugua-full',ben:'䷛',choices:['䷀乾为天','䷁坤为地','䷾水火既济','䷿火水未济'],answer:0},
+    {prompt:'䷚山雷颐（☶☳）的互卦是？',type:'hugua-full',ben:'䷚',choices:['䷁坤为地','䷀乾为天','䷊地天泰','䷋天地否'],answer:0},
+    {prompt:'互卦的下互卦=本卦2/3/4爻。这句口诀中2指的是？',type:'hugua-number',choices:['从下往上数第2爻（二爻）','从上往下数第2爻','中间第2爻','随便哪个'],answer:0}
+  ]
+});
+
+// ==== LEVEL 29: 本卦→互卦→变卦全链路 ====
+// 第29关：本卦→互卦→变卦全链路（25题）
+LEVELS.push({
+  id:29, icon:'⛓️', title:'本卦→互卦→变卦全链路', desc:'三步串联：本卦→取互卦→动爻变→变卦——梅花易数核心推导链',
+  source:'综合',
+  pitfalls:['顺序不能乱：先取互卦（从本卦）→再算变卦（从本卦+动爻）。互卦和变卦都是从本卦出发的平行运算！','互卦揭示过程、变卦揭示结果——两者不互相依赖'],
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'⛓️ 第29关：本卦→互卦→变卦全链路'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '这是梅花易数断卦的核心推导链！给你本卦和动爻位置，你需要同时计算出互卦（中间过程）和变卦（最终结果）。三卦合参，完整揭示事物的始-中-终。'),
+      h('div',{style:{background:'#E3F2FD',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#1565C0'}},'🔗 核心推导链'),
+        h('div',{style:{fontSize:'14px',lineHeight:'2',textAlign:'center',fontWeight:600,color:'var(--text)'}},
+          '本卦（始）\n'+
+          '  ├─→ 互卦（中）= 取中间四爻重组\n'+
+          '  └─→ 变卦（终）= 动爻位置阴阳互变\n'+
+          '三卦合参 → 完整断卦')
+      ),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#B8860B'}},'📝 完整示例'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '例：䷊地天泰（上坤☷下乾☰），动爻在三\n'+
+          '▸ 本卦䷊ → 互卦䷵雷泽归妹（过程）\n'+
+          '  　　→ 变卦䷒地泽临（结果）\n'+
+          '▸ 体卦=上坤☷(土)、用卦=下乾☰(金)→体生用→小凶（耗泄）\n'+
+          '▸ 完整解读：开始顺利，中间有波折(归妹)，最终有小耗损(临)')
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2E7D32'}},'⚡ 计算顺序'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',textAlign:'center',color:'var(--text)'}},
+          '给定：本卦 + 动爻位置\n'+
+          '第①步：从本卦取互卦\n'+
+          '第②步：从本卦+动爻算变卦\n'+
+          '第③步：定体用→判生克→断吉凶')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'25题全链路——完整走通梅花易数核心链！🔗'),
+      h('div',{className:'source-tag'},'来源：综合')
+    ));
+  },
+  questions:[
+    // 1-5: 全链路推导（给本卦+动爻→互卦+变卦）
+    {prompt:'䷊地天泰，动爻在三→互卦是？变卦是？',type:'fullchain',ben:'䷊',dong:3,choices:['互䷵归妹·变䷒临','互䷒临·变䷵归妹','互䷗复·变䷒临','互䷵归妹·变䷗复'],answer:0},
+    {prompt:'䷋天地否，动爻在四→互卦是？变卦是？',type:'fullchain',ben:'䷋',dong:4,choices:['互䷴渐·变䷓观','互䷑蛊·变䷖剥','互䷴渐·变䷖剥','互䷑蛊·变䷓观'],answer:0},
+    {prompt:'䷾水火既济，动爻在初→互卦是？变卦是？',type:'fullchain',ben:'䷾',dong:1,choices:['互䷿未济·变䷦蹇','互䷾既济·变䷻节','互䷿未济·变䷾既济','互䷦蹇·变䷿未济'],answer:0},
+    {prompt:'䷜坎为水，动爻在二→互卦+变卦？',type:'fullchain',ben:'䷜',dong:2,choices:['互䷚颐·变䷻节','互䷛大过·变䷂屯','互䷚颐·变䷜坎','互䷛大过·变䷾既济'],answer:0},
+    {prompt:'䷝离为火，动爻在五→互卦+变卦？',type:'fullchain',ben:'䷝',dong:5,choices:['互䷛大过·变䷌同人','互䷚颐·变䷌同人','互䷛大过·变䷝离','互䷚颐·变䷍大有'],answer:0},
+
+    // 6-10: 全链路推导（更多卦例）
+    {prompt:'䷐泽雷随（☱☳），动爻在初→互+变？',type:'fullchain',ben:'䷐',dong:1,choices:['互䷴渐·变䷬萃','互䷑蛊·变䷒临','互䷴渐·变䷒临','互䷑蛊·变䷬萃'],answer:0},
+    {prompt:'䷖山地剥（☶☷），动爻在五→互+变？',type:'fullchain',ben:'䷖',dong:5,choices:['互䷁坤·变䷓观','互䷗复·变䷒临','互䷁坤·变䷒临','互䷗复·变䷓观'],answer:0},
+    {prompt:'䷗地雷复（☷☳），动爻在二→互+变？',type:'fullchain',ben:'䷗',dong:2,choices:['互䷁坤·变䷒临','互䷖剥·变䷊泰','互䷁坤·变䷊泰','互䷖剥·变䷒临'],answer:0},
+    {prompt:'䷒地泽临（☷☱），动爻在四→互+变？',type:'fullchain',ben:'䷒',dong:4,choices:['互䷗复·变䷵归妹','互䷖剥·变䷗复','互䷗复·变䷗复','互䷖剥·变䷵归妹'],answer:0},
+    {prompt:'䷫天风姤（☰☴），动爻在初→互+变？',type:'fullchain',ben:'䷫',dong:1,choices:['互䷀乾·变䷀乾','互䷀乾·变䷫姤','互䷌同人·变䷀乾','互䷫姤·变䷀乾'],answer:0},
+
+    // 11-15: 多爻动全链路
+    {prompt:'䷊地天泰，初/三爻动→互卦？变卦？',type:'fullchain-duo',ben:'䷊',dongs:'初,三',choices:['互䷵归妹·变䷨损','互䷗复·变䷒临','互䷵归妹·变䷒临','互䷗复·变䷨损'],answer:0},
+    {prompt:'䷋天地否，初/四爻动→互卦？变卦？',type:'fullchain-duo',ben:'䷋',dongs:'初,四',choices:['互䷴渐·变䷩益','互䷑蛊·变䷓观','互䷴渐·变䷓观','互䷑蛊·变䷩益'],answer:0},
+    {prompt:'多爻动时，互卦的计算和变卦的计算有关系吗？',type:'hugua-biangua-relation',choices:['没关系——两个都是从本卦出发的平行运算','有关系——先算互卦再算变卦','有关系——先算变卦再算互卦','互卦就是变卦的一半'],answer:0},
+    {prompt:'䷾既济，初/三爻动→互卦？变卦？',type:'fullchain-duo',ben:'䷾',dongs:'初,三',choices:['互䷿未济·变䷂屯','互䷾既济·变䷻节','互䷿未济·变䷻节','互䷾既济·变䷂屯'],answer:0},
+    {prompt:'䷜坎，初/二爻动→互卦？变卦？',type:'fullchain-duo',ben:'䷜',dongs:'初,二',choices:['互䷚颐·变䷻节','互䷛大过·变䷂屯','互䷚颐·变䷂屯','互䷛大过·变䷻节'],answer:0},
+
+    // 16-20: 单步检验（5题）
+    {prompt:'全链路第一步是什么？',type:'chain-step',step:1,choices:['从本卦取互卦','从本卦+动爻算变卦','定体用','断吉凶'],answer:0},
+    {prompt:'全链路第二步是什么？',type:'chain-step',step:2,choices:['从本卦+动爻算变卦','从本卦取互卦','定体用','断吉凶'],answer:0},
+    {prompt:'互卦揭示什么？变卦揭示什么？',type:'chain-meaning',choices:['互卦=中间过程，变卦=最终结果','互卦=最终结果，变卦=中间过程','两者一样','互卦=开始，变卦=过程'],answer:0},
+    {prompt:'以下哪个不是全链路的步骤？',type:'chain-not',choices:['取上卦和下卦的五行','取互卦','算变卦','定体用'],answer:0},
+    {prompt:'䷊地天泰，动爻在三，体卦的五行是？',type:'chain-ti-wx',ben:'䷊',dong:3,choices:['土（坤☷）','金（乾☰）','木','水'],answer:0},
+
+    // 21-25: 综合应用
+    {prompt:'䷮泽水困（☱☵），动爻在二→互卦？变卦？',type:'fullchain',ben:'䷮',dong:2,choices:['互䷤家人·变䷬萃','互䷥睽·变䷒临','互䷤家人·变䷒临','互䷥睽·变䷬萃'],answer:0},
+    {prompt:'䷯水风井（☵☴），动爻在五→互卦？变卦？',type:'fullchain',ben:'䷯',dong:5,choices:['互䷥睽·变䷭升','互䷤家人·变䷭升','互䷥睽·变䷯井','互䷤家人·变䷑蛊'],answer:0},
+    {prompt:'全链路中，"体用生克"用到哪三个信息？',type:'chain-tiyong-input',choices:['本卦体用+五行生克规则','只看变卦','只看互卦','只看本卦'],answer:0},
+    {prompt:'三卦合参中，哪一卦代表"现在/主体"？',type:'chain-now',choices:['本卦','互卦','变卦','都不代表'],answer:0},
+    {prompt:'全链路断卦的口诀是？',type:'chain-slogan',choices:['本为始·互为中·变为终','本为终·互为始·变为中','互为始·本为中·变为终','变为始·本为中·互为终'],answer:0}
+  ]
+});
+
+// ==== LEVEL 30: 互变综合大挑战 ====
+// 第30关：互变综合大挑战（30题）
+LEVELS.push({
+  id:30, icon:'🏅', title:'互变综合大挑战', desc:'变卦+互卦大汇总，30题混合——通关即掌握梅花易数核心推导法',
+  source:'综合',
+  pitfalls:null,
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🏅 第30关：互变综合大挑战'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '终极考验！本关把变卦（一爻动、多爻动、规则判断）和互卦（取法、全链路）全部混合在一起，30题随机轰炸。通过本关意味着你已经掌握了梅花易数的核心推导框架！'),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#2E7D32'}},'🎖️ 本关覆盖的知识领域'),
+        h('div',{style:{fontSize:'12px',lineHeight:'2',color:'var(--text-light)'}},
+          '✅ 变卦计算（一爻动/多爻动）\n'+
+          '✅ 多爻动解读规则（二爻/三爻/四爻/五爻/六爻）\n'+
+          '✅ 体用定位（动爻在上→体在下，动爻在下→体在上）\n'+
+          '✅ 互卦取法（下互=2/3/4爻，上互=3/4/5爻）\n'+
+          '✅ 八纯卦互卦 + 常见卦互卦 + 复杂卦互卦\n'+
+          '✅ 全链路推导（本→互→变+体用）\n'+
+          '✅ 概念辨析（互卦≠变卦、互卦意义等）')
+      ),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#E65100'}},'🔥 最终口诀'),
+        h('div',{style:{fontSize:'14px',lineHeight:'2',textAlign:'center',fontWeight:600,color:'var(--text)'}},
+          '变卦动爻变阴阳　互卦中四爻重组\n'+
+          '一爻到六爻规则异　三卦合参断吉凶\n'+
+          '本为始·互为中·变为终')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'30题终极挑战——冲刺！🏆'),
+      h('div',{className:'source-tag'},'来源：综合')
+    ));
+  },
+  questions:[
+    // 1-5: 变卦计算（一爻动）
+    {prompt:'䷊地天泰，动爻在二→变卦是？',type:'final-biangua',ben:'䷊',dong:2,choices:['䷣地火明夷','䷗地雷复','䷒地泽临','䷡雷天大壮'],answer:0},
+    {prompt:'䷋天地否，动爻在上→变卦的上卦是？',type:'final-shang',ben:'䷋',dong:6,choices:['☱兑','☰乾','☷坤','☲离'],answer:0},
+    {prompt:'䷾既济，动爻在四→体卦是？',type:'final-ti',ben:'䷾',dong:4,choices:['下离☲','上坎☵','互卦','变卦'],answer:0},
+    {prompt:'䷍火天大有（☲☰），动爻在三→用卦五行是？',type:'final-yong',ben:'䷍',dong:3,choices:['金（乾☰）','火（离☲）','土','木'],answer:0},
+    {prompt:'䷜坎为水，动爻在五→变卦的下卦是？',type:'final-xia',ben:'䷜',dong:5,choices:['☵坎','☷坤','☳震','☱兑'],answer:0},
+
+    // 6-10: 多爻动规则
+    {prompt:'二爻动时以什么为主？',type:'final-rule',count:2,choices:['以本卦为主','以变卦为主','看互卦','看体卦'],answer:0},
+    {prompt:'三爻动时看什么？',type:'final-rule',count:3,choices:['看本卦和变卦的卦辞','只看本卦','只看变卦','看用九/用六'],answer:0},
+    {prompt:'四爻动以什么为主？',type:'final-rule',count:4,choices:['以变卦为主','以本卦为主','看互卦','重新起卦'],answer:0},
+    {prompt:'五爻动看什么？',type:'final-rule',count:5,choices:['变卦中唯一未动之爻','本卦动爻','互卦','爻辞'],answer:0},
+    {prompt:'乾䷀六爻全动→看什么？坤䷁六爻全动→看什么？',type:'final-qiankun',choices:['用九·用六','用六·用九','都看变卦','都看爻辞'],answer:0},
+
+    // 11-15: 多爻动计算
+    {prompt:'䷊地天泰，初/三爻动→变卦是？',type:'final-duo',ben:'䷊',dongs:'初,三',choices:['䷨山泽损','䷗地雷复','䷒地泽临','䷡雷天大壮'],answer:0},
+    {prompt:'䷾既济，初/三/五爻动→属于几爻动？',type:'final-count',ben:'䷾',dongs:'初,三,五',choices:['三爻动','二爻动','四爻动','五爻动'],answer:0},
+    {prompt:'䷋天地否，初/四爻动→变卦是？',type:'final-duo',ben:'䷋',dongs:'初,四',choices:['䷩风雷益','䷓风地观','䷖山地剥','䷗地雷复'],answer:0},
+    {prompt:'多爻动的计算方法是什么？',type:'final-duo-calc',choices:['每个动爻都阴阳互变','只变最上面的动爻','只变最下面的动爻','随机选一个变'],answer:0},
+    {prompt:'三爻动时，解读的"主"是哪方面？',type:'final-main',choices:['本卦和变卦的卦辞同等重要','本卦卦辞为主','变卦卦辞为主','爻辞为主'],answer:0},
+
+    // 16-20: 互卦取法
+    {prompt:'䷀乾为天的互卦是？',type:'final-hugua',ben:'䷀',choices:['䷀乾为天','䷁坤为地','䷜坎为水','䷝离为火'],answer:0},
+    {prompt:'䷜坎为水的互卦是？',type:'final-hugua',ben:'䷜',choices:['䷚山雷颐','䷛泽风大过','䷦水山蹇','䷧雷水解'],answer:0},
+    {prompt:'䷊地天泰的下互卦是？',type:'final-xiahu',ben:'䷊',choices:['☱兑','☰乾','☷坤','☳震'],answer:0},
+    {prompt:'䷔火雷噬嗑的互卦是？',type:'final-hugua',ben:'䷔',choices:['䷦水山蹇','䷧雷水解','䷮泽水困','䷯水风井'],answer:0},
+    {prompt:'互卦的上互取自本卦的哪几爻？',type:'final-shanghu-rule',choices:['三爻·四爻·五爻','二爻·三爻·四爻','四爻·五爻·上爻','一爻·二爻·三爻'],answer:0},
+
+    // 21-25: 全链路
+    {prompt:'䷊地天泰，动爻在三→互卦+变卦？',type:'final-chain',ben:'䷊',dong:3,choices:['互䷵归妹·变䷒临','互䷗复·变䷒临','互䷵归妹·变䷗复','互䷒临·变䷵归妹'],answer:0},
+    {prompt:'䷋天地否，动爻在四→互卦+变卦？',type:'final-chain',ben:'䷋',dong:4,choices:['互䷴渐·变䷓观','互䷑蛊·变䷖剥','互䷴渐·变䷖剥','互䷑蛊·变䷓观'],answer:0},
+    {prompt:'全链路中，互卦和变卦的关系是？',type:'final-chain-rel',choices:['两个都是从本卦出发的平行运算','互卦决定变卦','变卦决定互卦','先算变卦再取互卦'],answer:0},
+    {prompt:'"本为始·互为中·变为终"中，"中"指？',type:'final-chain-mid',choices:['互卦（事物中间过程）','本卦的中间爻','体卦','用卦'],answer:0},
+    {prompt:'䷾既济，动爻在初→互卦+变卦+体卦？',type:'final-chain-full',ben:'䷾',dong:1,choices:['互䷿未济·变䷦蹇·体上坎☵','互䷾既济·变䷻节·体下离☲','互䷿未济·变䷾既济·体上坎☵','互䷦蹇·变䷿未济·体下离☲'],answer:0},
+
+    // 26-30: 概念辨析+综合
+    {prompt:'互卦≠变卦。互卦来自？变卦来自？',type:'final-diff',choices:['互卦=爻位重组，变卦=动爻阴阳变','互卦=动爻变，变卦=爻位重组','两者来源相同','两者就是同一个东西'],answer:0},
+    {prompt:'八纯卦中互卦等于自身的两个卦是？',type:'final-chuncui',choices:['䷀乾和䷁坤','䷜坎和䷝离','䷲震和䷳艮','䷸巽和䷹兑'],answer:0},
+    {prompt:'"变卦"为什么又叫"之卦"？',type:'final-zhi',choices:['古代"之"表示"往/到"，本卦→之卦=变化到新卦','"之"代表"知道"','"之卦"是另一个体系','没有特别原因'],answer:0},
+    {prompt:'䷊地天泰，初/三/四爻动→以什么为主解读？',type:'final-duo-main',ben:'䷊',dongs:'初,三,四',choices:['三爻动——看本卦和变卦卦辞','四爻动——以变卦为主','二爻动——以本卦为主','五爻动——看唯一未动之爻'],answer:0},
+    {prompt:'学完互卦和变卦，下一步应该学什么来完善断卦？',type:'final-next',choices:['旺相休囚死（季节旺衰调制吉凶）','重新学八卦取象','学六十四卦卦名','学起卦法计时'],answer:0}
+  ]
+});
+
+// ===== 第31-40关：旺衰+六十四卦八宫 =====
+// 输出到 index.html 的 LEVELS 数组中
+
+// ==== LEVEL 31: 旺相休囚死原理 ====
+LEVELS.push({
+  id:31, icon:'🌿', title:'旺相休囚死原理', desc:'当令者旺、我生者相、生我者休、克我者囚、我克者死',
+  source:'《梅花易数》「旺相休囚」+《五行大义》',
+  pitfalls:'「休」≠休息——是退气归隐之意。方向不可颠倒：生我者休（我母退隐），我生者相（我子次旺）。',
+  reviewCount:3,
+  teaching:function(main){
+    var seasons = [
+      {s:'春（寅卯月）',ling:'木',wang:'木',xiang:'火',xiu:'水',qiu:'金',si:'土',color:'var(--wood)'},
+      {s:'夏（巳午月）',ling:'火',wang:'火',xiang:'土',xiu:'木',qiu:'水',si:'金',color:'var(--fire)'},
+      {s:'秋（申酉月）',ling:'金',wang:'金',xiang:'水',xiu:'土',qiu:'火',si:'木',color:'var(--metal)'},
+      {s:'冬（亥子月）',ling:'水',wang:'水',xiang:'木',xiu:'金',qiu:'土',si:'火',color:'var(--water)'},
+      {s:'四季末月',ling:'土',wang:'土',xiang:'金',xiu:'火',qiu:'木',si:'水',color:'var(--earth)'}
+    ];
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🌿 第31关：旺相休囚死原理'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '旺相休囚死是五行在时间中的盛衰规律。每个季节有一个当令五行（最旺），其他四行则分别处于相、休、囚、死四种状态。'),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#B8860B'}},'📊 五行旺衰全表'),
+        h('div',{style:{overflowX:'auto'}},
+          h('table',{style:{width:'100%',fontSize:'12px',borderCollapse:'collapse'}},
+            h('tr',{style:{borderBottom:'2px solid var(--border)'}},
+              ['季节','当令','旺','相','休','囚','死'].map(function(hdr){return h('th',{style:{padding:'6px 4px',textAlign:'center',fontWeight:700}},hdr);})),
+            seasons.map(function(r){
+              return h('tr',{style:{borderBottom:'1px solid var(--border)'}},
+                [r.s,r.ling,r.wang,r.xiang,r.xiu,r.qiu,r.si].map(function(v,i){
+                  return h('td',{style:{padding:'6px 4px',textAlign:'center',fontWeight:i===2?'700':'400',color:i===2?r.color:'var(--text)'}},v);
+                }));
+            })
+          )
+        )
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#2E7D32'}},'🔑 五态定义'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '🌟 旺 = 当令者（与月令同五行）——最强\\n🔥 相 = 我生者（当令之子）——次旺\\n💤 休 = 生我者（当令之母）——退隐\\n🔒 囚 = 克我者（克当令者）——受制\\n💀 死 = 我克者（当令所克）——最弱')
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
+        '💡 记忆口诀：「当令者旺，我生者相，生我者休，克我者囚，我克者死」\\n例：春木旺 → 木旺、火相（木生火）、水休（水生木）、金囚（金克木）、土死（木克土）'),
+      h('div',{className:'source-tag'},'来源：《梅花易数》「旺相休囚」'),
+      h('div',{className:'source-tag',style:{color:'var(--red)',opacity:'1',marginTop:'4px'}},'⚠️ 方向不可反：生我者休≠我生者休！')
+    ));
+  },
+  questions:[
+    {prompt:'「旺」是什么意思？',type:'wang-def',choices:['当令，与月令同五行','我生者，次旺','生我者，退隐','克我者，受制'],answer:0},
+    {prompt:'「相」是什么意思？',type:'xiang-def',choices:['当令者','我生者，次旺','生我者，退隐','克我者，受制'],answer:1},
+    {prompt:'「休」是什么意思？',type:'xiu-def',choices:['最强','次旺','生我者，退隐','最弱'],answer:2},
+    {prompt:'「囚」是什么意思？',type:'qiu-def',choices:['次旺','退隐','克我者，受制','最弱'],answer:2},
+    {prompt:'「死」是什么意思？',type:'si-def',choices:['我克者，最弱','次旺','退隐','受制'],answer:0},
+    {prompt:'春季（木旺），水处于什么状态？',type:'wang-xiu',season:'春',wx:'水',choices:['旺','相','休','死'],answer:2},
+    {prompt:'春季（木旺），火处于什么状态？',type:'wang-xiu',season:'春',wx:'火',choices:['旺','相','囚','死'],answer:1},
+    {prompt:'春季（木旺），金处于什么状态？',type:'wang-xiu',season:'春',wx:'金',choices:['旺','休','囚','死'],answer:2},
+    {prompt:'春季（木旺），土处于什么状态？',type:'wang-xiu',season:'春',wx:'土',choices:['相','休','囚','死'],answer:3},
+    {prompt:'夏季（火旺），木处于什么状态？',type:'wang-xiu',season:'夏',wx:'木',choices:['旺','相','休','死'],answer:2},
+    {prompt:'夏季（火旺），土处于什么状态？',type:'wang-xiu',season:'夏',wx:'土',choices:['旺','相','囚','死'],answer:1},
+    {prompt:'夏季（火旺），水处于什么状态？',type:'wang-xiu',season:'夏',wx:'水',choices:['相','休','囚','死'],answer:2},
+    {prompt:'夏季（火旺），金处于什么状态？',type:'wang-xiu',season:'夏',wx:'金',choices:['相','休','囚','死'],answer:3},
+    {prompt:'秋季（金旺），土处于什么状态？',type:'wang-xiu',season:'秋',wx:'土',choices:['旺','相','休','死'],answer:2},
+    {prompt:'秋季（金旺），水处于什么状态？',type:'wang-xiu',season:'秋',wx:'水',choices:['旺','相','囚','死'],answer:1},
+    {prompt:'秋季（金旺），木处于什么状态？',type:'wang-xiu',season:'秋',wx:'木',choices:['相','休','囚','死'],answer:3},
+    {prompt:'冬季（水旺），金处于什么状态？',type:'wang-xiu',season:'冬',wx:'金',choices:['旺','相','休','死'],answer:2},
+    {prompt:'冬季（水旺），木处于什么状态？',type:'wang-xiu',season:'冬',wx:'木',choices:['旺','相','囚','死'],answer:1},
+    {prompt:'冬季（水旺），火处于什么状态？',type:'wang-xiu',season:'冬',wx:'火',choices:['相','休','囚','死'],answer:3},
+    {prompt:'春季「囚」的是哪个五行？',type:'season-qiu',season:'春',choices:['木','火','金','水'],answer:2}
+  ]
+});
+
+// ==== LEVEL 32: 春季旺衰 ====
+LEVELS.push({
+  id:32, icon:'🌸', title:'春季旺衰', desc:'春（寅卯月）= 木旺 → 木旺·火相·水休·金囚·土死',
+  source:'《梅花易数》',
+  pitfalls:'春木虽旺，土虽死，但若体卦为土遇春月并不等于万事皆凶——旺衰只是调制系数。',
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🌸 第32关：春季旺衰'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '春季寅卯月，木当令。以木为旺，依次推出其他四行的状态。这是最基础的旺衰应用。'),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#2E7D32'}},'🌱 春季旺衰速查'),
+        h('div',{style:{fontSize:'15px',lineHeight:'2.2',textAlign:'center',fontWeight:600}},
+          '🌿 木旺（当令）\\n🔥 火相（木生火）\\n💧 水休（水生木）\\n⚔️ 金囚（金克木）\\n🏔️ 土死（木克土）')
+      ),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#E65100'}},'💡 八卦在春季的旺衰'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '震☳巽☴（木）= 旺　|　离☲（火）= 相\\n坎☵（水）= 休　|　乾☰兑☱（金）= 囚\\n坤☷艮☶（土）= 死')
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--green)',fontWeight:700,textAlign:'center',marginTop:'8px'}},'20题 · 春季专项'),
+      h('div',{className:'source-tag'},'来源：《梅花易数》')
+    ));
+  },
+  questions:[
+    {prompt:'春季，木处于什么状态？',type:'wx-season-state',wx:'木',season:'春',choices:['旺','相','休','囚'],answer:0},
+    {prompt:'春季，火处于什么状态？',type:'wx-season-state',wx:'火',season:'春',choices:['旺','相','休','死'],answer:1},
+    {prompt:'春季，水处于什么状态？',type:'wx-season-state',wx:'水',season:'春',choices:['旺','休','囚','死'],answer:1},
+    {prompt:'春季，金处于什么状态？',type:'wx-season-state',wx:'金',season:'春',choices:['相','休','囚','死'],answer:2},
+    {prompt:'春季，土处于什么状态？',type:'wx-season-state',wx:'土',season:'春',choices:['相','休','囚','死'],answer:3},
+    {prompt:'春季，震☳是什么状态？',type:'gua-season-state',gua:'震',season:'春',choices:['旺','相','休','囚'],answer:0},
+    {prompt:'春季，离☲是什么状态？',type:'gua-season-state',gua:'离',season:'春',choices:['旺','相','休','囚'],answer:1},
+    {prompt:'春季，坎☵是什么状态？',type:'gua-season-state',gua:'坎',season:'春',choices:['旺','休','囚','死'],answer:1},
+    {prompt:'春季，乾☰是什么状态？',type:'gua-season-state',gua:'乾',season:'春',choices:['相','休','囚','死'],answer:2},
+    {prompt:'春季，坤☷是什么状态？',type:'gua-season-state',gua:'坤',season:'春',choices:['相','休','囚','死'],answer:3},
+    {prompt:'春季，哪个卦最旺？',type:'season-wang-gua',season:'春',choices:['震☳','离☲','坎☵','乾☰'],answer:0},
+    {prompt:'春季，哪个卦处于「相」？',type:'season-xiang-gua',season:'春',choices:['震☳','离☲','坎☵','坤☷'],answer:1},
+    {prompt:'春季，哪个卦最弱（死）？',type:'season-si-gua',season:'春',choices:['离☲','坤☷','坎☵','乾☰'],answer:1},
+    {prompt:'春季木旺。巽☴（木）的状态是？',type:'gua-season-state',gua:'巽',season:'春',choices:['旺','相','休','囚'],answer:0},
+    {prompt:'春季，兑☱（金）处于？',type:'gua-season-state',gua:'兑',season:'春',choices:['相','休','囚','死'],answer:2},
+    {prompt:'春季，艮☶（土）处于？',type:'gua-season-state',gua:'艮',season:'春',choices:['相','休','囚','死'],answer:3},
+    {prompt:'「春木旺、火相」，为什么火是相？',type:'season-why-xiang',choices:['木生火，火为木之子','火生木，木为火之子','火克木','木克火'],answer:0},
+    {prompt:'「春水休」，为什么水是休？',type:'season-why-xiu',choices:['水克木','水生木，水为木之母退隐','木克水','水被火克'],answer:1},
+    {prompt:'春季节，五行从强到弱排序是？',type:'season-order',season:'春',choices:['木>火>水>金>土','木>水>火>金>土','火>木>土>金>水','木>火>金>水>土'],answer:0},
+    {prompt:'春季寅卯月，当令五行是？',type:'season-ling',season:'春',choices:['木','火','金','水'],answer:0}
+  ]
+});
+
+// ==== LEVEL 33: 夏秋冬旺衰 ====
+LEVELS.push({
+  id:33, icon:'🔥❄️', title:'夏秋冬旺衰', desc:'夏=火旺、秋=金旺、冬=水旺，四季末=土旺——各季旺衰混合',
+  source:'《梅花易数》+《五行大义》',
+  pitfalls:'四季末月（辰戌丑未）= 土旺——不是整个夏季都土旺！辰=春末、未=夏末、戌=秋末、丑=冬末。',
+  reviewCount:3,
+  teaching:function(main){
+    var seasons = [
+      {name:'夏（巳午月）',ling:'火',wang:'火',xiang:'土',xiu:'木',qiu:'水',si:'金',emoji:'☀️',color:'var(--fire)'},
+      {name:'秋（申酉月）',ling:'金',wang:'金',xiang:'水',xiu:'土',qiu:'火',si:'木',emoji:'🍂',color:'var(--metal)'},
+      {name:'冬（亥子月）',ling:'水',wang:'水',xiang:'木',xiu:'金',qiu:'土',si:'火',emoji:'❄️',color:'var(--water)'},
+      {name:'四季末（辰戌丑未）',ling:'土',wang:'土',xiang:'金',xiu:'火',qiu:'木',si:'水',emoji:'🏔️',color:'var(--earth)'}
+    ];
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🔥❄️ 第33关：夏秋冬旺衰'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '掌握了春季旺衰后，我们把夏、秋、冬和四季末月一起攻下！每个季节用当令五行推出其他四行状态。'),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#B8860B'}},'📊 各季旺衰速查'),
+        seasons.map(function(r){
+          return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'10px 12px',marginBottom:'6px',border:'1px solid var(--border)'}},
+            h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'4px'}},r.emoji+' '+r.name+'：'+r.ling+'旺'),
+            h('div',{style:{fontSize:'13px',lineHeight:'1.6',color:'var(--text-light)'}},
+              '旺='+r.wang+' | 相='+r.xiang+' | 休='+r.xiu+' | 囚='+r.qiu+' | 死='+r.si));
+        })
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2E7D32'}},'💡 各季八卦旺衰速查'),
+        h('div',{style:{fontSize:'12px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '夏：离☲旺·坤艮相·震巽休·坎囚·乾兑死\\n秋：乾兑旺·坎相·坤艮休·离囚·震巽死\\n冬：坎旺·震巽相·乾兑休·坤艮囚·离死\\n四季末：坤艮旺·乾兑相·离休·震巽囚·坎死')
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--green)',fontWeight:700,textAlign:'center',marginTop:'8px'}},'25题 · 各季混合'),
+      h('div',{className:'source-tag'},'来源：《梅花易数》+《五行大义》')
+    ));
+  },
+  questions:[
+    {prompt:'夏季，火处于什么状态？',type:'wx-season-state',wx:'火',season:'夏',choices:['旺','相','休','囚'],answer:0},
+    {prompt:'夏季，土处于什么状态？',type:'wx-season-state',wx:'土',season:'夏',choices:['旺','相','休','死'],answer:1},
+    {prompt:'夏季，木处于什么状态？',type:'wx-season-state',wx:'木',season:'夏',choices:['旺','休','囚','死'],answer:1},
+    {prompt:'夏季，水处于什么状态？',type:'wx-season-state',wx:'水',season:'夏',choices:['相','休','囚','死'],answer:2},
+    {prompt:'夏季，金处于什么状态？',type:'wx-season-state',wx:'金',season:'夏',choices:['相','休','囚','死'],answer:3},
+    {prompt:'秋季，金处于什么状态？',type:'wx-season-state',wx:'金',season:'秋',choices:['旺','相','休','囚'],answer:0},
+    {prompt:'秋季，水处于什么状态？',type:'wx-season-state',wx:'水',season:'秋',choices:['旺','相','休','死'],answer:1},
+    {prompt:'秋季，火处于什么状态？',type:'wx-season-state',wx:'火',season:'秋',choices:['相','休','囚','死'],answer:2},
+    {prompt:'秋季，木处于什么状态？',type:'wx-season-state',wx:'木',season:'秋',choices:['相','休','囚','死'],answer:3},
+    {prompt:'冬季，水处于什么状态？',type:'wx-season-state',wx:'水',season:'冬',choices:['旺','相','休','囚'],answer:0},
+    {prompt:'冬季，木处于什么状态？',type:'wx-season-state',wx:'木',season:'冬',choices:['旺','相','休','死'],answer:1},
+    {prompt:'冬季，金处于什么状态？',type:'wx-season-state',wx:'金',season:'冬',choices:['旺','休','囚','死'],answer:1},
+    {prompt:'冬季，火处于什么状态？',type:'wx-season-state',wx:'火',season:'冬',choices:['相','休','囚','死'],answer:3},
+    {prompt:'土当令旺在什么月份？',type:'tu-wang-month',choices:['辰戌丑未月（四季末）','午月','子月','寅月'],answer:0},
+    {prompt:'四季末月，土旺 → 金处于？',type:'tu-season-state',wx:'金',choices:['旺','相','休','死'],answer:1},
+    {prompt:'四季末月，水处于？',type:'tu-season-state',wx:'水',choices:['相','休','囚','死'],answer:3},
+    {prompt:'夏季，离☲处于什么状态？',type:'gua-season-state',gua:'离',season:'夏',choices:['旺','相','休','囚'],answer:0},
+    {prompt:'秋季，乾☰处于什么状态？',type:'gua-season-state',gua:'乾',season:'秋',choices:['旺','相','休','囚'],answer:0},
+    {prompt:'冬季，坎☵处于什么状态？',type:'gua-season-state',gua:'坎',season:'冬',choices:['旺','相','休','囚'],answer:0},
+    {prompt:'夏季，坎☵（水）处于什么状态？',type:'gua-season-state',gua:'坎',season:'夏',choices:['相','休','囚','死'],answer:2},
+    {prompt:'秋季，震☳（木）处于什么状态？',type:'gua-season-state',gua:'震',season:'秋',choices:['相','休','囚','死'],answer:3},
+    {prompt:'冬季，离☲（火）处于什么状态？',type:'gua-season-state',gua:'离',season:'冬',choices:['相','休','囚','死'],answer:3},
+    {prompt:'夏天最弱的五行是？',type:'season-si-wx',season:'夏',choices:['木','火','金','水'],answer:2},
+    {prompt:'秋天最弱的五行是？',type:'season-si-wx',season:'秋',choices:['木','火','金','水'],answer:0},
+    {prompt:'冬天最弱的五行是？',type:'season-si-wx',season:'冬',choices:['木','火','金','水'],answer:1}
+  ]
+});
+
+// ==== LEVEL 34: 旺衰与体用结合 ====
+LEVELS.push({
+  id:34, icon:'⚡🎯', title:'旺衰与体用结合', desc:'体旺用衰→吉加强；体衰用旺→凶加强——旺衰是体用吉凶的调制系数',
+  source:'《梅花易数》「体用生克篇」+ 旺衰总论',
+  pitfalls:'旺衰是乘数不是加数！体用吉凶方向由生克决定，旺衰只是放大或缩小。体克用但体死用旺 → 反可能不成。',
+  reviewCount:3,
+  teaching:function(main){
+    var combos = [
+      ['用生体 + 体旺','大吉++','得贵人相助，自己还有实力','🌟🌟'],
+      ['用生体 + 体衰','大吉','有贵人但自己力不从心','🌟'],
+      ['体用比和 + 体旺','吉++','和谐且实力充足','🤝🤝'],
+      ['体用比和 + 体衰','吉','和谐但元气不足','🤝'],
+      ['体克用 + 体旺','小吉++','能克制对方，实力够','💪💪'],
+      ['体克用 + 体衰','小吉','想克但力不从心','💪'],
+      ['体生用 + 体旺','小凶','耗泄但有老本可吃','😰'],
+      ['体生用 + 体衰','凶','耗泄+元气不足→雪上加霜','⚠️'],
+      ['用克体 + 体旺','小凶','被克但身体硬朗能扛','😨'],
+      ['用克体 + 体衰','大凶','被克+身体虚弱→凶险','💀']
+    ];
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'⚡🎯 第34关：旺衰与体用结合'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '单独看体用生克是二维的，加上旺衰就变成了三维。旺衰就像吉凶的「音量旋钮」——可以加强也可以削弱。'),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#B8860B'}},'📊 体用×旺衰联合判定表'),
+        combos.map(function(c){
+          return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'10px 12px',marginBottom:'4px',display:'flex',alignItems:'center',gap:'8px',border:'1px solid var(--border)'}},
+            h('span',{style:{fontSize:'20px'}},c[3]),
+            h('div',{style:{flex:1}},
+              h('div',{style:{fontWeight:700,fontSize:'13px'}},c[0]+' → '+c[1]),
+              h('div',{style:{fontSize:'11px',color:'var(--text-light)'}},c[2]))
+          );
+        })
+      ),
+      h('div',{style:{background:'#E3F2FD',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#1565C0'}},'🔑 核心公式'),
+        h('div',{style:{fontSize:'14px',lineHeight:'1.8',textAlign:'center',fontWeight:600,color:'var(--text-light)'}},
+          '最终吉凶 = 体用生克方向 × 旺衰调制系数\\n体旺 → 吉加倍、凶减半\\n体衰 → 吉减半、凶加倍')
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
+        '💡 记忆诀：「旺者如顺水行舟，衰者如逆风点火」——旺能补拙，衰可毁吉。'),
+      h('div',{className:'source-tag'},'来源：《梅花易数》「体用生克篇」+ 旺衰总论'),
+      h('div',{className:'source-tag',style:{color:'var(--red)',opacity:'1',marginTop:'4px'}},'⚠️ 旺衰不改变体用方向！用克体+体旺 ≠ 吉，只是凶中稍轻。')
+    ));
+  },
+  questions:[
+    {prompt:'用生体=大吉，若体旺则？',type:'tiyong-wangshuai',tiShengke:'用生体',tiWangshuai:'旺',choices:['大吉加倍（大吉++）','仍是大吉不变','降为吉','转为凶'],answer:0},
+    {prompt:'用生体=大吉，若体衰则？',type:'tiyong-wangshuai',tiShengke:'用生体',tiWangshuai:'衰',choices:['大吉加倍','仍是大吉但减弱','降为小吉','还是大吉'],answer:1},
+    {prompt:'用克体=凶，若体旺则？',type:'tiyong-wangshuai',tiShengke:'用克体',tiWangshuai:'旺',choices:['仍是大凶','凶→小凶（体旺能扛）','转为吉','大吉'],answer:1},
+    {prompt:'用克体=凶，若体衰则？',type:'tiyong-wangshuai',tiShengke:'用克体',tiWangshuai:'衰',choices:['仍是大凶','凶→大凶（雪上加霜）','小凶','转为吉'],answer:1},
+    {prompt:'体克用=小吉，若体旺则？',type:'tiyong-wangshuai',tiShengke:'体克用',tiWangshuai:'旺',choices:['小吉加倍','降为小凶','不变','变为大吉'],answer:0},
+    {prompt:'体克用=小吉，若体衰则？',type:'tiyong-wangshuai',tiShengke:'体克用',tiWangshuai:'衰',choices:['小吉减弱','转为凶','不变','加倍'],answer:0},
+    {prompt:'体生用=小凶，若体旺则？',type:'tiyong-wangshuai',tiShengke:'体生用',tiWangshuai:'旺',choices:['小凶减弱','仍小凶','变大凶','转为吉'],answer:0},
+    {prompt:'体生用=小凶，若体衰则？',type:'tiyong-wangshuai',tiShengke:'体生用',tiWangshuai:'衰',choices:['小凶→凶','小凶不变','转为大吉','降为无凶'],answer:0},
+    {prompt:'体用比和=吉，若体旺则？',type:'tiyong-wangshuai',tiShengke:'比和',tiWangshuai:'旺',choices:['吉加倍','降为小吉','不变','转为凶'],answer:0},
+    {prompt:'体用比和=吉，若体衰则？',type:'tiyong-wangshuai',tiShengke:'比和',tiWangshuai:'衰',choices:['吉加倍','吉减弱','转为凶','不变'],answer:1},
+    {prompt:'体震☳(木)旺·用离☲(火)相 春 → 体生用+体旺 → ？',type:'tiyong-ws-full',ti:'震',yong:'离',season:'春',choices:['小凶但可承受','大吉','凶','比和·吉'],answer:0},
+    {prompt:'体离☲(火)旺·用坎☵(水)囚 夏 → 用克体+体旺 → ？',type:'tiyong-ws-full',ti:'离',yong:'坎',season:'夏',choices:['大凶','凶→小凶（体旺能扛）','大吉','比和'],answer:1},
+    {prompt:'体乾☰(金)囚·用离☲(火)休 春 → 用克体+体囚 → ？',type:'tiyong-ws-full',ti:'乾',yong:'离',season:'春',choices:['凶→更凶','小凶','大吉','比和'],answer:0},
+    {prompt:'体坎☵(水)旺·用兑☱(金)休 冬 → 用生体+体旺 → ？',type:'tiyong-ws-full',ti:'坎',yong:'兑',season:'冬',choices:['大吉++','吉','小吉','大凶'],answer:0},
+    {prompt:'体坤☷(土)死·用震☳(木)旺 春 → 用克体+体死 → ？',type:'tiyong-ws-full',ti:'坤',yong:'震',season:'春',choices:['大凶（雪上加霜）','小凶','小吉','大吉'],answer:0},
+    {prompt:'旺衰在体用判断中的作用是？',type:'ws-role',choices:['决定吉凶方向','调制（放大/缩小）吉凶程度','没有作用','取代生克'],answer:1},
+    {prompt:'体旺时，吉凶会？',type:'ws-effect-ti-wang',choices:['吉加倍、凶减半','吉减半、凶加倍','无变化','方向反转'],answer:0},
+    {prompt:'体衰时，吉凶会？',type:'ws-effect-ti-shuai',choices:['吉加倍、凶减半','吉减半、凶加倍','无变化','方向反转'],answer:1},
+    {prompt:'「体旺不惧克」是什么意思？',type:'ws-saying',choices:['体旺时即使被克也能扛住','体旺就不会被克','体旺时克别人更厉害','体旺就不用看生克'],answer:0},
+    {prompt:'体克用+体旺，最恰当的断语？',type:'ws-duanyu',choices:['可成且较轻松','大败','需贵人相助','和和谐谐'],answer:0},
+    {prompt:'用克体+体衰，最恰当的断语？',type:'ws-duanyu2',choices:['有惊无险','大凶，应避之','小吉可成','比和顺利'],answer:1},
+    {prompt:'春季，体震☳(木旺)+用艮☶(土死)→体克用+体旺→？',type:'tiyong-ws-full',ti:'震',yong:'艮',season:'春',choices:['小吉++：轻松克制','凶：被反克','大吉：贵人来','比和'],answer:0},
+    {prompt:'秋季，体震☳(木死)+用乾☰(金旺)→用克体+体死→？',type:'tiyong-ws-full',ti:'震',yong:'乾',season:'秋',choices:['大凶','小凶','大吉','比和'],answer:0},
+    {prompt:'夏季，体离☲(火旺)+用坤☷(土相)→体生用+体旺→？',type:'tiyong-ws-full',ti:'离',yong:'坤',season:'夏',choices:['小凶（有耗但体旺能扛）','大吉','大凶','比和'],answer:0},
+    {prompt:'冬季，体坎☵(水旺)+用震☳(木相)→体生用+体旺→？',type:'tiyong-ws-full',ti:'坎',yong:'震',season:'冬',choices:['小凶（有耗但体旺）','大吉','凶','比和'],answer:0}
+  ]
+});
+
+// ==== LEVEL 35: 旺衰综合大挑战 ====
+LEVELS.push({
+  id:35, icon:'🏆', title:'旺衰综合大挑战', desc:'全维度混合——季节旺衰+体用生克+八卦旺衰+调制效应',
+  source:'综合',
+  pitfalls:null,
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🏆 第35关：旺衰综合大挑战'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '旺衰系列收官之战！30题混合了季节旺衰、体用生克、八卦旺衰、调制效应——考考你的综合判断力。'),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#E65100'}},'📋 题型分布'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '季节旺衰判断：8题\\n八卦旺衰状态：8题\\n体用+旺衰联合：10题\\n综合应用题：4题')
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--green)',fontWeight:700,textAlign:'center',marginTop:'8px'}},'30题 · 旺衰大考'),
+      h('div',{className:'source-tag'},'来源：综合')
+    ));
+  },
+  questions:[
+    // 季节旺衰 (8题)
+    {prompt:'春季节，当令五行是？',type:'wx-season-state',wx:'木',season:'春',choices:['木','火','土','金'],answer:0},
+    {prompt:'夏季，土处于什么状态？',type:'wx-season-state',wx:'土',season:'夏',choices:['旺','相','休','死'],answer:1},
+    {prompt:'秋季，木处于什么状态？',type:'wx-season-state',wx:'木',season:'秋',choices:['相','休','囚','死'],answer:3},
+    {prompt:'冬季，金处于什么状态？',type:'wx-season-state',wx:'金',season:'冬',choices:['旺','休','囚','死'],answer:1},
+    {prompt:'四季末月当令的是？',type:'tu-wang-month',choices:['土','木','金','水'],answer:0},
+    {prompt:'春季「死」的是哪个五行？',type:'season-si-wx',season:'春',choices:['木','火','金','土'],answer:3},
+    {prompt:'夏季「囚」的是哪个五行？',type:'season-qiu',season:'夏',choices:['木','火','水','金'],answer:2},
+    {prompt:'秋季「休」的是哪个五行？',type:'season-xiu-wx',season:'秋',choices:['金','水','土','火'],answer:2},
+    // 八卦旺衰 (8题)
+    {prompt:'春季节，乾☰处于什么状态？',type:'gua-season-state',gua:'乾',season:'春',choices:['旺','相','囚','死'],answer:2},
+    {prompt:'夏季，坤☷处于什么状态？',type:'gua-season-state',gua:'坤',season:'夏',choices:['旺','相','休','死'],answer:1},
+    {prompt:'秋季，离☲处于什么状态？',type:'gua-season-state',gua:'离',season:'秋',choices:['相','休','囚','死'],answer:2},
+    {prompt:'冬季，震☳处于什么状态？',type:'gua-season-state',gua:'震',season:'冬',choices:['旺','相','休','死'],answer:1},
+    {prompt:'春季最旺的八卦是？',type:'season-wang-gua',season:'春',choices:['震☳','离☲','乾☰','坎☵'],answer:0},
+    {prompt:'夏季最旺的八卦是？',type:'season-wang-gua',season:'夏',choices:['震☳','离☲','坎☵','坤☷'],answer:1},
+    {prompt:'秋季最旺的八卦是？',type:'season-wang-gua',season:'秋',choices:['乾☰','坎☵','震☳','离☲'],answer:0},
+    {prompt:'冬季最旺的八卦是？',type:'season-wang-gua',season:'冬',choices:['乾☰','坎☵','坤☷','离☲'],answer:1},
+    // 体用+旺衰联合 (10题)
+    {prompt:'体旺时，用生体的结果是？',type:'tiyong-wangshuai',tiShengke:'用生体',tiWangshuai:'旺',choices:['大吉++','大吉','吉','小吉'],answer:0},
+    {prompt:'体衰时，用克体的结果是？',type:'tiyong-wangshuai',tiShengke:'用克体',tiWangshuai:'衰',choices:['凶→大凶','小凶','小吉','吉'],answer:0},
+    {prompt:'体旺时，体生用的结果是？',type:'tiyong-wangshuai',tiShengke:'体生用',tiWangshuai:'旺',choices:['小凶减弱','仍小凶','大凶','吉'],answer:0},
+    {prompt:'春：体震☳旺+用乾☰囚 → 体克用+体旺 →？',type:'tiyong-ws-full',ti:'震',yong:'乾',season:'春',choices:['小吉++','大吉','大凶','小凶'],answer:0},
+    {prompt:'夏：体坎☵囚+用离☲旺 → 用克体+体囚 →？',type:'tiyong-ws-full',ti:'坎',yong:'离',season:'夏',choices:['凶→更凶','小凶','大吉','比和'],answer:0},
+    {prompt:'秋：体乾☰旺+用坤☷休 → 用生体+体旺 →？',type:'tiyong-ws-full',ti:'乾',yong:'坤',season:'秋',choices:['大吉++','吉','小吉','大凶'],answer:0},
+    {prompt:'冬：体坎☵旺+用离☲死 → 体克用+体旺 →？',type:'tiyong-ws-full',ti:'坎',yong:'离',season:'冬',choices:['小吉++','大吉','大凶','小凶'],answer:0},
+    {prompt:'春：体坤☷死+用震☳旺 → 用克体+体死 →？',type:'tiyong-ws-full',ti:'坤',yong:'震',season:'春',choices:['大凶','小凶','吉','大吉'],answer:0},
+    {prompt:'秋：体坎☵相+用乾☰旺 → 用生体+体相 →？',type:'tiyong-ws-full',ti:'坎',yong:'乾',season:'秋',choices:['大吉','吉','小吉','凶'],answer:0},
+    {prompt:'冬：体兑☱休+用坎☵旺 → 体生用+体休 →？',type:'tiyong-ws-full',ti:'兑',yong:'坎',season:'冬',choices:['小凶→偏凶','大吉','比和','小吉'],answer:0},
+    // 综合运用 (4题)
+    {prompt:'旺衰公式中，体旺对吉凶的影响是？',type:'ws-effect-ti-wang',choices:['吉加倍、凶减半','吉减半、凶加倍','不变','只看生克不看旺衰'],answer:0},
+    {prompt:'旺衰公式中，体衰对吉凶的影响是？',type:'ws-effect-ti-shuai',choices:['吉加倍、凶减半','吉减半、凶加倍','不变','只看生克不看旺衰'],answer:1},
+    {prompt:'为何即使体克用，体衰也要小心？',type:'ws-why-careful',choices:['想克但力不从心，可能反被制','体衰时克不了','体衰时方向会反转','体衰时不适用生克'],answer:0},
+    {prompt:'旺衰+体用综合判断的完整顺序是？',type:'ws-full-order',choices:['看季节→定旺衰→定体用→判生克→断吉凶','定体用→判生克→看季节→定旺衰→调制吉凶','先看八卦→再看五行→最后看季节','随便看'],answer:1}
+  ]
+});
+
+// ==== LEVEL 36: 六十四卦生成原理 ====
+LEVELS.push({
+  id:36, icon:'🔢', title:'六十四卦生成', desc:'八经卦两两相重→8×8=64卦。上卦为外、下卦为内。',
+  source:'《周易》+ 朱熹《周易本义》',
+  pitfalls:['重卦命名顺序：先上后下（如「火雷噬嗑」=上离下震）','八经卦=纯卦（上下同卦），共8个'],
+  reviewCount:3,
+  teaching:function(main){
+    var bagua = [
+      {key:'qian',sym:'☰',name:'乾',wx:'金'},
+      {key:'dui',sym:'☱',name:'兑',wx:'金'},
+      {key:'li',sym:'☲',name:'离',wx:'火'},
+      {key:'zhen',sym:'☳',name:'震',wx:'木'},
+      {key:'xun',sym:'☴',name:'巽',wx:'木'},
+      {key:'kan',sym:'☵',name:'坎',wx:'水'},
+      {key:'gen',sym:'☶',name:'艮',wx:'土'},
+      {key:'kun',sym:'☷',name:'坤',wx:'土'}
+    ];
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🔢 第36关：六十四卦生成'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '六十四卦由八个三爻卦两两相重而成。8×8=64。上一卦叫「上卦/外卦」，下一卦叫「下卦/内卦」。命名规则：先说上卦后说下卦。'),
+      h('div',{style:{background:'#E3F2FD',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#1565C0'}},'📐 八经卦（纯卦）'),
+        h('div',{style:{textAlign:'center',fontSize:'14px',lineHeight:'2'}},
+          bagua.map(function(b){return h('span',{style:{margin:'0 6px'}},b.sym+b.name);}))
+      ),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#B8860B'}},'🔑 命名规则'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '1️⃣ 上卦+下卦 → 重卦名称（如：上离下震 = 火雷噬嗑）\\n2️⃣ 先说上卦八卦象，后说下卦八卦象（如「火雷」= 上火下雷）\\n3️⃣ 上下卦相同 = 八纯卦（如：䷀乾为天、䷁坤为地）\\n4️⃣ 64卦各有唯一卦名（如䷊ = 地天泰）')
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2E7D32'}},'💡 常见重卦举例'),
+        h('div',{style:{fontSize:'12px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '䷀乾为天 = 上乾下乾　|　䷁坤为地 = 上坤下坤\\n䷊地天泰 = 上坤下乾　|　䷋天地否 = 上乾下坤\\n䷂水雷屯 = 上坎下震　|　䷃山水蒙 = 上艮下坎\\n䷄水天需 = 上坎下乾　|　䷅天水讼 = 上乾下坎')
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--green)',fontWeight:700,textAlign:'center',marginTop:'8px'}},'20题 · 上下卦↔重卦'),
+      h('div',{className:'source-tag'},'来源：《周易》+ 朱熹《周易本义》')
+    ));
+  },
+  questions:[
+    // 上下卦→重卦 (10题)
+    {prompt:'上乾☰下坤☷ = ？',type:'gua-name',up:'乾',down:'坤',choices:['天地否','地天泰','乾为天','坤为地'],answer:0},
+    {prompt:'上坤☷下乾☰ = ？',type:'gua-name',up:'坤',down:'乾',choices:['天地否','地天泰','天雷无妄','地泽临'],answer:1},
+    {prompt:'上坎☵下震☳ = ？',type:'gua-name2',up:'坎',down:'震',choices:['雷水解','水雷屯','震为雷','坎为水'],answer:1},
+    {prompt:'上艮☶下坎☵ = ？',type:'gua-name2',up:'艮',down:'坎',choices:['水山蹇','山水蒙','坎为水','艮为山'],answer:1},
+    {prompt:'上离☲下震☳ = ？',type:'gua-name2',up:'离',down:'震',choices:['雷火丰','火雷噬嗑','火地晋','雷天大壮'],answer:1},
+    {prompt:'上震☳下离☲ = ？',type:'gua-name2',up:'震',down:'离',choices:['火雷噬嗑','雷火丰','离为火','震为雷'],answer:1},
+    {prompt:'上坎☵下乾☰ = ？',type:'gua-name2',up:'坎',down:'乾',choices:['天水讼','水天需','乾为天','水地比'],answer:1},
+    {prompt:'上乾☰下坎☵ = ？',type:'gua-name2',up:'乾',down:'坎',choices:['水天需','天水讼','天火同人','天水未济'],answer:1},
+    {prompt:'上离☲下坤☷ = ？',type:'gua-name2',up:'离',down:'坤',choices:['地火明夷','火地晋','火天大有','离为火'],answer:1},
+    {prompt:'上坤☷下坎☵ = ？',type:'gua-name2',up:'坤',down:'坎',choices:['水地比','地水师','坤为地','坎为水'],answer:1},
+    // 重卦→拆上下卦 (10题)
+    {prompt:'䷀乾为天：上卦？下卦？',type:'gua-split',up:'qian',down:'qian',choices:['上乾下乾','上坤下乾','上乾下坤','上震下乾'],answer:0},
+    {prompt:'䷁坤为地：上卦？下卦？',type:'gua-split',up:'kun',down:'kun',choices:['上乾下乾','上坤下坤','上乾下坤','上坤下乾'],answer:1},
+    {prompt:'䷊地天泰：上卦？',type:'gua-parse',full:'䷊地天泰',up:'坤',choices:['坤☷','乾☰','震☳','离☲'],answer:0},
+    {prompt:'䷋天地否：下卦？',type:'gua-parse-down',full:'䷋天地否',down:'坤',choices:['乾☰','坤☷','坎☵','艮☶'],answer:1},
+    {prompt:'䷂水雷屯：上卦？',type:'gua-parse',full:'䷂水雷屯',up:'坎',choices:['震☳','坎☵','离☲','艮☶'],answer:1},
+    {prompt:'䷃山水蒙：下卦？',type:'gua-parse-down',full:'䷃山水蒙',down:'坎',choices:['坎☵','艮☶','震☳','兑☱'],answer:0},
+    {prompt:'䷄水天需：上卦+下卦？',type:'gua-split',up:'kan',down:'qian',choices:['上坎下乾','上乾下坎','上坎下坤','上离下乾'],answer:0},
+    {prompt:'䷔火雷噬嗑：上卦？',type:'gua-parse',full:'䷔火雷噬嗑',up:'离',choices:['离☲','震☳','坎☵','巽☴'],answer:0},
+    {prompt:'䷕山火贲：上卦+下卦？',type:'gua-split',up:'gen',down:'li',choices:['上艮下离','上离下艮','上艮下坎','上震下离'],answer:0},
+    {prompt:'八经卦有几个？',type:'gua-count',choices:['4个','8个','16个','64个'],answer:1}
+  ]
+});
+
+// ==== LEVEL 37: 八宫·乾宫八卦 ====
+LEVELS.push({
+  id:37, icon:'☰🏛️', title:'八宫·乾宫八卦', desc:'䷀乾䷫姤䷠遁䷋否䷓观䷖剥䷢晋䷍大有——京房八宫第一宫',
+  source:'京房《京氏易传》八宫卦序',
+  pitfalls:'乾宫变爻规律：从初爻变起，一世至五世，游魂归魂。姤=初爻变、遁=二爻变……游魂晋=四爻复原、归魂大有=下卦复原。',
+  reviewCount:3,
+  teaching:function(main){
+    var qiangua = [
+      {idx:'本宫',sym:'䷀',name:'乾为天',up:'☰乾',down:'☰乾',pinyin:'qián wéi tiān'},
+      {idx:'一世',sym:'䷫',name:'天风姤',up:'☰乾',down:'☴巽',pinyin:'tiān fēng gòu'},
+      {idx:'二世',sym:'䷠',name:'天山遁',up:'☰乾',down:'☶艮',pinyin:'tiān shān dùn'},
+      {idx:'三世',sym:'䷋',name:'天地否',up:'☰乾',down:'☷坤',pinyin:'tiān dì pǐ'},
+      {idx:'四世',sym:'䷓',name:'风地观',up:'☴巽',down:'☷坤',pinyin:'fēng dì guān'},
+      {idx:'五世',sym:'䷖',name:'山地剥',up:'☶艮',down:'☷坤',pinyin:'shān dì bō'},
+      {idx:'游魂',sym:'䷢',name:'火地晋',up:'☲离',down:'☷坤',pinyin:'huǒ dì jìn'},
+      {idx:'归魂',sym:'䷍',name:'火天大有',up:'☲离',down:'☰乾',pinyin:'huǒ tiān dà yǒu'}
+    ];
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'☰🏛️ 第37关：八宫·乾宫八卦'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '京房八宫卦序是汉代象数易学的重要体系。每一宫以纯卦为本宫卦，依次变爻生成七卦，共八卦。乾宫是八宫之首。'),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#B8860B'}},'🏛️ 乾宫八卦表'),
+        qiangua.map(function(g){
+          return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'10px 12px',marginBottom:'4px',display:'flex',alignItems:'center',gap:'10px',border:'1px solid var(--border)'}},
+            h('span',{style:{fontSize:'10px',color:'var(--text-light)',minWidth:'32px'}},g.idx),
+            h('span',{style:{fontSize:'28px'}},g.sym),
+            h('div',{style:{flex:1}},
+              h('div',{style:{fontWeight:700,fontSize:'14px'}},g.name),
+              h('div',{style:{fontSize:'11px',color:'var(--text-light)'}},g.up+' + '+g.down+'　'+g.pinyin))
+          );
+        })
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2E7D32'}},'💡 记忆口诀'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)',textAlign:'center'}},
+          '乾宫八卦：乾姤遁否观剥晋有\\n一世姤、二世遁、三世否、四世观、五世剥\\n游魂晋、归魂大有')
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--green)',fontWeight:700,textAlign:'center',marginTop:'8px'}},'20题 · 乾宫专项'),
+      h('div',{className:'source-tag'},'来源：京房《京氏易传》八宫卦序')
+    ));
+  },
+  questions:[
+    {prompt:'乾宫本宫卦是？',type:'bagong-ben',gong:'乾',choices:['䷀乾为天','䷁坤为地','䷫天风姤','䷋天地否'],answer:0},
+    {prompt:'乾宫一世卦是？',type:'bagong-order',gong:'乾',order:1,choices:['䷀乾为天','䷫天风姤','䷠天山遁','䷋天地否'],answer:1},
+    {prompt:'乾宫二世卦是？',type:'bagong-order',gong:'乾',order:2,choices:['䷫天风姤','䷠天山遁','䷋天地否','䷓风地观'],answer:1},
+    {prompt:'乾宫三世卦是？',type:'bagong-order',gong:'乾',order:3,choices:['䷠天山遁','䷋天地否','䷓风地观','䷖山地剥'],answer:1},
+    {prompt:'乾宫四世卦是？',type:'bagong-order',gong:'乾',order:4,choices:['䷋天地否','䷓风地观','䷖山地剥','䷢火地晋'],answer:1},
+    {prompt:'乾宫五世卦是？',type:'bagong-order',gong:'乾',order:5,choices:['䷓风地观','䷖山地剥','䷢火地晋','䷍火天大有'],answer:1},
+    {prompt:'乾宫游魂卦是？',type:'bagong-youhun',gong:'乾',choices:['䷖山地剥','䷢火地晋','䷍火天大有','䷀乾为天'],answer:1},
+    {prompt:'乾宫归魂卦是？',type:'bagong-guihun',gong:'乾',choices:['䷢火地晋','䷍火天大有','䷀乾为天','䷫天风姤'],answer:1},
+    {prompt:'䷫天风姤的上卦+下卦是？',type:'gua-split',up:'qian',down:'xun',choices:['上乾下巽','上巽下乾','上乾下艮','上离下乾'],answer:0},
+    {prompt:'䷠天山遁的上卦+下卦是？',type:'gua-split',up:'qian',down:'gen',choices:['上乾下艮','上艮下乾','上乾下震','上坎下乾'],answer:0},
+    {prompt:'䷢火地晋的上卦+下卦？',type:'gua-split',up:'li',down:'kun',choices:['上离下坤','上坤下离','上离下震','上乾下坤'],answer:0},
+    {prompt:'䷍火天大有的上卦+下卦？',type:'gua-split',up:'li',down:'qian',choices:['上离下乾','上乾下离','上离下坤','上震下乾'],answer:0},
+    {prompt:'䷖山地剥是哪一宫的卦？',type:'gua-bagong',gua:'䷖山地剥',choices:['乾宫','坤宫','坎宫','艮宫'],answer:0},
+    {prompt:'䷋天地否是哪一宫的卦？',type:'gua-bagong',gua:'䷋天地否',choices:['乾宫','坤宫','离宫','兑宫'],answer:0},
+    {prompt:'乾宫八卦正确的顺序是？',type:'bagong-seq',gong:'乾',choices:['乾→姤→遁→否→观→剥→晋→大有','乾→否→姤→遁→观→剥→晋→大有','乾→姤→否→遁→观→剥→晋→大有','乾→遁→姤→否→观→剥→晋→大有'],answer:0},
+    {prompt:'乾宫一世姤卦，下卦是？',type:'bagong-gua-down',gua:'姤',choices:['☴巽','☶艮','☷坤','☲离'],answer:0},
+    {prompt:'乾宫三世否卦，下卦是？',type:'bagong-gua-down',gua:'否',choices:['☰乾','☷坤','☶艮','☴巽'],answer:1},
+    {prompt:'乾宫游魂卦晋，上卦由乾变为什么？',type:'bagong-youhun-change',choices:['☲离','☴巽','☶艮','☷坤'],answer:0},
+    {prompt:'归魂卦大有，下卦复原为？',type:'bagong-guihun-down',gong:'乾',choices:['☰乾','☷坤','☲离','☵坎'],answer:0},
+    {prompt:'乾宫八个卦一共有几个？',type:'bagong-count',choices:['6个','7个','8个','9个'],answer:2}
+  ]
+});
+
+// ==== LEVEL 38: 八宫·坎宫八卦 ====
+LEVELS.push({
+  id:38, icon:'☵🏛️', title:'八宫·坎宫八卦', desc:'䷜坎䷻节䷂屯䷾既济䷰革䷶丰䷣明夷䷆师——坎宫八变',
+  source:'京房《京氏易传》八宫卦序',
+  pitfalls:'坎宫和离宫容易混淆。坎宫是水宫，一世节卦（水泽节），归魂师卦（地水师）。注意节=水泽、屯=水雷。',
+  reviewCount:3,
+  teaching:function(main){
+    var kangua = [
+      {idx:'本宫',sym:'䷜',name:'坎为水',up:'☵坎',down:'☵坎'},
+      {idx:'一世',sym:'䷻',name:'水泽节',up:'☵坎',down:'☱兑'},
+      {idx:'二世',sym:'䷂',name:'水雷屯',up:'☵坎',down:'☳震'},
+      {idx:'三世',sym:'䷾',name:'水火既济',up:'☵坎',down:'☲离'},
+      {idx:'四世',sym:'䷰',name:'泽火革',up:'☱兑',down:'☲离'},
+      {idx:'五世',sym:'䷶',name:'雷火丰',up:'☳震',down:'☲离'},
+      {idx:'游魂',sym:'䷣',name:'地火明夷',up:'☷坤',down:'☲离'},
+      {idx:'归魂',sym:'䷆',name:'地水师',up:'☷坤',down:'☵坎'}
+    ];
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'☵🏛️ 第38关：八宫·坎宫八卦'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '坎宫是八宫第二宫。从坎为水出发，依次变初爻至五爻，再游魂归魂，生成坎宫八变。'),
+      h('div',{style:{background:'#E3F2FD',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#1565C0'}},'🏛️ 坎宫八卦表'),
+        kangua.map(function(g){
+          return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'10px 12px',marginBottom:'4px',display:'flex',alignItems:'center',gap:'10px',border:'1px solid var(--border)'}},
+            h('span',{style:{fontSize:'10px',color:'var(--text-light)',minWidth:'32px'}},g.idx),
+            h('span',{style:{fontSize:'28px'}},g.sym),
+            h('div',{style:{flex:1}},
+              h('div',{style:{fontWeight:700,fontSize:'14px'}},g.name),
+              h('div',{style:{fontSize:'11px',color:'var(--text-light)'}},g.up+' + '+g.down))
+          );
+        })
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2E7D32'}},'💡 记忆口诀'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)',textAlign:'center'}},
+          '坎宫八卦：坎节屯既济，革丰明夷师\\n一世节（水泽）二世屯（水雷）三世既济（水火）\\n游魂明夷（地火）归魂师（地水）')
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--green)',fontWeight:700,textAlign:'center',marginTop:'8px'}},'20题 · 坎宫专项'),
+      h('div',{className:'source-tag'},'来源：京房《京氏易传》八宫卦序')
+    ));
+  },
+  questions:[
+    {prompt:'坎宫本宫卦是？',type:'bagong-ben',gong:'坎',choices:['䷜坎为水','䷻水泽节','䷂水雷屯','䷾水火既济'],answer:0},
+    {prompt:'坎宫一世卦是？',type:'bagong-order',gong:'坎',order:1,choices:['䷜坎为水','䷻水泽节','䷂水雷屯','䷆地水师'],answer:1},
+    {prompt:'坎宫二世卦是？',type:'bagong-order',gong:'坎',order:2,choices:['䷻水泽节','䷂水雷屯','䷾水火既济','䷰泽火革'],answer:1},
+    {prompt:'坎宫三世卦是？',type:'bagong-order',gong:'坎',order:3,choices:['䷂水雷屯','䷾水火既济','䷰泽火革','䷶雷火丰'],answer:1},
+    {prompt:'坎宫四世卦是？',type:'bagong-order',gong:'坎',order:4,choices:['䷾水火既济','䷰泽火革','䷶雷火丰','䷣地火明夷'],answer:1},
+    {prompt:'坎宫五世卦是？',type:'bagong-order',gong:'坎',order:5,choices:['䷰泽火革','䷶雷火丰','䷣地火明夷','䷆地水师'],answer:1},
+    {prompt:'坎宫游魂卦是？',type:'bagong-youhun',gong:'坎',choices:['䷶雷火丰','䷣地火明夷','䷆地水师','䷜坎为水'],answer:1},
+    {prompt:'坎宫归魂卦是？',type:'bagong-guihun',gong:'坎',choices:['䷣地火明夷','䷆地水师','䷜坎为水','䷻水泽节'],answer:1},
+    {prompt:'䷻水泽节的上卦+下卦是？',type:'gua-split',up:'kan',down:'dui',choices:['上坎下兑','上兑下坎','上坎下震','上乾下坎'],answer:0},
+    {prompt:'䷂水雷屯的上卦+下卦是？',type:'gua-split',up:'kan',down:'zhen',choices:['上坎下震','上震下坎','上坎下离','上艮下坎'],answer:0},
+    {prompt:'䷾水火既济上卦+下卦？',type:'gua-split',up:'kan',down:'li',choices:['上坎下离','上离下坎','上坎下震','上坎下兑'],answer:0},
+    {prompt:'䷆地水师的上卦+下卦？',type:'gua-split',up:'kun',down:'kan',choices:['上坤下坎','上坎下坤','上坤下震','上离下坎'],answer:0},
+    {prompt:'䷶雷火丰是哪一宫的卦？',type:'gua-bagong',gua:'䷶雷火丰',choices:['坎宫','离宫','震宫','坤宫'],answer:0},
+    {prompt:'䷣地火明夷是哪一宫的卦？',type:'gua-bagong',gua:'䷣地火明夷',choices:['坎宫','离宫','坤宫','兑宫'],answer:0},
+    {prompt:'坎宫八卦正确的顺序是？',type:'bagong-seq',gong:'坎',choices:['坎→节→屯→既济→革→丰→明夷→师','坎→屯→节→既济→革→丰→明夷→师','坎→节→既济→屯→革→丰→明夷→师','坎→节→屯→既济→丰→革→明夷→师'],answer:0},
+    {prompt:'坎宫归魂卦师，下卦复原为？',type:'bagong-guihun-down',gong:'坎',choices:['☵坎','☲离','☳震','☱兑'],answer:0},
+    {prompt:'䷰泽火革的上卦由坎变为什么？',type:'bagong-four-change',gong:'坎',order:4,choices:['☱兑','☳震','☷坤','☶艮'],answer:0},
+    {prompt:'䷶雷火丰的上卦由兑变为什么？',type:'bagong-five-change',gong:'坎',order:5,choices:['☳震','☷坤','☶艮','☴巽'],answer:0},
+    {prompt:'坎宫游魂明夷，上卦变为什么？',type:'bagong-youhun-up',gong:'坎',choices:['☷坤','☶艮','☴巽','☰乾'],answer:0},
+    {prompt:'䷜坎为水在八宫中是第几宫的本宫？',type:'bagong-gong-num',gong:'坎',choices:['第二宫','第一宫','第三宫','第四宫'],answer:0}
+  ]
+});
+
+// ==== LEVEL 39: 八宫·艮震二宫 ====
+LEVELS.push({
+  id:39, icon:'☶☳', title:'八宫·艮震二宫', desc:'艮宫8卦 + 震宫8卦 = 16卦大混合',
+  source:'京房《京氏易传》八宫卦序',
+  pitfalls:'艮宫游魂=中孚（风泽）、归魂=渐（风山）；震宫游魂=大过（泽风）、归魂=随（泽雷）。游魂归魂上卦不变是四爻复、下卦复。',
+  reviewCount:3,
+  teaching:function(main){
+    var gengua = [
+      {sym:'䷳',name:'艮为山'},{sym:'䷕',name:'山火贲'},{sym:'䷙',name:'山天大畜'},{sym:'䷨',name:'山泽损'},
+      {sym:'䷥',name:'火泽睽'},{sym:'䷉',name:'天泽履'},{sym:'䷼',name:'风泽中孚'},{sym:'䷴',name:'风山渐'}
+    ];
+    var zhengua = [
+      {sym:'䷲',name:'震为雷'},{sym:'䷏',name:'雷地豫'},{sym:'䷧',name:'雷水解'},{sym:'䷟',name:'雷风恒'},
+      {sym:'䷭',name:'地风升'},{sym:'䷯',name:'水风井'},{sym:'䷛',name:'泽风大过'},{sym:'䷐',name:'泽雷随'}
+    ];
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'☶☳ 第39关：八宫·艮震二宫'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '本关同时学习艮宫和震宫。两宫共十六卦，游魂归魂规律与乾坎两宫一致。'),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#B8860B'}},'🏔️ 艮宫八卦（土宫）'),
+        h('div',{style:{display:'flex',flexWrap:'wrap',gap:'4px',marginBottom:'4px'}},
+          gengua.map(function(g){return h('span',{style:{background:'#fff',borderRadius:'6px',padding:'6px 10px',fontSize:'13px',border:'1px solid var(--border)'}},g.sym+' '+g.name);}))
+      ),
+      h('div',{style:{background:'#E8F0FE',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#1565C0'}},'⚡ 震宫八卦（木宫）'),
+        h('div',{style:{display:'flex',flexWrap:'wrap',gap:'4px'}},
+          zhengua.map(function(g){return h('span',{style:{background:'#fff',borderRadius:'6px',padding:'6px 10px',fontSize:'13px',border:'1px solid var(--border)'}},g.sym+' '+g.name);}))
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2E7D32'}},'💡 记忆要点'),
+        h('div',{style:{fontSize:'12px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '艮宫：艮→贲→大畜→损→睽→履→中孚(游)→渐(归)\\n震宫：震→豫→解→恒→升→井→大过(游)→随(归)\\n游魂四爻复、归魂下卦复——规律同前两宫')
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--green)',fontWeight:700,textAlign:'center',marginTop:'8px'}},'25题 · 艮震混合'),
+      h('div',{className:'source-tag'},'来源：京房《京氏易传》八宫卦序')
+    ));
+  },
+  questions:[
+    // 艮宫 (8题)
+    {prompt:'艮宫本宫卦是？',type:'bagong-ben',gong:'艮',choices:['䷳艮为山','䷕山火贲','䷙山天大畜','䷨山泽损'],answer:0},
+    {prompt:'艮宫一世卦是？',type:'bagong-order',gong:'艮',order:1,choices:['䷳艮为山','䷕山火贲','䷙山天大畜','䷴风山渐'],answer:1},
+    {prompt:'艮宫二世卦是？',type:'bagong-order',gong:'艮',order:2,choices:['䷕山火贲','䷙山天大畜','䷨山泽损','䷥火泽睽'],answer:1},
+    {prompt:'艮宫三世卦是？',type:'bagong-order',gong:'艮',order:3,choices:['䷙山天大畜','䷨山泽损','䷥火泽睽','䷉天泽履'],answer:1},
+    {prompt:'艮宫四世卦是？',type:'bagong-order',gong:'艮',order:4,choices:['䷨山泽损','䷥火泽睽','䷉天泽履','䷼风泽中孚'],answer:1},
+    {prompt:'艮宫游魂卦是？',type:'bagong-youhun',gong:'艮',choices:['䷉天泽履','䷼风泽中孚','䷴风山渐','䷳艮为山'],answer:1},
+    {prompt:'艮宫归魂卦是？',type:'bagong-guihun',gong:'艮',choices:['䷼风泽中孚','䷴风山渐','䷳艮为山','䷕山火贲'],answer:1},
+    {prompt:'艮宫八卦第四世睽的下卦是？',type:'bagong-gua-down',gua:'睽',choices:['☱兑','☲离','☶艮','☳震'],answer:0},
+    // 震宫 (8题)
+    {prompt:'震宫本宫卦是？',type:'bagong-ben',gong:'震',choices:['䷲震为雷','䷏雷地豫','䷧雷水解','䷟雷风恒'],answer:0},
+    {prompt:'震宫一世卦是？',type:'bagong-order',gong:'震',order:1,choices:['䷲震为雷','䷏雷地豫','䷧雷水解','䷐泽雷随'],answer:1},
+    {prompt:'震宫二世卦是？',type:'bagong-order',gong:'震',order:2,choices:['䷏雷地豫','䷧雷水解','䷟雷风恒','䷭地风升'],answer:1},
+    {prompt:'震宫三世卦是？',type:'bagong-order',gong:'震',order:3,choices:['䷧雷水解','䷟雷风恒','䷭地风升','䷯水风井'],answer:1},
+    {prompt:'震宫四世卦是？',type:'bagong-order',gong:'震',order:4,choices:['䷟雷风恒','䷭地风升','䷯水风井','䷛泽风大过'],answer:1},
+    {prompt:'震宫游魂卦是？',type:'bagong-youhun',gong:'震',choices:['䷯水风井','䷛泽风大过','䷐泽雷随','䷲震为雷'],answer:1},
+    {prompt:'震宫归魂卦是？',type:'bagong-guihun',gong:'震',choices:['䷛泽风大过','䷐泽雷随','䷲震为雷','䷏雷地豫'],answer:1},
+    {prompt:'震宫五世井的上卦变为？',type:'bagong-five-change',gong:'震',order:5,choices:['☵坎','☲离','☶艮','☱兑'],answer:0},
+    // 混合判断 (9题)
+    {prompt:'䷕山火贲属于哪一宫？',type:'gua-bagong',gua:'䷕山火贲',choices:['艮宫','震宫','离宫','坎宫'],answer:0},
+    {prompt:'䷏雷地豫属于哪一宫？',type:'gua-bagong',gua:'䷏雷地豫',choices:['艮宫','震宫','坤宫','巽宫'],answer:1},
+    {prompt:'䷴风山渐属于哪一宫？',type:'gua-bagong',gua:'䷴风山渐',choices:['艮宫','震宫','巽宫','离宫'],answer:0},
+    {prompt:'䷛泽风大过属于哪一宫？',type:'gua-bagong',gua:'䷛泽风大过',choices:['艮宫','震宫','兑宫','坎宫'],answer:1},
+    {prompt:'䷙山天大畜属于哪一宫？',type:'gua-bagong',gua:'䷙山天大畜',choices:['艮宫','震宫','乾宫','坤宫'],answer:0},
+    {prompt:'䷧雷水解属于哪一宫？',type:'gua-bagong',gua:'䷧雷水解',choices:['艮宫','震宫','坎宫','巽宫'],answer:1},
+    {prompt:'艮宫和震宫的游魂卦分别是？',type:'bagong-youhun-pair',choices:['中孚和大过','渐和随','贲和豫','损和恒'],answer:0},
+    {prompt:'艮宫和震宫的归魂卦分别是？',type:'bagong-guihun-pair',choices:['中孚和大过','渐和随','贲和豫','履和井'],answer:1},
+    {prompt:'艮宫归魂渐卦，下卦复原为？',type:'bagong-guihun-down',gong:'艮',choices:['☶艮','☳震','☵坎','☰乾'],answer:0}
+  ]
+});
+
+// ==== LEVEL 40: 八宫·巽离坤兑四宫 ====
+LEVELS.push({
+  id:40, icon:'🏛️🌟', title:'八宫·巽离坤兑四宫', desc:'四宫32卦大混合——八宫卦序最终大考',
+  source:'京房《京氏易传》八宫卦序',
+  pitfalls:'离宫游魂=讼（天水）、归魂=同人（天火）；坤宫游魂=需（水天）、归魂=比（水地）；兑宫游魂=小过（雷山）、归魂=归妹（雷泽）。',
+  reviewCount:3,
+  teaching:function(main){
+    var palaces = [
+      {name:'巽宫（木宫）',color:'var(--wood)',list:'䷸巽→䷈小畜→䷤家人→䷩益→䷘无妄→䷔噬嗑→䷚颐(游)→䷑蛊(归)'},
+      {name:'离宫（火宫）',color:'var(--fire)',list:'䷝离→䷷旅→䷱鼎→䷿未济→䷃蒙→䷺涣→䷅讼(游)→䷌同人(归)'},
+      {name:'坤宫（土宫）',color:'var(--earth)',list:'䷁坤→䷗复→䷒临→䷊泰→䷡大壮→䷪夬→䷄需(游)→䷇比(归)'},
+      {name:'兑宫（金宫）',color:'var(--metal)',list:'䷹兑→䷮困→䷬萃→䷞咸→䷦蹇→䷎谦→䷽小过(游)→䷵归妹(归)'}
+    ];
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🏛️🌟 第40关：巽离坤兑四宫'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '最后一关！巽离坤兑四宫共32卦，加上前两关的四宫，八宫六十四卦全部集齐。这是八宫卦序的最终大考。'),
+      palaces.map(function(p){
+        return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'10px 12px',marginBottom:'8px',border:'2px solid '+p.color}},
+          h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'4px',color:p.color}},p.name),
+          h('div',{style:{fontSize:'11px',color:'var(--text-light)',lineHeight:'1.6'}},p.list)
+        );
+      }),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px',marginTop:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2E7D32'}},'🗂️ 八宫游魂归魂速查'),
+        h('div',{style:{fontSize:'12px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '乾宫：游晋·归大有 | 坎宫：游明夷·归师\\n艮宫：游中孚·归渐 | 震宫：游大过·归随\\n巽宫：游颐·归蛊   | 离宫：游讼·归同人\\n坤宫：游需·归比   | 兑宫：游小过·归归妹')
+      ),
+      h('p',{style:{fontSize:'13px',color:'var(--green)',fontWeight:700,textAlign:'center',marginTop:'8px'}},'25题 · 四宫混合大考'),
+      h('div',{className:'source-tag'},'来源：京房《京氏易传》八宫卦序')
+    ));
+  },
+  questions:[
+    // 巽宫 (4题)
+    {prompt:'巽宫本宫卦是？',type:'bagong-ben',gong:'巽',choices:['䷸巽为风','䷈风天小畜','䷤风火家人','䷑山风蛊'],answer:0},
+    {prompt:'巽宫一世卦是？',type:'bagong-order',gong:'巽',order:1,choices:['䷸巽为风','䷈风天小畜','䷤风火家人','䷩风雷益'],answer:1},
+    {prompt:'巽宫游魂卦是？',type:'bagong-youhun',gong:'巽',choices:['䷔火雷噬嗑','䷚山雷颐','䷑山风蛊','䷈风天小畜'],answer:1},
+    {prompt:'巽宫归魂卦是？',type:'bagong-guihun',gong:'巽',choices:['䷚山雷颐','䷑山风蛊','䷸巽为风','䷤风火家人'],answer:1},
+    // 离宫 (4题)
+    {prompt:'离宫本宫卦是？',type:'bagong-ben',gong:'离',choices:['䷝离为火','䷷火山旅','䷱火风鼎','䷿火水未济'],answer:0},
+    {prompt:'离宫三世卦是？',type:'bagong-order',gong:'离',order:3,choices:['䷱火风鼎','䷿火水未济','䷃山水蒙','䷺风水涣'],answer:1},
+    {prompt:'离宫游魂卦是？',type:'bagong-youhun',gong:'离',choices:['䷺风水涣','䷅天水讼','䷌天火同人','䷝离为火'],answer:1},
+    {prompt:'离宫归魂卦是？',type:'bagong-guihun',gong:'离',choices:['䷅天水讼','䷌天火同人','䷝离为火','䷷火山旅'],answer:1},
+    // 坤宫 (4题)
+    {prompt:'坤宫本宫卦是？',type:'bagong-ben',gong:'坤',choices:['䷁坤为地','䷗地雷复','䷒地泽临','䷊地天泰'],answer:0},
+    {prompt:'坤宫三世卦是？',type:'bagong-order',gong:'坤',order:3,choices:['䷒地泽临','䷊地天泰','䷡雷天大壮','䷪泽天夬'],answer:1},
+    {prompt:'坤宫游魂卦是？',type:'bagong-youhun',gong:'坤',choices:['䷪泽天夬','䷄水天需','䷇水地比','䷁坤为地'],answer:1},
+    {prompt:'坤宫归魂卦是？',type:'bagong-guihun',gong:'坤',choices:['䷄水天需','䷇水地比','䷁坤为地','䷗地雷复'],answer:1},
+    // 兑宫 (4题)
+    {prompt:'兑宫本宫卦是？',type:'bagong-ben',gong:'兑',choices:['䷹兑为泽','䷮泽水困','䷬泽地萃','䷞泽山咸'],answer:0},
+    {prompt:'兑宫四世卦是？',type:'bagong-order',gong:'兑',order:4,choices:['䷞泽山咸','䷦水山蹇','䷎地山谦','䷽雷山小过'],answer:1},
+    {prompt:'兑宫游魂卦是？',type:'bagong-youhun',gong:'兑',choices:['䷎地山谦','䷽雷山小过','䷵雷泽归妹','䷹兑为泽'],answer:1},
+    {prompt:'兑宫归魂卦是？',type:'bagong-guihun',gong:'兑',choices:['䷽雷山小过','䷵雷泽归妹','䷹兑为泽','䷮泽水困'],answer:1},
+    // 跨宫判断 (9题)
+    {prompt:'䷈风天小畜属于哪一宫？',type:'gua-bagong',gua:'䷈风天小畜',choices:['巽宫','乾宫','坎宫','离宫'],answer:0},
+    {prompt:'䷷火山旅属于哪一宫？',type:'gua-bagong',gua:'䷷火山旅',choices:['巽宫','离宫','艮宫','兑宫'],answer:1},
+    {prompt:'䷗地雷复属于哪一宫？',type:'gua-bagong',gua:'䷗地雷复',choices:['坤宫','震宫','巽宫','离宫'],answer:0},
+    {prompt:'䷮泽水困属于哪一宫？',type:'gua-bagong',gua:'䷮泽水困',choices:['坎宫','兑宫','震宫','坤宫'],answer:1},
+    {prompt:'䷱火风鼎属于哪一宫？',type:'gua-bagong',gua:'䷱火风鼎',choices:['巽宫','离宫','艮宫','震宫'],answer:1},
+    {prompt:'䷡雷天大壮属于哪一宫？',type:'gua-bagong',gua:'䷡雷天大壮',choices:['震宫','坤宫','乾宫','兑宫'],answer:1},
+    {prompt:'䷪泽天夬属于哪一宫？',type:'gua-bagong',gua:'䷪泽天夬',choices:['兑宫','坤宫','乾宫','震宫'],answer:1},
+    {prompt:'䷑山风蛊——游魂还是归魂？哪一宫？',type:'bagong-yougui-gong',gua:'蛊',choices:['归魂·巽宫','游魂·巽宫','归魂·艮宫','游魂·离宫'],answer:0},
+    {prompt:'䷵雷泽归妹——游魂还是归魂？哪一宫？',type:'bagong-yougui-gong',gua:'归妹',choices:['游魂·兑宫','归魂·兑宫','归魂·震宫','游魂·离宫'],answer:1}
+  ]
+});
+
+
+// ============================================================
+// LEVELS 41-50: 六十四卦速记 + 回顾 + 第二单元大考
+// ============================================================
+
+// ==== LEVEL 41: 六十四卦卦名速记（上） ====
+LEVELS.push({
+  id:41, icon:'📖', title:'六十四卦卦名速记（上）', desc:'前32卦——卦象+上下卦→卦名 快速记忆法',
+  source:'《周易》六十四卦次序',
+  pitfalls:['注意上卦和下卦的顺序——上卦在前、下卦在后','八纯卦（上下相同）名称=上卦自然象+「为」字，如䷀乾为天'],
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'📖 第41关：六十四卦卦名速记（上）'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '六十四卦由上下两个三画卦（八卦）重叠而成。每个重卦的名称由「上卦+下卦」的组合决定。本关先学前32卦的速记法。'),
+      h('div',{style:{background:'#E8F0FE',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#1a73e8'}},'📖 记忆口诀'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '乾坤屯蒙需讼师，比小畜兮履泰否。\\n'+
+          '同人大有谦豫随，蛊临观兮噬嗑贲。\\n'+
+          '剥复无妄大畜颐，大过坎离三十备。\\n'+
+          '咸恒遁兮及大壮，晋与明夷家人睽。')
+      ),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#E65100'}},'🔑 前32卦速查表（上卦+下卦→卦名）'),
+        h('div',{style:{fontSize:'12px',lineHeight:'1.8',color:'var(--text-light)',fontFamily:'monospace'}},
+          '1. ䷀ 乾为天 = ☰上☰下\\n'+
+          '2. ䷁ 坤为地 = ☷上☷下\\n'+
+          '3. ䷂ 水雷屯 = ☵上☳下\\n'+
+          '4. ䷃ 山水蒙 = ☶上☵下\\n'+
+          '5. ䷄ 水天需 = ☵上☰下\\n'+
+          '6. ䷅ 天水讼 = ☰上☵下\\n'+
+          '7. ䷆ 地水师 = ☷上☵下\\n'+
+          '8. ䷇ 水地比 = ☵上☷下\\n'+
+          '9. ䷈ 风天小畜 = ☴上☰下\\n'+
+          '10. ䷉ 天泽履 = ☰上☱下\\n'+
+          '11. ䷊ 地天泰 = ☷上☰下\\n'+
+          '12. ䷋ 天地否 = ☰上☷下\\n'+
+          '13. ䷌ 天火同人 = ☰上☲下\\n'+
+          '14. ䷍ 火天大有 = ☲上☰下\\n'+
+          '15. ䷎ 地山谦 = ☷上☶下\\n'+
+          '16. ䷏ 雷地豫 = ☳上☷下')
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2e7d32'}},'💡 速记技巧'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '• 八纯卦（上下卦相同）：乾为天、坤为地、坎为水、离为火、震为雷、艮为山、巽为风、兑为泽\\n'+
+          '• 卦名=上卦自然象+下卦自然象+卦名，如「水雷屯」=上坎(水)+下震(雷)+屯\\n'+
+          '• 注意：「天地否」的上卦是天(乾)，下卦是地(坤)\\n'+
+          '• 泰卦䷊ = 地天泰（地在上、天在下=天地交泰）')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'记住口诀+速查表，开始挑战前32卦！💪'),
+      h('div',{className:'source-tag'},'来源：《周易》六十四卦卦序')
+    ));
+  },
+  questions:[
+    // 1-6: 卦象符号→卦名
+    {prompt:'䷀ 这个卦象叫什么？',type:'hex-sym-name',choices:['乾为天','坤为地','水雷屯','山水蒙'],answer:0},
+    {prompt:'䷁ 这个卦象叫什么？',type:'hex-sym-name',choices:['乾为天','坤为地','地水师','水地比'],answer:1},
+    {prompt:'䷂ 这个卦象叫什么？',type:'hex-sym-name',choices:['水天需','天水讼','水雷屯','山水蒙'],answer:2},
+    {prompt:'䷃ 这个卦象叫什么？',type:'hex-sym-name',choices:['水雷屯','山水蒙','水天需','天水讼'],answer:1},
+    {prompt:'䷄ 这个卦象叫什么？',type:'hex-sym-name',choices:['天水讼','地水师','水天需','水地比'],answer:2},
+    {prompt:'䷅ 这个卦象叫什么？',type:'hex-sym-name',choices:['天水讼','水天需','地水师','风天小畜'],answer:0},
+    // 7-12: 上卦+下卦→卦名
+    {prompt:'上卦☰（乾）+ 下卦☰（乾）= 什么卦？',type:'hex-construct',choices:['坤为地','乾为天','天地否','地天泰'],answer:1},
+    {prompt:'上卦☷（坤）+ 下卦☷（坤）= 什么卦？',type:'hex-construct',choices:['坤为地','天地否','地天泰','乾为天'],answer:0},
+    {prompt:'上卦☵（坎）+ 下卦☳（震）= 什么卦？',type:'hex-construct',choices:['山水蒙','水天需','水雷屯','天水讼'],answer:2},
+    {prompt:'上卦☶（艮）+ 下卦☵（坎）= 什么卦？',type:'hex-construct',choices:['水雷屯','山水蒙','水天需','地水师'],answer:1},
+    {prompt:'上卦☷（坤）+ 下卦☰（乾）= 什么卦？',type:'hex-construct',choices:['天地否','地天泰','乾为天','坤为地'],answer:1},
+    {prompt:'上卦☰（乾）+ 下卦☷（坤）= 什么卦？',type:'hex-construct',choices:['地天泰','天地否','乾为天','坤为地'],answer:1},
+    // 13-18: 卦名→上卦
+    {prompt:'「水雷屯」的上卦是？',type:'hex-name-upper',choices:['坎☵（水）','震☳（雷）','乾☰（天）','坤☷（地）'],answer:0},
+    {prompt:'「地水师」的上卦是？',type:'hex-name-upper',choices:['坎☵（水）','坤☷（地）','乾☰（天）','震☳（雷）'],answer:1},
+    {prompt:'「天水讼」的上卦是？',type:'hex-name-upper',choices:['坎☵（水）','离☲（火）','乾☰（天）','坤☷（地）'],answer:2},
+    {prompt:'「风天小畜」的上卦是？',type:'hex-name-upper',choices:['乾☰（天）','巽☴（风）','震☳（雷）','兑☱（泽）'],answer:1},
+    {prompt:'「天泽履」的上卦是？',type:'hex-name-upper',choices:['兑☱（泽）','乾☰（天）','离☲（火）','巽☴（风）'],answer:1},
+    {prompt:'「火天大有」的上卦是？',type:'hex-name-upper',choices:['乾☰（天）','离☲（火）','震☳（雷）','坤☷（地）'],answer:1},
+    // 19-25: 卦名→下卦
+    {prompt:'「地山谦」的下卦是？',type:'hex-name-lower',choices:['艮☶（山）','坤☷（地）','乾☰（天）','震☳（雷）'],answer:0},
+    {prompt:'「雷地豫」的下卦是？',type:'hex-name-lower',choices:['震☳（雷）','坤☷（地）','乾☰（天）','兑☱（泽）'],answer:1},
+    {prompt:'「天火同人」的下卦是？',type:'hex-name-lower',choices:['乾☰（天）','离☲（火）','震☳（雷）','巽☴（风）'],answer:1},
+    {prompt:'䷆ 地水师的下卦是？',type:'hex-name-lower',choices:['坎☵（水）','乾☰（天）','坤☷（地）','艮☶（山）'],answer:0},
+    {prompt:'䷇ 水地比的下卦是？',type:'hex-name-lower',choices:['坎☵（水）','坤☷（地）','兑☱（泽）','震☳（雷）'],answer:1},
+    {prompt:'䷋ 天地否的下卦是？',type:'hex-name-lower',choices:['乾☰（天）','坤☷（地）','艮☶（山）','巽☴（风）'],answer:1},
+    {prompt:'䷊ 地天泰的下卦是？',type:'hex-name-lower',choices:['坤☷（地）','乾☰（天）','震☳（雷）','坎☵（水）'],answer:1}
+  ]
+});
+
+// ==== LEVEL 42: 六十四卦卦名速记（下） ====
+LEVELS.push({
+  id:42, icon:'📚', title:'六十四卦卦名速记（下）', desc:'后32卦（33-64）——卦象+上下卦→卦名速记',
+  source:'《周易》六十四卦次序（下经）',
+  pitfalls:['注意「家人」䷤上巽下离 与「睽」䷥上离下兑 的区别','「损」䷨上艮下兑 与「益」䷩上巽下震 方向相反'],
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'📚 第42关：六十四卦卦名速记（下）'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '下经34卦（第31-64卦）以咸恒夫妇之道开篇，涵盖人事、家国、吉凶变化。本关速记后32卦。'),
+      h('div',{style:{background:'#E8F0FE',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#1a73e8'}},'📖 下经记忆口诀'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '咸恒遁大壮，晋明夷家人。\\n'+
+          '睽蹇解损益，夬姤萃升困。\\n'+
+          '井革鼎震艮，渐归妹丰旅。\\n'+
+          '巽兑涣节中孚，小过既济未济。')
+      ),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#E65100'}},'🔑 后32卦速查表（上卦+下卦→卦名）'),
+        h('div',{style:{fontSize:'12px',lineHeight:'1.8',color:'var(--text-light)',fontFamily:'monospace'}},
+          '33.䷠ 天山遁 = ☰上☶下    34.䷡ 雷天大壮 = ☳上☰下\\n'+
+          '35.䷢ 火地晋 = ☲上☷下      36.䷣ 地火明夷 = ☷上☲下\\n'+
+          '37.䷤ 风火家人 = ☴上☲下    38.䷥ 火泽睽 = ☲上☱下\\n'+
+          '39.䷦ 水山蹇 = ☵上☶下      40.䷧ 雷水解 = ☳上☵下\\n'+
+          '41.䷨ 山泽损 = ☶上☱下      42.䷩ 风雷益 = ☴上☳下\\n'+
+          '43.䷪ 泽天夬 = ☱上☰下      44.䷫ 天风姤 = ☰上☴下\\n'+
+          '45.䷬ 泽地萃 = ☱上☷下      46.䷭ 地风升 = ☷上☴下\\n'+
+          '47.䷮ 泽水困 = ☱上☵下      48.䷯ 水风井 = ☵上☴下')
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2e7d32'}},'💡 后16卦速查'),
+        h('div',{style:{fontSize:'12px',lineHeight:'1.8',color:'var(--text-light)',fontFamily:'monospace'}},
+          '49.䷰ 泽火革 = ☱上☲下      50.䷱ 火风鼎 = ☲上☴下\\n'+
+          '51.䷲ 震为雷 = ☳上☳下      52.䷳ 艮为山 = ☶上☶下\\n'+
+          '53.䷴ 风山渐 = ☴上☶下      54.䷵ 雷泽归妹 = ☳上☱下\\n'+
+          '55.䷶ 雷火丰 = ☳上☲下      56.䷷ 火山旅 = ☲上☶下\\n'+
+          '57.䷸ 巽为风 = ☴上☴下      58.䷹ 兑为泽 = ☱上☱下\\n'+
+          '59.䷺ 风水涣 = ☴上☵下      60.䷻ 水泽节 = ☵上☱下\\n'+
+          '61.䷼ 风泽中孚 = ☴上☱下    62.䷽ 雷山小过 = ☳上☶下\\n'+
+          '63.䷾ 水火既济 = ☵上☲下    64.䷿ 火水未济 = ☲上☵下')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'后32卦看起来多，但有规律可循！开始挑战 💪'),
+      h('div',{className:'source-tag'},'来源：《周易》下经六十四卦卦序')
+    ));
+  },
+  questions:[
+    // 1-5: 卦象符号→卦名
+    {prompt:'䷞ 这个卦象叫什么？',type:'hex-sym-name',choices:['咸','恒','遁','大壮'],answer:0},
+    {prompt:'䷟ 这个卦象叫什么？',type:'hex-sym-name',choices:['咸','恒','遁','大壮'],answer:1},
+    {prompt:'䷠ 这个卦象叫什么？',type:'hex-sym-name',choices:['遁','大壮','晋','明夷'],answer:0},
+    {prompt:'䷡ 这个卦象叫什么？',type:'hex-sym-name',choices:['遁','晋','大壮','明夷'],answer:2},
+    {prompt:'䷣ 这个卦象叫什么？',type:'hex-sym-name',choices:['晋','家人','明夷','睽'],answer:2},
+    // 6-10: 上卦+下卦→卦名
+    {prompt:'上卦☰（乾）+ 下卦☶（艮）= 什么卦？',type:'hex-construct',choices:['大壮','遁','大畜','咸'],answer:1},
+    {prompt:'上卦☳（震）+ 下卦☰（乾）= 什么卦？',type:'hex-construct',choices:['遁','大壮','无妄','夬'],answer:1},
+    {prompt:'上卦☴（巽）+ 下卦☲（离）= 什么卦？',type:'hex-construct',choices:['睽','鼎','家人','革'],answer:2},
+    {prompt:'上卦☲（离）+ 下卦☱（兑）= 什么卦？',type:'hex-construct',choices:['家人','睽','革','鼎'],answer:1},
+    {prompt:'上卦☶（艮）+ 下卦☱（兑）= 什么卦？',type:'hex-construct',choices:['益','咸','损','萃'],answer:2},
+    // 11-16: 卦名→上卦
+    {prompt:'「雷天大壮」的上卦是？',type:'hex-name-upper',choices:['震☳（雷）','乾☰（天）','离☲（火）','坤☷（地）'],answer:0},
+    {prompt:'「火地晋」的上卦是？',type:'hex-name-upper',choices:['坤☷（地）','乾☰（天）','离☲（火）','震☳（雷）'],answer:2},
+    {prompt:'「水山蹇」的上卦是？',type:'hex-name-upper',choices:['艮☶（山）','坎☵（水）','震☳（雷）','巽☴（风）'],answer:1},
+    {prompt:'「泽天夬」的上卦是？',type:'hex-name-upper',choices:['乾☰（天）','兑☱（泽）','离☲（火）','震☳（雷）'],answer:1},
+    {prompt:'「天风姤」的上卦是？',type:'hex-name-upper',choices:['巽☴（风）','乾☰（天）','坤☷（地）','兑☱（泽）'],answer:1},
+    {prompt:'「火风鼎」的上卦是？',type:'hex-name-upper',choices:['巽☴（风）','离☲（火）','震☳（雷）','乾☰（天）'],answer:1},
+    // 17-25: 卦名→下卦
+    {prompt:'「雷水解」的下卦是？',type:'hex-name-lower',choices:['震☳（雷）','坎☵（水）','艮☶（山）','兑☱（泽）'],answer:1},
+    {prompt:'「风雷益」的下卦是？',type:'hex-name-lower',choices:['巽☴（风）','离☲（火）','震☳（雷）','兑☱（泽）'],answer:2},
+    {prompt:'「泽地萃」的下卦是？',type:'hex-name-lower',choices:['兑☱（泽）','乾☰（天）','坤☷（地）','艮☶（山）'],answer:2},
+    {prompt:'䷮ 泽水困的下卦是？',type:'hex-name-lower',choices:['兑☱（泽）','坎☵（水）','坤☷（地）','巽☴（风）'],answer:1},
+    {prompt:'䷯ 水风井的下卦是？',type:'hex-name-lower',choices:['坎☵（水）','震☳（雷）','巽☴（风）','兑☱（泽）'],answer:2},
+    {prompt:'䷾ 水火既济的下卦是？',type:'hex-name-lower',choices:['坎☵（水）','离☲（火）','震☳（雷）','兑☱（泽）'],answer:1},
+    {prompt:'䷿ 火水未济的下卦是？',type:'hex-name-lower',choices:['离☲（火）','坎☵（水）','震☳（雷）','乾☰（天）'],answer:1},
+    {prompt:'䷴ 风山渐的下卦是？',type:'hex-name-lower',choices:['巽☴（风）','艮☶（山）','震☳（雷）','兑☱（泽）'],answer:1},
+    {prompt:'「水火既济」与「火水未济」的关系是？',type:'hex-compare',choices:['上下卦互换','完全相同','毫无关系','上卦相同下卦不同'],answer:0}
+  ]
+});
+
+// ==== LEVEL 43: 三联配对·卦象↔卦名↔上下卦 ====
+LEVELS.push({
+  id:43, icon:'🔗', title:'三联配对·卦象↔卦名↔上下卦', desc:'三个维度自由切换——看见卦象说出卦名和上下卦',
+  source:'《周易》六十四卦全表',
+  pitfalls:['上下卦顺序不能颠倒——「地天泰」≠「天地否」','卦象符号要学会辨认——上三爻+下三爻组成'],
+  reviewCount:3,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🔗 第43关：三联配对'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '掌握六十四卦需要三个维度自由切换：\\n'+
+        '① 卦象符号（如䷊）→ ② 卦名（地天泰）→ ③ 上下卦（上坤下乾）\\n'+
+        '三者互为表里，本关做高强度三联配对训练。'),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2e7d32'}},'💡 三联记忆法示例'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '䷊ ↔ 地天泰 ↔ 上坤(地)下乾(天)\\n'+
+          '䷋ ↔ 天地否 ↔ 上乾(天)下坤(地)\\n'+
+          '䷾ ↔ 水火既济 ↔ 上坎(水)下离(火)\\n'+
+          '䷿ ↔ 火水未济 ↔ 上离(火)下坎(水)')
+      ),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#E65100'}},'⚠️ 易混淆卦对'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '• ䷊地天泰 ⇄ ䷋天地否（上下颠倒）\\n'+
+          '• ䷾水火既济 ⇄ ䷿火水未济（上下颠倒）\\n'+
+          '• ䷩风雷益 ⇄ ䷨山泽损（益上巽下震，损上艮下兑）\\n'+
+          '• ䷞泽山咸 ⇄ ䷟雷风恒（咸上兑下艮，恒上震下巽）')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'三联一体，灵活切换！30题挑战开始 🎯'),
+      h('div',{className:'source-tag'},'来源：《周易》六十四卦体例')
+    ));
+  },
+  questions:[
+    // Dimension 1: 卦象→卦名 (10题)
+    {prompt:'䷊ 这个卦象是？',type:'hex-sym-name',choices:['地天泰','天地否','乾为天','坤为地'],answer:0},
+    {prompt:'䷋ 这个卦象是？',type:'hex-sym-name',choices:['地天泰','天地否','天雷无妄','地山谦'],answer:1},
+    {prompt:'䷾ 这个卦象是？',type:'hex-sym-name',choices:['火水未济','水火既济','火地晋','水地比'],answer:1},
+    {prompt:'䷿ 这个卦象是？',type:'hex-sym-name',choices:['水火既济','火水未济','火天大有','水天需'],answer:1},
+    {prompt:'䷩ 这个卦象是？',type:'hex-sym-name',choices:['山泽损','风雷益','泽山咸','雷风恒'],answer:1},
+    {prompt:'䷨ 这个卦象是？',type:'hex-sym-name',choices:['山泽损','风雷益','地山谦','泽地萃'],answer:0},
+    {prompt:'䷌ 这个卦象是？',type:'hex-sym-name',choices:['火天大有','天火同人','天泽履','风天小畜'],answer:1},
+    {prompt:'䷍ 这个卦象是？',type:'hex-sym-name',choices:['天火同人','火天大有','火地晋','地火明夷'],answer:1},
+    {prompt:'䷛ 这个卦象是？',type:'hex-sym-name',choices:['山雷颐','泽风大过','风泽中孚','雷山小过'],answer:1},
+    {prompt:'䷚ 这个卦象是？',type:'hex-sym-name',choices:['泽风大过','山雷颐','风雷益','地雷复'],answer:1},
+    // Dimension 2: 上下卦→卦名 (10题)
+    {prompt:'上震(雷)+下坎(水)=？',type:'hex-construct',choices:['水雷屯','雷水解','雷天大壮','水山蹇'],answer:1},
+    {prompt:'上艮(山)+下兑(泽)=？',type:'hex-construct',choices:['泽山咸','风雷益','山泽损','泽地萃'],answer:2},
+    {prompt:'上兑(泽)+下艮(山)=？',type:'hex-construct',choices:['泽山咸','山泽损','雷风恒','风雷益'],answer:0},
+    {prompt:'上巽(风)+下震(雷)=？',type:'hex-construct',choices:['雷风恒','风雷益','山泽损','泽山咸'],answer:1},
+    {prompt:'上震(雷)+下巽(风)=？',type:'hex-construct',choices:['风雷益','雷风恒','泽风大过','风泽中孚'],answer:1},
+    {prompt:'上乾(天)+下巽(风)=？',type:'hex-construct',choices:['风天小畜','天风姤','天山遁','风地观'],answer:1},
+    {prompt:'上坤(地)+下巽(风)=？',type:'hex-construct',choices:['风地观','地风升','地天泰','天地否'],answer:1},
+    {prompt:'上离(火)+下巽(风)=？',type:'hex-construct',choices:['风火家人','火风鼎','火天大有','雷火丰'],answer:1},
+    {prompt:'上坎(水)+下兑(泽)=？',type:'hex-construct',choices:['泽水困','水泽节','风水涣','泽风大过'],answer:1},
+    {prompt:'上兑(泽)+下坎(水)=？',type:'hex-construct',choices:['水泽节','泽水困','泽地萃','水地比'],answer:1},
+    // Dimension 3: 卦名→上下卦 (10题)
+    {prompt:'「地天泰」的上卦+下卦是？',type:'hex-name-pair',choices:['上坤☷+下乾☰','上乾☰+下坤☷','上震☳+下坎☵','上坎☵+下震☳'],answer:0},
+    {prompt:'「天地否」的上卦+下卦是？',type:'hex-name-pair',choices:['上坤☷+下乾☰','上乾☰+下坤☷','上艮☶+下兑☱','上兑☱+下艮☶'],answer:1},
+    {prompt:'「水火既济」的上卦+下卦是？',type:'hex-name-pair',choices:['上离☲+下坎☵','上坎☵+下离☲','上震☳+下艮☶','上艮☶+下震☳'],answer:1},
+    {prompt:'「火水未济」的上卦+下卦是？',type:'hex-name-pair',choices:['上坎☵+下离☲','上离☲+下坎☵','上艮☶+下兑☱','上兑☱+下艮☶'],answer:1},
+    {prompt:'「泽山咸」的上卦+下卦是？',type:'hex-name-pair',choices:['上艮☶+下兑☱','上兑☱+下艮☶','上震☳+下巽☴','上巽☴+下震☳'],answer:1},
+    {prompt:'「雷风恒」的上卦+下卦是？',type:'hex-name-pair',choices:['上巽☴+下震☳','上震☳+下巽☴','上坎☵+下离☲','上离☲+下坎☵'],answer:1},
+    {prompt:'「天风姤」的上卦+下卦是？',type:'hex-name-pair',choices:['上巽☴+下乾☰','上乾☰+下巽☴','上乾☰+下艮☶','上艮☶+下乾☰'],answer:1},
+    {prompt:'「风水涣」的上卦+下卦是？',type:'hex-name-pair',choices:['上坎☵+下巽☴','上巽☴+下坎☵','上兑☱+下坎☵','上坎☵+下兑☱'],answer:1},
+    {prompt:'「风泽中孚」的上卦+下卦是？',type:'hex-name-pair',choices:['上兑☱+下巽☴','上巽☴+下兑☱','上震☳+下艮☶','上艮☶+下震☳'],answer:1},
+    {prompt:'「雷山小过」的上卦+下卦是？',type:'hex-name-pair',choices:['上艮☶+下震☳','上震☳+下艮☶','上坎☵+下离☲','上离☲+下坎☵'],answer:1}
+  ]
+});
+
+// ==== LEVEL 44: 六十四卦综合大挑战 ====
+LEVELS.push({
+  id:44, icon:'🏆', title:'六十四卦综合大挑战', desc:'全64卦混合——符号/名称/上下卦 三维随机切换',
+  source:'《周易》六十四卦（全）',
+  pitfalls:['八纯卦的卦名格式是「X为Y」如乾为天、坤为地','注意区分「泰/否」「既济/未济」「损/益」「咸/恒」这些成对卦'],
+  reviewCount:4,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🏆 第44关：六十四卦综合大挑战'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '全面检验对六十四卦的掌握程度！35题混合：\\n'+
+        '• 卦象符号识别\\n'+
+        '• 卦名记忆\\n'+
+        '• 上下卦推导\\n'+
+        '• 三维自由切换'),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#E65100'}},'🎯 挑战提示'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '• 卦名=上卦自然象+下卦自然象+卦名（如「水雷屯」=上坎水+下震雷+屯）\\n'+
+          '• 64卦中8个是纯卦（上下相同），56个是杂卦\\n'+
+          '• 成对卦：泰/否、损/益、既济/未济 上下卦互换')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'准备好了吗？35题大挑战！🔥'),
+      h('div',{className:'source-tag'},'来源：《周易》六十四卦')
+    ));
+  },
+  questions:[
+    // 卦象→卦名
+    {prompt:'䷀ 这是？',type:'hex-sym-name',choices:['乾为天','坤为地','震为雷','离为火'],answer:0},
+    {prompt:'䷁ 这是？',type:'hex-sym-name',choices:['乾为天','坤为地','坎为水','兑为泽'],answer:1},
+    {prompt:'䷜ 这是？',type:'hex-sym-name',choices:['离为火','坎为水','震为雷','巽为风'],answer:1},
+    {prompt:'䷝ 这是？',type:'hex-sym-name',choices:['坎为水','离为火','兑为泽','艮为山'],answer:1},
+    {prompt:'䷐ 这是？',type:'hex-sym-name',choices:['蛊','随','临','观'],answer:1},
+    {prompt:'䷑ 这是？',type:'hex-sym-name',choices:['随','蛊','临','观'],answer:1},
+    // 卦名→卦象
+    {prompt:'「地天泰」的卦象符号是？',type:'hex-name-sym',choices:['䷊','䷋','䷀','䷁'],answer:0},
+    {prompt:'「天地否」的卦象符号是？',type:'hex-name-sym',choices:['䷊','䷋','䷌','䷍'],answer:1},
+    {prompt:'「水火既济」的卦象符号是？',type:'hex-name-sym',choices:['䷿','䷾','䷜','䷝'],answer:1},
+    {prompt:'「火水未济」的卦象符号是？',type:'hex-name-sym',choices:['䷾','䷿','䷜','䷝'],answer:1},
+    // 上下卦→卦名
+    {prompt:'上兑☱+下乾☰=？',type:'hex-construct',choices:['天泽履','泽天夬','泽地萃','天风姤'],answer:1},
+    {prompt:'上乾☰+下兑☱=？',type:'hex-construct',choices:['泽天夬','天泽履','天水讼','风天小畜'],answer:1},
+    {prompt:'上坤☷+下震☳=？',type:'hex-construct',choices:['雷地豫','地雷复','山地剥','水雷屯'],answer:1},
+    {prompt:'上艮☶+下坤☷=？',type:'hex-construct',choices:['地山谦','山地剥','天地否','地天泰'],answer:1},
+    {prompt:'上震☳+下坤☷=？',type:'hex-construct',choices:['山地剥','雷地豫','地雷复','火地晋'],answer:1},
+    // 卦名→上卦
+    {prompt:'「风火家人」的上卦是？',type:'hex-name-upper',choices:['离☲','巽☴','震☳','坎☵'],answer:1},
+    {prompt:'「火泽睽」的上卦是？',type:'hex-name-upper',choices:['兑☱','离☲','乾☰','坤☷'],answer:1},
+    {prompt:'「雷火丰」的上卦是？',type:'hex-name-upper',choices:['离☲','震☳','坎☵','巽☴'],answer:1},
+    // 卦名→下卦
+    {prompt:'「火山旅」的下卦是？',type:'hex-name-lower',choices:['艮☶','离☲','震☳','坎☵'],answer:0},
+    {prompt:'「水天需」的下卦是？',type:'hex-name-lower',choices:['坎☵','乾☰','坤☷','艮☶'],answer:1},
+    {prompt:'「地水师」的下卦是？',type:'hex-name-lower',choices:['坤☷','坎☵','乾☰','震☳'],answer:1},
+    // 综合配对
+    {prompt:'䷭ 地风升的上卦是？',type:'hex-name-upper',choices:['坤☷','巽☴','乾☰','震☳'],answer:0},
+    {prompt:'䷰ 泽火革的下卦是？',type:'hex-name-lower',choices:['兑☱','离☲','乾☰','坎☵'],answer:1},
+    {prompt:'䷱ 火风鼎的上卦+下卦是？',type:'hex-name-pair',choices:['上离☲+下巽☴','上巽☴+下离☲','上离☲+下乾☰','上乾☰+下离☲'],answer:0},
+    {prompt:'上坎☵+下巽☴=？',type:'hex-construct',choices:['风水涣','水风井','泽水困','水泽节'],answer:1},
+    {prompt:'䷺ 风水涣的下卦是？',type:'hex-name-lower',choices:['巽☴','坎☵','兑☱','离☲'],answer:1},
+    {prompt:'䷻ 水泽节的上卦是？',type:'hex-name-upper',choices:['兑☱','坎☵','艮☶','巽☴'],answer:1},
+    {prompt:'䷼ 风泽中孚的上卦+下卦是？',type:'hex-name-pair',choices:['上巽☴+下兑☱','上兑☱+下巽☴','上震☳+下艮☶','上艮☶+下震☳'],answer:0},
+    {prompt:'䷽ 雷山小过的上卦+下卦是？',type:'hex-name-pair',choices:['上艮☶+下震☳','上震☳+下艮☶','上坎☵+下离☲','上离☲+下坎☵'],answer:1},
+    {prompt:'以下哪对卦互为「上下卦互换」关系？',type:'hex-mirror',choices:['泰䷊和否䷋','泰䷊和大有䷍','乾䷀和坤䷁','屯䷂和蒙䷃'],answer:0},
+    {prompt:'八纯卦有几个？',type:'hex-chun',choices:['4个','6个','8个','16个'],answer:2},
+    {prompt:'「乾为天」「坤为地」之外的纯卦还包括？',type:'hex-chun-list',choices:['坎离震巽艮兑','需讼师比小畜履','泰否同人大有谦豫','随蛊临观噬嗑贲'],answer:0},
+    {prompt:'䷳ 这个卦象叫？',type:'hex-sym-name',choices:['震为雷','艮为山','兑为泽','巽为风'],answer:1},
+    {prompt:'䷲ 这个卦象叫？',type:'hex-sym-name',choices:['艮为山','震为雷','坎为水','离为火'],answer:1},
+    {prompt:'䷸ 巽为风的下卦是？',type:'hex-name-lower',choices:['巽☴','震☳','坎☵','离☲'],answer:0}
+  ]
+});
+
+// ==== LEVEL 45: 动爻变卦回顾 ====
+LEVELS.push({
+  id:45, icon:'🔄', title:'动爻变卦回顾', desc:'回顾第21-25关——动爻原理、变卦推演、体用定位',
+  source:'《周易·系辞传》大衍筮法',
+  pitfalls:['老阳9变阴、老阴6变阳——不要记反','动爻所在卦为「用」，不动之卦为「体」'],
+  reviewCount:5,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🔄 第45关：动爻变卦回顾'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '温故知新！回顾第21-25关所学的动爻与变卦核心知识。'),
+      h('div',{style:{background:'#E8F0FE',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#1a73e8'}},'📖 动爻核心知识回顾'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '• 四象数：6=老阴(太阴)、7=少阳、8=少阴、9=老阳(太阳)\\n'+
+          '• 口诀：九六变，七八不变。老变少不变，极则必反。\\n'+
+          '• 老阳9 → 变阴爻⚋（阳极生阴）\\n'+
+          '• 老阴6 → 变阳爻⚊（阴极生阳）\\n'+
+          '• 动爻=筮得6或9的爻位')
+      ),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#E65100'}},'🔑 变卦推演'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '• 本卦 → 找出动爻 → 动爻阴阳反转 → 变卦（之卦）\\n'+
+          '• 体卦：不动之卦（无动爻的卦）\\n'+
+          '• 用卦：动爻所在之卦\\n'+
+          '• 一个动爻：动爻在上卦→上卦为用；动爻在下卦→下卦为用\\n'+
+          '• 体用生克定吉凶')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'回顾动爻变卦，巩固基础！25题 💪'),
+      h('div',{className:'source-tag'},'来源：《周易·系辞传》大衍筮法')
+    ));
+  },
+  questions:[
+    // 四象数识别
+    {prompt:'筮得数字\"9\"，这是？',type:'sixiang-name',choices:['老阳（太阳）','少阴','少阳','老阴（太阴）'],answer:0},
+    {prompt:'筮得数字\"6\"，这是？',type:'sixiang-name',choices:['老阳（太阳）','少阳','少阴','老阴（太阴）'],answer:3},
+    {prompt:'\"老阴\"对应的数字是？',type:'name-xiang',choices:['6','7','8','9'],answer:0},
+    {prompt:'\"少阳\"对应的数字是？',type:'name-xiang',choices:['6','7','8','9'],answer:1},
+    // 动爻判断
+    {prompt:'以下哪两个数字代表动爻？',type:'dongyao-pick',choices:['6和9','7和8','6和8','7和9'],answer:0},
+    {prompt:'筮得\"8\"，这个爻会变吗？',type:'will-change',choices:['不变，少阴稳定','会变，变成阳爻','会变，变成老阴','要看上下卦'],answer:0},
+    {prompt:'筮得\"7\"，这个爻会变吗？',type:'will-change',choices:['会变，变成阴爻','不变，少阳稳定','会变，变成老阳','要看上下卦'],answer:1},
+    // 变爻结果
+    {prompt:'老阳(9)原为阳爻⚊，变之后？',type:'change-result',choices:['变为阴爻⚋','变为少阳⚊','保持阳爻⚊','变为老阴⚋'],answer:0},
+    {prompt:'老阴(6)原为阴爻⚋，变之后？',type:'change-result',choices:['保持阴爻⚋','变为阳爻⚊','变为少阴⚋','变为老阳⚊'],answer:1},
+    {prompt:'老阳(9)为什么会变？',type:'why-change',choices:['阳极生阴','被少阴影响','筮法规定','数值太大'],answer:0},
+    {prompt:'老阴(6)为什么会变？',type:'why-change',choices:['被少阳影响','阴极生阳','筮法规定','数值太小'],answer:1},
+    // 动爻计数
+    {prompt:'一卦六爻筮得[6,7,9,8,7,7]，有几个动爻？',type:'count-dongyao',choices:['0个','1个','2个','3个'],answer:2},
+    {prompt:'一卦六爻全是7或8，有几个动爻？',type:'count-dongyao',choices:['0个','1个','3个','6个'],answer:0},
+    // 变卦概念
+    {prompt:'\"变卦\"（之卦）是怎么产生的？',type:'biangua-concept',choices:['本卦动爻阴阳反转得到','随机生成的','从64卦中抽一个','筮法重新计算'],answer:0},
+    {prompt:'只有一个动爻在上卦时，「体」是？',type:'tiyong-one',choices:['下卦为体','上卦为体','全卦为体','没有体卦'],answer:0},
+    {prompt:'只有一个动爻在下卦时，「用」是？',type:'tiyong-one',choices:['上卦为用','下卦为用','全卦为用','没有用卦'],answer:1},
+    // 口诀
+    {prompt:'\"九六变，七八不变\"中的\"九六\"指？',type:'slogan-meaning',choices:['老阳和老阴','少阳和少阴','数字9和数字6的爻位','乾卦和坤卦'],answer:0},
+    {prompt:'\"老变少不变\"中的\"少\"指？',type:'slogan-meaning',choices:['6和9','7和8','6和7','8和9'],answer:1},
+    // 综合
+    {prompt:'\"极则必反\"在动爻中如何体现？',type:'jizebifa',choices:['老阳极则变阴，老阴极则变阳','少阳极则变老阳','所有爻都会变','只有9会变'],answer:0},
+    {prompt:'四象\"太阳/少阴/少阳/太阴\"的数字顺序是？',type:'sixiang-order',choices:['9-8-7-6','6-7-8-9','9-7-8-6','8-7-6-9'],answer:0},
+    {prompt:'体用关系中，体卦代表什么？',type:'ti-concept',choices:['占问的主体/自身','对方/外部环境','动爻所在卦','变卦'],answer:0},
+    {prompt:'用卦代表什么？',type:'yong-concept',choices:['占问的主体','对方/外部环境/所问之事','不变的卦','本卦'],answer:1},
+    {prompt:'体用比和是什么意思？',type:'tiyong-bihe',choices:['体用五行相同','体用五行相生','体用五行相克','体用无关系'],answer:0},
+    {prompt:'体生用表示什么？',type:'tiyong-shengke',choices:['泄气，小凶','吉利，得助','大凶','比和'],answer:0},
+    {prompt:'用生体表示什么？',type:'tiyong-shengke',choices:['泄气','吉利，得助','大凶','比和'],answer:1}
+  ]
+});
+
+// ==== LEVEL 46: 互卦回顾 ====
+LEVELS.push({
+  id:46, icon:'🔀', title:'互卦回顾', desc:'回顾第26-30关——互卦的取法与含义',
+  source:'《梅花易数》互卦章',
+  pitfalls:['互卦取2-3-4爻为下互、3-4-5爻为上互','互卦揭示事物发展过程中的中间状态'],
+  reviewCount:5,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🔀 第46关：互卦回顾'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '温故知新！回顾第26-30关所学的互卦知识。互卦是梅花易数\"本卦→互卦→变卦\"三卦体系的关键一环。'),
+      h('div',{style:{background:'#E8F0FE',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#1a73e8'}},'📖 互卦核心知识'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '• 互卦：从本卦中间四爻重新组合而成的新卦\\n'+
+          '• 下互卦（二互）：取本卦第2、3、4爻组成下卦\\n'+
+          '• 上互卦（三互）：取本卦第3、4、5爻组成上卦\\n'+
+          '• 互卦意义：揭示事物发展过程的中间状态/内部变化')
+      ),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#E65100'}},'🔑 互卦取法示例'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '例：本卦䷊ 地天泰（六爻：初⚊ 二⚊ 三⚊ 四⚋ 五⚋ 上⚋）\\n'+
+          '→ 下互=2-3-4爻: ⚊⚊⚋ = 兑☱（泽）\\n'+
+          '→ 上互=3-4-5爻: ⚊⚋⚋ = 震☳（雷）\\n'+
+          '→ 互卦=上震下兑 = 雷泽归妹䷵')
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2e7d32'}},'💡 口诀'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '「二三四为下互，三四五为上互」\\n'+
+          '互卦看中间，变卦看结局，本卦看当下。')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'互卦取法要熟练！25题巩固 🎯'),
+      h('div',{className:'source-tag'},'来源：《梅花易数》互卦取法')
+    ));
+  },
+  questions:[
+    // 互卦概念
+    {prompt:'互卦从本卦的哪几爻取？',type:'hugua-yao',choices:['2-3-4和3-4-5爻','1-2-3和4-5-6爻','1-3-5和2-4-6爻','1-2-3和3-4-5爻'],answer:0},
+    {prompt:'互卦中的\"下互卦\"取自哪三爻？',type:'hugua-lower',choices:['1-2-3爻','2-3-4爻','3-4-5爻','4-5-6爻'],answer:1},
+    {prompt:'互卦中的\"上互卦\"取自哪三爻？',type:'hugua-upper',choices:['1-2-3爻','2-3-4爻','3-4-5爻','4-5-6爻'],answer:2},
+    {prompt:'互卦在梅花易数中的作用是？',type:'hugua-role',choices:['揭示中间过程/内部变化','代表最终结果','代表初始状态','与变卦相同'],answer:0},
+    // 取互卦练习
+    {prompt:'本卦第2、3、4爻组成互卦的哪个部分？',type:'hugua-part',choices:['下互卦','上互卦','本卦','变卦'],answer:0},
+    {prompt:'本卦第3、4、5爻组成互卦的哪个部分？',type:'hugua-part',choices:['下互卦','上互卦','本卦','变卦'],answer:1},
+    {prompt:'互卦是由几个三画卦组成？',type:'hugua-count',choices:['1个','2个','3个','4个'],answer:1},
+    // 互卦推算
+    {prompt:'本卦下三爻(初⚊ 二⚊ 三⚊=乾☰)、上三爻(四⚋ 五⚋ 上⚋=坤☷)，互卦是？',type:'hugua-calc',choices:['上震下兑(归妹)','上兑下震(随)','上坤下乾(泰)','上乾下坤(否)'],answer:0},
+    {prompt:'本卦六爻全阳⚊⚊⚊⚊⚊⚊(䷀乾)，互卦是什么？',type:'hugua-calc',choices:['还是乾䷀','坤䷁','既济䷾','未济䷿'],answer:0},
+    {prompt:'本卦六爻全阴⚋⚋⚋⚋⚋⚋(䷁坤)，互卦是什么？',type:'hugua-calc',choices:['乾䷀','还是坤䷁','泰䷊','否䷋'],answer:1},
+    // 互卦三卦体系
+    {prompt:'梅花易数的\"三卦体系\"指？',type:'sangua-system',choices:['本卦+互卦+变卦','上卦+中卦+下卦','体卦+用卦+互卦','天卦+地卦+人卦'],answer:0},
+    {prompt:'在三卦体系中，互卦代表什么阶段？',type:'sangua-stage',choices:['当前状态','中间发展过程','最终结局','初始状态'],answer:1},
+    {prompt:'变卦在三卦体系中代表什么？',type:'sangua-stage',choices:['当前状态','中间过程','最终结局','内部变化'],answer:2},
+    // 综合
+    {prompt:'互卦取法口诀是？',type:'hugua-slogan',choices:['二三四为下互，三四五为上互','一二三为下互，四五六为上互','上三爻为互，下三爻为互','初四为互，二五为互'],answer:0},
+    {prompt:'互卦的上互和下互各自是几画卦？',type:'hugua-hua',choices:['都是三画卦','上互六画，下互三画','上互三画，下互六画','都是六画卦'],answer:0},
+    {prompt:'本卦=䷾既济(上坎下离)，2-4爻=⚋⚊⚋=?，3-5爻=⚊⚋⚊=?，互卦是？',type:'hugua-jiji',choices:['上离下坎(未济䷿)','上坎下离(既济)','上震下兑','上艮下巽'],answer:0},
+    {prompt:'互卦的\"互\"字含义是？',type:'hugua-meaning',choices:['交互、中间','相互','互助','互换'],answer:0},
+    {prompt:'如果本卦只有6爻，互卦的爻来自哪几爻？',type:'hugua-source',choices:['第2-5爻共4爻','第1-3爻','第4-6爻','全部6爻'],answer:0},
+    {prompt:'互卦能揭示什么信息？',type:'hugua-info',choices:['事物发展的内在变化和中间环节','占卜的时间和地点','求测人的身份','卦象的五行属性'],answer:0},
+    {prompt:'本卦䷋否(上乾下坤)，2-4爻=⚋⚋⚋=坤，3-5爻=⚋⚋⚊=艮，互卦是？',type:'hugua-calc',choices:['山地剥䷖','地山谦䷎','天地否䷋','风地观䷓'],answer:0},
+    {prompt:'\"本卦→互卦→变卦\"的推理顺序反映了什么？',type:'sangua-logic',choices:['事物从开始→发展→结局的全过程','三天内的天气变化','三个人的不同命运','三种不同的占卜方法'],answer:0},
+    {prompt:'以下哪个不是互卦的特点？',type:'hugua-feature',choices:['由本卦2-5爻重新组合','揭示中间状态','是一个六画重卦','直接从筮法得出'],answer:3},
+    {prompt:'互卦在解卦时通常侧重于？',type:'hugua-use',choices:['过程与内部因素','结果与外部因素','初始条件','时间方位'],answer:0},
+    {prompt:'互卦是否考虑动爻？',type:'hugua-dongyao',choices:['不考虑，直接从本卦爻位取','考虑，取动爻所在的爻','只取动爻','与本卦动爻相同'],answer:0},
+    {prompt:'取互卦时使用本卦的哪些爻？',type:'hugua-range',choices:['第2、3、4、5爻','全部6爻','第1、2、3、4爻','第3、4、5、6爻'],answer:0}
+  ]
+});
+
+// ==== LEVEL 47: 旺衰回顾 ====
+LEVELS.push({
+  id:47, icon:'📊', title:'旺衰回顾', desc:'回顾第31-35关——五行旺衰与季节生克',
+  source:'《梅花易数》旺衰章',
+  pitfalls:['旺衰要结合季节（月令）判断','当令者旺、生令者相、克令者囚、令生者休、令克者死'],
+  reviewCount:5,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'📊 第47关：旺衰回顾'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '温故知新！回顾第31-35关所学的五行旺衰知识。旺衰是判断体用生克实际力量的关键因素。'),
+      h('div',{style:{background:'#E8F0FE',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#1a73e8'}},'📖 旺衰五态'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '• 旺：当令者旺（与月令五行相同）——最强\\n'+
+          '• 相：生令者相（生月令的五行）——次强\\n'+
+          '• 休：令生者休（月令所生的五行）——衰弱\\n'+
+          '• 囚：克令者囚（克月令的五行）——更弱\\n'+
+          '• 死：令克者死（被月令克的五行）——最弱')
+      ),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#E65100'}},'🔑 四季旺衰表'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '春季(木旺)：木旺→火相→水休→金囚→土死\\n'+
+          '夏季(火旺)：火旺→土相→木休→水囚→金死\\n'+
+          '秋季(金旺)：金旺→水相→土休→火囚→木死\\n'+
+          '冬季(水旺)：水旺→木相→金休→土囚→火死\\n'+
+          '四季末(土旺)：土旺→金相→火休→木囚→水死')
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2e7d32'}},'💡 旺衰口诀'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '「当令者旺，生令者相，令生者休，克令者囚，令克者死」\\n'+
+          '旺的体卦克用卦→吉更强；衰的体卦生用卦→泄更凶。')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'旺衰决吉凶，季节定强弱！25题巩固 📊'),
+      h('div',{className:'source-tag'},'来源：《梅花易数》旺衰断卦法')
+    ));
+  },
+  questions:[
+    // 旺衰概念
+    {prompt:'\"当令者旺\"中的\"令\"指什么？',type:'wangshuai-ling',choices:['季节/月令','命令','时令卦','节气'],answer:0},
+    {prompt:'春季（木旺），\"生令者相\"指哪个五行？',type:'wangshuai-spring',choices:['火（木生火）','水（水生木）','土','金'],answer:1},
+    {prompt:'旺衰五态从强到弱的顺序是？',type:'wangshuai-order',choices:['旺>相>休>囚>死','旺>休>相>囚>死','相>旺>休>囚>死','旺>相>囚>休>死'],answer:0},
+    // 春季
+    {prompt:'春季木旺，木本身的状态是？',type:'wangshuai-season',choices:['旺','相','休','囚'],answer:0},
+    {prompt:'春季木旺，火的状态是？',type:'wangshuai-season',choices:['旺','相','休','死'],answer:1},
+    {prompt:'春季木旺，金的状态是？',type:'wangshuai-season',choices:['旺','相','囚','死'],answer:2},
+    // 夏季
+    {prompt:'夏季火旺，土的状态是？',type:'wangshuai-summer',choices:['旺','相','休','囚'],answer:1},
+    {prompt:'夏季火旺，水的状态是？',type:'wangshuai-summer',choices:['旺','相','囚','死'],answer:2},
+    {prompt:'夏季火旺，金的状态是？',type:'wangshuai-summer',choices:['旺','相','囚','死'],answer:3},
+    // 秋季
+    {prompt:'秋季哪个五行最旺？',type:'wangshuai-autumn',choices:['木','火','金','水'],answer:2},
+    {prompt:'秋季金旺，水的状态是？',type:'wangshuai-autumn',choices:['旺','相','休','囚'],answer:1},
+    {prompt:'秋季金旺，木的状态是？',type:'wangshuai-autumn',choices:['旺','相','囚','死'],answer:3},
+    // 冬季
+    {prompt:'冬季水旺，木的状态是？',type:'wangshuai-winter',choices:['旺','相','休','囚'],answer:1},
+    {prompt:'冬季水旺，火的状态是？',type:'wangshuai-winter',choices:['旺','相','囚','死'],answer:3},
+    {prompt:'冬季水旺，土的状态是？',type:'wangshuai-winter',choices:['旺','相','囚','死'],answer:2},
+    // 综合
+    {prompt:'\"令克者死\"在春季指哪个五行？',type:'wangshuai-lingke',choices:['土（木克土）','金（金克木？不，是令克者）','水','火'],answer:0},
+    {prompt:'一个体卦在当令季节，它生用卦，结果是？',type:'wangshuai-apply',choices:['泄气但有旺气支撑，小凶','大吉','大凶','比和'],answer:0},
+    {prompt:'用卦在旺的季节克体卦（体卦衰），结果是？',type:'wangshuai-apply',choices:['大凶','小凶','吉','比和'],answer:0},
+    {prompt:'土在四季末（辰戌丑未月）是什么状态？',type:'wangshuai-tu',choices:['旺','相','休','囚'],answer:0},
+    {prompt:'\"休\"的含义是什么？',type:'wangshuai-xiu',choices:['被月令所生，泄气衰弱','休息不动','停止','恢复'],answer:0},
+    {prompt:'\"囚\"的含义是什么？',type:'wangshuai-qiu',choices:['克月令而被困','被囚禁','停止','比和'],answer:0},
+    {prompt:'判断旺衰最关键的参照是？',type:'wangshuai-ref',choices:['月令（季节）','日辰','时辰','年份'],answer:0},
+    {prompt:'春季，体卦为木、用卦为土，体用关系是？',type:'wangshuai-tiyong',choices:['体克用且体旺用死→大吉','用克体→凶','体生用→泄气','比和'],answer:0},
+    {prompt:'秋季，体卦为木、用卦为金，体用关系是？',type:'wangshuai-tiyong',choices:['用克体且用旺体死→大凶','体克用→吉','体生用→泄','比和'],answer:0},
+    {prompt:'旺衰对体用生克的影响可以概括为？',type:'wangshuai-summary',choices:['旺者力强、衰者力弱','旺者变衰、衰者变旺','不影响生克关系','只影响体卦'],answer:0}
+  ]
+});
+
+// ==== LEVEL 48: 六十四卦回顾 ====
+LEVELS.push({
+  id:48, icon:'🔁', title:'六十四卦回顾', desc:'回顾第36-44关——卦名/卦象/上下卦 全面复习',
+  source:'《周易》六十四卦',
+  pitfalls:['「泰」䷊和「否」䷋极易混淆——泰是地天（地在天上），否是天地','上卦在前、下卦在后——写卦名时也是上卦自然象在前'],
+  reviewCount:5,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🔁 第48关：六十四卦回顾'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '全面回顾六十四卦知识！覆盖卦名记忆、卦象识别、上下卦推导。\\n'+
+        '30题混合，检验你对64卦的掌握程度。'),
+      h('div',{style:{background:'#E8F0FE',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#1a73e8'}},'📖 快速回顾要点'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '• 上经30卦：乾䷀坤䷁ → 坎䷜离䷝\\n'+
+          '• 下经34卦：咸䷞恒䷟ → 既济䷾未济䷿\\n'+
+          '• 卦名构成：上卦自然象+下卦自然象+卦名\\n'+
+          '• 八纯卦：乾为天 坤为地 震为雷 巽为风 坎为水 离为火 艮为山 兑为泽')
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2e7d32'}},'💡 常考卦对'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '• 泰䷊(地天) ⇄ 否䷋(天地)\\n'+
+          '• 既济䷾(水火) ⇄ 未济䷿(火水)\\n'+
+          '• 损䷨(山泽) ⇄ 益䷩(风雷)\\n'+
+          '• 咸䷞(泽山) ⇄ 恒䷟(雷风)')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'最后一轮回顾，为模拟考做准备！🔁'),
+      h('div',{className:'source-tag'},'来源：《周易》六十四卦全篇')
+    ));
+  },
+  questions:[
+    // 卦象→卦名 (10题)
+    {prompt:'䷀ 这是？',type:'hex-sym-name',choices:['乾为天','坤为地','震为雷','坎为水'],answer:0},
+    {prompt:'䷁ 这是？',type:'hex-sym-name',choices:['乾为天','坤为地','艮为山','兑为泽'],answer:1},
+    {prompt:'䷊ 这是？',type:'hex-sym-name',choices:['天地否','地天泰','乾为天','坤为地'],answer:1},
+    {prompt:'䷋ 这是？',type:'hex-sym-name',choices:['地天泰','天地否','天山遁','地山谦'],answer:1},
+    {prompt:'䷾ 这是？',type:'hex-sym-name',choices:['火水未济','水火既济','火地晋','水地比'],answer:1},
+    {prompt:'䷿ 这是？',type:'hex-sym-name',choices:['水火既济','火水未济','火天大有','水天需'],answer:1},
+    {prompt:'䷌ 这是？',type:'hex-sym-name',choices:['火天大有','天火同人','天泽履','天水讼'],answer:1},
+    {prompt:'䷍ 这是？',type:'hex-sym-name',choices:['天火同人','火天大有','火地晋','地火明夷'],answer:1},
+    {prompt:'䷂ 这是？',type:'hex-sym-name',choices:['山水蒙','水雷屯','水天需','天水讼'],answer:1},
+    {prompt:'䷃ 这是？',type:'hex-sym-name',choices:['水雷屯','山水蒙','水天需','地水师'],answer:1},
+    // 上下卦→卦名 (8题)
+    {prompt:'上乾☰+下坤☷=？',type:'hex-construct',choices:['地天泰','天地否','乾为天','坤为地'],answer:1},
+    {prompt:'上坤☷+下乾☰=？',type:'hex-construct',choices:['天地否','地天泰','地山谦','山地剥'],answer:1},
+    {prompt:'上坎☵+下离☲=？',type:'hex-construct',choices:['火水未济','水火既济','水雷屯','雷水解'],answer:1},
+    {prompt:'上离☲+下坎☵=？',type:'hex-construct',choices:['水火既济','火水未济','火地晋','地火明夷'],answer:1},
+    {prompt:'上艮☶+下兑☱=？',type:'hex-construct',choices:['泽山咸','山泽损','风雷益','雷风恒'],answer:1},
+    {prompt:'上震☳+下巽☴=？',type:'hex-construct',choices:['风雷益','雷风恒','泽风大过','风泽中孚'],answer:1},
+    {prompt:'上巽☴+下兑☱=？',type:'hex-construct',choices:['兑为泽','风泽中孚','泽风大过','风水涣'],answer:1},
+    {prompt:'上坎☵+下兑☱=？',type:'hex-construct',choices:['泽水困','水泽节','风水涣','水风井'],answer:1},
+    // 卦名→上卦 (6题)
+    {prompt:'「地山谦」的上卦是？',type:'hex-name-upper',choices:['艮☶','坤☷','乾☰','震☳'],answer:1},
+    {prompt:'「雷地豫」的上卦是？',type:'hex-name-upper',choices:['坤☷','震☳','乾☰','离☲'],answer:1},
+    {prompt:'「风火家人」的上卦是？',type:'hex-name-upper',choices:['离☲','巽☴','震☳','坎☵'],answer:1},
+    {prompt:'「火泽睽」的上卦是？',type:'hex-name-upper',choices:['兑☱','离☲','乾☰','坤☷'],answer:1},
+    {prompt:'「雷天大壮」的上卦是？',type:'hex-name-upper',choices:['乾☰','震☳','离☲','坎☵'],answer:1},
+    {prompt:'「泽天夬」的上卦是？',type:'hex-name-upper',choices:['乾☰','兑☱','坤☷','艮☶'],answer:1},
+    // 卦名→下卦 (6题)
+    {prompt:'「水雷屯」的下卦是？',type:'hex-name-lower',choices:['坎☵','震☳','乾☰','坤☷'],answer:1},
+    {prompt:'「天水讼」的下卦是？',type:'hex-name-lower',choices:['乾☰','坎☵','离☲','兑☱'],answer:1},
+    {prompt:'「天风姤」的下卦是？',type:'hex-name-lower',choices:['乾☰','巽☴','震☳','坎☵'],answer:1},
+    {prompt:'「地风升」的下卦是？',type:'hex-name-lower',choices:['坤☷','巽☴','震☳','艮☶'],answer:1},
+    {prompt:'「火山旅」的下卦是？',type:'hex-name-lower',choices:['离☲','艮☶','兑☱','坎☵'],answer:1},
+    {prompt:'「雷火丰」的下卦是？',type:'hex-name-lower',choices:['震☳','离☲','乾☰','巽☴'],answer:1}
+  ]
+});
+
+// ==== LEVEL 49: 第二单元模拟考 ====
+LEVELS.push({
+  id:49, icon:'📝', title:'第二单元模拟考', desc:'35题混合——动爻变卦/互卦/旺衰/六十四卦 各约8-9题',
+  source:'综合第二单元全部内容',
+  pitfalls:['注意区分不同知识模块的题目','动爻→变卦→互卦的推演链条要连贯'],
+  reviewCount:6,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'📝 第49关：第二单元模拟考'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',marginBottom:'12px',lineHeight:'1.6'}},
+        '模拟考涵盖第二单元全部内容：'),
+      h('div',{style:{background:'#E8F0FE',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#1a73e8'}},'📖 题型分布（35题）'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '• 动爻变卦(9题)：四象数、变爻规则、体用定位\\n'+
+          '• 互卦(9题)：互卦取法、三卦体系、推算\\n'+
+          '• 旺衰(9题)：五行旺衰五态、季节判断、体用旺衰\\n'+
+          '• 六十四卦(8题)：卦名/卦象/上下卦识别')
+      ),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#E65100'}},'🎯 考前提示'),
+        h('div',{style:{fontSize:'13px',lineHeight:'1.8',color:'var(--text-light)'}},
+          '这是模拟考，不限通过门槛。用来检验薄弱环节，\\n'+
+          '为第50关的正式大考做最后准备！')
+      ),
+      h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'模拟考开始，全力以赴！📝'),
+      h('div',{className:'source-tag'},'来源：第二单元综合复习')
+    ));
+  },
+  questions:[
+    // === 动爻变卦 (9题) ===
+    {prompt:'筮得数字\"6\"，这是？',type:'sixiang-name',choices:['老阳','少阳','少阴','老阴'],answer:3},
+    {prompt:'\"九六变\"的意思是？',type:'dongyao',choices:['老阳和老阴会变','少阳和少阴会变','九和六不会变','逢九六就变少阴'],answer:0},
+    {prompt:'老阳(9)原为阳爻⚊，变之后？',type:'change-result',choices:['变为阴爻⚋','保持阳爻','变为少阳','变为老阴'],answer:0},
+    {prompt:'一卦六爻为[6,8,7,9,8,7]，有几个动爻？',type:'count-dongyao',choices:['0','1','2','3'],answer:2},
+    {prompt:'只有一个动爻且在下卦，体卦是？',type:'tiyong',choices:['上卦为体','下卦为体','动爻为体','全卦为体'],answer:0},
+    {prompt:'变卦怎么来的？',type:'biangua',choices:['动爻阴阳反转','随机生成','重筮一次','上下卦互换'],answer:0},
+    {prompt:'体生用代表什么？',type:'tiyong-shengke',choices:['泄气，小凶','吉利，得助','大凶','比和'],answer:0},
+    {prompt:'用生体代表什么？',type:'tiyong-shengke',choices:['泄气','吉利，得助','大凶','比和'],answer:1},
+    {prompt:'四象数字顺序（太阳→太阴）是？',type:'sixiang-order',choices:['9-8-7-6','9-7-8-6','6-7-8-9','8-7-6-9'],answer:0},
+    // === 互卦 (9题) ===
+    {prompt:'互卦取本卦的哪几爻？',type:'hugua-yao',choices:['2-3-4和3-4-5爻','1-2-3和4-5-6爻','1-3-5和2-4-6爻','全部6爻'],answer:0},
+    {prompt:'\"下互卦\"取自哪三爻？',type:'hugua-lower',choices:['1-2-3爻','2-3-4爻','3-4-5爻','4-5-6爻'],answer:1},
+    {prompt:'\"上互卦\"取自哪三爻？',type:'hugua-upper',choices:['1-2-3爻','2-3-4爻','3-4-5爻','4-5-6爻'],answer:2},
+    {prompt:'互卦在梅花易数中揭示什么？',type:'hugua-role',choices:['中间过程/内部变化','最终结局','初始状态','体用关系'],answer:0},
+    {prompt:'本卦䷀(六爻全阳)，互卦是？',type:'hugua-calc',choices:['还是乾䷀','坤䷁','既济䷾','未济䷿'],answer:0},
+    {prompt:'梅花易数\"三卦体系\"指？',type:'sangua',choices:['本卦+互卦+变卦','体卦+用卦+互卦','上卦+下卦+变卦','初卦+中卦+末卦'],answer:0},
+    {prompt:'互卦不考虑什么因素？',type:'hugua-feature',choices:['动爻','本卦爻位','2-5爻','下互和上互'],answer:0},
+    {prompt:'互卦由几个三画卦组成？',type:'hugua-count',choices:['1个','2个','3个','4个'],answer:1},
+    {prompt:'本卦2-4爻+3-5爻形成互卦，使用的爻共有几个？',type:'hugua-source',choices:['4个(2,3,4,5)','6个','3个','5个'],answer:0},
+    // === 旺衰 (9题) ===
+    {prompt:'春季木旺，木本身的状态是？',type:'wangshuai',choices:['旺','相','休','囚'],answer:0},
+    {prompt:'春季木旺，火的状态是？',type:'wangshuai',choices:['旺','相','休','死'],answer:1},
+    {prompt:'夏季哪个五行最旺？',type:'wangshuai',choices:['木','火','土','金'],answer:1},
+    {prompt:'夏季火旺，金的状态是？',type:'wangshuai',choices:['旺','相','囚','死'],answer:3},
+    {prompt:'秋季金旺，木的状态是？',type:'wangshuai',choices:['旺','相','囚','死'],answer:3},
+    {prompt:'冬季水旺，木的状态是？',type:'wangshuai',choices:['旺','相','休','囚'],answer:1},
+    {prompt:'旺衰五态最强到最弱顺序？',type:'wangshuai-order',choices:['旺>相>休>囚>死','旺>休>相>囚>死','旺>相>囚>休>死','相>旺>休>囚>死'],answer:0},
+    {prompt:'\"当令者旺\"的\"令\"指？',type:'wangshuai-ling',choices:['季节/月令','命令','时令卦','节气名称'],answer:0},
+    {prompt:'\"令克者死\"在夏季指哪个五行？',type:'wangshuai',choices:['金（火克金）','水（水克火？不）','木','土'],answer:0},
+    // === 六十四卦 (8题) ===
+    {prompt:'䷊ 这个卦叫什么？',type:'hex-sym-name',choices:['地天泰','天地否','乾为天','坤为地'],answer:0},
+    {prompt:'䷋ 这个卦叫什么？',type:'hex-sym-name',choices:['地天泰','天地否','天山遁','地山谦'],answer:1},
+    {prompt:'䷾ 这个卦叫什么？',type:'hex-sym-name',choices:['火水未济','水火既济','火地晋','水地比'],answer:1},
+    {prompt:'上坤☷+下乾☰=？',type:'hex-construct',choices:['天地否','地天泰','地山谦','山地剥'],answer:1},
+    {prompt:'「火天大有」的上卦是？',type:'hex-name-upper',choices:['乾☰','离☲','震☳','坤☷'],answer:1},
+    {prompt:'「雷水解」的下卦是？',type:'hex-name-lower',choices:['震☳','坎☵','艮☶','兑☱'],answer:1},
+    {prompt:'八纯卦有几个？',type:'hex-chun',choices:['8个','6个','4个','16个'],answer:0},
+    {prompt:'䷿ 这个卦叫什么？',type:'hex-sym-name',choices:['水火既济','火水未济','火天大有','水天需'],answer:1}
+  ]
+});
+
+// ==== LEVEL 50: 第二单元大考 ====
+LEVELS.push({
+  id:50, icon:'🎓', title:'🎯 第二单元大考', desc:'50题——动爻(10)+互卦(10)+旺衰(10)+六十四卦(10)+综合(10)，通过≥80%解锁第三单元',
+  source:'第二单元全部教学内容',
+  pitfalls:['通过分数线80%（40/50），不通过需重考','每题都要认真作答，时间不限但要准'],
+  reviewCount:8,
+  passThreshold:80,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🎓 第50关：第二单元大考'),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#E65100'}},'📋 考试说明'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '• 总题数：50题\\n'+
+          '• 通过门槛：≥80%（40/50题正确）\\n'+
+          '• 不通过：需重新挑战\\n'+
+          '• 通过后：解锁第三单元')
+      ),
+      h('div',{style:{background:'#E8F0FE',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'15px',marginBottom:'8px',color:'#1a73e8'}},'📖 题型分布（50题）'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '• 动爻变卦(10题)：四象数识别、变爻规则、体用定位、变卦推演\\n'+
+          '• 互卦(10题)：互卦取法、下互上互、三卦体系、互卦推算\\n'+
+          '• 旺衰(10题)：旺衰五态、四季旺衰表、体用旺衰判断\\n'+
+          '• 六十四卦(10题)：卦名/卦象/上下卦识别\\n'+
+          '• 综合(10题)：跨模块混合，检验知识贯通')
+      ),
+      h('div',{style:{background:'#E8F5E9',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'6px',color:'#2e7d32'}},'💡 考前建议'),
+        h('div',{style:{fontSize:'13px',lineHeight:'2',color:'var(--text-light)'}},
+          '• 放轻松，仔细读题\\n'+
+          '• 不确定的题先选一个，不要纠结太久\\n'+
+          '• 动爻口诀：九六变，七八不变\\n'+
+          '• 互卦口诀：二三四为下互，三四五为上互\\n'+
+          '• 旺衰口诀：当令者旺，令克者死\\n'+
+          '• 卦象看熟：泰䷊否䷋既济䷾未济䷿')
+      ),
+      h('p',{style:{fontSize:'16px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'第二单元最终大考！50题，全力以赴！🎯🔥'),
+      h('div',{className:'source-tag'},'来源：第二单元综合测试')
+    ));
+  },
+  questions:[
+    // ========================================
+    // 动爻变卦 (10题)
+    // ========================================
+    {prompt:'筮得数字\"9\"，这是？',type:'sixiang-name',choices:['老阳（太阳）','少阴','少阳','老阴（太阴）'],answer:0},
+    {prompt:'筮得数字\"6\"，这是？',type:'sixiang-name',choices:['老阳','少阳','少阴','老阴（太阴）'],answer:3},
+    {prompt:'以下哪些数字代表动爻？',type:'dongyao-pick',choices:['6和9','7和8','6和8','7和9'],answer:0},
+    {prompt:'老阳(9)为什么会变？',type:'why-change',choices:['阳极生阴','筮法随机','被少阴影响','数值太大'],answer:0},
+    {prompt:'老阴(6)变为？',type:'change-result',choices:['保持阴爻','变为阳爻⚊','变为少阴','变为老阳'],answer:1},
+    {prompt:'筮得\"8\"，这个爻会变吗？',type:'will-change',choices:['不变，少阴稳定','会变，变成阳爻','会变，变成老阴','要看上下卦'],answer:0},
+    {prompt:'[6,7,9,8,7,7]中有几个动爻？',type:'count-dongyao',choices:['0','1','2','3'],answer:2},
+    {prompt:'变卦（之卦）怎么产生？',type:'biangua-concept',choices:['本卦动爻阴阳反转','重筮一次','上下卦互换','随机生成'],answer:0},
+    {prompt:'一个动爻在上卦时，体卦是？',type:'tiyong-one',choices:['下卦为体','上卦为体','动爻为体','全卦为体'],answer:0},
+    {prompt:'\"九六变，七八不变\"中\"七八\"是？',type:'sixiang-name',choices:['少阳和少阴','老阳和老阴','七和八的爻位','乾坤二卦'],answer:0},
+
+    // ========================================
+    // 互卦 (10题)
+    // ========================================
+    {prompt:'互卦取本卦哪几爻？',type:'hugua-yao',choices:['2-3-4和3-4-5爻','1-2-3和4-5-6爻','1-3-5和2-4-6爻','全部六爻'],answer:0},
+    {prompt:'下互卦取自哪三爻？',type:'hugua-lower',choices:['1-2-3爻','2-3-4爻','3-4-5爻','4-5-6爻'],answer:1},
+    {prompt:'上互卦取自哪三爻？',type:'hugua-upper',choices:['1-2-3爻','2-3-4爻','3-4-5爻','4-5-6爻'],answer:2},
+    {prompt:'本卦䷀(全阳⚊⚊⚊⚊⚊⚊)，互卦是？',type:'hugua-calc',choices:['乾䷀','坤䷁','既济䷾','未济䷿'],answer:0},
+    {prompt:'本卦䷁(全阴⚋⚋⚋⚋⚋⚋)，互卦是？',type:'hugua-calc',choices:['乾䷀','坤䷁','泰䷊','否䷋'],answer:1},
+    {prompt:'互卦揭示什么？',type:'hugua-role',choices:['中间过程/内部变化','最终结局','初始状态','动爻位置'],answer:0},
+    {prompt:'\"三卦体系\"指？',type:'sangua-system',choices:['本卦+互卦+变卦','体卦+用卦+互卦','上卦+下卦+变卦','天卦+地卦+人卦'],answer:0},
+    {prompt:'互卦使用本卦中哪几爻？',type:'hugua-source',choices:['第2,3,4,5爻','全部6爻','第1,2,3,4爻','第3,4,5,6爻'],answer:0},
+    {prompt:'互卦取法口诀是？',type:'hugua-slogan',choices:['二三四为下互，三四五为上互','一二三为下互，四五六为上互','上三爻为互，下三爻为互','初四为互，二五为互'],answer:0},
+    {prompt:'互卦在解卦时侧重于？',type:'hugua-use',choices:['过程与内部因素','结果与外部因素','初始条件','时间方位'],answer:0},
+
+    // ========================================
+    // 旺衰 (10题)
+    // ========================================
+    {prompt:'春季(木旺)，木的状态是？',type:'wangshuai-season',choices:['旺','相','休','囚'],answer:0},
+    {prompt:'春季(木旺)，火的状态是？',type:'wangshuai-season',choices:['旺','相','休','死'],answer:1},
+    {prompt:'夏季(火旺)，金的状态是？',type:'wangshuai-season',choices:['旺','相','囚','死'],answer:3},
+    {prompt:'秋季(金旺)，哪个五行最旺？',type:'wangshuai-season',choices:['木','火','金','水'],answer:2},
+    {prompt:'秋季(金旺)，木的状态是？',type:'wangshuai-season',choices:['旺','相','囚','死'],answer:3},
+    {prompt:'冬季(水旺)，木的状态是？',type:'wangshuai-season',choices:['旺','相','休','囚'],answer:1},
+    {prompt:'旺衰五态从强到弱是？',type:'wangshuai-order',choices:['旺>相>休>囚>死','旺>休>相>囚>死','相>旺>休>囚>死','旺>相>囚>休>死'],answer:0},
+    {prompt:'\"当令者旺\"的\"令\"指？',type:'wangshuai-ling',choices:['季节/月令','命令','时令卦','节气'],answer:0},
+    {prompt:'\"令克者死\"在春季指？',type:'wangshuai-lingke',choices:['土（木克土）','金','水','火'],answer:0},
+    {prompt:'秋季，体卦金(旺)克用卦木(死)，吉凶？',type:'wangshuai-apply',choices:['大吉','小凶','大凶','比和'],answer:0},
+
+    // ========================================
+    // 六十四卦 (10题)
+    // ========================================
+    {prompt:'䷊ 这个卦叫什么？',type:'hex-sym-name',choices:['地天泰','天地否','乾为天','坤为地'],answer:0},
+    {prompt:'䷋ 这个卦叫什么？',type:'hex-sym-name',choices:['地天泰','天地否','天山遁','地山谦'],answer:1},
+    {prompt:'䷾ 这个卦叫什么？',type:'hex-sym-name',choices:['火水未济','水火既济','火地晋','地火明夷'],answer:1},
+    {prompt:'䷿ 这个卦叫什么？',type:'hex-sym-name',choices:['水火既济','火水未济','火天大有','水天需'],answer:1},
+    {prompt:'上坤☷+下乾☰=？',type:'hex-construct',choices:['天地否','地天泰','地山谦','山地剥'],answer:1},
+    {prompt:'上乾☰+下坤☷=？',type:'hex-construct',choices:['地天泰','天地否','乾为天','坤为地'],answer:1},
+    {prompt:'上坎☵+下离☲=？',type:'hex-construct',choices:['火水未济','水火既济','水雷屯','雷水解'],answer:1},
+    {prompt:'上离☲+下坎☵=？',type:'hex-construct',choices:['水火既济','火水未济','火地晋','地火明夷'],answer:1},
+    {prompt:'「火天大有」的上卦是？',type:'hex-name-upper',choices:['乾☰','离☲','震☳','坤☷'],answer:1},
+    {prompt:'「雷水解」的下卦是？',type:'hex-name-lower',choices:['震☳','坎☵','艮☶','兑☱'],answer:1},
+
+    // ========================================
+    // 综合题 (10题)
+    // ========================================
+    {prompt:'本卦䷊(地天泰)只有一个动爻在下卦初爻(筮得9)，变卦是？',type:'combo-biangua',choices:['䷭地风升','䷋天地否','䷀乾为天','䷁坤为地'],answer:0},
+    {prompt:'本卦䷊(地天泰)的互卦是？',type:'combo-hugua',choices:['雷泽归妹䷵','泽雷随䷐','天地否䷋','水火既济䷾'],answer:0},
+    {prompt:'夏季火旺，体卦为水(囚)克用卦为火(旺)，吉凶？',type:'combo-wangshuai',choices:['用旺体囚，体克用也凶','大吉','比和','小凶'],answer:0},
+    {prompt:'本卦䷋(天地否)2-4爻=⚋⚋⚋=坤，3-5爻=⚋⚋⚊=艮，互卦是？',type:'combo-hugua',choices:['山地剥䷖','地山谦䷎','天地否䷋','风地观䷓'],answer:0},
+    {prompt:'动爻在下卦时，\"体\"和\"用\"分别在哪？',type:'combo-tiyong',choices:['上卦为体、下卦为用','下卦为体、上卦为用','全卦为体','动爻为体'],answer:0},
+    {prompt:'䷾(水火既济)的上卦和下卦分别是？',type:'combo-hex',choices:['上坎下离','上离下坎','上水下火','上坤下乾'],answer:0},
+    {prompt:'春季，体卦为木(旺)克用卦为土(死)，且体用比和判断为？',type:'combo-all',choices:['体旺用死，大吉','体旺但比和','用死但体生用','无法判断'],answer:0},
+    {prompt:'一个动爻在2爻(下卦)，互卦取法是否受影响？',type:'combo-hugua-dong',choices:['不受影响，互卦仍取2-5爻','受影响，互卦改变','取动爻所在的爻','互卦也随之变'],answer:0},
+    {prompt:'本卦体卦为金(当令秋旺)，用卦为木(死)，体克用时？',type:'combo-wangshuai',choices:['大吉（体旺克用死）','小吉','平','凶'],answer:0},
+    {prompt:'以下哪个不是梅花易数的三卦之一？',type:'combo-sangua',choices:['体卦','本卦','互卦','变卦'],answer:0}
+  ]
+});
+
+
 // ====== STATE ======
 var SK = 'meihua_progress_v2';
 function loadP(){try{return JSON.parse(localStorage.getItem(SK))||{}}catch(e){return{}}}
