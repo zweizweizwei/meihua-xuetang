@@ -235,6 +235,28 @@ var WX_ORDER = ['mu','huo','tu','jin','shui'];
 
 var LEVELS = [];
 
+// ==== LEVEL 0: 测试关 ====
+LEVELS.push({
+  id:0, icon:'🧪', title:'快速测试', desc:'5道题快速验证功能，不计入进度',
+  source:'测试专用',
+  reviewCount:0,
+  teaching:function(main){
+    main.appendChild(h('div',{className:'intro-card'},
+      h('h2',{},'🧪 第0关：快速测试'),
+      h('p',{style:{fontSize:'14px',color:'var(--text-light)',lineHeight:'1.6'}},
+        '5道基础八卦题，用来测试音效、连击动效等功能。不计入成绩，随便玩～'),
+      h('p',{style:{marginTop:'12px',fontSize:'13px',color:'var(--text-light)'}},'👇 准备好了就开始')
+    ));
+  },
+  questions:[
+    {prompt:'这个卦叫什么？',type:'sym-name',sym:'qian',choices:['乾','坤','震','巽'],answer:0},
+    {prompt:'选出正确的卦',type:'sym-name',sym:'li',choices:['离','坎','震','兑'],answer:0},
+    {prompt:'离卦的五行？',type:'sym-wx',sym:'li',choices:['金','木','水','火'],answer:3},
+    {prompt:'「离中虚」是哪个卦？',type:'mne-name',mnemonic:'离中虚',choices:['离','坎','震','兑'],answer:0},
+    {prompt:'哪个卦象是 ☵？',type:'sym-name',sym:'kan',choices:['巽','坎','离','艮'],answer:1}
+  ]
+});
+
 // ==== LEVEL 1: 八卦入门 ====
 LEVELS.push({
   id:1, icon:'☰', title:'八卦入门', desc:'认识八个卦象的符号、名称和五行',
@@ -6940,7 +6962,7 @@ function curLevel(){return LEVELS[state.levelIdx];}
 function curQ(){return curLevel().questions[state.qIndex];}
 function totalQ(){return curLevel().questions.length;}
 function levelDone(id){return saved.completed&&saved.completed[id];}
-function canEnter(id){if(id===1)return true;return !!levelDone(id-1);}
+function canEnter(id){if(id<=1)return true;return !!levelDone(id-1);}
 
 // ====== MEMORY CURVE REVIEW ======
 function getReviewQuestions(levelId){
@@ -6999,7 +7021,7 @@ function render(){
   app.appendChild(h('div',{className:'header'},
     h('div',{className:'logo',onClick:goMenu},
       h('span',{className:'icon'},'🌸'),'多灵国-八卦版'),
-    h('div',{className:'streak'},h('span',{style:{fontSize:'20px'}},'🔥'),''+state.streak)
+    h('div',{className:'streak'},h('span',{style:{fontSize:'16px'}},'🔥'),state.streak+' 连击')
   ));
 
   if(state.view==='menu')renderMenu(app);
@@ -7152,8 +7174,10 @@ function renderQuestionTarget(qCard,q){
 
 function renderChoices(qCard,q){
   var choices=h('div',{className:'choices'});
-  q.choices.forEach(function(c,i){
-    var btn=h('button',{className:'choice-btn',onClick:function(){answer(i)}},c);
+  var nameToSym={};
+  Object.keys(TRIGRAMS).forEach(function(k){nameToSym[TRIGRAMS[k].name]=TRIGRAMS[k].sym;});
+  q.choices.forEach(function(c,i){var label=nameToSym[c]||c;
+    var btn=h('button',{className:cls,disabled:state.answered,onClick:function(){answer(i);}},label);
     if(state.answered){
       btn.disabled=true;
       if(i===q.answer)btn.classList.add('correct');
