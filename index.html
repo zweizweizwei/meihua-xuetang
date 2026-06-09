@@ -187,6 +187,31 @@ function sfxComplete() {
   });
 }
 
+// ====== STREAK EFFECTS ======
+function showStreakEffect(s,el){
+  if(s<3)return;
+  var rect=el.getBoundingClientRect();
+  var cx=rect.left+rect.width/2,cy=rect.top;
+  var fires=s>=7?3:s>=5?2:1;
+  for(var i=0;i<fires;i++){
+    var f=document.createElement('div');f.className='streak-fire';
+    f.textContent='🔥';f.style.left=(cx-20+i*30-fires*15)+'px';f.style.top=cy+'px';
+    document.body.appendChild(f);
+    setTimeout(function(){f.remove();},800);
+  }
+  var card=document.querySelector('.q-card');
+  if(card){card.classList.add('streak-pulse');setTimeout(function(){card.classList.remove('streak-pulse')},500);}
+  if(s>=5){
+    var st=document.querySelector('.streak');
+    if(st){st.classList.add('streak-shake');setTimeout(function(){st.classList.remove('streak-shake')},400);}
+  }
+  if(s>=7){
+    var g=document.createElement('div');g.className='streak-glow';
+    document.body.appendChild(g);
+    setTimeout(function(){g.remove();},600);
+  }
+}
+
 // ====== DATA ======
 var TRIGRAMS = {
   qian:{sym:'☰',name:'乾',wuxing:'金',nature:'天',mnemonic:'乾三连',family:'父',animal:'马',body:'首',dir:'西北'},
