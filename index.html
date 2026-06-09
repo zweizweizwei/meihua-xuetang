@@ -249,11 +249,14 @@ LEVELS.push({
     ));
   },
   questions:[
-    {prompt:'这个卦叫什么？',type:'sym-name',sym:'qian',choices:['乾','坤','震','巽'],answer:0},
-    {prompt:'选出正确的卦',type:'sym-name',sym:'li',choices:['离','坎','震','兑'],answer:0},
-    {prompt:'离卦的五行？',type:'sym-wx',sym:'li',choices:['金','木','水','火'],answer:3},
-    {prompt:'「离中虚」是哪个卦？',type:'mne-name',mnemonic:'离中虚',choices:['离','坎','震','兑'],answer:0},
-    {prompt:'哪个卦象是 ☵？',type:'sym-name',sym:'kan',choices:['巽','坎','离','艮'],answer:1}
+    {prompt:'这是什么卦？',type:'sym-name',sym:'qian',choices:['乾','坤','震','巽'],answer:0},
+    {prompt:'识别这个卦',type:'sym-name',sym:'li',choices:['离','坎','震','兑'],answer:0},
+    {prompt:'这是什么卦？',type:'sym-name',sym:'kun',choices:['乾','坤','艮','兑'],answer:1},
+    {prompt:'识别这个卦',type:'sym-name',sym:'kan',choices:['离','坎','艮','巽'],answer:1},
+    {prompt:'这是什么卦？',type:'sym-name',sym:'zhen',choices:['震','兑','离','乾'],answer:0},
+    {prompt:'识别这个卦',type:'sym-name',sym:'dui',choices:['艮','兑','乾','坤'],answer:1},
+    {prompt:'这是什么卦？',type:'sym-name',sym:'xun',choices:['震','离','巽','坎'],answer:2},
+    {prompt:'识别这个卦',type:'sym-name',sym:'gen',choices:['艮','兑','震','离'],answer:0}
   ]
 });
 
