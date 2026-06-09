@@ -132,6 +132,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .review-bar button{flex:1;padding:10px;border-radius:10px;border:2px solid var(--border);background:var(--card);font-size:14px;font-weight:600;cursor:pointer}
 .review-bar button.active{border-color:var(--green);background:#D7FFB8;color:#3C7A00}
 
+
+/* Streak effects */
+.streak-fire{position:fixed;pointer-events:none;z-index:100;font-size:40px;animation:fireUp .8s ease-out forwards}
+@keyframes fireUp{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-80px) scale(1.5)}}
+.streak-pulse{animation:cardPulse .5s ease-out}
+@keyframes cardPulse{0%{box-shadow:0 0 0 rgba(255,150,0,.6)}100%{box-shadow:0 0 40px rgba(255,150,0,0)}}
+.streak-shake{animation:scoreShake .4s ease-out}
+@keyframes scoreShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.streak-glow{position:fixed;inset:0;pointer-events:none;z-index:99;animation:edgeGlow .6s ease-out}
+@keyframes edgeGlow{0%{box-shadow:inset 0 0 80px rgba(255,120,0,.4)}100%{box-shadow:inset 0 0 0 rgba(255,120,0,0)}}
+
 @media(max-width:380px){
   .trigram-card .sym{font-size:28px;min-width:36px}
   .choices{grid-template-columns:1fr}
@@ -6963,7 +6974,7 @@ function render(){
   app.appendChild(h('div',{className:'header'},
     h('div',{className:'logo',onClick:goMenu},
       h('span',{className:'icon'},'🌸'),'多灵国-八卦版'),
-    h('div',{className:'streak'},h('span',{style:{fontSize:'20px'}},'🔥'),''+state.bestStreak)
+    h('div',{className:'streak'},h('span',{style:{fontSize:'20px'}},'🔥'),''+state.streak)
   ));
 
   if(state.view==='menu')renderMenu(app);
@@ -7187,6 +7198,7 @@ function answer(idx){
   if(state._lastCorrect){
     if(!state.inReview){state.correct++;state.score+=Math.min(10+state.streak*2,25);}
     state.streak++; sfxCorrect(state.streak);
+    var stEl=document.querySelector('.streak'); showStreakEffect(state.streak,stEl);
   }else{state.streak=0; sfxWrong();}
   state.bestStreak=Math.max(state.bestStreak,state.streak);
   var p=loadP();p.bestStreak=state.bestStreak;saveP(p);
