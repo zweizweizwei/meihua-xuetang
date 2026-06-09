@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>梅花易数 · 卦象卡</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Ma+Shan+Zheng&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; background: #f5f0e8; padding: 20px;
+    font-family: 'Noto Serif SC', 'LXGW WenKai', 'STSong', serif;
+  }
+  .card {
+    width: 750px; background: linear-gradient(175deg, #fdf8f0 0%, #f7efe0 30%, #f2e8d5 100%);
+    border-radius: 16px; padding: 56px 52px 48px; position: relative;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.06), 0 8px 48px rgba(0,0,0,0.04);
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+  .card::before {
+    content: ''; position: absolute; top: 0; left: 52px; right: 52px; height: 3px;
+    background: linear-gradient(90deg, transparent, #c9a96e, #8b6914, #c9a96e, transparent); border-radius: 2px;
+  }
+  .hexagram { text-align: center; font-size: 120px; line-height: 1; margin-bottom: 8px; color: #3a2a0a; font-weight: 900; letter-spacing: 4px; }
+  .gua-name { text-align: center; font-size: 56px; font-weight: 900; color: #2c1f08; letter-spacing: 16px; margin-bottom: 6px; }
+  .gua-sub { text-align: center; font-size: 18px; color: #8c7a5c; letter-spacing: 4px; margin-bottom: 28px; }
+  .divider { width: 200px; height: 1px; margin: 0 auto 28px; background: linear-gradient(90deg, transparent, #c9a96e, transparent); }
+  .easter-egg {
+    text-align: center; background: linear-gradient(135deg, rgba(201,169,110,0.12), rgba(201,169,110,0.06));
+    border: 1px solid rgba(201,169,110,0.2); border-radius: 12px; padding: 20px 24px; margin-bottom: 28px;
+  }
+  .easter-egg .big { font-size: 20px; color: #5a4320; letter-spacing: 2px; line-height: 1.8; }
+  .easter-egg .highlight { color: #8b6914; font-weight: 700; font-size: 24px; }
+  .calc-section { margin-bottom: 24px; }
+  .calc-title { font-size: 16px; color: #8c7a5c; letter-spacing: 4px; text-align: center; margin-bottom: 16px; font-weight: 600; }
+  .calc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+  .calc-item { background: rgba(255,255,255,0.7); border: 1px solid rgba(201,169,110,0.15); border-radius: 10px; padding: 14px 10px; text-align: center; }
+  .calc-item .label { font-size: 13px; color: #a09070; margin-bottom: 4px; }
+  .calc-item .value { font-size: 22px; font-weight: 700; color: #3a2a0a; }
+  .formula { text-align: center; font-size: 14px; color: #6b5a3e; letter-spacing: 1px; margin-bottom: 6px; }
+  .wuxing-bar { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 20px 0; }
+  .wx-item { text-align: center; }
+  .wx-item .wx-label { font-size: 12px; color: #a09070; margin-bottom: 2px; }
+  .wx-item .wx-value { font-size: 26px; font-weight: 900; color: #3a2a0a; }
+  .wx-arrow { font-size: 20px; color: #6b5a3e; }
+  .wx-result { text-align: center; font-size: 18px; font-weight: 700; color: #8b6914; letter-spacing: 2px; }
+  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 24px 0; }
+  .result-card { background: rgba(255,255,255,0.7); border: 1px solid rgba(201,169,110,0.15); border-radius: 10px; padding: 16px; }
+  .result-card .rl { font-size: 12px; color: #a09070; letter-spacing: 2px; margin-bottom: 4px; }
+  .result-card .rv { font-size: 20px; font-weight: 700; color: #3a2a0a; }
+  .result-card .rv.gold { color: #8b6914; font-size: 24px; }
+  .footer { text-align: center; color: #b0a080; font-size: 13px; letter-spacing: 3px; margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(201,169,110,0.15); }
+  @media (max-width: 780px) {
+    .card { width: 100%; padding: 36px 24px 32px; border-radius: 12px; }
+    .card::before { left: 24px; right: 24px; }
+    .hexagram { font-size: 90px; }
+    .gua-name { font-size: 40px; letter-spacing: 10px; }
+    .calc-grid { grid-template-columns: repeat(2, 1fr); }
+    .result-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="hexagram">䷝</div>
+  <div class="gua-name">离 为 火</div>
+  <div class="gua-sub">上离 ☲ 下离 ☲ · 明两作</div>
+  <div class="divider"></div>
+
+  <div class="easter-egg">
+    <div class="big">
+      <span class="highlight">䷝</span> 双火相叠 · 体用<span class="highlight">比和</span>
+    </div>
+    <div class="big" style="margin-top:4px;">
+      三线并行 🔥 卦象卡 · 生图 · 学堂<span style="color:#8b6914;font-weight:700;"> 彼此点燃</span>
+    </div>
+  </div>
+
+  <div class="calc-section">
+    <div class="calc-title">▸ 年 月 日 时 起 卦 ◂</div>
+    <div class="calc-grid">
+      <div class="calc-item"><div class="label">年支</div><div class="value">午 · 7</div></div>
+      <div class="calc-item"><div class="label">农历月</div><div class="value">四 · 4</div></div>
+      <div class="calc-item"><div class="label">农历日</div><div class="value">廿四 · 24</div></div>
+      <div class="calc-item"><div class="label">时辰</div><div class="value">申 · 9</div></div>
+    </div>
+    <div class="formula">上卦 = (7+4+24) ÷ 8 = 4 余 <b>3</b> → 离 ☲</div>
+    <div class="formula">下卦 = (7+4+24+9) ÷ 8 = 5 余 <b>4</b> → 震 ☳</div>
+    <div class="formula">动爻 = 44 ÷ 6 = 7 余 <b>2</b> → 第二爻动</div>
+  </div>
+
+  <div class="wuxing-bar">
+    <div class="wx-item"><div class="wx-label">体卦（我）</div><div class="wx-value">离 火</div></div>
+    <div class="wx-arrow">⟷</div>
+    <div class="wx-item"><div class="wx-label">用卦（境）</div><div class="wx-value">离 火</div></div>
+  </div>
+  <div class="wx-result">火火相比 · 比和 ✅ 大吉</div>
+
+  <div class="result-grid">
+    <div class="result-card"><div class="rl">本 卦</div><div class="rv gold">离为火 ䷝</div></div>
+    <div class="result-card"><div class="rl">互 卦</div><div class="rv">泽风大过 ䷛</div></div>
+    <div class="result-card"><div class="rl">变 卦</div><div class="rv">火山旅 ䷷</div></div>
+    <div class="result-card"><div class="rl">错 卦</div><div class="rv">坎为水 ䷜</div></div>
+  </div>
+
+  <div class="footer">丙午年 · 芒种 · 於杭州<br>2026.06.09 申时 · 问三线并行</div>
+</div>
+</body>
+</html>

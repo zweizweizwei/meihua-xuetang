@@ -7181,7 +7181,8 @@ function renderChoices(qCard,q){
   Object.keys(TRIGRAMS).forEach(function(k){nameToSym[TRIGRAMS[k].name]=TRIGRAMS[k].sym;});
   q.choices.forEach(function(c,i){var label=nameToSym[c]||c;
     var cls='choice-btn';
-    var btn=h('button',{className:cls,disabled:state.answered,onClick:function(){answer(i);}},label);
+    var btn=h('button',{className:cls,onClick:function(){answer(i);}},label);
+    if(state.answered)btn.disabled=true;
     if(state.answered){
       btn.disabled=true;
       if(i===q.answer)btn.classList.add('correct');
