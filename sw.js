@@ -1,4 +1,4 @@
-const CACHE = 'meihua-v3';
+const CACHE = 'meihua-v4';
 const ASSETS = [
   '/meihua-xuetang/',
   '/meihua-xuetang/index.html',
