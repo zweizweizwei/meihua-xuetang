@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A · 梅花墨韵</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Noto Serif SC", serif;
+    background: #0d0d12;
+    color: #e8e4dd;
+    overflow: hidden;
+    height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    user-select: none;
+  }
+  canvas { position: fixed; top: 0; left: 0; z-index: 0; }
+  .overlay {
+    position: relative; z-index: 10;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1.2s 0.8s ease-out forwards;
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+  .label {
+    font-size: 0.9rem; letter-spacing: 0.3em;
+    color: #a08c6e; margin-bottom: 12px;
+  }
+  .title {
+    font-size: 2.8rem; font-weight: 300;
+    background: linear-gradient(180deg, #f5e6c8 0%, #c4a97d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .sub {
+    font-size: 1rem; color: #8a7e6b;
+    margin-bottom: 36px;
+  }
+  .btn {
+    display: inline-block; padding: 12px 48px;
+    border: 1px solid #5a4e3c;
+    border-radius: 24px;
+    color: #c4a97d; font-size: 1rem;
+    cursor: pointer; transition: all 0.3s;
+    background: transparent;
+  }
+  .btn:hover { border-color: #c4a97d; background: rgba(196,169,125,0.08); }
+  .ink-ring {
+    position: fixed; top: 50%; left: 50%;
+    width: 0; height: 0;
+    border: 1px solid rgba(196,169,125,0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: inkExpand 3s ease-out forwards;
+    z-index: 1;
+  }
+  @keyframes inkExpand {
+    0% { width: 0; height: 0; opacity: 0.6; }
+    100% { width: 120vmax; height: 120vmax; opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="c"></canvas>
+<div class="ink-ring"></div>
+
+<div class="overlay">
+  <div class="label">第 叁 关 · 通 关</div>
+  <div class="title">八卦入门</div>
+  <div class="sub">已掌握乾坎艮震巽离坤兑</div>
+  <div class="btn" onclick="location.reload()">继 续 修 行</div>
+</div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+let W, H;
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+resize(); window.addEventListener('resize', resize);
+
+// 梅花瓣
+const petals = [];
+const PETAL_COUNT = 40;
+for (let i = 0; i < PETAL_COUNT; i++) {
+  petals.push({
+    x: Math.random() * W,
+    y: -50 - Math.random() * H,
+    size: 8 + Math.random() * 18,
+    speed: 0.3 + Math.random() * 0.8,
+    drift: (Math.random() - 0.5) * 0.6,
+    rotation: Math.random() * Math.PI * 2,
+    rotSpeed: (Math.random() - 0.5) * 0.02,
+    opacity: 0.5 + Math.random() * 0.5,
+    phase: Math.random() * 3000, // stagger start
+  });
+}
+
+// 墨点
+const inkDots = [];
+const DOT_COUNT = 15;
+for (let i = 0; i < DOT_COUNT; i++) {
+  inkDots.push({
+    x: W * 0.3 + Math.random() * W * 0.4,
+    y: H * 0.3 + Math.random() * H * 0.4,
+    r: 1,
+    maxR: 30 + Math.random() * 60,
+    speed: 0.8 + Math.random() * 1.5,
+    opacity: 0.25 + Math.random() * 0.35,
+    delay: Math.random() * 2000,
+    startTime: performance.now(),
+  });
+}
+
+function petalShape(x, y, size, rotation, opacity) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(rotation);
+  ctx.globalAlpha = opacity;
+  ctx.fillStyle = '#e8c4b8';
+  // 简单五瓣梅花
+  for (let i = 0; i < 5; i++) {
+    const angle = (i / 5) * Math.PI * 2 - Math.PI / 2;
+    const px = Math.cos(angle) * size * 0.45;
+    const py = Math.sin(angle) * size * 0.45;
+    ctx.beginPath();
+    ctx.ellipse(px, py, size * 0.35, size * 0.55, angle, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  // 花蕊
+  ctx.fillStyle = '#d4a574';
+  ctx.beginPath();
+  ctx.arc(0, 0, size * 0.18, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+function draw(timestamp) {
+  ctx.clearRect(0, 0, W, H);
+
+  // 墨点晕染
+  for (const dot of inkDots) {
+    if (timestamp < dot.startTime + dot.delay) continue;
+    const elapsed = (timestamp - dot.startTime - dot.delay) / 1000;
+    dot.r = Math.min(dot.maxR, dot.r + dot.speed * 0.5);
+    const alpha = dot.opacity * Math.max(0, 1 - elapsed / 4);
+
+    const grad = ctx.createRadialGradient(dot.x, dot.y, dot.r * 0.2, dot.x, dot.y, dot.r);
+    grad.addColorStop(0, `rgba(60,50,40,${alpha})`);
+    grad.addColorStop(0.5, `rgba(50,40,30,${alpha * 0.6})`);
+    grad.addColorStop(1, `rgba(50,40,30,0)`);
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(dot.x, dot.y, dot.r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // 梅花瓣
+  for (const p of petals) {
+    if (timestamp < p.phase) continue;
+    p.y += p.speed;
+    p.x += p.drift + Math.sin(timestamp * 0.001 + p.x * 0.01) * 0.3;
+    p.rotation += p.rotSpeed;
+
+    if (p.y > H + 60) { p.y = -60; p.x = Math.random() * W; }
+    petalShape(p.x, p.y, p.size, p.rotation, p.opacity * 0.7);
+  }
+
+  requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+</script>
+</body>
+</html>
