@@ -320,9 +320,16 @@ LEVELS.push({
       h('p',{},'八卦由两种基本符号构成：阳爻「⚊」和阴爻「⚋」。《系辞传》曰：「一阴一阳之谓道。」阳爻象征刚健、运动、光明、男性等一切阳性事物；阴爻象征柔顺、静止、黑暗、女性等一切阴性事物。每一卦由三个爻（自下而上为初爻、二爻、三爻）叠加组成，三爻分别代表天、人、地「三才」之道：上爻为天、中爻为人、初爻为地。阴阳爻排列共 2³=8 种可能，即为八卦。'),
       h('h4',{style:{color:'#B8860B',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'三、八卦取象口诀的来历'),
       h('p',{},'南宋大儒朱熹在《周易本义》卷首编有「八卦取象歌」，以形象化语言帮助初学者记忆八卦卦形：'),
-      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'12px 14px',margin:'12px 0',textAlign:'center'}},
-        h('div',{style:{fontSize:'15px',lineHeight:'2.2',fontWeight:500}},
-          '乾三连（☰ 三条阳爻相连）\n坤六断（☷ 三条阴爻全断）\n震仰盂（☳ 像仰放的盆盂）\n艮覆碗（☶ 如倒扣的碗）\n离中虚（☲ 中间空虚）\n坎中满（☵ 中间充实）\n兑上缺（☱ 上方有缺口）\n巽下断（☴ 下方断开）')
+      h('div',{className:'trigram-grid'},
+        Object.keys(TRIGRAMS).map(function(k){var t=TRIGRAMS[k];
+          return h('div',{className:'trigram-card wx-'+(t.wuxing==='金'?'jin':t.wuxing==='木'?'mu':t.wuxing==='水'?'shui':t.wuxing==='火'?'huo':'tu')},
+            h('div',{className:'sym'},t.sym),
+            h('div',{className:'info'},
+              h('div',{className:'name'},t.name),
+              h('div',{className:'mnemonic'},t.mnemonic)
+            )
+          );
+        })
       ),
       h('p',{},'此口诀自宋以来流传近千年，是学习《易经》八卦最经典的入门歌诀。每一短句都以卦形特征为描述依据，形象生动、朗朗上口。'),
       h('h4',{style:{color:'#B8860B',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'四、八卦与五行的对应原理'),
@@ -673,17 +680,16 @@ LEVELS.push({
       h('h4',{style:{color:'#1565C0',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'一、身体取象总论'),
       h('p',{},'《说卦传》第九章将八卦与人体部位一一对应，形成了古人认识人体的独特视角。这种对应并非随意，而是基于八卦基本属性与身体部位功能之间的深层类比推理。《系辞传》「近取诸身」正是这种思维方式的体现——从自己的身体出发来理解宇宙的卦象。'),
       h('h4',{style:{color:'#1565C0',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'二、从上到下的身体八卦图'),
-      h('div',{style:{background:'#E3F2FD',borderRadius:'10px',padding:'12px 14px',margin:'12px 0'}},
-        h('p',{style:{fontWeight:700,marginBottom:'6px'}},'人体自上而下的八卦对应：'),
-        h('p',{style:{lineHeight:'1.8'}},
-          '🧠 乾为首（头）——最上，象天\n'+
-          '👁 离为目（眼）——明亮，象火\n'+
-          '👂 坎为耳（耳）——孔窍，象水\n'+
-          '👄 兑为口（嘴）——说话，象悦\n'+
-          '  坤为腹（肚）——包容，象地\n'+
-          '✋ 艮为手（手）——持物，象止\n'+
-          '🦵 巽为股（大腿）——行走，象风\n'+
-          '🦶 震为足（脚）——最下，象动')
+      h('div',{style:{background:'#E3F2FD',borderRadius:'10px',padding:'8px 14px',margin:'12px 0'}},
+        h('p',{style:{fontWeight:700,marginBottom:'8px',fontSize:'13px'}},'人体自上而下的八卦对应：'),
+        [['🧠 乾','首','☰','最上，象天'],['👁 离','目','☲','明亮，象火'],['👂 坎','耳','☵','孔窍，象水'],['👄 兑','口','☱','说话，象悦'],['  坤','腹','☷','包容，象地'],['✋ 艮','手','☶','持物，象止'],['🦵 巽','股','☴','行走，象风'],['🦶 震','足','☳','最下，象动']].map(function(r){
+          return h('div',{style:{display:'flex',alignItems:'center',padding:'6px 0',borderBottom:'1px solid #BBDEFB',gap:'10px'}},
+            h('span',{style:{fontSize:'22px',width:'32px',textAlign:'center',flexShrink:0}},r[2]),
+            h('span',{style:{fontWeight:600,fontSize:'14px',minWidth:'56px'}},r[0]),
+            h('span',{style:{fontSize:'13px',color:'#1565C0',minWidth:'40px'}},r[1]),
+            h('span',{style:{fontSize:'12px',color:'#78909C'}},r[3])
+          );
+        })
       ),
       h('h4',{style:{color:'#1565C0',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'三、取象原理详解'),
       h('div',{style:{background:'#FFF8E1',borderRadius:'10px',padding:'14px',margin:'12px 0',lineHeight:'1.8'}},
@@ -766,38 +772,43 @@ LEVELS.push({
     ));
   },
   detail:function(main){
-    // 先天八卦方位（伏羲八卦）
-    var xiantian = [['南','乾','☰','天'],['西南','巽','☴','风'],['西','坎','☵','水'],['西北','艮','☶','山'],['北','坤','☷','地'],['东北','震','☳','雷'],['东','离','☲','火'],['东南','兑','☱','泽']];
-    var houtian  = [['南','离','☲','火'],['西南','坤','☷','地'],['西','兑','☱','泽'],['西北','乾','☰','天'],['北','坎','☵','水'],['东北','艮','☶','山'],['东','震','☳','雷'],['东南','巽','☴','风']];
     main.appendChild(h('div',{className:'detail-card'},
-      h('h3',{},'一、先天八卦与后天八卦'),
+      h('h3',{},'🧭 第6关详解：八卦取象·方位'),
       h('p',{},'《周易》中的八卦方位有"先天"与"后天"两套体系，二者同源而异用：'),
       h('p',{},'① 先天八卦（伏羲八卦）：据《说卦传》第三章"天地定位，山泽通气，雷风相薄，水火不相射"，乾南坤北、离东坎西，以天地阴阳对立为序，描述的是宇宙创生之前的先天状态。'),
       h('p',{},'② 后天八卦（文王八卦）：据《说卦传》第五章"帝出乎震…成言乎艮"，震东兑西、离南坎北，以四时运行、万物生长收藏为序，描述的是天地既成之后的后天流行之用。'),
       h('p',{},'二者最大区别：先天八卦讲"对待"（阴阳对立），后天八卦讲"流行"（四时循环）。先天为体、后天为用，这是理解梅花易数方位取象的根本原则。')
     ));
     main.appendChild(h('div',{className:'detail-card'},
-      h('h3',{},'二、先后天八卦方位对比'),
+      h('h3',{},'二、先后天八卦方位对比（九宫图）'),
       h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'12px'}},
-        h('div',{style:{background:'#F3E5F5',borderRadius:'10px',padding:'12px'}},
-          h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#7B1FA2',textAlign:'center'}},'🔮 先天八卦（伏羲）'),
-          h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'6px',fontSize:'13px'}},
-            xiantian.map(function(d){
-              return h('div',{style:{background:'#fff',borderRadius:'6px',padding:'6px 4px',textAlign:'center',border:'1px solid #E1BEE7'}},
-                h('div',{style:{fontSize:'20px'}},d[2]),
-                h('div',{style:{fontWeight:600}},d[1]),
-                h('div',{style:{fontSize:'11px',color:'var(--text-light)'}},d[0]));
+        // 先天八卦九宫
+        h('div',{style:{background:'#F3E5F5',borderRadius:'10px',padding:'10px'}},
+          h('div',{style:{fontWeight:700,fontSize:'13px',marginBottom:'6px',color:'#7B1FA2',textAlign:'center'}},'🔮 先天八卦（伏羲）'),
+          h('div',{style:{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'4px',fontSize:'11px'}},
+            [
+              ['兑☱','东南'],['乾☰','南'],['巽☴','西南'],
+              ['离☲','东'],['中宫',''],['坎☵','西'],
+              ['震☳','东北'],['坤☷','北'],['艮☶','西北']
+            ].map(function(d){
+              if(d[0]==='中宫') return h('div',{style:{padding:'8px 4px',textAlign:'center',color:'#999',fontSize:'12px'}},'中宫');
+              return h('div',{style:{background:'#fff',borderRadius:'6px',padding:'5px 3px',textAlign:'center',border:'1px solid #E1BEE7'}},
+                h('div',{style:{fontSize:'18px'}},d[0]),h('div',{style:{fontSize:'10px',color:'#999'}},d[1]));
             })
           )
         ),
-        h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'12px'}},
-          h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#B8860B',textAlign:'center'}},'🧭 后天八卦（文王）'),
-          h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'6px',fontSize:'13px'}},
-            houtian.map(function(d){
-              return h('div',{style:{background:'#fff',borderRadius:'6px',padding:'6px 4px',textAlign:'center',border:'1px solid #FFE0B2'}},
-                h('div',{style:{fontSize:'20px'}},d[2]),
-                h('div',{style:{fontWeight:600}},d[1]),
-                h('div',{style:{fontSize:'11px',color:'var(--text-light)'}},d[0]));
+        // 后天八卦九宫
+        h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'10px'}},
+          h('div',{style:{fontWeight:700,fontSize:'13px',marginBottom:'6px',color:'#B8860B',textAlign:'center'}},'🧭 后天八卦（文王）'),
+          h('div',{style:{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'4px',fontSize:'11px'}},
+            [
+              ['巽☴','东南'],['离☲','南'],['坤☷','西南'],
+              ['震☳','东'],['中宫',''],['兑☱','西'],
+              ['艮☶','东北'],['坎☵','北'],['乾☰','西北']
+            ].map(function(d){
+              if(d[0]==='中宫') return h('div',{style:{padding:'8px 4px',textAlign:'center',color:'#999',fontSize:'12px'}},'中宫');
+              return h('div',{style:{background:'#fff',borderRadius:'6px',padding:'5px 3px',textAlign:'center',border:'1px solid #FFE0B2'}},
+                h('div',{style:{fontSize:'18px'}},d[0]),h('div',{style:{fontSize:'10px',color:'#999'}},d[1]));
             })
           )
         )
@@ -874,7 +885,7 @@ LEVELS.push({
   },
   detail:function(main){
     main.appendChild(h('div',{className:'detail-card'},
-      h('h3',{},'一、八卦取象的根本——自然'),
+      h('h3',{},'🌩️ 第7关详解：八卦取象·自然'),
       h('p',{},'《说卦传》云："乾为天，坤为地，震为雷，巽为风，坎为水，离为火，艮为山，兑为泽。"这是八卦最原始、最基本的取象。《系辞传》所谓"仰则观象于天，俯则观法于地……近取诸身，远取诸物"，八卦正是古人观察自然万象后抽象出来的八大类别符号。'),
       h('p',{},'孔子在《说卦传》中进一步发挥，将八卦与动物、人体、家族、方位等关联，形成了庞大的"万物类象"体系。但一切类象的根源，都回到了这八种自然现象——天地雷风水火山泽。')
     ));
@@ -967,7 +978,7 @@ LEVELS.push({
       ['兑☱','泽','少女','羊','口','西','金']
     ];
     main.appendChild(h('div',{className:'detail-card'},
-      h('h3',{},'一、七象总览——回顾前七关'),
+      h('h3',{},'🎯 第8关详解：八卦取象·综合'),
       h('p',{},'至此你已经学完八卦取象的七大维度：符号卦名、五行属性、家庭人物、动物类比、身体部位、后天方位、自然现象。这七象皆源自《周易·说卦传》，是梅花易数万物类象的基础。'),
       h('div',{style:{overflowX:'auto',marginTop:'10px'}},
         h('table',{style:{width:'100%',fontSize:'11px',borderCollapse:'collapse',background:'#fff',borderRadius:'8px'}},
@@ -1059,7 +1070,7 @@ LEVELS.push({
   },
   detail:function(main){
     main.appendChild(h('div',{className:'detail-card'},
-      h('h3',{},'一、"爻"的本义'),
+      h('h3',{},'⚊ 第9关详解：爻的认识'),
       h('p',{},'《说文解字》："爻，交也。"爻的本义是交错、相交。一长横（⚊）为阳爻，象征刚健、主动、光明；两短横（⚋）为阴爻，象征柔顺、被动、幽暗。阳爻与阴爻的交替组合，构成了八卦和六十四卦的全部变化。'),
       h('p',{},'《系辞传上》曰："爻者，言乎变者也。"又曰："道有变动，故曰爻。"意思是：爻是用来表达变化的符号。因为天地之道有变动，所以用爻来模拟这种变动。'),
       h('p',{},'《系辞传下》更精炼地概括："爻也者，效天下之动者也。"——爻就是效法天下万物运动变化的符号。')
@@ -1173,7 +1184,7 @@ LEVELS.push({
   },
   detail:function(main){
     main.appendChild(h('div',{className:'detail-card'},
-      h('h3',{},'一、重卦的构成原理'),
+      h('h3',{},'📦 第10关详解：上卦下卦'),
       h('p',{},'《系辞传下》第一章云："八卦成列，象在其中矣；因而重之，爻在其中矣。"这句话点明了从八卦到六十四卦的关键步骤——"因而重之"，即把两个三爻八卦上下叠加，就形成了六爻重卦。'),
       h('p',{},'三爻八卦（又称"经卦""单卦"）只有8种，象征八种基本自然现象。但世间万事万物变化无穷，8种不足以描述，于是"兼三才而两之"，将两个八卦叠在一起——上三爻、下三爻，共六爻。六爻正好对应"天、人、地"三才，每才各二爻：五爻与上爻为天，三爻与四爻为人，初爻与二爻为地。'),
       h('p',{},'八经卦 × 八经卦 = 六十四别卦（重卦），这就是《周易》六十四卦的由来。每一重卦有6个爻，总计64×6=384爻，加上乾卦"用九"和坤卦"用六"，共386条爻辞。')
