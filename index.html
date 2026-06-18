@@ -1296,6 +1296,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《黄帝内经·素问》+《尚书·洪范》')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🌈 第11关详解：五行方位·季节·颜色'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对五行方位·季节·颜色将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《素问》东方生风风生木…五方配五行。《洪范》五行一曰水二曰火。')
+      )
+    ));
+  },
   questions:[
     {prompt:'木对应哪个方位？',type:'wx-dir',wx:'mu',choices:['东','南','西','北'],answer:0},
     {prompt:'火对应哪个方位？',type:'wx-dir',wx:'huo',choices:['东','南','西','北'],answer:1},
@@ -1353,6 +1363,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《素问·阴阳应象大论》')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🫀 第12关详解：五行五脏·五味·五志'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对五行五脏·五味·五志将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《素问·阴阳应象大论》木肝酸怒火心苦喜土脾甘思金肺辛悲水肾咸恐。')
+      )
+    ));
+  },
   questions:[
     {prompt:'木对应哪个脏腑？',type:'wx-organ',wx:'mu',choices:['心','肝','脾','肺'],answer:1},
     {prompt:'火对应哪个脏腑？',type:'wx-organ',wx:'huo',choices:['肝','心','肺','肾'],answer:1},
@@ -1395,6 +1415,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px'}},'🎲 25题跨维度——准备好了吗？'),
       h('div',{className:'source-tag'},'来源：综合《素问》+《洪范》')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🎲 第13关详解：五行综合大挑战'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对五行综合大挑战将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'集大成于《黄帝内经》与《尚书·洪范》。')
+      )
     ));
   },
   questions:[
@@ -1448,6 +1478,16 @@ LEVELS.push({
           '䷊地天泰（上坤下乾），动爻在三爻（下卦）→ 体=上坤、用=下乾\n䷊地天泰，动爻在五爻（上卦）→ 体=下乾、用=上坤')
       ),
       h('div',{className:'source-tag'},'来源：邵雍《梅花易数》卷一「体用总诀」')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🧩 第14关详解：体用概念入门'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对体用概念入门将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》动者为用不动者为体。体为己身之兆用为应事之端。')
+      )
     ));
   },
   questions:[
@@ -1507,6 +1547,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》「体用生克篇」')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'⚖️ 第15关详解：体用生克关系'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对体用生克关系将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》生我为吉克我为凶我克次吉我生次凶比和中和。')
+      )
+    ));
+  },
   questions:[
     {prompt:'体=木、用=火 → 体生用，吉凶？',type:'tiyong-shengke',ti:'mu',yong:'huo',choices:['大吉','吉','小凶','凶'],answer:2},
     {prompt:'体=火、用=木 → 用生体，吉凶？',type:'tiyong-shengke',ti:'huo',yong:'mu',choices:['大吉','吉','小凶','凶'],answer:0},
@@ -1552,6 +1602,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'⚡ 第16关详解：体用吉凶速断'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对体用吉凶速断将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'用生体大吉>比和中吉>体克用小吉>体生用小凶>用克体大凶。')
+      )
+    ));
+  },
   questions:[
     {prompt:'䷊地天泰 动爻在二 → 体坤☷(土)用乾☰(金) → ？',type:'tiyong-quick',tiSym:'kun',yongSym:'qian',dongXia:true,choices:['用生体·大吉','体生用·小凶','体克用·小吉','用克体·凶'],answer:1},
     {prompt:'䷊地天泰 动爻在五 → 体乾☰(金)用坤☷(土) → ？',type:'tiyong-quick',tiSym:'qian',yongSym:'kun',dongXia:false,choices:['用生体·大吉','体生用·小凶','体克用·小吉','比和·吉'],answer:0},
@@ -1593,6 +1653,16 @@ LEVELS.push({
           '重卦+动爻 → 定体用 → 查五行 → 判生克 → 断吉凶'))
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🏆 第17关详解：体用实战综合'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对体用实战综合将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》体用定位→五行判定→生克关系→吉凶初断四步流程。')
+      )
+    ));
+  },
   questions:[
     {prompt:'䷊天地泰 动爻在三(下卦) → 体坤☷(土)用乾☰(金) → 判断？',type:'tiyong-full',tiSym:'kun',yongSym:'qian',choices:['体生用·小凶：耗泄','用生体·大吉：得助','体克用·小吉：可成','用克体·凶：受制'],answer:0},
     {prompt:'䷋天地否 动爻在五(上卦) → 体坤☷(土)用乾☰(金) → ？',type:'tiyong-full',tiSym:'kun',yongSym:'qian',choices:['体生用·小凶','用生体·大吉','比和·吉','用克体·凶'],answer:0},
@@ -1632,6 +1702,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：综合')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔁 第18关详解：八卦取象·总回顾'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对八卦取象·总回顾将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'综合《说卦传》全篇人物动物身体方位自然取象。')
+      )
+    ));
+  },
   questions:[
     {prompt:'☰ 叫什么名字？',type:'sym-name',sym:'qian',choices:['乾','坤','震','离'],answer:0},
     {prompt:'☷ 叫什么名字？',type:'sym-name',sym:'kun',choices:['艮','兑','坤','坎'],answer:2},
@@ -1669,6 +1749,16 @@ LEVELS.push({
         '五行全维度总复习。从生克到方位到五脏——全都在这里。'),
       h('p',{style:{fontSize:'13px',color:'var(--green)',fontWeight:700,textAlign:'center'}},'20题 · 跨7个维度'),
       h('div',{className:'source-tag'},'来源：综合')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🌐 第19关详解：五行万物大回顾'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对五行万物大回顾将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'木火土金水贯穿方位季节颜色五脏五味五志所有维度。')
+      )
     ));
   },
   questions:[
@@ -1714,6 +1804,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'准备好了吗？祝你顺利通过！🌸'),
       h('div',{className:'source-tag'},'来源：综合测试')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🎓 第20关详解：第一单元大考'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对第一单元大考将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'八卦五行体用全面检验。40题≥80%解锁第二单元。')
+      )
     ));
   },
   questions:[
@@ -1797,6 +1897,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《周易·系辞传》大衍筮法')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔄 第21关详解：动爻原理'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对动爻原理将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《系辞传》爻者言乎变者也。九六变七八不变。老阳9变阴老阴6变阳。')
+      )
+    ));
+  },
   questions:[
     // 1-4: 识别四象数（判断哪个是老阳/老阴/少阳/少阴）
     {prompt:'筮得数字"9"，这是？',type:'sixiang-name',num:9,choices:['老阳（太阳）','少阴','少阳','老阴（太阴）'],answer:0},
@@ -1869,6 +1979,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔀 第22关详解：变卦入门'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对变卦入门将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》本卦为始变卦为终。动爻阴阳互变得变卦。')
+      )
+    ));
+  },
   questions:[
     // 1-4: 概念题（什么是变卦）
     {prompt:'"变卦"（也叫"之卦"）是怎么产生的？',type:'biangua-concept',choices:['本卦中有动爻，阴阳互变后形成的新卦','本卦上下卦互换位置','本卦倒过来看','用互卦代替本卦'],answer:0},
@@ -1929,6 +2049,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'25题强化——练到条件反射！🏃'),
       h('div',{className:'source-tag'},'来源：《梅花易数》')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔁 第23关详解：一爻动变卦演练'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对一爻动变卦演练将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'八经卦组合一爻动场景大量重复训练形成肌肉记忆。')
+      )
     ));
   },
   questions:[
@@ -2009,6 +2139,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》+ 朱熹《易学启蒙》')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔢 第24关详解：多爻动变卦'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对多爻动变卦将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》二爻看本卦三爻看两卦辞四爻看变卦五爻看不动的爻。')
+      )
+    ));
+  },
   questions:[
     // 1-5: 多爻动规则（判断以什么为主）
     {prompt:'二爻动时，以什么为主？',type:'duoyao-rule',count:2,choices:['以本卦为主','以变卦为主','以互卦为主','随便选一个'],answer:0},
@@ -2079,6 +2219,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'25题大乱斗——来吧！💪'),
       h('div',{className:'source-tag'},'来源：综合')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🎯 第25关详解：变卦综合大挑战'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对变卦综合大挑战将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'动爻原理+一爻变+多爻变混合检验变卦推演能力。')
+      )
     ));
   },
   questions:[
@@ -2165,6 +2315,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔗 第26关详解：互卦原理'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对互卦原理将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》下互=二三四爻上互=三四五爻。中间四爻揭示事物发展过程。')
+      )
+    ));
+  },
   questions:[
     // 1-4: 概念
     {prompt:'互卦的"下互卦"由本卦哪些爻组成？',type:'hugua-concept',choices:['二爻+三爻+四爻','初爻+二爻+三爻','四爻+五爻+上爻','一爻+三爻+五爻'],answer:0},
@@ -2231,6 +2391,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'20题常见卦互卦练习——夯实基础！📚'),
       h('div',{className:'source-tag'},'来源：《梅花易数》')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔍 第27关详解：互卦取法入门'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对互卦取法入门将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'常见重卦互卦取法练习。逐爻提取叠成互卦。')
+      )
     ));
   },
   questions:[
@@ -2301,6 +2471,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'25题复杂卦——练到秒拆！⚡'),
       h('div',{className:'source-tag'},'来源：《梅花易数》')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🧩 第28关详解：互卦取法进阶'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对互卦取法进阶将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'三阴三阳交错复杂卦象互卦挑战。3秒见卦知互。')
+      )
     ));
   },
   questions:[
@@ -2382,6 +2562,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：综合')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'⛓️ 第29关详解：本卦→互卦→变卦全链路'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对本卦→互卦→变卦全链路将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》本卦现状→互卦过程→变卦结果三步串联核心推导链。')
+      )
+    ));
+  },
   questions:[
     // 1-5: 全链路推导（给本卦+动爻→互卦+变卦）
     {prompt:'䷊地天泰，动爻在三→互卦是？变卦是？',type:'fullchain',ben:'䷊',dong:3,choices:['互䷵归妹·变䷒临','互䷒临·变䷵归妹','互䷗复·变䷒临','互䷵归妹·变䷗复'],answer:0},
@@ -2452,6 +2642,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'30题终极挑战——冲刺！🏆'),
       h('div',{className:'source-tag'},'来源：综合')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🏅 第30关详解：互变综合大挑战'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对互变综合大挑战将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'变卦+互卦30题大汇总通关即掌握梅花易数核心推导法。')
+      )
     ));
   },
   questions:[
@@ -2546,6 +2746,16 @@ LEVELS.push({
       h('div',{className:'source-tag',style:{color:'var(--red)',opacity:'1',marginTop:'4px'}},'⚠️ 方向不可反：生我者休≠我生者休！')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🌿 第31关详解：旺相休囚死原理'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对旺相休囚死原理将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》当令者旺我生者相生我者休克我者囚我克者死。')
+      )
+    ));
+  },
   questions:[
     {prompt:'「旺」是什么意思？',type:'wang-def',choices:['当令，与月令同五行','我生者，次旺','生我者，退隐','克我者，受制'],answer:0},
     {prompt:'「相」是什么意思？',type:'xiang-def',choices:['当令者','我生者，次旺','生我者，退隐','克我者，受制'],answer:1},
@@ -2593,6 +2803,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'13px',color:'var(--green)',fontWeight:700,textAlign:'center',marginTop:'8px'}},'20题 · 春季专项'),
       h('div',{className:'source-tag'},'来源：《梅花易数》')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🌸 第32关详解：春季旺衰'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对春季旺衰将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》春木旺→火相水休金囚土死。')
+      )
     ));
   },
   questions:[
@@ -2652,6 +2872,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'13px',color:'var(--green)',fontWeight:700,textAlign:'center',marginTop:'8px'}},'25题 · 各季混合'),
       h('div',{className:'source-tag'},'来源：《梅花易数》+《五行大义》')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔥❄️ 第33关详解：夏秋冬旺衰'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对夏秋冬旺衰将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《五行大义》夏火旺秋金旺冬水旺四季末土旺。各季旺衰全体系。')
+      )
     ));
   },
   questions:[
@@ -2728,6 +2958,16 @@ LEVELS.push({
       h('div',{className:'source-tag',style:{color:'var(--red)',opacity:'1',marginTop:'4px'}},'⚠️ 旺衰不改变体用方向！用克体+体旺 ≠ 吉，只是凶中稍轻。')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'⚡🎯 第34关详解：旺衰与体用结合'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对旺衰与体用结合将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》体旺吉加倍凶减半体衰吉减半凶加倍。旺衰是调制系数。')
+      )
+    ));
+  },
   questions:[
     {prompt:'用生体=大吉，若体旺则？',type:'tiyong-wangshuai',tiShengke:'用生体',tiWangshuai:'旺',choices:['大吉加倍（大吉++）','仍是大吉不变','降为吉','转为凶'],answer:0},
     {prompt:'用生体=大吉，若体衰则？',type:'tiyong-wangshuai',tiShengke:'用生体',tiWangshuai:'衰',choices:['大吉加倍','仍是大吉但减弱','降为小吉','还是大吉'],answer:1},
@@ -2775,6 +3015,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'13px',color:'var(--green)',fontWeight:700,textAlign:'center',marginTop:'8px'}},'30题 · 旺衰大考'),
       h('div',{className:'source-tag'},'来源：综合')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🏆 第35关详解：旺衰综合大挑战'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对旺衰综合大挑战将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'季节旺衰+体用生克+八卦旺衰+调制效应全维度混合。')
+      )
     ));
   },
   questions:[
@@ -2855,6 +3105,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《周易》+ 朱熹《周易本义》')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔢 第36关详解：六十四卦生成'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对六十四卦生成将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《系辞传》八卦成列象在其中因而重之爻在其中。8×8=64。')
+      )
+    ));
+  },
   questions:[
     // 上下卦→重卦 (10题)
     {prompt:'上乾☰下坤☷ = ？',type:'gua-name',up:'乾',down:'坤',choices:['天地否','地天泰','乾为天','坤为地'],answer:0},
@@ -2923,6 +3183,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：京房《京氏易传》八宫卦序')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'☰🏛️ 第37关详解：八宫·乾宫八卦'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对八宫·乾宫八卦将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'京房《京氏易传》乾姤遁否观剥晋有。游魂晋归魂大有。')
+      )
+    ));
+  },
   questions:[
     {prompt:'乾宫本宫卦是？',type:'bagong-ben',gong:'乾',choices:['䷀乾为天','䷁坤为地','䷫天风姤','䷋天地否'],answer:0},
     {prompt:'乾宫一世卦是？',type:'bagong-order',gong:'乾',order:1,choices:['䷀乾为天','䷫天风姤','䷠天山遁','䷋天地否'],answer:1},
@@ -2989,6 +3259,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：京房《京氏易传》八宫卦序')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'☵🏛️ 第38关详解：八宫·坎宫八卦'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对八宫·坎宫八卦将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'京房《京氏易传》坎节屯既济革丰明夷师。坎宫八变。')
+      )
+    ));
+  },
   questions:[
     {prompt:'坎宫本宫卦是？',type:'bagong-ben',gong:'坎',choices:['䷜坎为水','䷻水泽节','䷂水雷屯','䷾水火既济'],answer:0},
     {prompt:'坎宫一世卦是？',type:'bagong-order',gong:'坎',order:1,choices:['䷜坎为水','䷻水泽节','䷂水雷屯','䷆地水师'],answer:1},
@@ -3049,6 +3329,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'13px',color:'var(--green)',fontWeight:700,textAlign:'center',marginTop:'8px'}},'25题 · 艮震混合'),
       h('div',{className:'source-tag'},'来源：京房《京氏易传》八宫卦序')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'☶☳ 第39关详解：八宫·艮震二宫'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对八宫·艮震二宫将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'京房《京氏易传》艮贲大畜损睽履中孚渐+震豫解恒升井大过随。')
+      )
     ));
   },
   questions:[
@@ -3113,6 +3403,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'13px',color:'var(--green)',fontWeight:700,textAlign:'center',marginTop:'8px'}},'25题 · 四宫混合大考'),
       h('div',{className:'source-tag'},'来源：京房《京氏易传》八宫卦序')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🏛️🌟 第40关详解：八宫·巽离坤兑四宫'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对八宫·巽离坤兑四宫将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'京房《京氏易传》四宫三十二卦大混合八宫卦序最终大考。')
+      )
     ));
   },
   questions:[
@@ -3205,6 +3505,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《周易》六十四卦卦序')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'📖 第41关详解：六十四卦卦名速记(上)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对六十四卦卦名速记(上)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《周易》乾坤屯蒙需讼师…前32卦名与上下卦对应。')
+      )
+    ));
+  },
   questions:[
     // 1-6: 卦象符号→卦名
     {prompt:'䷀ 这个卦象叫什么？',type:'hex-sym-name',choices:['乾为天','坤为地','水雷屯','山水蒙'],answer:0},
@@ -3285,6 +3595,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《周易》下经六十四卦卦序')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'📚 第42关详解：六十四卦卦名速记(下)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对六十四卦卦名速记(下)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《周易》后32卦卦名速记卦象↔上下卦↔卦名三维记忆。')
+      )
+    ));
+  },
   questions:[
     // 1-5: 卦象符号→卦名
     {prompt:'䷞ 这个卦象叫什么？',type:'hex-sym-name',choices:['咸','恒','遁','大壮'],answer:0},
@@ -3351,6 +3671,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《周易》六十四卦体例')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔗 第43关详解：三联配对'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对三联配对将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《周易》卦象↔卦名↔上下卦三个维度自由切换。')
+      )
+    ));
+  },
   questions:[
     // Dimension 1: 卦象→卦名 (10题)
     {prompt:'䷊ 这个卦象是？',type:'hex-sym-name',choices:['地天泰','天地否','乾为天','坤为地'],answer:0},
@@ -3412,6 +3742,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'准备好了吗？35题大挑战！🔥'),
       h('div',{className:'source-tag'},'来源：《周易》六十四卦')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🏆 第44关详解：六十四卦综合大挑战'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对六十四卦综合大挑战将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《周易》全64卦混合符号名称上下卦三维随机切换。')
+      )
     ));
   },
   questions:[
@@ -3492,6 +3832,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《周易·系辞传》大衍筮法')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔄 第45关详解：动爻变卦回顾'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对动爻变卦回顾将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《系辞传》回顾21-25关动爻原理变卦推演体用定位。')
+      )
+    ));
+  },
   questions:[
     // 四象数识别
     {prompt:'筮得数字\"9\"，这是？',type:'sixiang-name',choices:['老阳（太阳）','少阴','少阳','老阴（太阴）'],answer:0},
@@ -3563,6 +3913,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'互卦取法要熟练！25题巩固 🎯'),
       h('div',{className:'source-tag'},'来源：《梅花易数》互卦取法')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔀 第46关详解：互卦回顾'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对互卦回顾将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》回顾26-30关互卦取法与含义。')
+      )
     ));
   },
   questions:[
@@ -3638,6 +3998,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》旺衰断卦法')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'📊 第47关详解：旺衰回顾'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对旺衰回顾将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》回顾31-35关五行旺衰与季节生克。')
+      )
+    ));
+  },
   questions:[
     // 旺衰概念
     {prompt:'\"当令者旺\"中的\"令\"指什么？',type:'wangshuai-ling',choices:['季节/月令','命令','时令卦','节气'],answer:0},
@@ -3705,6 +4075,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《周易》六十四卦全篇')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔁 第48关详解：六十四卦回顾'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对六十四卦回顾将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《周易》回顾36-44关卦名卦象上下卦全面复习。')
+      )
+    ));
+  },
   questions:[
     // 卦象→卦名 (10题)
     {prompt:'䷀ 这是？',type:'hex-sym-name',choices:['乾为天','坤为地','震为雷','坎为水'],answer:0},
@@ -3770,6 +4150,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'模拟考开始，全力以赴！📝'),
       h('div',{className:'source-tag'},'来源：第二单元综合复习')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'📝 第49关详解：第二单元模拟考'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对第二单元模拟考将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'35题混合动爻变卦互卦旺衰六十四卦各约8-9题。')
+      )
     ));
   },
   questions:[
@@ -3854,6 +4244,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'16px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'第二单元最终大考！50题，全力以赴！🎯🔥'),
       h('div',{className:'source-tag'},'来源：第二单元综合测试')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🎓 第50关详解：第二单元大考'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对第二单元大考将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'50题≥80%解锁第三单元。动爻互卦旺衰六十四卦综合检验。')
+      )
     ));
   },
   questions:[
@@ -3979,6 +4379,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》「八卦万物类象」+《说卦传》第十一章')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'💎 第51关详解：八卦取象·物品'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对八卦取象·物品将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《说卦传》乾为玉为金坤为布为釜震为玄黄巽为绳直。')
+      )
+    ));
+  },
   questions:[
     {prompt:'乾卦对应的物品类象是什么？',type:'bagua-item',choices:['金·玉·冰','布·釜·大舆','木·绳·工','甲骨·戈兵'],answer:0},
     {prompt:'坤卦对应什么物品？',type:'bagua-item',choices:['金·玉·冰','布·釜·大舆','径路·小石','沟渎·弓轮'],answer:1},
@@ -4036,6 +4446,16 @@ LEVELS.push({
       ),
       h('p',{style:{marginTop:'12px',fontSize:'13px',color:'var(--text-light)'}},'扩展象意让你断卦更细腻！开始答题 👇'),
       h('div',{className:'source-tag'},'来源：《说卦传》全文')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔮 第52关详解：八卦取象·扩展'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对八卦取象·扩展将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《说卦传》乾为寒为冰坤为吝啬震为决躁巽为不果。')
+      )
     ));
   },
   questions:[
@@ -4097,6 +4517,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'👥 第53关详解：八卦取象·人事'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对八卦取象·人事将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《说卦传》乾为君坤为臣震为诸侯八卦社会身份取象。')
+      )
+    ));
+  },
   questions:[
     {prompt:'乾卦对应什么人事身份？',type:'renshi-bagua',choices:['君·王','臣·民','诸侯','商旅'],answer:0},
     {prompt:'坤卦对应什么身份？',type:'renshi-bagua',choices:['君·王','臣·民','诸侯','文人'],answer:1},
@@ -4154,6 +4584,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《黄帝内经》+《汉书·律历志》')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🎵 第54关详解：五行扩展类象'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对五行扩展类象将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《黄帝内经》+《白虎通》五音角徵宫商羽五色青赤黄白黑。')
+      )
+    ));
+  },
   questions:[
     {prompt:'五音中「角」对应什么五行？',type:'wuxing-pair',choices:['木','火','土','金'],answer:0},
     {prompt:'五音中「徵(zhǐ)」对应什么五行？',type:'wuxing-pair',choices:['木','火','土','水'],answer:1},
@@ -4207,6 +4647,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'30题综合挑战，检验你的万物类象功底！🌐🔥'),
       h('div',{className:'source-tag'},'来源：综合第51-54关全部内容')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🌐 第55关详解：万物类象综合大挑战'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对万物类象综合大挑战将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'物品+扩展+人事+五行类象30题全面检验。')
+      )
     ));
   },
   questions:[
@@ -4281,6 +4731,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'⏱️ 第56关详解：应期时间单位'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对应期时间单位将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》年为体用生克旺衰月日时看具体数字和外应。')
+      )
+    ));
+  },
   questions:[
     {prompt:'应期是什么？',type:'yingqi-concept',choices:['事情发生的时间','卦象的名称','变爻的位置','上卦和下卦'],answer:0},
     {prompt:'问婚姻大事，应期通常用什么单位？',type:'yingqi-unit',choices:['日','时','年或月','分'],answer:2},
@@ -4337,6 +4797,16 @@ LEVELS.push({
       ),
       h('p',{style:{marginTop:'12px',fontSize:'13px',color:'var(--text-light)'}},'生克决定方向，旺衰调节快慢！👇'),
       h('div',{className:'source-tag'},'来源：《梅花易数》')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'⚖️ 第57关详解：生克旺衰定应期'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对生克旺衰定应期将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》用生体则快体生用则慢用克体凶立至。')
+      )
     ));
   },
   questions:[
@@ -4399,6 +4869,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔢 第58关详解：卦数定应期'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对卦数定应期将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》体卦数+用卦数=应期数。乾1～坤8。')
+      )
+    ));
+  },
   questions:[
     {prompt:'乾☰的先天八卦数是？',type:'xiantian-num',choices:['1','2','3','8'],answer:0},
     {prompt:'兑☱的先天八卦数是？',type:'xiantian-num',choices:['1','2','4','7'],answer:1},
@@ -4459,6 +4939,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'👁️ 第59关详解：外应辅助定应期'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对外应辅助定应期将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》起卦时所见所闻皆为外应花开春钟声数。')
+      )
+    ));
+  },
   questions:[
     {prompt:'起卦时看到花开，应期可能在？',type:'waiying-season',choices:['春季','夏季','秋季','冬季'],answer:0},
     {prompt:'起卦时看到落叶，应期可能在？',type:'waiying-season',choices:['春季','夏季','秋季','冬季'],answer:2},
@@ -4512,6 +5002,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'25题综合挑战，检验你的应期推断力！🎯🔥'),
       h('div',{className:'source-tag'},'来源：综合第56-59关全部内容')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🎯 第60关详解：应期综合大挑战'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对应期综合大挑战将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'时间单位+生克旺衰+卦数+外应四维度融合。')
+      )
     ));
   },
   questions:[
@@ -4582,6 +5082,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》「年月日时起卦」')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'📅 第61关详解：时间起卦(上)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对时间起卦(上)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》年月日时取卦法农历各取数÷8÷8÷6。')
+      )
+    ));
+  },
   questions:[
     {prompt:'时间起卦中，上卦由什么决定？',type:'shijian-formula',choices:['(年+月+日)÷8的余数','(年+月+日+时)÷8的余数','(年+月)÷8的余数','(月+日)÷8的余数'],answer:0},
     {prompt:'时间起卦中，下卦由什么决定？',type:'shijian-formula',choices:['(年+月+日)÷8的余数','(年+月+日+时)÷8的余数','(时)÷8的余数','(月+日+时)÷8的余数'],answer:1},
@@ -4646,6 +5156,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🕐 第62关详解：时间起卦(下)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对时间起卦(下)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》公历转农历+十二时辰换算子1丑2…亥12。')
+      )
+    ));
+  },
   questions:[
     {prompt:'子时对应公历什么时间段？',type:'shichen',choices:['23:00-01:00','00:00-02:00','22:00-24:00','01:00-03:00'],answer:0},
     {prompt:'午时对应公历什么时间段？',type:'shichen',choices:['12:00-14:00','11:00-13:00','10:00-12:00','13:00-15:00'],answer:1},
@@ -4708,6 +5228,16 @@ LEVELS.push({
       ),
       h('p',{style:{marginTop:'12px',fontSize:'13px',color:'var(--text-light)'}},'记住：a上b下c动爻，余0则取8或6！👇'),
       h('div',{className:'source-tag'},'来源：《梅花易数》')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔢 第63关详解：数字起卦(上)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对数字起卦(上)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》三数起卦法a÷8上卦b÷8下卦c÷6动爻。')
+      )
     ));
   },
   questions:[
@@ -4776,6 +5306,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔣 第64关详解：数字起卦(下)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对数字起卦(下)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》两数上下卦总和=动爻一数同卦多数综合处理。')
+      )
+    ));
+  },
   questions:[
     {prompt:'两数起卦，动爻由什么计算？',type:'liangshu',choices:['(a+b)÷6的余数','b÷6的余数','a÷6的余数','(a-b)÷6的余数'],answer:0},
     {prompt:'一数起卦，上下卦有什么特点？',type:'yishu',choices:['上下卦相同→八纯卦','上下卦不同','随机','无法确定'],answer:0},
@@ -4838,6 +5378,16 @@ LEVELS.push({
       ),
       h('p',{style:{marginTop:'12px',fontSize:'13px',color:'var(--text-light)'}},'一字分结构，多字取数和笔画！👇'),
       h('div',{className:'source-tag'},'来源：《梅花易数》')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'📝 第65关详解：文字起卦(上)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对文字起卦(上)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》一字分笔画上下部二字各取笔画三字取字数。')
+      )
     ));
   },
   questions:[
@@ -4908,6 +5458,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》+繁简字对照表')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'📝 第66关详解：文字起卦(下)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对文字起卦(下)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》简体字需还原繁体笔画马→馬10画飞→飛9画。')
+      )
+    ));
+  },
   questions:[
     {prompt:'「马」字简体3画，繁体「馬」多少画？',type:'fanti-bihua',choices:['7','10','8','12'],answer:1},
     {prompt:'「龙」字简体5画，繁体「龍」多少画？',type:'fanti-bihua',choices:['12','14','16','18'],answer:2},
@@ -4971,6 +5531,16 @@ LEVELS.push({
       ),
       h('p',{style:{marginTop:'12px',fontSize:'13px',color:'var(--text-light)'}},'见物知卦，方位定下卦，心念一动即可！👇'),
       h('div',{className:'source-tag'},'来源：《梅花易数》「物象起卦」')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🏔️ 第67关详解：物象起卦(上)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对物象起卦(上)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》物属八卦取上卦方向取下卦。见山为艮在东为震。')
+      )
     ));
   },
   questions:[
@@ -5037,6 +5607,16 @@ LEVELS.push({
       ),
       h('p',{style:{marginTop:'12px',fontSize:'13px',color:'var(--text-light)'}},'五色配五行，眼见即可起卦！👇'),
       h('div',{className:'source-tag'},'来源：《梅花易数》')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🎨 第68关详解：物象起卦(下)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对物象起卦(下)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》颜色起卦青木震赤火离黄土坤白金兑乾黑水坎。')
+      )
     ));
   },
   questions:[
@@ -5108,6 +5688,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》「声音起卦」')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔊 第69关详解：声音起卦'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对声音起卦将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》闻声起卦声数几声上卦方向下卦声性辨八卦。')
+      )
+    ));
+  },
   questions:[
     {prompt:'声音起卦中，听到几声用什么公式取上卦？',type:'shengyin-formula',choices:['声数÷8取余','声数÷6取余','声数本身','方位÷8'],answer:0},
     {prompt:'听到敲门5声，上卦是？',type:'shengyin-calc',choices:['巽☴（5÷8余5）','离☲','乾☰','坎☵'],answer:0},
@@ -5163,6 +5753,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'14px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'25题混合挑战，五种方法灵活切换！🎲🔥'),
       h('div',{className:'source-tag'},'来源：综合第61-69关全部内容')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🎲 第70关详解：五种起卦法混合'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对五种起卦法混合将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'时间数字文字物象声音五种起卦法灵活切换不混淆。')
+      )
     ));
   },
   questions:[
@@ -5235,6 +5835,16 @@ LEVELS.push({
       ),
       h('p',{style:{marginTop:'12px',fontSize:'13px',color:'var(--text-light)'}},'象是断卦之眼，看准了象，卦就活了！👇'),
       h('div',{className:'source-tag'},'来源：《梅花易数》断卦篇')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'👁️ 第71关详解：断卦流程·象'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对断卦流程·象将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》取万物类象确定卦象含义从卦到象。')
+      )
     ));
   },
   questions:[
@@ -5311,6 +5921,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》体用生克篇')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'⚖️ 第72关详解：断卦流程·理'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对断卦流程·理将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》体用生克旺衰分析力量博弈。')
+      )
+    ));
+  },
   questions:[
     {prompt:'用生体代表什么？',type:'shengke-meaning',choices:['大吉，外力相助','小凶，泄耗','中吉，可成','大凶，被克'],answer:0},
     {prompt:'体用比和代表什么？',type:'shengke-meaning',choices:['大吉','吉，和谐顺利','中吉','大凶'],answer:1},
@@ -5372,6 +5992,16 @@ LEVELS.push({
       ),
       h('p',{style:{marginTop:'12px',fontSize:'13px',color:'var(--text-light)'}},'象理合一，断语自成！👇'),
       h('div',{className:'source-tag'},'来源：《梅花易数》占断总论')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔮 第73关详解：断卦流程·占'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对断卦流程·占将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》综合象理输出断语取象→生克→旺衰→应期。')
+      )
     ));
   },
   questions:[
@@ -5436,6 +6066,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：综合时间起卦+断卦流程')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'📅 第74关详解：时间起卦→完整断卦(上)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对时间起卦→完整断卦(上)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'年月日时到完整断语全链路实战前10题。')
+      )
+    ));
+  },
   questions:[
     {prompt:'全链路：午年(7)三月(3)十五日(15)辰时(5)，上卦计算？',type:'fulllink-time',choices:['(7+3+15)÷8=25÷8=3余1→乾☰','(7+3+15+5)÷8→余6坎','(3+15)÷8','(7+3)÷8'],answer:0},
     {prompt:'同上，下卦计算？',type:'fulllink-time',choices:['(7+3+15+5)÷8=30÷8=3余6→坎☵','(7+3+15)÷8余1→乾','(15+5)÷8','(7+5)÷8'],answer:0},
@@ -5490,6 +6130,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：综合时间起卦+断卦流程')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'📅 第75关详解：时间起卦→完整断卦(下)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对时间起卦→完整断卦(下)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'全链路后10题起卦到取象生克应期一气呵成。')
+      )
+    ));
+  },
   questions:[
     {prompt:'䷅天水讼（上乾金下坎水），动爻在上→用乾体坎，生克？',type:'fulllink-shengke',choices:['乾金生坎水=用生体（大吉）','坎水生乾金=体生用','金水比和','金克水=用克体'],answer:0},
     {prompt:'同上，应期数=体坎6+用乾1=？',type:'fulllink-yingqi',choices:['7','5','8','1'],answer:0},
@@ -5541,6 +6191,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：综合数字起卦+断卦流程')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔢 第76关详解：数字起卦→完整断卦(上)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对数字起卦→完整断卦(上)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'三数起卦→体用→取象全链路20题前半。')
+      )
+    ));
+  },
   questions:[
     {prompt:'报数 3 / 5 / 4，上卦3÷8余3→？',type:'fulllink-num',choices:['离☲','震☳','乾☰','巽☴'],answer:0},
     {prompt:'同上，下卦5÷8余5→？',type:'fulllink-num',choices:['巽☴','离☲','坎☵','坤☷'],answer:0},
@@ -5588,6 +6248,16 @@ LEVELS.push({
       ),
       h('p',{style:{marginTop:'12px',fontSize:'13px',color:'var(--text-light)'}},'数字起卦完整断卦，一气呵成！👇'),
       h('div',{className:'source-tag'},'来源：综合数字起卦+断卦流程')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔢 第77关详解：数字起卦→完整断卦(下)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对数字起卦→完整断卦(下)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'数字到断语生克旺衰应期完整练习。')
+      )
     ));
   },
   questions:[
@@ -5649,6 +6319,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：综合物象起卦+断卦流程')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🏔️ 第78关详解：物象起卦→完整断卦(上)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对物象起卦→完整断卦(上)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'见物知卦+方位定卦→体用生克全链路。')
+      )
+    ));
+  },
   questions:[
     {prompt:'物象起卦中，上卦由什么决定？',type:'fulllink-wuxiang',choices:['所见之物属何卦','方位','时间','声音'],answer:0},
     {prompt:'物象起卦中，下卦由什么决定？',type:'fulllink-wuxiang',choices:['物属卦','物的方位属何卦','物的大小','物体的颜色'],answer:1},
@@ -5704,6 +6384,16 @@ LEVELS.push({
       ),
       h('p',{style:{marginTop:'12px',fontSize:'13px',color:'var(--text-light)'}},'颜色起卦→象理占一气呵成！👇'),
       h('div',{className:'source-tag'},'来源：综合物象起卦+断卦流程')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🎨 第79关详解：物象起卦→完整断卦(下)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对物象起卦→完整断卦(下)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'颜色起卦+物性起卦→旺衰应期完整断语。')
+      )
     ));
   },
   questions:[
@@ -5771,6 +6461,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'16px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'25题全链路综合大考，梅花易数实战王者就是你！🏆🔥'),
       h('div',{className:'source-tag'},'来源：综合第61-79关全部内容（第三单元终章）')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🏆 第80关详解：多起卦法混合断卦'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对多起卦法混合断卦将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'时间数字文字物象声音→完整断卦综合大考。')
+      )
     ));
   },
   questions:[
@@ -5857,6 +6557,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》原案·观梅占')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🍂 第81关详解：观梅占'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对观梅占将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》䷰䷫雀争梅枝坠地兑少女乾老男互巽断少女折花伤股。')
+      )
+    ));
+  },
   questions:[
     {prompt:'观梅占起卦时间：辰年十二月十七日申时。辰年地支序数是？',type:'guanmei-qigua',choices:['5','12','17','9'],answer:0},
     {prompt:'辰年(5)+十二月(12)+十七日(17)，上卦计算(5+12+17)=34÷8=4余？',type:'guanmei-qigua',choices:['2→兑☱','3→离☲','4→震☳','6→坎☵'],answer:0},
@@ -5923,6 +6633,16 @@ LEVELS.push({
       ),
       h('p',{style:{marginTop:'12px',fontSize:'13px',color:'var(--text-light)'}},'物占经典，牡丹一占千古传！👇'),
       h('div',{className:'source-tag'},'来源：《梅花易数》原案·牡丹占')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🌸 第82关详解：牡丹占'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对牡丹占将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》䷀䷫问花开否乾马互乾巽断明日午时马践牡丹。')
+      )
     ));
   },
   questions:[
@@ -5993,6 +6713,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》原案·邻夜叩门占')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🚪 第83关详解：邻夜叩门占'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对邻夜叩门占将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》借斧非借锄乾金短巽木长先敲后推金短木长斧也。')
+      )
+    ));
+  },
   questions:[
     {prompt:'邻夜叩门占使用什么起卦方法？',type:'linye-method',choices:['声数起卦（多声法）','时间起卦','数字起卦','物象起卦'],answer:0},
     {prompt:'先叩1声，上卦1÷8余1→？',type:'linye-qigua',choices:['乾☰','坤☷','兑☱','离☲'],answer:0},
@@ -6060,6 +6790,16 @@ LEVELS.push({
       ),
       h('p',{style:{marginTop:'12px',fontSize:'13px',color:'var(--text-light)'}},'文字起卦+卦名解意，精妙绝伦！👇'),
       h('div',{className:'source-tag'},'来源：《梅花易数》原案·西林寺牌额占')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🏯 第84关详解：西林寺牌额占'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对西林寺牌额占将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》三字西兑林震寺艮缺人阴人之祸。')
+      )
     ));
   },
   questions:[
@@ -6133,6 +6873,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》原案·老人有忧色占')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'👴 第85关详解：老人有忧色占'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对老人有忧色占将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》面西北乾老男忧色坎讼互巽离五日内饮食忧。')
+      )
+    ));
+  },
   questions:[
     {prompt:'老人有忧色占使用了什么特殊的起卦法？',type:'laoren-method',choices:['人物属卦+面色属卦+方位','时间起卦','数字起卦','文字起卦'],answer:0},
     {prompt:'「老人」属八卦中的什么卦？',type:'laoren-qigua',choices:['乾☰（老男）','坤☷（老妇）','震☳（长男）','艮☶（少男）'],answer:0},
@@ -6201,6 +6951,16 @@ LEVELS.push({
       ),
       h('p',{style:{marginTop:'12px',fontSize:'13px',color:'var(--text-light)'}},'赉喜之色见于卦，少年之喜验于实！👇'),
       h('div',{className:'source-tag'},'来源：《梅花易数》原案·少年有喜色占')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'👦 第86关详解：少年有喜色占'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对少年有喜色占将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》面南艮少男喜色离贲互坎震聘币之喜。')
+      )
     ));
   },
   questions:[
@@ -6275,6 +7035,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》原案·牛哀鸣占')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🐂 第87关详解：牛哀鸣占'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对牛哀鸣占将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》坤牛互卦离=庖厨明夷声占物命遭屠宰。')
+      )
+    ));
+  },
   questions:[
     {prompt:'牛哀鸣占中，牛属八卦中的什么卦？',type:'niu-qigua',choices:['坤☷（坤为牛）','乾☰（乾为马）','震☳（震为龙）','巽☴（巽为鸡）'],answer:0},
     {prompt:'「哀鸣」的声音属性对应什么卦？',type:'niu-qigua',choices:['坎☵（加忧/悲）','离☲（喜）','震☳（雷声）','兑☱（悦）'],answer:0},
@@ -6345,6 +7115,16 @@ LEVELS.push({
       ),
       h('p',{style:{marginTop:'12px',fontSize:'13px',color:'var(--text-light)'}},'禽畜悲鸣三要素，离火一现断生死！👇'),
       h('div',{className:'source-tag'},'来源：《梅花易数》原案·鸡悲鸣占')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🐔 第88关详解：鸡悲鸣占'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对鸡悲鸣占将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》巽鸡见离火烹之象鼎悲鸣断鸡被烹食。')
+      )
     ));
   },
   questions:[
@@ -6421,6 +7201,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》原案·枯枝坠地占')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🍂 第89关详解：枯枝坠地占'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对枯枝坠地占将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》枯枝坠外应互兑金克巽木姤乾伐木之事。')
+      )
+    ));
+  },
   questions:[
     {prompt:'枯枝坠地占中，「枯枝」在物象上属什么卦？',type:'kuzhi-qigua',choices:['离☲（枯槁/科上槁）','震☳（树木）','巽☴（树枝）','坤☷（枯死）'],answer:0},
     {prompt:'「坠地」属什么卦？',type:'kuzhi-qigua',choices:['坤☷（地）','兑☱','坎☵','乾☰'],answer:0},
@@ -6489,6 +7279,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'16px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'30题横跨九大经典案例，梅花易数通关之战！📚🔥'),
       h('div',{className:'source-tag'},'来源：综合第81-89关全部九大经典案例')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'📚 第90关详解：经典案例综合复习'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对经典案例综合复习将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《梅花易数》观梅牡丹叩门西林寺老人少年牛鸡枯枝九案30题。')
+      )
     ));
   },
   questions:[
@@ -6584,6 +7384,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》八卦万物类象（第一单元总复习）')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔮 第91关详解：八卦取象·终回顾'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对八卦取象·终回顾将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《说卦传》八卦象意30题终极回顾万物类象卦德人物身体方位。')
+      )
+    ));
+  },
   questions:[
     // 卦德/卦性(6题)
     {prompt:'乾卦的卦德是什么？',type:'bagua-de',choices:['健','顺','动','入'],answer:0},
@@ -6664,6 +7474,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'16px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'五行体系全面检验——生克制化烂熟于心！☯️'),
       h('div',{className:'source-tag'},'来源：五行学说+《梅花易数》（第一单元总复习）')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'☯️ 第92关详解：五行万物终回顾'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对五行万物终回顾将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'五行生克乘侮+万物类属30题木火土金水全体系。')
+      )
     ));
   },
   questions:[
@@ -6747,6 +7567,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》体用生克+互卦+变卦（第二单元总复习）')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'⚡ 第93关详解：体用互变大回顾'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对体用互变大回顾将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'体用生克+互卦+变卦30题全面回顾核心三要素。')
+      )
+    ));
+  },
   questions:[
     // 体用判别(8题)
     {prompt:'䷊地天泰（☷☰），动爻在三爻(下卦)→体卦是？',type:'tiyong-bie',choices:['上坤☷','下乾☰','互卦','变卦'],answer:0},
@@ -6824,6 +7654,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'16px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'30题旺衰64卦——断卦精度由你掌控！📊'),
       h('div',{className:'source-tag'},'来源：《梅花易数》六十四卦+旺衰学说（第二单元总复习）')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'📊 第94关详解：旺衰64卦大回顾'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对旺衰64卦大回顾将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'六十四卦名+旺衰休囚死+季节调节30题。')
+      )
     ));
   },
   questions:[
@@ -6906,6 +7746,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'16px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'35题五法综合——起卦零失误，断卦有根基！🎲'),
       h('div',{className:'source-tag'},'来源：《梅花易数》起卦法综合（第三单元总复习）')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🎲 第95关详解：起卦法综合回顾'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对起卦法综合回顾将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'时间数字文字物象声音五种起卦法35题。')
+      )
     ));
   },
   questions:[
@@ -6994,6 +7844,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》应期推断（第四单元总复习）')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'⏰ 第96关详解：应期综合回顾'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对应期综合回顾将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'应期推断30题体用数+五行数+旺衰快慢综合运用。')
+      )
+    ));
+  },
   questions:[
     // 应期数计算(10题)
     {prompt:'体乾☰(先天数1)用坤☷(8)，应期数=？',type:'yingqi-shu',choices:['9','7','8','1'],answer:0},
@@ -7076,6 +7936,16 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《梅花易数》经典案例+综合实战（全单元总复习）')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'📋 第97关详解：案例综合回顾'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对案例综合回顾将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'30个真实场景案例起卦→体用→生克→旺衰→应期全链路。')
+      )
+    ));
+  },
   questions:[
     // 求财类(6题)
     {prompt:'【求财】午年五月十日未时起卦，上坎下坎=䷜坎为水，动在4爻→体下坎用上坎，生克？',type:'case-qucai',choices:['比和（吉——求财顺利）','用克体（凶）','体生用（泄财）','用生体（得财）'],answer:0},
@@ -7152,6 +8022,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'16px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'40题模拟考——检验第一、二单元学习成果！📝'),
       h('div',{className:'source-tag'},'来源：梅花易数学堂第一、二单元全部内容')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'📝 第98关详解：模拟毕业考(上)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对模拟毕业考(上)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'第一+第二单元综合八卦五行+体用互变旺衰64卦40题。')
+      )
     ));
   },
   questions:[
@@ -7239,6 +8119,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'16px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'40题下半场——起卦断卦全链路检验！📋'),
       h('div',{className:'source-tag'},'来源：梅花易数学堂第三单元+应期+案例全部内容')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'📋 第99关详解：模拟毕业考(下)'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对模拟毕业考(下)将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'第三单元+应期+案例起卦法全链路综合40题。')
+      )
     ));
   },
   questions:[
@@ -7350,6 +8240,16 @@ LEVELS.push({
       ),
       h('p',{style:{fontSize:'16px',fontWeight:700,textAlign:'center',color:'var(--green)',marginTop:'12px'}},'70题终极之战——祝你金榜题名，成就梅花全栈！🎓🏆'),
       h('div',{className:'source-tag'},'来源：梅花易数学堂全部五单元内容（终极考试）')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🎓 第100关详解：毕业大考'),
+      h('p',{},'点击「返回目录」后在关卡卡片上点「进入」按钮开始答题。完成答题后你对毕业大考将有更深入的理解。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'70题全面检验八卦五行体用互变旺衰六十四卦起卦应期案例。')
+      )
     ));
   },
   questions:[
