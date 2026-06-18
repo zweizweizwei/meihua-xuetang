@@ -735,8 +735,29 @@ LEVELS.push({
         '六十四卦的每一卦（重卦）由两个三爻八卦上下叠加而成。上面的叫「上卦」或「外卦」，下面的叫「下卦」或「内卦」。'),
       h('div',{style:{background:'#F3E5F5',borderRadius:'10px',padding:'14px',marginBottom:'10px'}},
         h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#7B1FA2'}},'📐 结构分解'),
-        h('div',{style:{textAlign:'center',fontSize:'15px',lineHeight:'2'}},
-          '┌─────────┐\n│ 上爻 ⎤   │\n│ 五爻 ⎥上卦│ ← 外卦（第4-6爻）\n│ 四爻 ⎦   │\n├─────────┤\n│ 三爻 ⎤   │\n│ 二爻 ⎥下卦│ ← 内卦（第1-3爻）\n│ 初爻 ⎦   │\n└─────────┘'),
+        h('div',{style:{border:'2px solid #7B1FA2',borderRadius:'12px',overflow:'hidden',maxWidth:'300px',margin:'0 auto'}},
+          h('div',{style:{background:'#EDE7F6',padding:'10px 14px',display:'flex',alignItems:'center',justifyContent:'space-between'}},
+            h('div',{style:{flex:1}},
+              h('div',{style:{padding:'5px 0',fontSize:'15px',fontWeight:600,color:'#4A148C'}},'上爻'),
+              h('div',{style:{padding:'5px 0',fontSize:'15px',fontWeight:600,color:'#4A148C',borderTop:'1px solid #D1C4E9',borderBottom:'1px solid #D1C4E9'}},'五爻'),
+              h('div',{style:{padding:'5px 0',fontSize:'15px',fontWeight:600,color:'#4A148C'}},'四爻')
+            ),
+            h('div',{style:{background:'#7B1FA2',color:'#fff',padding:'8px 12px',borderRadius:'8px',fontSize:'11px',textAlign:'center',lineHeight:'1.5',flexShrink:0,marginLeft:'12px'}},
+              '上卦',h('br'),'外卦',h('br'),h('span',{style:{fontSize:'10px',opacity:0.8}},'4-6爻')
+            )
+          ),
+          h('div',{style:{borderTop:'2px dashed #9C27B0'}}),
+          h('div',{style:{background:'#F3E5F5',padding:'10px 14px',display:'flex',alignItems:'center',justifyContent:'space-between'}},
+            h('div',{style:{flex:1}},
+              h('div',{style:{padding:'5px 0',fontSize:'15px',fontWeight:600,color:'#6A1B9A'}},'三爻'),
+              h('div',{style:{padding:'5px 0',fontSize:'15px',fontWeight:600,color:'#6A1B9A',borderTop:'1px solid #E1BEE7',borderBottom:'1px solid #E1BEE7'}},'二爻'),
+              h('div',{style:{padding:'5px 0',fontSize:'15px',fontWeight:600,color:'#6A1B9A'}},'初爻')
+            ),
+            h('div',{style:{background:'#9C27B0',color:'#fff',padding:'8px 12px',borderRadius:'8px',fontSize:'11px',textAlign:'center',lineHeight:'1.5',flexShrink:0,marginLeft:'12px'}},
+              '下卦',h('br'),'内卦',h('br'),h('span',{style:{fontSize:'10px',opacity:0.8}},'1-3爻')
+            )
+          )
+        ),
         h('p',{style:{fontSize:'12px',color:'var(--text-light)',marginTop:'8px',textAlign:'center'}},'上卦在上，下卦在下——这个「上」「下」说的就是位置！')
       ),
       h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
