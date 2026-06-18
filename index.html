@@ -100,6 +100,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .level-card .lc-badge{font-size:12px;font-weight:600;padding:4px 10px;border-radius:20px}
 .level-card .lc-badge.done{background:#D7FFB8;color:#3C7A00}
 .level-card .lc-badge.open{background:#FFF3CD;color:#856404}
+.lc-detail-btn{font-size:22px;cursor:pointer;padding:4px 8px;border-radius:8px;background:var(--bg);flex-shrink:0;transition:all .15s}
+.lc-detail-btn:active{background:#EDE7F6;transform:scale(.9)}
+
+/* Detail page */
+.detail-card{background:var(--card);border-radius:16px;padding:24px;border:2px solid var(--border);margin-bottom:16px}
+.detail-card h3{font-size:18px;margin-bottom:12px}
+.detail-card p{font-size:14px;line-height:1.8;color:var(--text);text-align:left}
+.detail-source{background:#FFF8E1;border-radius:12px;padding:16px;border-left:4px solid #FFA000;margin-top:16px}
+.detail-source h4{font-size:14px;color:#E65100;margin-bottom:8px}
+.detail-source p{font-size:13px;color:#795548;line-height:1.7;font-style:italic}
 
 /* Trigram grid */
 .trigram-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
@@ -301,6 +311,40 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《周易·说卦传》')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'☰ 第1关详解：八卦入门'),
+      h('h4',{style:{color:'#B8860B',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'一、伏羲画卦——八卦的起源'),
+      h('p',{},'《周易·系辞传下》记载：「古者包牺氏之王天下也，仰则观象于天，俯则观法于地，观鸟兽之文与地之宜，近取诸身，远取诸物，于是始作八卦，以通神明之德，以类万物之情。」伏羲（包牺氏）通过观察天地万物的运行规律——天象、地理、鸟兽、人身——将宇宙根本法则抽象为阴阳两种符号，三叠而成八卦。这是中国哲学「天人合一」思想的源头。'),
+      h('h4',{style:{color:'#B8860B',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'二、阴阳爻——八卦的基本符号'),
+      h('p',{},'八卦由两种基本符号构成：阳爻「⚊」和阴爻「⚋」。《系辞传》曰：「一阴一阳之谓道。」阳爻象征刚健、运动、光明、男性等一切阳性事物；阴爻象征柔顺、静止、黑暗、女性等一切阴性事物。每一卦由三个爻（自下而上为初爻、二爻、三爻）叠加组成，三爻分别代表天、人、地「三才」之道：上爻为天、中爻为人、初爻为地。阴阳爻排列共 2³=8 种可能，即为八卦。'),
+      h('h4',{style:{color:'#B8860B',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'三、八卦取象口诀的来历'),
+      h('p',{},'南宋大儒朱熹在《周易本义》卷首编有「八卦取象歌」，以形象化语言帮助初学者记忆八卦卦形：'),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'12px 14px',margin:'12px 0',textAlign:'center'}},
+        h('div',{style:{fontSize:'15px',lineHeight:'2.2',fontWeight:500}},
+          '乾三连（☰ 三条阳爻相连）\n坤六断（☷ 三条阴爻全断）\n震仰盂（☳ 像仰放的盆盂）\n艮覆碗（☶ 如倒扣的碗）\n离中虚（☲ 中间空虚）\n坎中满（☵ 中间充实）\n兑上缺（☱ 上方有缺口）\n巽下断（☴ 下方断开）')
+      ),
+      h('p',{},'此口诀自宋以来流传近千年，是学习《易经》八卦最经典的入门歌诀。每一短句都以卦形特征为描述依据，形象生动、朗朗上口。'),
+      h('h4',{style:{color:'#B8860B',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'四、八卦与五行的对应原理'),
+      h('p',{},'八卦配五行是汉代象数易学的重要发展。京房等易学家根据八卦基本取象，将其纳入五行体系：乾（☰）为天、兑（☱）为泽——天高气清、泽润万物，皆具「金」的肃杀收敛之性，故属金。离（☲）为火——本身就是烈火之象，自然属火。震（☳）为雷、巽（☴）为风——雷动万物生发，风入草木催长，皆具「木」的生发条达之性，故属木。坎（☵）为水——本身就是流水之象，自然属水。坤（☷）为地、艮（☶）为山——大地承载、高山厚重，皆具「土」的敦厚稼穑之性，故属土。'),
+      h('div',{className:'trigram-grid'},
+        Object.keys(TRIGRAMS).map(function(k){var t=TRIGRAMS[k];
+          return h('div',{className:'trigram-card wx-'+(t.wuxing==='金'?'jin':t.wuxing==='木'?'mu':t.wuxing==='水'?'shui':t.wuxing==='火'?'huo':'tu')},
+            h('div',{className:'sym'},t.sym),
+            h('div',{className:'info'},
+              h('div',{className:'name'},t.name+' · '+t.wuxing),
+              h('div',{className:'mnemonic'},t.mnemonic)
+            )
+          );
+        })
+      ),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《周易·说卦传》第三章：「天地定位，山泽通气，雷风相薄，水火不相射，八卦相错。」'),
+        h('p',{style:{marginTop:'8px',fontSize:'12px'}},'《周易·系辞传下》：「古者包牺氏之王天下也……于是始作八卦。」朱熹《周易本义》卷首载有八卦取象歌。八卦配五行之说，见京房《京氏易传》、孔颖达《周易正义》。')
+      )
+    ));
+  },
   questions:[
     {prompt:'这个卦象叫什么名字？',type:'sym-name',sym:'qian',choices:['乾','坤','震','巽'],answer:0},
     {prompt:'选出正确的卦名',type:'sym-name',sym:'kun',choices:['艮','兑','坤','离'],answer:2},
@@ -353,6 +397,45 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《尚书·洪范》五行')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🔥 第2关详解：五行生克'),
+      h('h4',{style:{color:'#E65100',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'一、「洪范九畴」——五行学说的经典源头'),
+      h('p',{},'《尚书·洪范》记载了周武王灭商后向箕子请教治国之道，箕子陈述了「洪范九畴」（九大治国法则），五行居其首。这是中国文献中关于「五行」最早的系统论述。箕子为商纣王之叔，因纣王无道而佯狂被囚。周武王克商后亲自拜访箕子询问天道，箕子遂陈述自大禹以来传承的治国大法。五行不仅是自然界的五种基本物质，更是古人认识世界、治理国家的思维框架。'),
+      h('h4',{style:{color:'#E65100',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'二、五行的次序与特性'),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'10px',padding:'12px 14px',margin:'12px 0'}},
+        h('p',{style:{fontWeight:700,marginBottom:'6px'}},'《尚书·洪范》原文：'),
+        h('p',{style:{lineHeight:'1.8'}},'「五行：一曰水，二曰火，三曰木，四曰金，五曰土。水曰润下，火曰炎上，木曰曲直，金曰从革，土爰稼穑。」')
+      ),
+      h('p',{},'五行的次序（水→火→木→金→土）并非随意排列，而是对应古人观察到的自然生成顺序：天地初开先有水；水中有热气上升为火；火尽生灰为土；土中藏矿为金；金石生水汽循环往复。每行各有特性：水润下（滋润向下）、火炎上（燃烧上升）、木曲直（可弯可直）、金从革（可熔可铸）、土稼穑（播种收获）。这些特性是判断五行归属的根本依据。'),
+      h('h4',{style:{color:'#E65100',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'三、相生与相克的原理'),
+      h('div',{style:{display:'flex',gap:'10px',margin:'12px 0'}},
+        h('div',{style:{flex:1,background:'#E8F5E9',borderRadius:'8px',padding:'10px'}},
+          h('div',{style:{fontWeight:700,fontSize:'13px',color:'#2E7D32',marginBottom:'4px'}},'🌱 五行相生'),
+          h('div',{style:{fontSize:'12px',lineHeight:'1.8'}},
+            '木生火：钻木取火\n火生土：火烬成灰\n土生金：土中藏矿\n金生水：金融成液\n水生木：水润草木')
+        ),
+        h('div',{style:{flex:1,background:'#FFEBEE',borderRadius:'8px',padding:'10px'}},
+          h('div',{style:{fontWeight:700,fontSize:'13px',color:'#C62828',marginBottom:'4px'}},'⚡ 五行相克'),
+          h('div',{style:{fontSize:'12px',lineHeight:'1.8'}},
+            '木克土：树根破土\n土克水：堤坝挡水\n水克火：水能灭火\n火克金：烈火熔金\n金克木：斧锯伐木')
+        )
+      ),
+      h('p',{},'相生如同母子关系——生我者为「母」，我生者为「子」。例如木生火，木为火之母，火为木之子。相克如同制约关系——克我者为「所不胜」，我克者为「所胜」。生与克共同维持着五行的动态平衡。汉代董仲舒《春秋繁露·五行之义》对此有系统阐发。'),
+      h('h4',{style:{color:'#E65100',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'四、相乘与相侮——生克的异常'),
+      h('p',{},'当五行平衡被打破时，出现两种异常关系：「相乘」——过度克制。如木本克土，但木气过旺则乘土（过度克土），导致土虚。好比树木过度生长，土地养分被耗尽。「相侮」——反向克制。如金本克木，但木气过盛或金气过弱，则木反侮金。好比树木反过来制约斧头。乘和侮的概念在中医诊断中尤为重要。'),
+      h('h4',{style:{color:'#E65100',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'五、五行在中医中的应用'),
+      h('p',{},'《黄帝内经》将五行学说系统应用于人体脏腑经络：'),
+      h('div',{style:{background:'#FFF8E1',borderRadius:'8px',padding:'10px',margin:'10px 0',fontSize:'13px',lineHeight:'1.8'}},
+        '木→肝（怒、酸、青、春、东）\n火→心（喜、苦、赤、夏、南）\n土→脾（思、甘、黄、长夏、中）\n金→肺（悲、辛、白、秋、西）\n水→肾（恐、咸、黑、冬、北）'),
+      h('p',{},'中医通过五行生克关系来诊断和治疗疾病：肝木过旺会乘脾土（生气伤脾胃）；肾水不足则不能制心火（阴虚火旺）。「虚则补其母，实则泻其子」的治疗原则正基于五行相生关系。'),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《尚书·洪范》：「五行：一曰水，二曰火，三曰木，四曰金，五曰土。水曰润下，火曰炎上，木曰曲直，金曰从革，土爰稼穑。润下作咸，炎上作苦，曲直作酸，从革作辛，稼穑作甘。」'),
+        h('p',{style:{marginTop:'8px',fontSize:'12px'}},'五行生克学说在汉代董仲舒《春秋繁露·五行之义》中得到系统阐发。中医五行理论详见于《黄帝内经·素问》各篇。')
+      )
+    ));
+  },
   questions:[
     {prompt:'木生什么？',type:'sheng',from:'mu',choices:['火','金','水','土'],answer:0},
     {prompt:'火生什么？',type:'sheng',from:'huo',choices:['木','土','金','水'],answer:1},
@@ -402,6 +485,42 @@ LEVELS.push({
       h('div',{className:'source-tag',style:{color:'var(--red)',opacity:'1',marginTop:'4px'}},'⚠️ 避坑：兑=少女≠中女，离=中女≠少女')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'👨‍👩‍👧‍👦 第3关详解：八卦人物类象'),
+      h('h4',{style:{color:'#7B1FA2',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'一、乾坤生六子——八卦的家庭模型'),
+      h('p',{},'《周易·说卦传》第十章将八卦纳入一个完整的家庭结构。这是中国古代宗法社会结构的缩影，体现了「家国同构」的思想。乾为父（纯阳至健）、坤为母（纯阴至顺），其余六卦皆由乾父坤母的阴阳爻交互组合而生，故称「六子」。'),
+      h('div',{style:{background:'#F3E5F5',borderRadius:'10px',padding:'12px 14px',margin:'12px 0'}},
+        h('p',{style:{fontWeight:700,marginBottom:'6px'}},'《说卦传》第十章原文：'),
+        h('p',{style:{lineHeight:'1.8'}},'「乾，天也，故称乎父。坤，地也，故称乎母。震一索而得男，故谓之长男。巽一索而得女，故谓之长女。坎再索而得男，故谓之中男。离再索而得女，故谓之中女。艮三索而得男，故谓之少男。兑三索而得女，故谓之少女。」')
+      ),
+      h('h4',{style:{color:'#7B1FA2',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'二、「索」的含义——第几爻决定第几子'),
+      h('p',{},'「索」字在此意为「求取」「索求」，指从乾父坤母中求取子女。理解「索」的关键在于看阴爻或阳爻在第几爻位：'),
+      h('div',{style:{background:'#FFF9E6',borderRadius:'8px',padding:'12px',margin:'10px 0',lineHeight:'1.8'}},
+        h('p',{style:{fontWeight:700,marginBottom:'4px',color:'#1565C0'}},'求男（阳卦）：看阳爻在第几位'),
+        h('p',{},'震☳ → 初爻为阳 →「一索得男」→ 长男\n坎☵ → 二爻为阳 →「再索得男」→ 中男\n艮☶ → 三爻为阳 →「三索得男」→ 少男'),
+        h('p',{style:{fontWeight:700,marginTop:'8px',marginBottom:'4px',color:'#C62828'}},'求女（阴卦）：看阴爻在第几位'),
+        h('p',{},'巽☴ → 初爻为阴 →「一索得女」→ 长女\n离☲ → 二爻为阴 →「再索得女」→ 中女\n兑☱ → 三爻为阴 →「三索得女」→ 少女')
+      ),
+      h('h4',{style:{color:'#7B1FA2',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'三、为何以爻位定长幼？'),
+      h('p',{},'这体现了古人的时空观念：从下往上是时间先后的象征——先出现的在下（初爻），后出现的在上。如同树木生长，先有根（初爻）、再有干（二爻）、后有枝叶（三爻）。在家庭中，先出生的为长，后出生的为幼。'),
+      h('p',{},'此外，乾（☰）三爻皆阳，为纯阳之卦，象征父亲；坤（☷）三爻皆阴，为纯阴之卦，象征母亲。其余六卦皆由乾父坤母的阴阳爻交互组合而成——震☳是坤母得乾父一阳（初爻），坎☵得乾父一阳（二爻），艮☶得乾父一阳（三爻），是为三男；三女同理。'),
+      h('div',{style:{background:'#F3E5F5',borderRadius:'10px',padding:'14px',marginTop:'12px'}},
+        h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#7B1FA2'}},'📖 一家八口全图'),
+        h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'8px'}},
+          [['乾','父','☰'],['坤','母','☷'],['震','长男','☳'],['坎','中男','☵'],['艮','少男','☶'],['巽','长女','☴'],['离','中女','☲'],['兑','少女','☱']].map(function(f){
+            return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'8px 12px',display:'flex',alignItems:'center',gap:'8px'}},
+              h('span',{style:{fontSize:'24px'}},f[2]),h('span',{style:{fontWeight:700}},f[0]),h('span',{style:{color:'var(--text-light)',fontSize:'13px'}},f[1]));
+          })
+        )
+      ),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《周易·说卦传》第十章：「乾天也，故称乎父；坤地也，故称乎母。震一索而得男，故谓之长男；巽一索而得女，故谓之长女。坎再索而得男，故谓之中男；离再索而得女，故谓之中女。艮三索而得男，故谓之少男；兑三索而得女，故谓之少女。」'),
+        h('p',{style:{marginTop:'8px',fontSize:'12px',color:'#C62828'}},'⚠️ 常见谬误提醒：兑=少女（非中女），离=中女（非少女）。兑☱阴爻在第三位→三索得女=少女；离☲阴爻在第二位→再索得女=中女。')
+      )
+    ));
+  },
   questions:[
     {prompt:'乾卦对应哪个家庭成员？',type:'sym-fam',sym:'qian',choices:['父','母','长子','长女'],answer:0},
     {prompt:'坤卦对应哪个家庭成员？',type:'sym-fam',sym:'kun',choices:['父','母','少女','中男'],answer:1},
@@ -447,6 +566,35 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：《周易·说卦传》第八章「乾为马，坤为牛…」')
     ));
   },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🐴 第4关详解：八卦动物类象'),
+      h('h4',{style:{color:'#5D4037',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'一、动物取象总论'),
+      h('p',{},'《说卦传》第八章集中列出了八卦对应的八种动物。这并非随意比附，而是基于每种动物的习性与卦象特征的深层对应。东汉郑玄、三国王弼等易学大家都对此有过精辟注解。动物的选择反映了古人「观物取象」的思维方式——通过观察动物的特性来理解抽象的卦理。'),
+      h('h4',{style:{color:'#5D4037',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'二、八兽取象详解'),
+      h('div',{style:{background:'#FFF8E1',borderRadius:'10px',padding:'14px',margin:'12px 0',lineHeight:'1.8'}},
+        h('p',{},'🐴 乾为马——健行不息。马在古代是最迅捷的交通工具，日行千里、奔腾不息。《说卦传》言「乾，健也」。乾卦三爻皆阳，纯阳至健，与马的强健善跑之性完全吻合。'),
+        h('p',{style:{marginTop:'8px'}},'🐂 坤为牛——顺从负重。牛性情温顺，默默耕耘，承载重物而无怨言。《说卦传》言「坤，顺也」。坤卦三爻皆阴，纯阴至顺，如同大地承载万物，与牛的驯良负重之性相应。'),
+        h('p',{style:{marginTop:'8px'}},'🐉 震为龙——腾跃变动。龙为鳞虫之长，能潜能飞、变化莫测。震卦一阳在下，阳气初动，如春雷乍响惊动万物，与龙的腾跃震动之势相应。'),
+        h('p',{style:{marginTop:'8px'}},'🐔 巽为鸡——司晨报晓。鸡鸣报晓之声随风远播。《说卦传》言「巽，入也」，风无孔不入，鸡鸣之声亦随风入耳。巽为号令之象，鸡司晨正是自然界的号令之声。'),
+        h('p',{style:{marginTop:'8px'}},'🐷 坎为豕（猪）——水畜也。郑玄注曰：「豕，水畜。」猪喜水好浴，性近于水。坎卦一阳陷于二阴之中，如同猪在泥水中打滚之象。豕在古代常为祭祀用牲，与坎卦「陷」之象相应。'),
+        h('p',{style:{marginTop:'8px'}},'🐦 离为雉（野鸡）——华丽似火。雉即山鸡，羽毛五彩斑斓、灿烂如火。离卦一阴丽于二阳之中，有附丽光明之象，与雉鸟羽毛的绚丽光彩完全对应。'),
+        h('p',{style:{marginTop:'8px'}},'🐕 艮为狗——守门护院。狗善看守门户，见生人则止而吠之。《说卦传》言「艮，止也」。艮卦一阳在上阻止于前，与狗守门止人之性高度相符。'),
+        h('p',{style:{marginTop:'8px'}},'🐑 兑为羊——温顺悦鸣。羊性情温顺，叫声柔美悦耳。《说卦传》言「兑，说（悦）也」。兑卦一阴在二阳之上，有开口悦言之象，与羊的柔顺鸣叫完全相应。')
+      ),
+      h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'8px',marginTop:'12px'}},
+        [['乾','马','☰','🐴'],['坤','牛','☷','🐂'],['震','龙','☳','🐉'],['巽','鸡','☴','🐔'],['坎','豕(猪)','☵','🐷'],['离','雉','☲','🐦'],['艮','狗','☶','🐕'],['兑','羊','☱','🐑']].map(function(a){
+          return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'8px 12px',display:'flex',alignItems:'center',gap:'8px',border:'1px solid var(--border)'}},
+            h('span',{style:{fontSize:'24px'}},a[2]),h('span',{style:{fontWeight:700,fontSize:'15px'}},a[0]),h('span',{style:{fontSize:'20px'}},a[3]),h('span',{style:{color:'var(--text-light)',fontSize:'13px'}},a[1]));
+        })
+      ),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《周易·说卦传》第八章：「乾为马，坤为牛，震为龙，巽为鸡，坎为豕，离为雉，艮为狗，兑为羊。」'),
+        h('p',{style:{marginTop:'8px',fontSize:'12px'}},'郑玄《周易注》云：「坎为豕，豕水畜也。」离为雉取其羽毛华丽如火。动物取象体现了古人观察自然、以物喻理的思维方式。')
+      )
+    ));
+  },
   questions:[
     {prompt:'乾卦对应什么动物？',type:'sym-ani',sym:'qian',choices:['牛','马','龙','狗'],answer:1},
     {prompt:'坤卦对应？',type:'sym-ani',sym:'kun',choices:['马','牛','羊','鸡'],answer:1},
@@ -490,6 +638,50 @@ LEVELS.push({
       h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
         '💡 从上到下看更直观：乾首🧠（最上）→ 离目👁 → 兑口👄 → 坎耳👂\n坤腹 → 巽股🦵 → 震足🦶 → 艮手✋（四肢）'),
       h('div',{className:'source-tag'},'来源：《周易·说卦传》第九章「乾为首，坤为腹…」')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'🧠 第5关详解：八卦身体类象'),
+      h('h4',{style:{color:'#1565C0',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'一、身体取象总论'),
+      h('p',{},'《说卦传》第九章将八卦与人体部位一一对应，形成了古人认识人体的独特视角。这种对应并非随意，而是基于八卦基本属性与身体部位功能之间的深层类比推理。《系辞传》「近取诸身」正是这种思维方式的体现——从自己的身体出发来理解宇宙的卦象。'),
+      h('h4',{style:{color:'#1565C0',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'二、从上到下的身体八卦图'),
+      h('div',{style:{background:'#E3F2FD',borderRadius:'10px',padding:'12px 14px',margin:'12px 0'}},
+        h('p',{style:{fontWeight:700,marginBottom:'6px'}},'人体自上而下的八卦对应：'),
+        h('p',{style:{lineHeight:'1.8'}},
+          '🧠 乾为首（头）——最上，象天\n'+
+          '👁 离为目（眼）——明亮，象火\n'+
+          '👂 坎为耳（耳）——孔窍，象水\n'+
+          '👄 兑为口（嘴）——说话，象悦\n'+
+          '  坤为腹（肚）——包容，象地\n'+
+          '✋ 艮为手（手）——持物，象止\n'+
+          '🦵 巽为股（大腿）——行走，象风\n'+
+          '🦶 震为足（脚）——最下，象动')
+      ),
+      h('h4',{style:{color:'#1565C0',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'三、取象原理详解'),
+      h('div',{style:{background:'#FFF8E1',borderRadius:'10px',padding:'14px',margin:'12px 0',lineHeight:'1.8'}},
+        h('p',{},'乾为首（头）：乾为天，天在万物之上，圆而尊。人的头部位于身体最上端，圆形如天，为全身之首，故乾对应首。《说卦传》言「乾为天，为圜」，头圆象天，位最尊。'),
+        h('p',{style:{marginTop:'8px'}},'坤为腹（肚）：坤为地，地载万物。腹部容纳肠胃脏腑，如同大地承载万物，故坤对应腹。腹居身体中央，亦与坤居八卦之「中土」相应。'),
+        h('p',{style:{marginTop:'8px'}},'震为足（脚）：震为雷、为动。人行走靠足，足主动作，且在身体最下端。震卦一阳初动于下，正是足踏实地、起步行动之象。'),
+        h('p',{style:{marginTop:'8px'}},'巽为股（大腿）：巽为风、为入。大腿随脚而动，如同风随气行。巽为进退之象，与腿的屈伸进退动作完全相应。'),
+        h('p',{style:{marginTop:'8px'}},'坎为耳（耳朵）：坎为水、为陷。耳朵是凹陷的孔窍，外形如陷穴；且中医认为肾属水、开窍于耳，与坎为水之象相合。'),
+        h('p',{style:{marginTop:'8px'}},'离为目（眼睛）：离为火、为明。眼睛明亮能视物，如同火光照亮四方。离卦一阴丽于二阳之中，眼珠（阴）在眼白（阳）之中，正是离卦之象。'),
+        h('p',{style:{marginTop:'8px'}},'艮为手（手）：艮为山、为止。手能持物、止物——抓握使物停止，与艮卦阻止之象相应。手有骨节如山石，亦合艮为山。'),
+        h('p',{style:{marginTop:'8px'}},'兑为口（嘴巴）：兑为泽、为说（悦）。口能言语、进食、发出悦耳之声，与兑卦开口悦言之象完全吻合。')
+      ),
+      h('h4',{style:{color:'#1565C0',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'四、在中医望诊中的应用'),
+      h('p',{},'中医面诊（望诊）将八卦与面部区域对应，形成「面部八卦分区法」：额头（乾）候肺与大肠；下巴（坤）候肾与膀胱；左颊（震）候肝；右颊（兑）候肺；鼻（艮）候脾；眼（离）候心；耳（坎）候肾；口唇（巽）候肝胆。明代杨继洲《针灸大成》中亦有「身形应八卦」的记载，作为针灸取穴的理论依据之一。这些应用说明八卦身体取象在中医临床上具有实际指导意义，是「医易同源」思想的体现。'),
+      h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'8px',marginTop:'12px'}},
+        [['乾','首','☰','头'],['坤','腹','☷','肚子'],['震','足','☳','脚'],['巽','股','☴','大腿'],['坎','耳','☵','耳朵'],['离','目','☲','眼睛'],['艮','手','☶','手'],['兑','口','☱','嘴巴']].map(function(b){
+          return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'10px 12px',display:'flex',alignItems:'center',gap:'8px',border:'1px solid var(--border)'}},
+            h('span',{style:{fontSize:'24px'}},b[2]),h('span',{style:{fontWeight:700}},b[0]),h('span',{style:{color:'var(--text-light)',fontSize:'13px'}},b[1]+'（'+b[3]+'）'));
+        })
+      ),
+      h('div',{className:'detail-source'},
+        h('h4',{},'📜 古籍出处'),
+        h('p',{},'《周易·说卦传》第九章：「乾为首，坤为腹，震为足，巽为股，坎为耳，离为目，艮为手，兑为口。」'),
+        h('p',{style:{marginTop:'8px',fontSize:'12px'}},'唐代孔颖达《周易正义》疏解此章取象原理。明·杨继洲《针灸大成》载「身形应八卦」之说。清·陈梦雷《古今图书集成·医部全录》详论面部分卦诊法。')
+      )
     ));
   },
   questions:[
@@ -546,6 +738,68 @@ LEVELS.push({
       h('div',{className:'source-tag',style:{color:'var(--red)',opacity:'1',marginTop:'4px'}},'⚠️ 避坑：此为后天八卦方位，梅花易数以先天数后天位并用')
     ));
   },
+  detail:function(main){
+    // 先天八卦方位（伏羲八卦）
+    var xiantian = [['南','乾','☰','天'],['西南','巽','☴','风'],['西','坎','☵','水'],['西北','艮','☶','山'],['北','坤','☷','地'],['东北','震','☳','雷'],['东','离','☲','火'],['东南','兑','☱','泽']];
+    var houtian  = [['南','离','☲','火'],['西南','坤','☷','地'],['西','兑','☱','泽'],['西北','乾','☰','天'],['北','坎','☵','水'],['东北','艮','☶','山'],['东','震','☳','雷'],['东南','巽','☴','风']];
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'一、先天八卦与后天八卦'),
+      h('p',{},'《周易》中的八卦方位有"先天"与"后天"两套体系，二者同源而异用：'),
+      h('p',{},'① 先天八卦（伏羲八卦）：据《说卦传》第三章"天地定位，山泽通气，雷风相薄，水火不相射"，乾南坤北、离东坎西，以天地阴阳对立为序，描述的是宇宙创生之前的先天状态。'),
+      h('p',{},'② 后天八卦（文王八卦）：据《说卦传》第五章"帝出乎震…成言乎艮"，震东兑西、离南坎北，以四时运行、万物生长收藏为序，描述的是天地既成之后的后天流行之用。'),
+      h('p',{},'二者最大区别：先天八卦讲"对待"（阴阳对立），后天八卦讲"流行"（四时循环）。先天为体、后天为用，这是理解梅花易数方位取象的根本原则。')
+    ));
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'二、先后天八卦方位对比'),
+      h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'12px'}},
+        h('div',{style:{background:'#F3E5F5',borderRadius:'10px',padding:'12px'}},
+          h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#7B1FA2',textAlign:'center'}},'🔮 先天八卦（伏羲）'),
+          h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'6px',fontSize:'13px'}},
+            xiantian.map(function(d){
+              return h('div',{style:{background:'#fff',borderRadius:'6px',padding:'6px 4px',textAlign:'center',border:'1px solid #E1BEE7'}},
+                h('div',{style:{fontSize:'20px'}},d[2]),
+                h('div',{style:{fontWeight:600}},d[1]),
+                h('div',{style:{fontSize:'11px',color:'var(--text-light)'}},d[0]));
+            })
+          )
+        ),
+        h('div',{style:{background:'#FFF9E6',borderRadius:'10px',padding:'12px'}},
+          h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#B8860B',textAlign:'center'}},'🧭 后天八卦（文王）'),
+          h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'6px',fontSize:'13px'}},
+            houtian.map(function(d){
+              return h('div',{style:{background:'#fff',borderRadius:'6px',padding:'6px 4px',textAlign:'center',border:'1px solid #FFE0B2'}},
+                h('div',{style:{fontSize:'20px'}},d[2]),
+                h('div',{style:{fontWeight:600}},d[1]),
+                h('div',{style:{fontSize:'11px',color:'var(--text-light)'}},d[0]));
+            })
+          )
+        )
+      )
+    ));
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'三、"帝出乎震"详解'),
+      h('p',{},'《说卦传》第五章以"帝"为万物主宰（一说为北斗、一说为元气），描述其一年之中巡行八方的轨迹：'),
+      h('p',{},'震东方，春分——万物出乎震，雷动而生机发，故曰"帝出乎震"。'),
+      h('p',{},'巽东南，立夏——万物齐整生长，风以散之，故曰"齐乎巽"。'),
+      h('p',{},'离南方，夏至——万物盛长相见，光明普照，故曰"相见乎离"。'),
+      h('p',{},'坤西南，立秋——万物致养于大地，故曰"致役乎坤"。'),
+      h('p',{},'兑西方，秋分——万物成熟而悦，故曰"说言乎兑"（说=悦）。'),
+      h('p',{},'乾西北，立冬——阴阳相搏，故曰"战乎乾"。'),
+      h('p',{},'坎北方，冬至——万物劳倦归藏于水，故曰"劳乎坎"。'),
+      h('p',{},'艮东北，立春——万物终而复始，故曰"成言乎艮"。'),
+      h('p',{},'此即后天八卦配四时八节的完整体系，与洛书九宫数理相通——坎一、坤二、震三、巽四、中五、乾六、兑七、艮八、离九。')
+    ));
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'四、梅花易数的应用'),
+      h('p',{},'梅花易数中有一核心口诀："先天之数，后天之位"。即以先天八卦数（乾1、兑2、离3、震4、巽5、坎6、艮7、坤8）起卦，以后天八卦方位断事。'),
+      h('p',{},'例如：来人从南方来，南方后天为离☲，取先天数离=3；来人从东方来，东方后天为震☳，取先天数震=4。起卦用先天数，方位判断用后天位，二者不可混淆。')
+    ));
+    main.appendChild(h('div',{className:'detail-source'},
+      h('h4',{},'📜 古籍原文出处'),
+      h('p',{},'《周易·说卦传》第五章：'),
+      h('p',{},'「帝出乎震，齐乎巽，相见乎离，致役乎坤，说言乎兑，战乎乾，劳乎坎，成言乎艮。万物出乎震，震东方也。齐乎巽，巽东南也……坎者水也，正北方之卦也……艮东北之卦也，万物之所成终而所成始也，故曰成言乎艮。」')
+    ));
+  },
   questions:[
     {prompt:'震卦位于哪个方位？',type:'sym-dir',sym:'zhen',choices:['东','西','南','北'],answer:0},
     {prompt:'离卦位于哪个方位？',type:'sym-dir',sym:'li',choices:['东','南','西','北'],answer:1},
@@ -589,6 +843,36 @@ LEVELS.push({
       h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
         '💡 坎=水也是月（水中之精），离=火也是日（火之精）\n八卦自然取象是理解万物类象的第一把钥匙 🔑'),
       h('div',{className:'source-tag'},'来源：《周易·说卦传》第三、五章')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'一、八卦取象的根本——自然'),
+      h('p',{},'《说卦传》云："乾为天，坤为地，震为雷，巽为风，坎为水，离为火，艮为山，兑为泽。"这是八卦最原始、最基本的取象。《系辞传》所谓"仰则观象于天，俯则观法于地……近取诸身，远取诸物"，八卦正是古人观察自然万象后抽象出来的八大类别符号。'),
+      h('p',{},'孔子在《说卦传》中进一步发挥，将八卦与动物、人体、家族、方位等关联，形成了庞大的"万物类象"体系。但一切类象的根源，都回到了这八种自然现象——天地雷风水火山泽。')
+    ));
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'二、"天地定位，山泽通气，雷风相薄，水火不相射"深解'),
+      h('p',{},'这四句话出自《说卦传》第三章，是对先天八卦方位的描述，也是八卦配对关系的总纲：'),
+      h('p',{},'① 天地定位（乾☰与坤☷）：天在上、地在下，一阳一阴，确立宇宙的基本框架。天地是万物之父母，故列于首位。'),
+      h('p',{},'② 山泽通气（艮☶与兑☱）：山高泽低，然而山上的云气降而为泽，泽中的水气升而为云，二者气息相通。这是自然界水循环的深刻观察。'),
+      h('p',{},'③ 雷风相薄（震☳与巽☴）：雷动于天，风行于地，雷以动之、风以散之，二者相互激荡。"薄"即迫近、激荡之义。'),
+      h('p',{},'④ 水火不相射（坎☵与离☲）：水曰润下，火曰炎上，性质相反却可以相济——如水火既济卦所示。不相射，即不相厌弃，二者相反相成。'),
+      h('p',{},'这四对卦构成了先天八卦的四正四隅格局，体现了阴阳对立统一的辩证思想。"数往者顺，知来者逆，是故易逆数也"——由先天推知后天，由已知推知未知，这正是易学的推演逻辑。')
+    ));
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'三、坎水离火的深层取象'),
+      h('p',{},'《说卦传》中坎既为水也为月，离既为火也为日。这并非简单的重复取象，而是有深层的象数逻辑：'),
+      h('p',{},'坎☵为水、为月：水与月皆属阴精。《淮南子·天文训》云"积阴之寒气为水，水气之精者为月"。坎卦一阳陷于二阴之中，正如月受日光而明，水藏阳气而流。在梅花易数中，坎可类象一切与水、阴寒、流动、暗藏相关的事物。'),
+      h('p',{},'离☲为火、为日：火与日皆属阳精。离卦一阴丽于二阳之中，正如日中有暗影（古人观察到的太阳黑子），火体虚而光明外照。在梅花易数中，离可类象一切与火、光明、文明、美丽相关的事物。'),
+      h('p',{},'这就是"其称名也杂而不越"——卦名看起来取象繁多，但都有内在的逻辑可循。')
+    ));
+    main.appendChild(h('div',{className:'detail-source'},
+      h('h4',{},'📜 古籍原文出处'),
+      h('p',{},'《周易·说卦传》第三章：'),
+      h('p',{},'「天地定位，山泽通气，雷风相薄，水火不相射，八卦相错。数往者顺，知来者逆，是故易逆数也。」'),
+      h('p',{},'《周易·说卦传》第五章（节选）：'),
+      h('p',{},'「乾为天……坤为地……震为雷……巽为木、为风……坎为水……为月……离为火、为日……艮为山……兑为泽。」')
     ));
   },
   questions:[
@@ -644,6 +928,54 @@ LEVELS.push({
       h('div',{className:'source-tag'},'来源：综合《说卦传》全篇')
     ));
   },
+  detail:function(main){
+    var takexiang = [
+      ['乾☰','天','父','马','首','西北','金'],
+      ['坤☷','地','母','牛','腹','西南','土'],
+      ['震☳','雷','长男','龙','足','东','木'],
+      ['巽☴','风','长女','鸡','股','东南','木'],
+      ['坎☵','水','中男','豕','耳','北','水'],
+      ['离☲','火','中女','雉','目','南','火'],
+      ['艮☶','山','少男','狗','手','东北','土'],
+      ['兑☱','泽','少女','羊','口','西','金']
+    ];
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'一、七象总览——回顾前七关'),
+      h('p',{},'至此你已经学完八卦取象的七大维度：符号卦名、五行属性、家庭人物、动物类比、身体部位、后天方位、自然现象。这七象皆源自《周易·说卦传》，是梅花易数万物类象的基础。'),
+      h('div',{style:{overflowX:'auto',marginTop:'10px'}},
+        h('table',{style:{width:'100%',fontSize:'11px',borderCollapse:'collapse',background:'#fff',borderRadius:'8px'}},
+          h('tr',{style:{background:'#E8F5E9',fontWeight:700}},
+            ['卦名','自然','人物','动物','身体','方位','五行'].map(function(hdr){return h('th',{style:{padding:'6px 4px',textAlign:'center',borderBottom:'2px solid #C8E6C9'}},hdr);})),
+          takexiang.map(function(r){
+            return h('tr',{style:{borderBottom:'1px solid var(--border)'}},
+              r.map(function(c,i){return h('td',{style:{padding:'5px 3px',textAlign:'center',fontWeight:i===0?700:'normal'}},c);}));
+          })
+        )
+      )
+    ));
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'二、一卦多象——"其称名也杂而不越"'),
+      h('p',{},'初学者常问：为什么同一个卦既代表天，又代表父、马、首？这不是"混乱"，而是古人独特的思维方式。'),
+      h('p',{},'《系辞传下》第六章云："其称名也杂而不越。"意思是：卦爻之辞所称引的事物名称虽然繁杂（杂），但都不会逾越其类别界限（不越）。如同一棵树有不同的枝干和叶子，但根源只有一个。'),
+      h('p',{},'以乾卦☰为例：乾三连，纯阳之卦，象征一切刚健、主动、在上、为首的事物——天（至高无上）、父（一家之主）、马（健行不止）、首（人身之巅）、君（一国元首）、金（坚刚贵重）。这些取象看似不同，实则都指向同一个核心属性：阳刚与健行。'),
+      h('p',{},'同理，坤卦☷六断纯阴，象征一切柔顺、承载、在下、包容的事物——地（厚德载物）、母（生养万物）、牛（任重顺行）、腹（包容含藏）、布（舒展平铺）。一切取象都归到"柔顺承载"这个核心。')
+    ));
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'三、取象的灵活性原则'),
+      h('p',{},'在梅花易数实战中，取象并非死记硬背。同一卦在不同的时间、场合、问题下，取象的侧重点不同。总结三条原则：'),
+      h('p',{},'① 因时取象：春天起卦遇震☳，取"雷动生机"之象；冬天起卦遇震☳，可能取"潜龙勿用"之象。'),
+      h('p',{},'② 因事取象：问健康时坎☵取"肾/耳"；问出行时坎☵取"水/险"；问财运时坎☵取"流动/财源"。同一个卦，问题不同，象就不同。'),
+      h('p',{},'③ 因位取象：上卦（外卦）多取远、外、对方之象；下卦（内卦）多取近、内、自身之象。再结合体用生克综合判断。'),
+      h('p',{},'正如《系辞传》所言"神而明之，存乎其人"，取象的灵活运用最终依赖占断者的智慧与经验。')
+    ));
+    main.appendChild(h('div',{className:'detail-source'},
+      h('h4',{},'📜 古籍原文出处'),
+      h('p',{},'《周易·系辞传下》第六章：'),
+      h('p',{},'「其称名也小，其取类也大。其旨远，其辞文，其言曲而中，其事肆而隐。因贰以济民行，以明失得之报。」'),
+      h('p',{},'（译文：卦爻辞所称引的事物名称虽然细小，但所比喻的类别却很广大。其意旨深远，文辞华美，语言曲折而切中事理，叙事直白而含义幽隐。借此帮助人们决疑而行，明辨得失之结果。）'),
+      h('p',{},'同章亦云："其称名也杂而不越，于稽其类，其衰世之意邪？"')
+    ));
+  },
   questions:[
     {prompt:'☰ 对应哪个卦？',type:'sym-name',sym:'qian',choices:['乾','坤','震','巽'],answer:0},
     {prompt:'☵ 对应哪个卦？',type:'sym-name',sym:'kan',choices:['离','坎','兑','艮'],answer:1},
@@ -696,6 +1028,53 @@ LEVELS.push({
         h('p',{style:{fontSize:'12px',color:'var(--text-light)',marginTop:'6px'}},'💡 初=1(奇)→阳爻当位；二=2(偶)→阴爻当位；以此类推')
       ),
       h('div',{className:'source-tag'},'来源：《周易·系辞传》「二与四同功而异位…」')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'一、"爻"的本义'),
+      h('p',{},'《说文解字》："爻，交也。"爻的本义是交错、相交。一长横（⚊）为阳爻，象征刚健、主动、光明；两短横（⚋）为阴爻，象征柔顺、被动、幽暗。阳爻与阴爻的交替组合，构成了八卦和六十四卦的全部变化。'),
+      h('p',{},'《系辞传上》曰："爻者，言乎变者也。"又曰："道有变动，故曰爻。"意思是：爻是用来表达变化的符号。因为天地之道有变动，所以用爻来模拟这种变动。'),
+      h('p',{},'《系辞传下》更精炼地概括："爻也者，效天下之动者也。"——爻就是效法天下万物运动变化的符号。')
+    ));
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'二、阳爻⚊与阴爻⚋的哲学含义'),
+      h('p',{},'阳爻⚊：象征"刚"，代表一切积极的、主动的、扩张的力量。《系辞传》云"乾道成男，坤道成女"，阳爻体现的是创造、进取、领导的特质。'),
+      h('p',{},'阴爻⚋：象征"柔"，代表一切包容的、被动的、收敛的力量。阴爻体现的是承载、孕育、顺从的特质。'),
+      h('p',{},'刚柔相推而生变化。六爻之中，阳爻居阳位（初、三、五）为"当位"，是为"刚";阴爻居阴位（二、四、上）为"当位"，是为"柔"。当位则吉，不当位则凶，这是判断爻辞吉凶的基本法则之一。')
+    ));
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'三、六爻位的社会等级象征'),
+      h('p',{},'《乾凿度》等汉代易学著作将六爻位与古代社会等级对应，影响深远：'),
+      h('div',{style:{background:'#FFF3E0',borderRadius:'8px',padding:'12px',marginTop:'8px'}},
+        h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'6px',fontSize:'13px'}},
+          ['上爻（第6位）','宗庙/太上'].map(function(c,i){return h('div',{style:{padding:'5px 8px',background:'#fff',borderRadius:'4px',textAlign:'center',fontWeight:i===0?600:'normal'}},c);}),
+          ['五爻（第5位）','天子/君王'].map(function(c,i){return h('div',{style:{padding:'5px 8px',background:'#fff',borderRadius:'4px',textAlign:'center',fontWeight:i===0?600:'normal'}},c);}),
+          ['四爻（第4位）','诸侯/近臣'].map(function(c,i){return h('div',{style:{padding:'5px 8px',background:'#fff',borderRadius:'4px',textAlign:'center',fontWeight:i===0?600:'normal'}},c);}),
+          ['三爻（第3位）','三公/大夫'].map(function(c,i){return h('div',{style:{padding:'5px 8px',background:'#fff',borderRadius:'4px',textAlign:'center',fontWeight:i===0?600:'normal'}},c);}),
+          ['二爻（第2位）','大夫/士人'].map(function(c,i){return h('div',{style:{padding:'5px 8px',background:'#fff',borderRadius:'4px',textAlign:'center',fontWeight:i===0?600:'normal'}},c);}),
+          ['初爻（第1位）','元士/庶民'].map(function(c,i){return h('div',{style:{padding:'5px 8px',background:'#fff',borderRadius:'4px',textAlign:'center',fontWeight:i===0?600:'normal'}},c);})
+        )
+      ),
+      h('p',{style:{marginTop:'8px'}},'记住口诀：「初民二士三公四侯五君上宗庙」。在梅花易数中，问官运看五爻，问下属看二爻，问民心看初爻，问退位之人看上爻。')
+    ));
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'四、四位关系：当位/中正/相应/承乘'),
+      h('p',{},'这是判断爻象吉凶的四大核心概念，也是《系辞传》"二与四同功而异位"一段的理论基础：'),
+      h('p',{},'① 当位（得位/正位）：阳爻在奇数位（初、三、五），阴爻在偶数位（二、四、上）谓之当位。当位=正，不当位=失正。'),
+      h('p',{},'② 中正：二爻（下卦中位）和五爻（上卦中位）称为"中位"。若爻既当位又居中位，则为"中正"，是六爻中最好的状态。五爻中正=君王有道，二爻中正=臣子守分。'),
+      h('p',{},'③ 相应：初与四、二与五、三与上，这三对爻如果一阴一阳（刚柔相配），则为"相应"，卦中上下呼应、同心协力；若同为阳或同为阴，则为"敌应"，上下不协。'),
+      h('p',{},'④ 承乘：相邻两爻的关系。下爻对上爻曰"承"，上爻对下爻曰"乘"。阴爻承阳爻为顺（柔承刚），阳爻乘阴爻亦多吉；反之阳承阴或阴乘阳则多为不吉。'),
+      h('p',{},'《系辞传》总结曰："二多誉，四多惧"（二爻离君远而多美誉，四爻近君而多忧惧）、"三多凶，五多功"（三爻在下卦之极多凶险，五爻居君位而多功绩），这些都是实战中判断爻位吉凶的重要参考。')
+    ));
+    main.appendChild(h('div',{className:'detail-source'},
+      h('h4',{},'📜 古籍原文出处'),
+      h('p',{},'《周易·系辞传上》第三章：'),
+      h('p',{},'「爻者，言乎变者也。」'),
+      h('p',{},'《周易·系辞传下》第一章：'),
+      h('p',{},'「爻也者，效天下之动者也。」'),
+      h('p',{},'《周易·系辞传下》第九章：'),
+      h('p',{},'「二与四同功而异位，其善不同：二多誉，四多惧，近也。柔之为道，不利远者；其要无咎，其用柔中也。三与五同功而异位：三多凶，五多功，贵贱之等也。其柔危，其刚胜邪？」')
     ));
   },
   questions:[
@@ -763,6 +1142,63 @@ LEVELS.push({
       h('p',{style:{fontSize:'13px',color:'var(--text-light)',marginTop:'10px',lineHeight:'1.6'}},
         '💡 例：䷊地天泰 = 上卦坤☷（地）+ 下卦乾☰（天）\n命名规则：先说上卦后说下卦 → 「地天泰」'),
       h('div',{className:'source-tag'},'来源：《周易》卦体结构')
+    ));
+  },
+  detail:function(main){
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'一、重卦的构成原理'),
+      h('p',{},'《系辞传下》第一章云："八卦成列，象在其中矣；因而重之，爻在其中矣。"这句话点明了从八卦到六十四卦的关键步骤——"因而重之"，即把两个三爻八卦上下叠加，就形成了六爻重卦。'),
+      h('p',{},'三爻八卦（又称"经卦""单卦"）只有8种，象征八种基本自然现象。但世间万事万物变化无穷，8种不足以描述，于是"兼三才而两之"，将两个八卦叠在一起——上三爻、下三爻，共六爻。六爻正好对应"天、人、地"三才，每才各二爻：五爻与上爻为天，三爻与四爻为人，初爻与二爻为地。'),
+      h('p',{},'八经卦 × 八经卦 = 六十四别卦（重卦），这就是《周易》六十四卦的由来。每一重卦有6个爻，总计64×6=384爻，加上乾卦"用九"和坤卦"用六"，共386条爻辞。')
+    ));
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'二、上卦下卦的多种称呼'),
+      h('p',{},'在《周易》的不同注释传统中，上下卦有多种称呼，含义各有侧重：'),
+      h('div',{style:{background:'#E3F2FD',borderRadius:'10px',padding:'14px',marginTop:'8px'}},
+        h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'8px',fontSize:'13px'}},
+          h('div',{style:{background:'#fff',borderRadius:'6px',padding:'8px',border:'1px solid #BBDEFB'}},
+            h('div',{style:{fontWeight:700,color:'#1565C0',marginBottom:'4px'}},'上 = 外'),
+            h('div',{},'上卦在外，象征外部环境、对方、远事')
+          ),
+          h('div',{style:{background:'#fff',borderRadius:'6px',padding:'8px',border:'1px solid #BBDEFB'}},
+            h('div',{style:{fontWeight:700,color:'#1565C0',marginBottom:'4px'}},'下 = 内'),
+            h('div',{},'下卦在内，象征内在因素、自身、近事')
+          ),
+          h('div',{style:{background:'#fff',borderRadius:'6px',padding:'8px',border:'1px solid #BBDEFB'}},
+            h('div',{style:{fontWeight:700,color:'#7B1FA2',marginBottom:'4px'}},'上 = 悔'),
+            h('div',{},'悔者，改也。上卦代表事物的外在变化趋势')
+          ),
+          h('div',{style:{background:'#fff',borderRadius:'6px',padding:'8px',border:'1px solid #BBDEFB'}},
+            h('div',{style:{fontWeight:700,color:'#7B1FA2',marginBottom:'4px'}},'下 = 贞'),
+            h('div',{},'贞者，正也。下卦代表事物的内在本质')
+          )
+        )
+      ),
+      h('p',{style:{marginTop:'10px'}},'同一事物的多种命名，体现了古人"体用一源、内外一贯"的思维。上/下是从空间位置说，外/内是从远近关系说，悔/贞是从变化趋势说，三种视角互补。')
+    ));
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'三、六十四卦命名规则'),
+      h('p',{},'六十四卦的名称遵循统一的命名规则，掌握后即可见名知卦、见卦知名：'),
+      h('p',{},'① 命名顺序："先上后下"。先读上卦的名称，再读下卦的名称。例如：上乾☰（天）+ 下坤☷（地）= 天地否䷋。特别注意：卦辞中先写哪一个，哪一个就是上卦。'),
+      h('p',{},'② 特殊卦名：八个"纯卦"（上下相同）以卦德命名——䷀乾为天、䷁坤为地、䷂震为雷、䷝巽为风、䷜坎为水、䷝离为火、䷳艮为山、䷹兑为泽。'),
+      h('p',{},'③ 实战案例：䷊ 上坤下乾 → "地天泰"；䷋ 上乾下坤 → "天地否"；䷐ 上兑下震 → "泽雷随"；䷔ 上离下震 → "火雷噬嗑"。如果记混了上下顺序，卦名就全错了！'),
+      h('p',{},'记忆技巧：卦名中的第一个字永远对应上卦（第4/5/6爻），第二个字对应下卦（第1/2/3爻）。')
+    ));
+    main.appendChild(h('div',{className:'detail-card'},
+      h('h3',{},'四、上下卦与梅花易数的体用'),
+      h('p',{},'在梅花易数的实战占断中，上下卦有一个非常重要的应用——体用关系：'),
+      h('p',{},'体卦（本卦）：无动爻（变爻）的那个经卦，代表占问的主体——问事人自身、事情的内在本质。'),
+      h('p',{},'用卦（用神）：有动爻的那个经卦，代表所占之事——外来的影响因素、事情的变化趋势。'),
+      h('p',{},'体卦和用卦的五行关系（相生、相克、比和）是梅花易数断卦最基础也最重要的方法：体克用→吉，用生体→大吉，体生用→消耗，用克体→凶，体用比和→顺遂。'),
+      h('p',{},'注意：传统梅花易数中，体用由动爻所在位置决定（动爻在上卦则上为用下为体，动爻在下卦则下为用上为体），并非简单以上下卦来定体用。但在无动爻的静卦中，通常以下卦为体（内、己）、上卦为用（外、事）。')
+    ));
+    main.appendChild(h('div',{className:'detail-source'},
+      h('h4',{},'📜 古籍原文出处'),
+      h('p',{},'《周易·系辞传下》第一章：'),
+      h('p',{},'「八卦成列，象在其中矣；因而重之，爻在其中矣；刚柔相推，变在其中矣；系辞焉而命之，动在其中矣。」'),
+      h('p',{},'（译文：八卦排成序列，万象就包含在其中；将八卦两两重叠，六爻就包含在其中；刚柔互相推移，变化就包含在其中；系上文辞而告知吉凶，行动就包含在其中。）'),
+      h('p',{},'《周易·说卦传》第二章：'),
+      h('p',{},'「兼三才而两之，故易六画而成卦。分阴分阳，迭用柔刚，故易六位而成章。」')
     ));
   },
   questions:[
@@ -6989,7 +7425,8 @@ var state = {
   _lastChoice:-1,
   inReview:false,
   reviewQIndex:0,
-  reviewQs:[]
+  reviewQs:[],
+  testMode:false
 };
 if(!saved.completed)saved.completed={};
 
@@ -6997,7 +7434,7 @@ function curLevel(){return LEVELS[state.levelIdx];}
 function curQ(){return curLevel().questions[state.qIndex];}
 function totalQ(){return curLevel().questions.length;}
 function levelDone(id){return saved.completed&&saved.completed[id];}
-function canEnter(id){if(id<=1)return true;return !!levelDone(id-1);}
+function canEnter(id){if(state.testMode)return true;if(id<=1)return true;return !!levelDone(id-1);}
 
 // ====== MEMORY CURVE REVIEW ======
 function getReviewQuestions(levelId){
@@ -7054,13 +7491,19 @@ function render(){
   var lv=curLevel();
 
   app.appendChild(h('div',{className:'header'},
-    h('div',{className:'logo',onClick:goMenu},
-      h('span',{className:'icon'},'🌸'),'多灵国-八卦版'),
+    h('div',{className:'logo'},
+      h('span',{className:'icon',onClick:goMenu,style:{cursor:'pointer'}},'🌸'),
+      h('span',{onClick:function(){
+        var pw=prompt('请输入管理员密码');
+        if(pw==='222'){state.testMode=!state.testMode;render();}
+      },style:{cursor:'default'}},state.testMode?'⚙多灵国-八卦版':'多灵国-八卦版')
+    ),
     h('div',{className:'streak'},h('span',{style:{fontSize:'16px'}},'🔥'),state.streak+' 连击')
   ));
 
   if(state.view==='menu')renderMenu(app);
   else if(state.view==='intro')renderIntro(app);
+  else if(state.view==='detail')renderDetail(app);
   else if(state.view==='review')renderReview(app);
   else if(state.view==='quiz')renderQuiz(app);
   else if(state.view==='complete')renderComplete(app);
@@ -7101,7 +7544,13 @@ function renderMenu(app){
             h('div',{className:'lc-title'},'第'+lv.id+'关：'+lv.title),
             h('div',{className:'lc-desc'},lv.desc)
           ),
-          badge
+          badge,
+          open ? h('span',{className:'lc-detail-btn',onClick:function(e){
+            e.stopPropagation();
+            state.levelIdx=i;
+            state.view='detail';
+            render();
+          }},'📖') : null
         );
       })
     ),
@@ -7119,6 +7568,20 @@ function renderIntro(app){
   main.appendChild(h('div',{className:'bottom'},
     h('button',{className:'continue-btn show',onClick:function(){state.view='quiz';render();}},'开始答题（共'+totalQ()+'题）')
   ));
+  app.appendChild(main);
+}
+
+// Detail page — extended teaching with classical sources
+function renderDetail(app){
+  var lv=curLevel();
+  var main=h('div',{className:'main'});
+  main.appendChild(h('button',{className:'back-btn',onClick:goMenu,style:{alignSelf:'flex-start'}},'← 返回目录'));
+  if(lv.detail){
+    lv.detail(main);
+  }else{
+    // Fallback to teaching content
+    lv.teaching(main);
+  }
   app.appendChild(main);
 }
 
