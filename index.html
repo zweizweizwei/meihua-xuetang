@@ -409,25 +409,52 @@ LEVELS.push({
       ),
       h('p',{},'五行的次序（水→火→木→金→土）并非随意排列，而是对应古人观察到的自然生成顺序：天地初开先有水；水中有热气上升为火；火尽生灰为土；土中藏矿为金；金石生水汽循环往复。每行各有特性：水润下（滋润向下）、火炎上（燃烧上升）、木曲直（可弯可直）、金从革（可熔可铸）、土稼穑（播种收获）。这些特性是判断五行归属的根本依据。'),
       h('h4',{style:{color:'#E65100',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'三、相生与相克的原理'),
-      h('div',{style:{display:'flex',gap:'10px',margin:'12px 0'}},
-        h('div',{style:{flex:1,background:'#E8F5E9',borderRadius:'8px',padding:'10px'}},
-          h('div',{style:{fontWeight:700,fontSize:'13px',color:'#2E7D32',marginBottom:'4px'}},'🌱 五行相生'),
-          h('div',{style:{fontSize:'12px',lineHeight:'1.8'}},
-            '木生火：钻木取火\n火生土：火烬成灰\n土生金：土中藏矿\n金生水：金融成液\n水生木：水润草木')
-        ),
-        h('div',{style:{flex:1,background:'#FFEBEE',borderRadius:'8px',padding:'10px'}},
-          h('div',{style:{fontWeight:700,fontSize:'13px',color:'#C62828',marginBottom:'4px'}},'⚡ 五行相克'),
-          h('div',{style:{fontSize:'12px',lineHeight:'1.8'}},
-            '木克土：树根破土\n土克水：堤坝挡水\n水克火：水能灭火\n火克金：烈火熔金\n金克木：斧锯伐木')
-        )
+      h('div',{style:{textAlign:'center',margin:'12px 0'}},
+        h('div',{style:{display:'inline-block'},innerHTML:'<svg width="280" height="280" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">'+
+          '<defs><marker id="sheng" markerWidth="6" markerHeight="6" refX="3" refY="3"><circle cx="3" cy="3" r="3" fill="#2E7D32"/></marker>'+
+          '<marker id="ke" markerWidth="6" markerHeight="6" refX="3" refY="3"><circle cx="3" cy="3" r="3" fill="#C62828"/></marker></defs>'+
+          '<circle cx="140" cy="140" r="115" fill="none" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>'+
+          '<circle cx="140" cy="140" r="70" fill="none" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>'+
+          '<!-- 相生 arrows (outer ring, green) -->'+
+          '<path d="M140,48 Q190,25 230,95" fill="none" stroke="#2E7D32" stroke-width="2" marker-end="url(#sheng)"/>'+
+          '<path d="M243,114 Q260,170 210,210" fill="none" stroke="#2E7D32" stroke-width="2" marker-end="url(#sheng)"/>'+
+          '<path d="M193,225 Q140,265 87,225" fill="none" stroke="#2E7D32" stroke-width="2" marker-end="url(#sheng)"/>'+
+          '<path d="M70,210 Q20,170 37,114" fill="none" stroke="#2E7D32" stroke-width="2" marker-end="url(#sheng)"/>'+
+          '<path d="M50,95 Q80,22 140,48" fill="none" stroke="#2E7D32" stroke-width="2" marker-end="url(#sheng)"/>'+
+          '<!-- 相克 arrows (inner star, red) -->'+
+          '<line x1="155" y1="75" x2="203" y2="210" stroke="#C62828" stroke-width="1.5" marker-end="url(#ke)" stroke-dasharray="3,2"/>'+
+          '<line x1="216" y1="195" x2="64" y2="195" stroke="#C62828" stroke-width="1.5" marker-end="url(#ke)" stroke-dasharray="3,2"/>'+
+          '<line x1="77" y1="210" x2="155" y2="75" stroke="#C62828" stroke-width="1.5" marker-end="url(#ke)" stroke-dasharray="3,2"/>'+
+          '<line x1="140" y1="55" x2="95" y2="80" stroke="#C62828" stroke-width="1.5" stroke-dasharray="3,2" opacity="0"/>'+
+          '<!-- Node circles -->'+
+          '<circle cx="140" cy="50" r="24" fill="#4CAF50" opacity="0.9"/><text x="140" y="56" text-anchor="middle" fill="white" font-size="16" font-weight="700">木</text>'+
+          '<circle cx="235" cy="108" r="24" fill="#F44336" opacity="0.9"/><text x="235" y="114" text-anchor="middle" fill="white" font-size="16" font-weight="700">火</text>'+
+          '<circle cx="198" cy="215" r="24" fill="#FF9800" opacity="0.9"/><text x="198" y="221" text-anchor="middle" fill="white" font-size="16" font-weight="700">土</text>'+
+          '<circle cx="82" cy="215" r="24" fill="#FFC107" opacity="0.9"/><text x="82" y="221" text-anchor="middle" fill="white" font-size="16" font-weight="700">金</text>'+
+          '<circle cx="45" cy="108" r="24" fill="#2196F3" opacity="0.9"/><text x="45" y="114" text-anchor="middle" fill="white" font-size="16" font-weight="700">水</text>'+
+          '<!-- Legend -->'+
+          '<line x1="90" y1="260" x2="110" y2="260" stroke="#2E7D32" stroke-width="2"/><text x="115" y="264" fill="#2E7D32" font-size="11">相生</text>'+
+          '<line x1="155" y1="260" x2="175" y2="260" stroke="#C62828" stroke-width="1.5" stroke-dasharray="3,2"/><text x="180" y="264" fill="#C62828" font-size="11">相克</text>'+
+        '</svg>'})
       ),
       h('p',{},'相生如同母子关系——生我者为「母」，我生者为「子」。例如木生火，木为火之母，火为木之子。相克如同制约关系——克我者为「所不胜」，我克者为「所胜」。生与克共同维持着五行的动态平衡。汉代董仲舒《春秋繁露·五行之义》对此有系统阐发。'),
       h('h4',{style:{color:'#E65100',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'四、相乘与相侮——生克的异常'),
       h('p',{},'当五行平衡被打破时，出现两种异常关系：「相乘」——过度克制。如木本克土，但木气过旺则乘土（过度克土），导致土虚。好比树木过度生长，土地养分被耗尽。「相侮」——反向克制。如金本克木，但木气过盛或金气过弱，则木反侮金。好比树木反过来制约斧头。乘和侮的概念在中医诊断中尤为重要。'),
       h('h4',{style:{color:'#E65100',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'五、五行在中医中的应用'),
       h('p',{},'《黄帝内经》将五行学说系统应用于人体脏腑经络：'),
-      h('div',{style:{background:'#FFF8E1',borderRadius:'8px',padding:'10px',margin:'10px 0',fontSize:'13px',lineHeight:'1.8'}},
-        '木→肝（怒、酸、青、春、东）\n火→心（喜、苦、赤、夏、南）\n土→脾（思、甘、黄、长夏、中）\n金→肺（悲、辛、白、秋、西）\n水→肾（恐、咸、黑、冬、北）'),
+      h('div',{style:{background:'#FFF8E1',borderRadius:'10px',padding:'8px 14px',margin:'10px 0'}},
+        [['木','肝','怒','酸','青','春','东','#4CAF50'],
+         ['火','心','喜','苦','赤','夏','南','#F44336'],
+         ['土','脾','思','甘','黄','长夏','中','#FF9800'],
+         ['金','肺','悲','辛','白','秋','西','#FFC107'],
+         ['水','肾','恐','咸','黑','冬','北','#2196F3']].map(function(w){
+          return h('div',{style:{display:'flex',alignItems:'center',padding:'6px 0',borderBottom:'1px solid #FFE0B2',gap:'8px'}},
+            h('span',{style:{background:w[7],color:'#fff',borderRadius:'50%',width:'32px',height:'32px',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:700,fontSize:'14px',flexShrink:0}},w[0]),
+            h('span',{style:{fontWeight:600,fontSize:'14px'}},w[0]+'→'+w[1]),
+            h('span',{style:{fontSize:'12px',color:'#795548',marginLeft:'auto'}},w[2]+'·'+w[3]+'·'+w[4]+'·'+w[5]+'·'+w[6])
+          );
+        })
+      ),
       h('p',{},'中医通过五行生克关系来诊断和治疗疾病：肝木过旺会乘脾土（生气伤脾胃）；肾水不足则不能制心火（阴虚火旺）。「虚则补其母，实则泻其子」的治疗原则正基于五行相生关系。'),
       h('div',{className:'detail-source'},
         h('h4',{},'📜 古籍出处'),
@@ -507,10 +534,10 @@ LEVELS.push({
       h('p',{},'此外，乾（☰）三爻皆阳，为纯阳之卦，象征父亲；坤（☷）三爻皆阴，为纯阴之卦，象征母亲。其余六卦皆由乾父坤母的阴阳爻交互组合而成——震☳是坤母得乾父一阳（初爻），坎☵得乾父一阳（二爻），艮☶得乾父一阳（三爻），是为三男；三女同理。'),
       h('div',{style:{background:'#F3E5F5',borderRadius:'10px',padding:'14px',marginTop:'12px'}},
         h('div',{style:{fontWeight:700,fontSize:'14px',marginBottom:'8px',color:'#7B1FA2'}},'📖 一家八口全图'),
-        h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'8px'}},
+        h('div',{style:{display:'flex',flexDirection:'column',gap:'6px'}},
           [['乾','父','☰'],['坤','母','☷'],['震','长男','☳'],['坎','中男','☵'],['艮','少男','☶'],['巽','长女','☴'],['离','中女','☲'],['兑','少女','☱']].map(function(f){
-            return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'8px 12px',display:'flex',alignItems:'center',gap:'8px'}},
-              h('span',{style:{fontSize:'24px'}},f[2]),h('span',{style:{fontWeight:700}},f[0]),h('span',{style:{color:'var(--text-light)',fontSize:'13px'}},f[1]));
+            return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'8px 14px',display:'flex',alignItems:'center',gap:'10px'}},
+              h('span',{style:{fontSize:'24px',width:'36px',textAlign:'center'}},f[2]),h('span',{style:{fontWeight:700,fontSize:'15px'}},f[0]),h('span',{style:{color:'#7B1FA2',fontSize:'13px'}},'—'),h('span',{style:{color:'var(--text-light)',fontSize:'14px'}},f[1]));
           })
         )
       ),
@@ -671,10 +698,10 @@ LEVELS.push({
       ),
       h('h4',{style:{color:'#1565C0',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'四、在中医望诊中的应用'),
       h('p',{},'中医面诊（望诊）将八卦与面部区域对应，形成「面部八卦分区法」：额头（乾）候肺与大肠；下巴（坤）候肾与膀胱；左颊（震）候肝；右颊（兑）候肺；鼻（艮）候脾；眼（离）候心；耳（坎）候肾；口唇（巽）候肝胆。明代杨继洲《针灸大成》中亦有「身形应八卦」的记载，作为针灸取穴的理论依据之一。这些应用说明八卦身体取象在中医临床上具有实际指导意义，是「医易同源」思想的体现。'),
-      h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'8px',marginTop:'12px'}},
+      h('div',{style:{display:'flex',flexDirection:'column',gap:'6px',marginTop:'12px'}},
         [['乾','首','☰','头'],['坤','腹','☷','肚子'],['震','足','☳','脚'],['巽','股','☴','大腿'],['坎','耳','☵','耳朵'],['离','目','☲','眼睛'],['艮','手','☶','手'],['兑','口','☱','嘴巴']].map(function(b){
-          return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'10px 12px',display:'flex',alignItems:'center',gap:'8px',border:'1px solid var(--border)'}},
-            h('span',{style:{fontSize:'24px'}},b[2]),h('span',{style:{fontWeight:700}},b[0]),h('span',{style:{color:'var(--text-light)',fontSize:'13px'}},b[1]+'（'+b[3]+'）'));
+          return h('div',{style:{background:'#fff',borderRadius:'8px',padding:'10px 14px',display:'flex',alignItems:'center',gap:'10px',border:'1px solid var(--border)'}},
+            h('span',{style:{fontSize:'26px',width:'38px',textAlign:'center'}},b[2]),h('span',{style:{fontWeight:700,fontSize:'15px'}},b[0]),h('span',{style:{color:'#1565C0',fontSize:'13px'}},'—'),h('span',{style:{color:'var(--text-light)',fontSize:'14px'}},b[1]+'（'+b[3]+'）'));
         })
       ),
       h('div',{className:'detail-source'},
@@ -7496,7 +7523,7 @@ function render(){
       h('span',{onClick:function(){
         var pw=prompt('请输入管理员密码');
         if(pw==='222'){state.testMode=!state.testMode;render();}
-      },style:{cursor:'default'}},state.testMode?'⚙多灵国-八卦版':'多灵国-八卦版')
+      },style:{display:'inline-block',padding:'4px 0',cursor:'pointer',userSelect:'none',WebkitUserSelect:'none'}},state.testMode?'⚙多灵国-八卦版':'多灵国-八卦版')
     ),
     h('div',{className:'streak'},h('span',{style:{fontSize:'16px'}},'🔥'),state.streak+' 连击')
   ));
