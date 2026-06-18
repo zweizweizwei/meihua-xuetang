@@ -417,32 +417,8 @@ LEVELS.push({
       h('p',{},'五行的次序（水→火→木→金→土）并非随意排列，而是对应古人观察到的自然生成顺序：天地初开先有水；水中有热气上升为火；火尽生灰为土；土中藏矿为金；金石生水汽循环往复。每行各有特性：水润下（滋润向下）、火炎上（燃烧上升）、木曲直（可弯可直）、金从革（可熔可铸）、土稼穑（播种收获）。这些特性是判断五行归属的根本依据。'),
       h('h4',{style:{color:'#E65100',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'三、相生与相克的原理'),
       h('div',{style:{textAlign:'center',margin:'12px 0'}},
-        (function(){var d=h('div',{style:{display:'inline-block'}});d.innerHTML='<svg width="280" height="280" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">'+
-          '<defs><marker id="sheng" markerWidth="6" markerHeight="6" refX="3" refY="3"><circle cx="3" cy="3" r="3" fill="#2E7D32"/></marker>'+
-          '<marker id="ke" markerWidth="6" markerHeight="6" refX="3" refY="3"><circle cx="3" cy="3" r="3" fill="#C62828"/></marker></defs>'+
-          '<circle cx="140" cy="140" r="115" fill="none" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>'+
-          '<circle cx="140" cy="140" r="70" fill="none" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>'+
-          '<!-- 相生 arrows (outer ring, green) -->'+
-          '<path d="M140,48 Q190,25 230,95" fill="none" stroke="#2E7D32" stroke-width="2" marker-end="url(#sheng)"/>'+
-          '<path d="M243,114 Q260,170 210,210" fill="none" stroke="#2E7D32" stroke-width="2" marker-end="url(#sheng)"/>'+
-          '<path d="M193,225 Q140,265 87,225" fill="none" stroke="#2E7D32" stroke-width="2" marker-end="url(#sheng)"/>'+
-          '<path d="M70,210 Q20,170 37,114" fill="none" stroke="#2E7D32" stroke-width="2" marker-end="url(#sheng)"/>'+
-          '<path d="M50,95 Q80,22 140,48" fill="none" stroke="#2E7D32" stroke-width="2" marker-end="url(#sheng)"/>'+
-          '<!-- 相克 arrows (inner star, red) -->'+
-          '<line x1="155" y1="75" x2="203" y2="210" stroke="#C62828" stroke-width="1.5" marker-end="url(#ke)" stroke-dasharray="3,2"/>'+
-          '<line x1="216" y1="195" x2="64" y2="195" stroke="#C62828" stroke-width="1.5" marker-end="url(#ke)" stroke-dasharray="3,2"/>'+
-          '<line x1="77" y1="210" x2="155" y2="75" stroke="#C62828" stroke-width="1.5" marker-end="url(#ke)" stroke-dasharray="3,2"/>'+
-          '<line x1="140" y1="55" x2="95" y2="80" stroke="#C62828" stroke-width="1.5" stroke-dasharray="3,2" opacity="0"/>'+
-          '<!-- Node circles -->'+
-          '<circle cx="140" cy="50" r="24" fill="#4CAF50" opacity="0.9"/><text x="140" y="56" text-anchor="middle" fill="white" font-size="16" font-weight="700">木</text>'+
-          '<circle cx="235" cy="108" r="24" fill="#F44336" opacity="0.9"/><text x="235" y="114" text-anchor="middle" fill="white" font-size="16" font-weight="700">火</text>'+
-          '<circle cx="198" cy="215" r="24" fill="#FF9800" opacity="0.9"/><text x="198" y="221" text-anchor="middle" fill="white" font-size="16" font-weight="700">土</text>'+
-          '<circle cx="82" cy="215" r="24" fill="#FFC107" opacity="0.9"/><text x="82" y="221" text-anchor="middle" fill="white" font-size="16" font-weight="700">金</text>'+
-          '<circle cx="45" cy="108" r="24" fill="#2196F3" opacity="0.9"/><text x="45" y="114" text-anchor="middle" fill="white" font-size="16" font-weight="700">水</text>'+
-          '<!-- Legend -->'+
-          '<line x1="90" y1="260" x2="110" y2="260" stroke="#2E7D32" stroke-width="2"/><text x="115" y="264" fill="#2E7D32" font-size="11">相生</text>'+
-          '<line x1="155" y1="260" x2="175" y2="260" stroke="#C62828" stroke-width="1.5" stroke-dasharray="3,2"/><text x="180" y="264" fill="#C62828" font-size="11">相克</text>'+
-        '</svg>';return d;})()
+        h('img',{src:'https://zweizweizwei.github.io/meihua-xuetang/images/wuxing-shengke.gif',style:{width:'100%',maxWidth:'400px',borderRadius:'12px'},alt:'五行生克环动画'}),
+        h('p',{style:{fontSize:'12px',color:'#888',marginTop:'6px'}},'⬆ 动态演示：绿色实线=相生（顺时针流动） · 红色虚线=相克（内星交叉流动）')
       ),
       h('p',{},'相生如同母子关系——生我者为「母」，我生者为「子」。例如木生火，木为火之母，火为木之子。相克如同制约关系——克我者为「所不胜」，我克者为「所胜」。生与克共同维持着五行的动态平衡。汉代董仲舒《春秋繁露·五行之义》对此有系统阐发。'),
       h('h4',{style:{color:'#E65100',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'四、相乘与相侮——生克的异常'),
