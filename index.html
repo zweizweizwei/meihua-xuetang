@@ -417,7 +417,7 @@ LEVELS.push({
       h('p',{},'五行的次序（水→火→木→金→土）并非随意排列，而是对应古人观察到的自然生成顺序：天地初开先有水；水中有热气上升为火；火尽生灰为土；土中藏矿为金；金石生水汽循环往复。每行各有特性：水润下（滋润向下）、火炎上（燃烧上升）、木曲直（可弯可直）、金从革（可熔可铸）、土稼穑（播种收获）。这些特性是判断五行归属的根本依据。'),
       h('h4',{style:{color:'#E65100',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'三、相生与相克的原理'),
       h('div',{style:{textAlign:'center',margin:'12px 0'}},
-        h('div',{style:{display:'inline-block'},innerHTML:'<svg width="280" height="280" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">'+
+        (function(){var d=h('div',{style:{display:'inline-block'}});d.innerHTML='<svg width="280" height="280" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">'+
           '<defs><marker id="sheng" markerWidth="6" markerHeight="6" refX="3" refY="3"><circle cx="3" cy="3" r="3" fill="#2E7D32"/></marker>'+
           '<marker id="ke" markerWidth="6" markerHeight="6" refX="3" refY="3"><circle cx="3" cy="3" r="3" fill="#C62828"/></marker></defs>'+
           '<circle cx="140" cy="140" r="115" fill="none" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>'+
@@ -442,7 +442,7 @@ LEVELS.push({
           '<!-- Legend -->'+
           '<line x1="90" y1="260" x2="110" y2="260" stroke="#2E7D32" stroke-width="2"/><text x="115" y="264" fill="#2E7D32" font-size="11">相生</text>'+
           '<line x1="155" y1="260" x2="175" y2="260" stroke="#C62828" stroke-width="1.5" stroke-dasharray="3,2"/><text x="180" y="264" fill="#C62828" font-size="11">相克</text>'+
-        '</svg>'})
+        '</svg>';return d;})()
       ),
       h('p',{},'相生如同母子关系——生我者为「母」，我生者为「子」。例如木生火，木为火之母，火为木之子。相克如同制约关系——克我者为「所不胜」，我克者为「所胜」。生与克共同维持着五行的动态平衡。汉代董仲舒《春秋繁露·五行之义》对此有系统阐发。'),
       h('h4',{style:{color:'#E65100',marginTop:'16px',marginBottom:'8px',fontSize:'15px'}},'四、相乘与相侮——生克的异常'),
@@ -7617,10 +7617,10 @@ function renderDetail(app){
   if(lv.detail){
     lv.detail(main);
   }else{
-    // Fallback to teaching content
     lv.teaching(main);
   }
   app.appendChild(main);
+  window.scrollTo(0,0);
 }
 
 // Review screen — shows memory curve review questions before the lesson
